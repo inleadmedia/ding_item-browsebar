@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  font: 13px/22px Helvetica, Arial, sans-serif;
+  background: #FFFFFF;
+}
+
+
+/**
+ * HEADLINES
+ */
+
+h1, h2 {
+  font-size: 28px;
+  line-height: 36px;
+  padding: 22px 0;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 22px;
+  padding: 11px 0;
+}
+
+p {
+  padding-bottom: 22px;
+}
+
+/**
+ * GRIDS
+ */
+
+.oneBlock {
+  width: 226px;
+}
+
+.twoBlocks {
+  width: 476px;
+}
+
+.threeBlocks {
+  width: 726px;
+}
+
+.fourBlocks {
+  width: 976px;
+}
+
+.oneBlock, .twoBlocks, .threeBlocks, .fourBlocks {
+  margin-left: 12px;
+  margin-right: 12px;
+  float: left;
+}
+
+.oneBlock.left, .twoBlocks.left, .threeBlocks.left, .fourBlocks.left {
+  margin-left: 0px;
+}
+
+.oneBlock.right, .twoBlocks.right, .threeBlocks.right, .fourBlocks.right {
+  margin-right: 0px;
+}
+
+
+/**
+ * HEADER
+ */
+
+div#header
+{
+  background: url("images/header_bg.png");
+}
+
+  div#header div#bg {
+    width: 1100px;
+    margin: 0 auto;
+    background: url("images/header_img.jpg");
+  }
+
+    div#header div#bg div#content {
+      height: 171px;
+      margin: 0px 50px 0px 50px;
+      width: 1000px;
+    }
+
+      div#header div#bg div#content ul {
+        margin: 0 auto;
+        list-style: none;
+      }
+
+        div#header div#bg div#content ul li {
+          float: right;
+          padding: 0px 8px 0px 8px;
+          border-left: 1px solid #C6C6C6;
+          line-height: 16px;
+        }
+
+          div#header div#bg div#content ul li.first {
+            border: none;
+          }
+
+          div#header div#bg div#content ul li a {
+            font-size: 12px;
+            text-decoration: none;
+            color: #4D4B50;
+          }
+
+            div#header div#bg div#content ul li a:hover {
+              text-decoration: underline;
+              color: #0681B0;
+            }
+
+/**
+ * NAVIGATION
+ */
+
+div#nav
+{
+  background: url("images/nav_bg.png");
+}
+
+  div#nav div#content {
+    width: 1000px;
+    height: 36px;
+    margin: 0 auto;
+  }
+
+  div#nav div#content ul {
+    margin: 0 auto;
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+    div#nav div#content ul .nav_seperator {
+      height: 36px;
+      width: 1px;
+      background: url("images/nav_seperator.png");
+    }
+
+    div#nav div#content ul#left {
+    }
+
+      div#nav div#content ul#left .nav_seperator {
+        float: left;
+      }
+
+      div#nav div#content ul#left li {
+        float: left;
+      }
+
+        div#nav div#content ul#left li a {
+          color: #4D4B50;
+        }
+
+        div#nav div#content ul#left li a {
+          display: block;
+          font-size: 14px;
+          line-height: 36px;
+          text-align: center;
+          text-decoration: none;
+          padding: 0px 15px 0px 15px;
+        }
+
+          div#nav div#content ul#left li a:hover {
+            color: #FFFFFF;
+            background-color: #6D137D;
+          }
+
+        div#nav div#content ul#left li.selected a {
+          color: #FFFFFF;
+          background-color: #6D137D;
+        }
+
+    div#nav div#content ul#right {
+    }
+
+      div#nav div#content ul#right .nav_seperator {
+        float: right;
+      }
+
+      div#nav div#content ul#right li {
+        float:right;
+      }
+
+        div#nav div#content ul#right li a {
+          color: #6D137D;
+        }
+
+        div#nav div#content ul#right li a {
+          display: block;
+          font-size: 14px;
+          line-height: 36px;
+          text-align: center;
+          text-decoration: none;
+          padding: 0px 15px 0px 15px;
+        }
+
+          div#nav div#content ul#right li a:hover {
+            color: #4D4B50;
+          }
+
+
+/**
+ * CONTENT
+ */
+div#content {
+}
+
+  div#content div#content {
+    min-height: 500px;
+  }
+
+/**
+ * FOOTER
+ */
+
+div#footer {
+  background: url("images/footer_bg.png");
+}
+
+  div#footer div#content {
+    margin: 0 auto;
+    width: 1000px;
+    height: 366px;
+  }
+
+  div#footer div#content h3 {
+    color: #4D4B50;
+  }
+
+  div#footer div#content a {
+    color: #6D137D;
+    text-style: none;
+    font-weight: bold;
+  }
+
+    div#footer div#content a:hover {
+      color: #FFF;
+      text-decoration: none;
+    }
