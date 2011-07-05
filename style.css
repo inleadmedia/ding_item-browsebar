@@ -1,3 +1,34 @@
+/**
+ * FONTS
+ */
+
+@font-face {
+  font-family: 'CartoGothicStdBook';
+  src: url('fonts/CartoGothicStd-Book-webfont.eot');
+  src: url('fonts/CartoGothicStd-Book-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/CartoGothicStd-Book-webfont.woff') format('woff'),
+       url('fonts/CartoGothicStd-Book-webfont.ttf') format('truetype'),
+       url('fonts/CartoGothicStd-Book-webfont.svg#CartoGothicStdBook') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DroidSerifRegular';
+  src: url('fonts/DroidSerif-Regular-webfont.eot');
+  src: url('fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/DroidSerif-Regular-webfont.woff') format('woff'),
+       url('fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
+       url('fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/**
+ * GENERAL
+ */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +37,9 @@
 body {
   margin: 0 auto;
   padding: 0;
-  font: 13px/22px Helvetica, Arial, sans-serif;
+  font: 13px/22px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
   background: #FFFFFF;
+  color: #4D4B50;
 }
 
 
@@ -15,44 +47,54 @@ body {
  * HEADLINES
  */
 
-h1, h2 {
-  font-size: 28px;
-  line-height: 36px;
-  padding: 22px 0;
+h1, h2, h3 {
+  padding: 11px 0;
+  font: 11px/16px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
+}
+
+.purple h1, .purple h2, .purple h3 {
+  color: #6D137D;
+}
+
+.grey h1, .grey h2, .grey h3 {
+  color: #4D4B50;
+}
+
+.green h1, .green h2, .green h3 {
+  color: #76AC10;
+}
+
+h1 {
+  font-size: 21px;
+}
+
+h2 {
+  font-size: 17px;
 }
 
 h3 {
-  font-size: 18px;
-  line-height: 22px;
-  padding: 11px 0;
+  font-size: 15px;
 }
 
-p {
-  padding-bottom: 22px;
-}
 
 /**
  * GRIDS
  */
 
 .oneBlock {
-  width: 224px;
-  border: 1px solid transparent;
+  width: 226px;
 }
 
 .twoBlocks {
-  width: 474px;
-  border: 1px solid transparent;
+  width: 476px;
 }
 
 .threeBlocks {
-  width: 724px;
-  border: 1px solid transparent;
+  width: 726px;
 }
 
 .fourBlocks {
-  width: 974px;
-  border: 1px solid transparent;
+  width: 976px;
 }
 
 .oneBlock, .twoBlocks, .threeBlocks, .fourBlocks {
@@ -75,6 +117,11 @@ p {
   border: 1px solid #C6C6C6;
   min-height: 200px;
 }
+
+.oneBlock.border { width: 224px; }
+.twoBlocks.border { width: 474px; }
+.threeBlocks.border { width: 724px; }
+.fourBlocks.border { width: 974px; }
 
   .oneBlock.border.dark, .twoBlocks.border.dark, .threeBlocks.border.dark, .fourBlocks.border.dark {
     background: #F7F7F7;
@@ -124,7 +171,7 @@ div#header
           }
 
           div#header div#bg div#content ul li a {
-            font-size: 12px;
+            font: 12px/16px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
             text-decoration: none;
             color: #4D4B50;
           }
@@ -153,6 +200,10 @@ div#nav
     margin: 0 auto;
     list-style: none;
     text-transform: uppercase;
+  }
+
+  div#nav div#content ul a {
+    font: 18px/36px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
   }
 
     div#nav div#content ul .nav_seperator {
@@ -231,8 +282,38 @@ div#content {
   div#content div#content {
     margin: 0 auto;
     width: 1000px;
-    min-height: 500px;
+    min-height: 1400px;
   }
+
+span.info {
+  color: #999999;
+  font-size: 12px;
+}
+
+  span.info a {
+    color: #76AC10;
+    text-decoration: none;
+  }
+
+    span.info a:hover {
+      text-decoration: underline;
+    }
+
+span.readmore {
+}
+
+  span.readmore a {
+    color: #0681B0;
+    text-decoration: none;
+  }
+
+    span.readmore a:hover {
+      text-decoration: underline;
+    }
+
+p {
+  line-height: 22px;
+}
 
 /**
  * FOOTER
