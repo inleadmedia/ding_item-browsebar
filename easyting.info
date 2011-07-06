@@ -1,0 +1,10 @@
+name = "easy.TING" 
+description = "Theme for the Artesis Web project."
+core = 7.x
+base theme = stark
+
+stylesheets[all][] = css/style.css
+
+regions[header] = Header
+regions[content] = Main content area
+regions[footer] = Footer
