@@ -1,3 +1,24 @@
+html, body {height: 100%;}
+
+#page-wrapper {
+  min-height: 100%;
+}
+
+#page {
+  overflow:auto;
+  padding-bottom: 366px;
+}
+
+/* Opera Fix */
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;/
+}
+
+
 /**
  * FONTS
  */
@@ -329,6 +350,10 @@ p {
 
 div#footer {
   background: url("../images/footer_bg.png");
+  position: relative;
+  margin-top: -366px;
+  height: 366px;
+  clear:both;
 }
 
   div#footer div.section {

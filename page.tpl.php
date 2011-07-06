@@ -83,16 +83,15 @@
         <!-- /#main -->
       </div>
       <!-- /#main-wrapper -->
-
-      <div id="footer">
-        <div class="section">
-          <?php print render($page['footer']); ?>
-        </div>
-        <!-- /.section -->
-      </div>
-      <!-- /#footer -->
-
     </div>
-     <!-- /#page -->
-</div>
-<!-- /#page-wrapper -->
+    <!-- /#page -->
+  </div>
+  <!-- /#page-wrapper -->
+
+  <div id="footer">
+    <div class="section">
+      <?php print render($page['footer']); ?>
+    </div>
+    <!-- /.section -->
+  </div>
+  <!-- /#footer -->
