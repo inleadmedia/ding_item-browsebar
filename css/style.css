@@ -379,6 +379,11 @@ div#footer {
  * PANELS HACKS
  */
 
+.panel-3col .panel-col-first .inside, .panel-3col .panel-col .inside, .panel-3col .panel-col-last .inside {
+  margin: 0;
+  padding: 0;
+}
+
 .panel-3col .panel-col-first, .panel-3col .panel-col-last,
 .panel-3col-stacked .panel-col-first, .panel-3col-stacked .panel-col-last {
   width: 224px;
@@ -410,6 +415,7 @@ div#footer {
 
 .panel-col-first {
   margin-right: 12px;
+  
 }
 
 .panel-col-last {
@@ -428,8 +434,9 @@ div#footer {
 ul.primary {
   border-bottom: 2px solid #C6C6C6;
   padding: 0px 0px 3px 0px;
-  margin-top: 4px;
+  margin-top: 5px;
   margin-left: 0px;
+  margin-right: 0px;
 }
 
 ul.primary li {
@@ -465,23 +472,23 @@ ul.primary li a {
 
 .pane-ding-facetbrowser form fieldset {
   border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .pane-ding-facetbrowser form fieldset legend {
-  width: 200px;
-}
-
-.pane-ding-facetbrowser form fieldset span.fieldset-legend {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #C6C6C6;
-  width: 200px;
+  width: 100%px;
   background-color: #F4F4F4;
-  padding: 5px;
-  font: 11px/16px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
+  padding-left: 5px;
+}
+
+.pane-ding-facetbrowser form fieldset span.fieldset-legend {
+  font: 15px/22px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
   color: #6D137D;
-  font-size: 15px;
 }
 
 .pane-ding-facetbrowser label{
