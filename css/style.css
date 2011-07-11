@@ -481,14 +481,14 @@ ul.primary li a {
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #C6C6C6;
-  width: 100%px;
+  width: 100%;
   background-color: #F4F4F4;
-  padding-left: 5px;
 }
 
 .pane-ding-facetbrowser form fieldset span.fieldset-legend {
   font: 15px/22px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
   color: #6D137D;
+  padding-left: 5px;
 }
 
 .pane-ding-facetbrowser label{
