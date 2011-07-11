@@ -5,7 +5,7 @@
         <div class="bg">
           <div class="section clearfix">
 
-            <div class="oneBlock" style="padding-top: 20px;>
+            <div class="oneBlock" style="padding-top: 20px;">
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
                   <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
