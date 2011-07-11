@@ -403,16 +403,6 @@ div#footer {
   width: 974px;
 }
 
-.panel-3col .panel-col-first, .panel-3col .panel-col-last, .panel-3col .panel-col,
-.panel-3col-stacked .panel-col-first, .panel-3col-stacked .panel-col-last, .panel-3col-stacked .panel-col, .panel-3col-stacked .panel-col-top, .panel-3col-stacked .panel-col-bottom,
-.panel-2col .panel-col-first, .panel-2col .panel-col-last,
-.panel-2col-bricks .panel-col-first, .panel-2col-bricks .panel-col-last, .panel-2col-bricks .panel-col-top, .panel-2col-bricks .panel-col-middle, .panel-2col-bricks .panel-col-bottom,
-.panel-2col-stacked .panel-col-first, .panel-2col-stacked .panel-col-last, .panel-2col-stacked .panel-col-top, .panel-2col-stacked .panel-col-bottom {
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #C6C6C6;
-}
-
 .panel-col-first {
   margin-right: 12px;
   
