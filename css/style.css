@@ -529,3 +529,40 @@ ul.primary li a {
   color: #4C4C4C;
 }
 
+
+/**
+ * OVERRIDES
+ */
+
+.availability-legend-item .availability-label {
+  color: #999999;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.availability-legend-item img {
+  -moz-border-radius:6px;
+  -webkit-border-radius: 6px;
+  width: 12px;
+  height: 12px;
+}
+
+.availability-legend-item.available img {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(111,164,12)), color-stop(0.83, rgb(86,128,8)));
+  background-image: -moz-linear-gradient(center bottom, rgb(111,164,12) 30%, rgb(86,128,8) 83%);
+}
+
+.availability-legend-item.available-ill img {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(240,176,0)), color-stop(0.83, rgb(189,136,1)));
+  background-image: -moz-linear-gradient(center bottom, rgb(240,176,0) 30%, rgb(189,136,1) 83%);
+}
+
+.availability-legend-item.on-loan img {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(197,26,23)), color-stop(0.83, rgb(156,18,16)));
+  background-image: -moz-linear-gradient(center bottom, rgb(197,26,23) 30%, rgb(156,18,16) 83%);
+}
+
+.availability-legend-item.unavailable img { background-color: #4F4D52;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(73,72,77)), color-stop(0.83, rgb(57,57,59)));
+  background-image: -moz-linear-gradient(center bottom, rgb(73,72,77) 30%, rgb(57,57,59) 83%);
+}
