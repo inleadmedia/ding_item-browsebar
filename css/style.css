@@ -501,9 +501,8 @@ ul.primary li a {
  */
 
 #breadcrumb ul {
-  font: 11px Arial, Helvetica, sans-serif;
-  background-image: url("../images/bc_bg.png");
-  background-repeat: repeat-x;
+  background-color: #F4F4F4;
+  font-size: 12px;
   height: 22px;
   line-height: 22px;
   -webkit-border-radius: 5px;
@@ -517,6 +516,8 @@ ul.primary li a {
 }
 
 #breadcrumb li {
+  background-image: url("../images/bc_bg.png");
+  background-repeat: repeat-x;
   list-style-type: none;
   float: left;
   padding-left: 10px;
@@ -534,8 +535,7 @@ ul.primary li a {
   outline: none;
 }
 
-#breadcrumb a:hover, #breadcrumb a:active {
+#breadcrumb a:hover, #breadcrumb li.active a {
   color: #4C4C4C;
 }
-
 
