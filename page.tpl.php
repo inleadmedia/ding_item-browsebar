@@ -3,9 +3,9 @@
 
       <div id="header">
         <div class="bg">
-          <div class="section clearfix">
+          <div class="section container_20">
 
-            <div class="oneBlock" style="padding-top: 20px;">
+            <div class="grid_4" style="padding-top: 20px;">
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
                   <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -32,7 +32,7 @@
                 <!-- /#name-and-slogan -->
               <?php endif; ?>
             </div>
-            <div class="threeBlocks">
+            <div class="grid_15">
               <?php print render($page['header']); ?>
             </div>
           </div>
@@ -44,7 +44,7 @@
 
       <?php if ($main_menu || $secondary_menu): ?>
         <div id="navigation">
-          <div class="section">
+          <div class="section container_20">
             <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
             <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
           </div>
@@ -54,18 +54,17 @@
       <?php endif; ?>
 
       <div id="main-wrapper">
-        <div id="main" class="clearfix">
+        <div id="main" class="container_20">
 
           <div id="content" class="column">
-            <div class="fourBlocks">
+            <div class="grid_20">
+
               <?php if ($breadcrumb): ?>
                 <div id="breadcrumb"><?php print $breadcrumb; ?></div>
               <?php endif; ?>
 
               <?php print $messages; ?>
-            </div>
 
-            <div class="fourBlocks">
               <?php if ($tabs): ?>
                 <div class="tabs"><?php print render($tabs); ?></div>
               <?php endif; ?>
@@ -76,6 +75,9 @@
                 </ul>
               <?php endif; ?>
               <?php print render($page['content']); ?>
+            </div>
+
+            <div class="grid_4">
             </div>
           </div>
           <!-- /#content -->

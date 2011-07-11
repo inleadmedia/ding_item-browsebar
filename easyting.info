@@ -4,7 +4,10 @@ core = 7.x
 base theme = stark
 
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/grid.css
 
 regions[header] = Header
 regions[content] = Main content area
 regions[footer] = Footer
+
+plugins[panels][layouts] = layouts

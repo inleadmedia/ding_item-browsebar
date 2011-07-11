@@ -174,8 +174,7 @@ div#header
 
     div#header div.bg div.section {
       height: 171px;
-      margin: 0px 50px 0px 50px;
-      width: 1000px;
+      margin: 0 auto;
     }
 
       div#header div.bg ul {
@@ -209,15 +208,14 @@ div#header
  * NAVIGATION
  */
 
-div#navigation
-{
+div#navigation {
   background: url("../images/nav_bg.png");
+  margin-bottom: 48px;
 }
 
 div#navigation h2 { display: none; }
 
   div#navigation div.section {
-    width: 1000px;
     height: 36px;
     margin: 0 auto;
   }
@@ -308,7 +306,6 @@ div#main-wrapper {
 
   div#main-wrapper div#main {
     margin: 0 auto;
-    width: 1000px;
   }
 
 div.creator {
@@ -489,6 +486,10 @@ ul.primary li a {
 /**
  * Style the breadcrumb
  */
+
+#breadcrumb {
+  margin-bottom: 25px;
+}
 
 #breadcrumb ul {
   background-color: #F4F4F4;
