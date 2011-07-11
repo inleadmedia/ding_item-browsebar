@@ -520,17 +520,18 @@ ul.primary li a {
   list-style-type: none;
   float: left;
   padding-left: 10px;
+  display: inline-block;
 }
 
 #breadcrumb a {
-  height: 22px;
-  display: block;
+  display: inline-block;
   background-image: url("../images/bc_separator.png");
   background-repeat: no-repeat; 
   background-position: right;
   padding-right: 15px;
   text-decoration: none;
   color: #999999;
+  outline: none;
 }
 
 #breadcrumb a:hover, #breadcrumb a:active {
