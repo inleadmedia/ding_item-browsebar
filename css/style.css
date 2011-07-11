@@ -232,16 +232,16 @@ div#navigation h2 { display: none; }
     font: 18px/36px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
   }
 
-    div#navigation ul .nav_seperator {
+    div#navigation ul .nav_separator {
       height: 36px;
       width: 1px;
-      background: url("../images/nav_seperator.png");
+      background: url("../images/nav_separator.png");
     }
 
     div#navigation ul#main-menu {
     }
 
-      div#navigation ul#main-menu .nav_seperator {
+      div#navigation ul#main-menu .nav_separator {
         float: left;
       }
 
@@ -273,7 +273,7 @@ div#navigation h2 { display: none; }
     div#navigation ul#secondary-menu {
     }
 
-      div#navigation ul#secondary-menu .nav_seperator {
+      div#navigation ul#secondary-menu .nav_separator {
         float: right;
       }
 
