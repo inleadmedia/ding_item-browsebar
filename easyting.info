@@ -6,7 +6,10 @@ base theme = stark
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/grid.css
 
+scripts[] = js/dropdown.js
+
 regions[header] = Header
+regions[navigation] = Navigation
 regions[content] = Main content area
 regions[footer] = Footer
 
