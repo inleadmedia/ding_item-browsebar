@@ -133,7 +133,7 @@ h3 { font-size: 15px; }
 .oneBlock.border, .twoBlocks.border, .threeBlocks.border, .fourBlocks.border {
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #EAE8E8;
 }
 
 .messages.error {
@@ -185,7 +185,7 @@ div#header
         div#header div.bg ul li {
           float: right;
           padding: 0px 8px 0px 8px;
-          border-left: 1px solid #C6C6C6;
+          border-left: 1px solid #EAE8E8;
           line-height: 16px;
         }
 
@@ -299,6 +299,7 @@ div.creator {
   div.creator a {
     color: #76AC10;
     text-decoration: none;
+    font-weight: bold;
   }
 
     div.creator a:hover {
@@ -366,7 +367,7 @@ div#footer {
 
 .panel-3col .panel-col-first, .panel-3col .panel-col-last,
 .panel-3col-stacked .panel-col-first, .panel-3col-stacked .panel-col-last {
-  width: 224px;
+  width: 174px;
 }
 
 .panel-3col .panel-col,
@@ -374,7 +375,7 @@ div#footer {
 .panel-2col .panel-col-first, .panel-2col .panel-col-last,
 .panel-2col-bricks .panel-col-first, .panel-2col-bricks .panel-col-last,
 .panel-2col-stacked .panel-col-first, .panel-2col-stacked .panel-col-last {
-  width: 474px;
+  width: 524px;
 }
 
 .panel-3col-stacked .panel-col-top, .panel-3col-stacked .panel-col-bottom,
@@ -402,7 +403,7 @@ div#footer {
 /* MORE hacK */
 
 ul.primary {
-  border-bottom: 2px solid #C6C6C6;
+  border-bottom: 2px solid #EAE8E8;
   padding: 0px 0px 3px 0px;
   margin-top: 5px;
   margin-left: 0px;
@@ -416,7 +417,7 @@ ul.primary li a {
   -webkit-border-radius: 5px 5px 0px 0px;
   -moz-border-radius: 5px 5px 0px 0px;
   border-radius: 5px 5px 0px 0px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #EAE8E8;
   border-bottom: 0;
 }
 
@@ -450,7 +451,7 @@ ul.primary li a {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #EAE8E8;
   width: 100%;
   background-color: #F4F4F4;
 }
@@ -482,7 +483,7 @@ ul.primary li a {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #EAE8E8;
   width: 100%;
   overflow: hidden;
   margin: 0px;
@@ -503,10 +504,14 @@ ul.primary li a {
   background-image: url("../images/bc_separator.png");
   background-repeat: no-repeat; 
   background-position: right;
-  padding-right: 15px;
+  padding-right: 22px;
   text-decoration: none;
   color: #999999;
   outline: none;
+}
+
+#breadcrumb .active a {
+  background-image: url("../images/bc_separator-last.png")
 }
 
 #breadcrumb a:hover, #breadcrumb li.active a {
