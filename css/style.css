@@ -556,3 +556,65 @@ ul.primary li a {
   background-image: -moz-linear-gradient(center bottom, rgb(73,72,77) 30%, rgb(57,57,59) 83%);
 }
 
+
+/**
+ * SEARCH RESULT BUTTONS
+ */
+
+.search-snippet-info .ting-object ul {
+  margin: 0 auto;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+  .search-snippet-info .ting-object ul li {
+    list-style: none;
+    float: left;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-right: 5px;
+  }
+
+    .search-snippet-info .ting-object ul a {
+      display: block;
+      text-decoration: none;
+      padding-left: 5px;
+      padding-right: 6px;
+      -webkit-border-radius: 4px 4px 4px 4px;
+      -moz-border-radius: 4px 4px 4px 4px;
+      border-radius: 4px 4px 4px 4px;
+      border: 1px solid #D6D6D6;
+      background: #6D137D;
+      background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFE), to(#EEEEEE));
+      background: -moz-linear-gradient(top,  #FEFEFE,  #EEEEEE);
+    }
+
+      .search-snippet-info .ting-object ul a:hover {
+        background: #E7E7E7;;
+      }
+
+      .search-snippet-info .ting-object ul span {
+        font: 12px/11px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
+        text-transform: none;
+        vertical-align: middle;
+      }
+
+      .search-snippet-info .ting-object ul span.cart, .search-snippet-info .ting-object span.reserve {
+        padding-left: 12px;
+        padding-top: 2px;
+      }
+
+      .search-snippet-info .ting-object ul span.info {
+        color: #0681B0;
+      }
+
+      .search-snippet-info .ting-object ul span.cart {
+        color: #4D4B50;
+        background: url('../images/buttons/cart_bg.png') no-repeat center left;
+      }
+
+      .search-snippet-info .ting-object ul span.reserve {
+        color: #6D137D;
+        background: url('../images/buttons/reserve_bg.png') no-repeat center left;
+      }
