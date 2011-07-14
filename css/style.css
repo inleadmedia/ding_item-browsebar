@@ -619,3 +619,150 @@ ul.primary li a {
         color: #6D137D;
         background: url('../images/buttons/reserve_bg.png') no-repeat center left;
       }
+
+
+/**
+ * TING OBJECT
+ */
+
+.ting-object h2 {
+  padding: 0px;
+}
+
+.ting-object h2 a, .ting-object h2 a:hover, .ting-object h2 a:visited, .ting-object h2 a:active {
+  text-decoration: none;
+  color: #6D137D;
+}
+
+.ting-object div.information,
+.ting-object div.rating,
+.ting-object div.title,
+.pane-ting-collection .ting-object .ting-object-additional .ting-object div.title {
+  height: 24px;
+  overflow: hidden;
+}
+
+.pane-ting-collection .ting-object div.title {
+  height: 62px;
+  overflow: hidden;
+}
+
+.pane-ting-collection .ting-object-additional .ting-object div.creator,
+.pane-ting-collection .ting-object-additional .ting-object div.subjects,
+.pane-ting-collection .ting-object-additional .ting-object div.voxb {
+  height: 20px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.ting-object div.description {
+  height: 100px;
+  overflow: hidden;
+}
+
+.page-ting-collection .ting-object-additional div.description,
+.ting-object div.description {
+  height: 100px;
+  overflow: hidden;
+}
+
+.page-ting-collection .ting-object div.description {
+  min-height: 130px;
+  overflow: hidden;
+}
+
+.ting-object .ting-object div.types {
+  padding: 0;
+  float: right;
+}
+
+
+.ting-object .ting-object div.types p {
+  color: #999999;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.ting-object .ting-cover img {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.ting-object .ting-cover-style-ding_large img {
+    width: 168px;
+    border: 2px solid #C6C6C6;
+    padding: 2px;
+}
+
+.ting-object .ting-cover-style-ding_medium img {
+    width: 118px;
+    border: 2px solid #6D137D;
+    padding: 2px;
+}
+
+.page-ting-collection .ting-object-additional .ting-cover-style-ding_medium img, .ting-cover-style-ding_small img {
+    width: 72px;
+    border: 2px solid #C6C6C6;
+}
+
+.ting-object h1.materials-heading {
+  display: none;
+}
+
+.page-ting-collection h1.materials-heading {
+  display: block;
+  line-height: 40px;
+  min-height: 40px;
+  padding: 0;
+}
+
+.page-ting-collection .ting-object .availability-legend {
+  border-top: 2px solid #C6C6C6;
+  border-bottom: 1px solid #C6C6C6;
+}
+
+.ting-object .availability-legend-item {
+  height: 31px;
+  line-height: 31px;
+  margin-right: 1.5em;
+  min-width: 100px;
+}
+
+.ting-object .left-column {
+  float: left;
+}
+
+.page-ting-collection .ting-object-overview .left-column {
+  width: 176px;
+  min-height: 245px;
+}
+
+.page-ting-collection .ting-object-additional  .left-column {
+  width: 76px;
+  min-height: 106px;
+}
+
+.page-ting-collection .ting-object-overview .right-column {
+  min-height: 245px;
+}  
+
+.page-ting-collection .ting-object-additional  .right-column {
+  min-height: 106px;
+}
+
+.ting-object .right-column {
+  float: left;
+  width: 374px;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.search-results li {
+  margin-bottom: 24px;
+}
+
+.search-snippet-info .ting-object .left-column {
+  margin-right: 24px;
+  width: 126px;
+  min-height: 200px;
+}
