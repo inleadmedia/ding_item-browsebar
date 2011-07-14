@@ -928,3 +928,6 @@ span#expand_more:hover, span#expand_less:hover {
     text-decoration: underline;
 }
 
+.page-search #main div.tabs {
+  display: none;
+}
