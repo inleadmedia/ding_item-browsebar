@@ -534,19 +534,20 @@ ul.primary li a {
   -webkit-border-radius: 6px;
   width: 12px;
   height: 12px;
+  vertical-align: text-top;
 }
 
-.availability-legend-item.available img {
+.availability-legend-item.available img, .availability.available {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(111,164,12)), color-stop(0.83, rgb(86,128,8)));
   background-image: -moz-linear-gradient(center bottom, rgb(111,164,12) 30%, rgb(86,128,8) 83%);
 }
 
-.availability-legend-item.available-ill img {
+.availability-legend-item.available-ill img, .availability {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(240,176,0)), color-stop(0.83, rgb(189,136,1)));
   background-image: -moz-linear-gradient(center bottom, rgb(240,176,0) 30%, rgb(189,136,1) 83%);
 }
 
-.availability-legend-item.on-loan img {
+.availability-legend-item.on-loan img, .availability.available.reservable {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgb(197,26,23)), color-stop(0.83, rgb(156,18,16)));
   background-image: -moz-linear-gradient(center bottom, rgb(197,26,23) 30%, rgb(156,18,16) 83%);
 }
@@ -561,13 +562,13 @@ ul.primary li a {
  * SEARCH RESULT BUTTONS
  */
 
-.search-snippet-info .ting-object ul {
+.ting-object ul {
   margin: 0 auto;
   list-style: none;
   text-transform: uppercase;
 }
 
-  .search-snippet-info .ting-object ul li {
+  .ting-object ul li {
     list-style: none;
     float: left;
     position: relative;
@@ -576,7 +577,7 @@ ul.primary li a {
     margin-right: 5px;
   }
 
-    .search-snippet-info .ting-object ul a {
+    .ting-object ul a {
       display: block;
       text-decoration: none;
       padding-left: 5px;
@@ -590,31 +591,31 @@ ul.primary li a {
       background: -moz-linear-gradient(top,  #FEFEFE,  #EEEEEE);
     }
 
-      .search-snippet-info .ting-object ul a:hover {
+      .ting-object ul a:hover {
         background: #E7E7E7;;
       }
 
-      .search-snippet-info .ting-object ul span {
+      .ting-object ul span {
         font: 12px/11px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
         text-transform: none;
         vertical-align: middle;
       }
 
-      .search-snippet-info .ting-object ul span.cart, .search-snippet-info .ting-object span.reserve {
+      .ting-object ul span.cart, .ting-object span.reserve {
         padding-left: 12px;
         padding-top: 2px;
       }
 
-      .search-snippet-info .ting-object ul span.info {
+      .ting-object ul span.info {
         color: #0681B0;
       }
 
-      .search-snippet-info .ting-object ul span.cart {
+      .ting-object ul span.cart {
         color: #4D4B50;
         background: url('../images/buttons/cart_bg.png') no-repeat center left;
       }
 
-      .search-snippet-info .ting-object ul span.reserve {
+      .ting-object ul span.reserve {
         color: #6D137D;
         background: url('../images/buttons/reserve_bg.png') no-repeat center left;
       }
