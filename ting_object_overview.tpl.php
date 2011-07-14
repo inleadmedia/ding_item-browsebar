@@ -51,21 +51,34 @@
       <?php } ?>
     </div>
 
-    <div class="description">
-      <?php if ( isset($abstract) && $abstract ) { ?>
-        <div class="abstract"><?php print $abstract; ?></div>
-      <?php } ?>
-    </div>
+    <?php if (!$page && !$search_result) { ?>
+    <?php } else { ?>
+      <div class="description">
+        <?php if ( isset($abstract) && $abstract ) { ?>
+          <div class="abstract"><?php print $abstract; ?></div>
+        <?php } ?>
+      </div>
+    <?php } ?>
 
-    <div class="voxb">
-      <div class="rating">
+    <?php if (!$page && !$search_result) { ?>
+      <?php if ( isset($subjects) && $subjects ) { ?>
+        <div class="subjects">
+          <span class='subjects-label'><?php echo ucfirst(t('subjects: ')); ?></span>
+          <?php print $subjects; ?>
+        </div>
+      <?php } ?>
+    <?php } ?>
+
+    <?php if ((isset($ratings) && $ratings) || (isset($revies) && $reviews)) { ?>
+      <div class="voxb">
         <?php if ( isset($ratings) && $ratings ) { ?>
           <div class="ratings"><?php print $ratings; ?></div>
         <?php } ?>
+        <?php if ( isset($revies) && $reviews ) { ?>
+          <div class="reviews"><?php print $reviews; ?></div>
+        <?php } ?>
       </div>
-      <div class="reviews">
-      </div>
-    </div>
+    <?php } ?>
 
     <div class="information">
       <div class="options">
@@ -110,5 +123,3 @@
 <?php if ( isset($availability_legend) && $availability_legend ) { ?>
   <?php print $availability_legend; ?>
 <?php } ?>
-
-
