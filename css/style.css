@@ -1,5 +1,34 @@
 html, body {height: 100%;}
 
+
+/* ***** Clearfix ***** */
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+
+
 #page-wrapper {
   min-height: 100%;
 }
@@ -766,3 +795,136 @@ ul.primary li a {
   width: 126px;
   min-height: 200px;
 }
+
+/* suppress title rendered by ting-search-results.tpl.php */
+.pane-search-result h3.title,
+.page-search-ting h3.title { 
+    display: none;
+}
+
+.pane-search-result li.search-result,
+.page-search-ting li.search-result  {
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.page-search-ting p.search-snippet {
+    display: none;
+}
+
+.ting-object h3 { 
+    padding-bottom: 0em;
+}
+
+.ting-object div.types p { 
+    color: #797575;
+    padding-bottom: 0;
+    padding-right: 0.5em;
+    float: left;
+}
+
+.ting-object p.type { 
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typebog { 
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typenetdokument { 
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typenode { 
+   padding-left: 16px;
+   background: url('../images/icons/movie.png') no-repeat center left;
+}
+
+.availability {
+  display: inline;
+  color: #ffffff;
+  padding: 0.5em;
+}
+
+.page-ting-object .left-column .picture {
+    width: 134px;
+    height: 194px;
+}
+
+.page-ting-object .right-column {
+    width: 320px;
+}
+
+.ting-object .availability-legend {
+  display: none;
+}
+
+.page-ting-collection .ting-object-additional .left-column {
+    margin-right: 2em;
+}
+
+.page-ting-collection .ting-object-additional .left-column .picture {
+    width: 85px;
+    height: 132px;
+}
+
+.page-ting-collection .ting-object-overview .right-column {
+    width: 320px;
+}
+
+.page-ting-collection .ting-object-additional .right-column {
+    width: 350px;
+}
+
+.page-ting-collection .ting-object-additional .ting-object {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.page-ting-collection .ting-object-additional > h2 {
+    Display: none;
+}
+
+.pane-ding-availability-legend {
+    clear: both;
+}
+
+.page-ting-collection .ting-object .availability-legend {
+    display: block;
+}
+
+.search-results .search-snippet-info {
+    padding-left: 0;
+    margin-bottom: 1em;
+}
+
+
+/* ***** Facetbrowser ****** */
+
+.pane-search-result .panel-col-first form fieldset div.form-checkboxes .form-item,
+.page-search-ting .panel-col-first form fieldset div.form-checkboxes .form-item {
+    margin: 0;
+    padding: 0;
+    text-indent: -1.2em;
+    margin-left: 1.2em;
+}
+
+.pane-search-result .panel-col-first span#expand_more,
+.pane-search-result .panel-col-first span#expand_less,
+.page-search-ting .panel-col-first span#expand_more,
+.page-search-ting .panel-col-first span#expand_less {
+    display: block;
+    cursor: pointer;
+}
+
+span#expand_more, span#expand_less {
+    color: #0681B0;
+}
+
+span#expand_more:hover, span#expand_less:hover {
+    text-decoration: underline;
+}
+
