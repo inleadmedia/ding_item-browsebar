@@ -38,32 +38,6 @@ html[xmlns] .clearfix {
   overflow: hidden;
 }
 
-/**
- * FONTS
- */
-
-@font-face {
-  font-family: 'CartoGothicStdBook';
-  src: url('../fonts/CartoGothicStd-Book-webfont.eot');
-  src: url('../fonts/CartoGothicStd-Book-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/CartoGothicStd-Book-webfont.woff') format('woff'),
-       url('../fonts/CartoGothicStd-Book-webfont.ttf') format('truetype'),
-       url('../fonts/CartoGothicStd-Book-webfont.svg#CartoGothicStdBook') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'DroidSerifRegular';
-  src: url('../fonts/DroidSerif-Regular-webfont.eot');
-  src: url('../fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/DroidSerif-Regular-webfont.woff') format('woff'),
-       url('../fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
-       url('../fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 
 /**
  * GENERAL
@@ -77,9 +51,7 @@ html[xmlns] .clearfix {
 body {
   margin: 0 auto;
   padding: 0;
-  font: 13px/22px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
   background: #FFFFFF;
-  color: #4D4B50;
 }
 
 
@@ -89,29 +61,7 @@ body {
 
 h1, h2, h3 {
   padding: 11px 0;
-  font: 11px/16px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
 }
-
-h3.title a {
-  color: #6D137D;
-  text-decoration: none;
-}
-
-.purple h1, .purple h2, .purple h3 {
-  color: #6D137D;
-}
-
-.grey h1, .grey h2, .grey h3 {
-  color: #4D4B50;
-}
-
-.green h1, .green h2, .green h3 {
-  color: #76AC10;
-}
-
-h1 { font-size: 21px; }
-h2 { font-size: 17px; }
-h3 { font-size: 15px; }
 
 
 /**
@@ -212,16 +162,6 @@ div#header
             border: none;
           }
 
-          div#header div.bg ul li a {
-            font: 12px/16px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
-            text-decoration: none;
-            color: #4D4B50;
-          }
-
-            div#header div.bg ul li a:hover {
-              text-decoration: underline;
-              color: #0681B0;
-            }
 
 /**
  * NAVIGATION
@@ -237,26 +177,21 @@ div#navigation div.section { height: 36px; margin: 0 auto; }
 #block-system-main-menu ul, #block-menu-menu-secondary-menu ul {
   margin: 0 auto;
   list-style: none;
-  text-transform: uppercase;
 }
 #block-system-main-menu ul a, #block-menu-menu-secondary-menu ul a { font: 18px/36px 'CartoGothicStdBook', Helvetica, Arial, sans-serif; }
 #block-system-main-menu ul li, #block-menu-menu-secondary-menu ul li { list-style: none; float: left; position: relative; padding: 0; margin: 0; }
   #block-system-main-menu ul li a {
-    font-size: 14px;
     -webkit-border-radius: 4px 4px 0px 0px;
     -moz-border-radius: 4px 4px 0px 0px;
     border-radius: 4px 4px 0px 0px;
     vertical-align: middle;
     padding: 0px 15px 0px 15px;
     line-height: 36px;
-    text-decoration: none;
-    color: #4D4B50
   }
     #block-system-main-menu ul li a:hover {
       background: #6D137D;
       background: -webkit-gradient(linear, left top, left bottom, from(#520E5E), to(#6D137D));
       background: -moz-linear-gradient(top,  #520E5E,  #6D137D);
-      color: #FFFFFF;
     }
 
 /* 2nd level */
@@ -271,32 +206,25 @@ div#navigation div.section { height: 36px; margin: 0 auto; }
   border: 1px solid #6D137D;
   border-top: 1px solid #D4D3D4;
 }
-#block-system-main-menu ul li ul li { clear: both; } 
+#block-system-main-menu ul li ul li { clear: both; }
   #block-system-main-menu ul li ul li a {
-    font-size: 11px;
     line-height: 22px;
-    text-decoration: none;
-    color: #4D4B50 -webkit-border-radius: none;
+    -webkit-border-radius: none;
     -moz-border-radius: none;
     border-radius: none;
     vertical-align: none;
     border: none;
     padding: 0;
   }
-    #block-system-main-menu ul li ul li a:hover { text-decoration: underline; background: none; color: #000000; }
+    #block-system-main-menu ul li ul li a:hover { background: none; }
 
 
 #block-menu-menu-secondary-menu ul li { float:right; }
   #block-menu-menu-secondary-menu ul li a {
     display: block;
-    font-size: 14px;
     line-height: 36px;
-    text-align: center;
-    text-decoration: none;
     padding: 0px 15px 0px 15px;
-    color: #6D137D;
   }
-    #block-menu-menu-secondary-menu ul li a:hover { color: #4D4B50; }
 
 
 /**
@@ -309,33 +237,6 @@ div#main-wrapper {
   div#main-wrapper div#main {
     margin: 0 auto;
   }
-
-div.creator {
-  color: #999999;
-  font-size: 12px;
-}
-
-  div.creator a {
-    color: #76AC10;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-    div.creator a:hover {
-      text-decoration: underline;
-    }
-
-span.readmore {
-}
-
-  span.readmore a {
-    color: #0681B0;
-    text-decoration: none;
-  }
-
-    span.readmore a:hover {
-      text-decoration: underline;
-    }
 
 p {
   line-height: 22px;
@@ -359,21 +260,6 @@ div#footer {
     width: 1000px;
     height: 366px;
   }
-
-  div#footer div.section h3 {
-    color: #4D4B50;
-  }
-
-  div#footer div.section a {
-    color: #6D137D;
-    text-style: none;
-    font-weight: bold;
-  }
-
-    div#footer div.section a:hover {
-      color: #FFF;
-      text-decoration: none;
-    }
 
 
 /**
@@ -406,7 +292,7 @@ div#footer {
 
 .panel-col-first {
   margin-right: 12px;
-  
+
 }
 
 .panel-col-last {
@@ -442,13 +328,11 @@ ul.primary li a {
 }
 
 ul.primary li a.active {
-  color: #6D127C;
   background: #FFFFFF;
   border-bottom: 0;
 }
 
 ul.primary li a {
-  color: #4D4A51;
   background: #E8E8E8;
   background: -webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#E8E8E8));
   background: -moz-linear-gradient(top,  #F7F7F7,  #E8E8E8);
@@ -477,14 +361,11 @@ ul.primary li a {
 }
 
 .pane-ding-facetbrowser form fieldset span.fieldset-legend {
-  font: 15px/22px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
-  color: #6D137D;
   padding-left: 5px;
 }
 
 .pane-ding-facetbrowser label{
   border-width: 0px;
-  text-align:left;
 }
 
 /**
@@ -497,7 +378,6 @@ ul.primary li a {
 
 #breadcrumb ul {
   background-color: #F4F4F4;
-  font-size: 12px;
   height: 22px;
   line-height: 22px;
   -webkit-border-radius: 5px;
@@ -522,11 +402,9 @@ ul.primary li a {
 #breadcrumb a {
   display: inline-block;
   background-image: url("../images/bc_separator.png");
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-position: right;
   padding-right: 22px;
-  text-decoration: none;
-  color: #999999;
   outline: none;
 }
 
@@ -534,20 +412,10 @@ ul.primary li a {
   background-image: url("../images/bc_separator-last.png")
 }
 
-#breadcrumb a:hover, #breadcrumb li.active a {
-  color: #4C4C4C;
-}
-
 
 /**
  * OVERRIDES
  */
-
-.availability-legend-item .availability-label {
-  color: #999999;
-  font-weight: normal;
-  font-size: 11px;
-}
 
 .availability-legend-item img {
   -moz-border-radius:6px;
@@ -585,7 +453,6 @@ ul.primary li a {
 .ting-object ul {
   margin: 0 auto;
   list-style: none;
-  text-transform: uppercase;
 }
 
   .ting-object ul li {
@@ -599,7 +466,6 @@ ul.primary li a {
 
     .ting-object ul a {
       display: block;
-      text-decoration: none;
       padding-left: 5px;
       padding-right: 6px;
       -webkit-border-radius: 4px 4px 4px 4px;
@@ -616,8 +482,6 @@ ul.primary li a {
       }
 
       .ting-object ul span {
-        font: 12px/11px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
-        text-transform: none;
         vertical-align: middle;
       }
 
@@ -626,17 +490,11 @@ ul.primary li a {
         padding-top: 2px;
       }
 
-      .ting-object ul span.info {
-        color: #0681B0;
-      }
-
       .ting-object ul span.cart {
-        color: #4D4B50;
         background: url('../images/buttons/cart_bg.png') no-repeat center left;
       }
 
       .ting-object ul span.reserve {
-        color: #6D137D;
         background: url('../images/buttons/reserve_bg.png') no-repeat center left;
       }
 
@@ -647,11 +505,6 @@ ul.primary li a {
 
 .ting-object h2 {
   padding: 0px;
-}
-
-.ting-object h2 a, .ting-object h2 a:hover, .ting-object h2 a:visited, .ting-object h2 a:active {
-  text-decoration: none;
-  color: #6D137D;
 }
 
 .ting-object div.information,
@@ -696,33 +549,26 @@ ul.primary li a {
   float: right;
 }
 
-
-.ting-object .ting-object div.types p {
-  color: #999999;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
 .ting-object .ting-cover img {
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .ting-object .ting-cover-style-ding_large img {
-    width: 168px;
-    border: 2px solid #C6C6C6;
-    padding: 2px;
+  width: 168px;
+  border: 2px solid #C6C6C6;
+  padding: 2px;
 }
 
 .ting-object .ting-cover-style-ding_medium img {
-    width: 118px;
-    border: 2px solid #6D137D;
-    padding: 2px;
+  width: 118px;
+  border: 2px solid #6D137D;
+  padding: 2px;
 }
 
 .page-ting-collection .ting-object-additional .ting-cover-style-ding_medium img, .ting-cover-style-ding_small img {
-    width: 72px;
-    border: 2px solid #C6C6C6;
+  width: 72px;
+  border: 2px solid #C6C6C6;
 }
 
 .ting-object h1.materials-heading {
@@ -764,7 +610,7 @@ ul.primary li a {
 
 .page-ting-collection .ting-object-overview .right-column {
   min-height: 245px;
-}  
+}
 
 .page-ting-collection .ting-object-additional  .right-column {
   min-height: 106px;
@@ -789,63 +635,61 @@ ul.primary li a {
 
 /* suppress title rendered by ting-search-results.tpl.php */
 .pane-search-result h3.title,
-.page-search-ting h3.title { 
-    display: none;
+.page-search-ting h3.title {
+  display: none;
 }
 
 .pane-search-result li.search-result,
 .page-search-ting li.search-result  {
-    border-bottom: 1px solid #e7e7e6;
+  border-bottom: 1px solid #e7e7e6;
 }
 
 .page-search-ting p.search-snippet {
-    display: none;
+  display: none;
 }
 
-.ting-object h3 { 
-    padding-bottom: 0em;
+.ting-object h3 {
+  padding-bottom: 0em;
 }
 
-.ting-object div.types p { 
-    color: #797575;
-    padding-bottom: 0;
-    padding-right: 0.5em;
-    float: left;
+.ting-object div.types p {
+  padding-bottom: 0;
+  padding-right: 0.5em;
+  float: left;
 }
 
-.ting-object p.type { 
+.ting-object p.type {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typebog { 
+.ting-object p.typebog {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typenetdokument { 
+.ting-object p.typenetdokument {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typenode { 
+.ting-object p.typenode {
    padding-left: 16px;
    background: url('../images/icons/movie.png') no-repeat center left;
 }
 
 .availability {
   display: inline;
-  color: #ffffff;
   padding: 0.5em;
 }
 
 .page-ting-object .left-column .picture {
-    width: 134px;
-    height: 194px;
+  width: 134px;
+  height: 194px;
 }
 
 .page-ting-object .right-column {
-    width: 320px;
+  width: 320px;
 }
 
 .ting-object .availability-legend {
@@ -853,43 +697,43 @@ ul.primary li a {
 }
 
 .page-ting-collection .ting-object-additional .left-column {
-    margin-right: 2em;
+  margin-right: 2em;
 }
 
 .page-ting-collection .ting-object-additional .left-column .picture {
-    width: 85px;
-    height: 132px;
+  width: 85px;
+  height: 132px;
 }
 
 .page-ting-collection .ting-object-overview .right-column {
-    width: 320px;
+  width: 320px;
 }
 
 .page-ting-collection .ting-object-additional .right-column {
-    width: 350px;
+  width: 350px;
 }
 
 .page-ting-collection .ting-object-additional .ting-object {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #e7e7e6;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #e7e7e6;
 }
 
 .page-ting-collection .ting-object-additional > h2 {
-    Display: none;
+  display: none;
 }
 
 .pane-ding-availability-legend {
-    clear: both;
+  clear: both;
 }
 
 .page-ting-collection .ting-object .availability-legend {
-    display: block;
+  display: block;
 }
 
 .search-results .search-snippet-info {
-    padding-left: 0;
-    margin-bottom: 1em;
+  padding-left: 0;
+  margin-bottom: 1em;
 }
 
 
@@ -897,26 +741,17 @@ ul.primary li a {
 
 .pane-search-result .panel-col-first form fieldset div.form-checkboxes .form-item,
 .page-search-ting .panel-col-first form fieldset div.form-checkboxes .form-item {
-    margin: 0;
-    padding: 0;
-    text-indent: -1.2em;
-    margin-left: 1.2em;
+  margin: 0;
+  padding: 0;
+  margin-left: 1.2em;
 }
 
 .pane-search-result .panel-col-first span#expand_more,
 .pane-search-result .panel-col-first span#expand_less,
 .page-search-ting .panel-col-first span#expand_more,
 .page-search-ting .panel-col-first span#expand_less {
-    display: block;
-    cursor: pointer;
-}
-
-span#expand_more, span#expand_less {
-    color: #0681B0;
-}
-
-span#expand_more:hover, span#expand_less:hover {
-    text-decoration: underline;
+  display: block;
+  cursor: pointer;
 }
 
 .page-search #main div.tabs {

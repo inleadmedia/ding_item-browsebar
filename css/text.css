@@ -1,0 +1,289 @@
+/**
+ * FONTS
+ */
+
+@font-face {
+  font-family: 'CartoGothicStdBook';
+  src: url('../fonts/CartoGothicStd-Book-webfont.eot');
+  src: url('../fonts/CartoGothicStd-Book-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/CartoGothicStd-Book-webfont.woff') format('woff'),
+       url('../fonts/CartoGothicStd-Book-webfont.ttf') format('truetype'),
+       url('../fonts/CartoGothicStd-Book-webfont.svg#CartoGothicStdBook') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DroidSerifRegular';
+  src: url('../fonts/DroidSerif-Regular-webfont.eot');
+  src: url('../fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/DroidSerif-Regular-webfont.woff') format('woff'),
+       url('../fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
+       url('../fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/**
+ * GENERAL
+ */
+
+body {
+  font: 13px/22px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
+  color: #4D4B50;
+}
+
+
+/**
+ * HEADLINES
+ */
+
+h1, h2, h3 {
+  font: 11px/16px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
+}
+
+h3.title a {
+  color: #6D137D;
+  text-decoration: none;
+}
+
+.purple h1, .purple h2, .purple h3 {
+  color: #6D137D;
+}
+
+.grey h1, .grey h2, .grey h3 {
+  color: #4D4B50;
+}
+
+.green h1, .green h2, .green h3 {
+  color: #76AC10;
+}
+
+h1 { font-size: 21px; }
+h2 { font-size: 17px; }
+h3 { font-size: 15px; }
+
+
+/**
+ * HEADER
+ */
+
+          div#header div.bg ul li a {
+            font: 12px/16px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
+            text-decoration: none;
+            color: #4D4B50;
+          }
+
+            div#header div.bg ul li a:hover {
+              text-decoration: underline;
+              color: #0681B0;
+            }
+
+/**
+ * NAVIGATION
+ */
+
+/* 1st level */
+#block-system-main-menu ul, #block-menu-menu-secondary-menu ul {
+  text-transform: uppercase;
+}
+#block-system-main-menu ul a, #block-menu-menu-secondary-menu ul a { font: 18px/36px 'CartoGothicStdBook', Helvetica, Arial, sans-serif; }
+  #block-system-main-menu ul li a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #4D4B50
+  }
+    #block-system-main-menu ul li a:hover {
+      color: #FFFFFF;
+    }
+
+/* 2nd level */
+  #block-system-main-menu ul li ul li a {
+    font-size: 11px;
+    text-decoration: none;
+    color: #4D4B50;
+  }
+    #block-system-main-menu ul li ul li a:hover { text-decoration: underline; color: #000000; }
+
+
+  #block-menu-menu-secondary-menu ul li a {
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #6D137D;
+  }
+    #block-menu-menu-secondary-menu ul li a:hover { color: #4D4B50; }
+
+
+/**
+ * CONTENT
+ */
+div.creator {
+  color: #999999;
+  font-size: 12px;
+}
+
+  div.creator a {
+    color: #76AC10;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+    div.creator a:hover {
+      text-decoration: underline;
+    }
+
+span.readmore {
+}
+
+  span.readmore a {
+    color: #0681B0;
+    text-decoration: none;
+  }
+
+    span.readmore a:hover {
+      text-decoration: underline;
+    }
+
+
+/**
+ * FOOTER
+ */
+
+  div#footer div.section h3 {
+    color: #4D4B50;
+  }
+
+  div#footer div.section a {
+    color: #6D137D;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+    div#footer div.section a:hover {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+
+/* MORE hacK */
+
+ul.primary li a.active {
+  color: #6D127C;
+}
+
+ul.primary li a {
+  color: #4D4A51;
+}
+
+
+/**
+ * FACETS HACK
+ */
+
+.pane-ding-facetbrowser form fieldset span.fieldset-legend {
+  font: 15px/22px 'DroidSerifRegular', Helvetica, Arial, sans-serif;
+  color: #6D137D;
+}
+
+.pane-ding-facetbrowser label {
+  text-align: left;
+}
+
+/**
+ * Style the breadcrumb
+ */
+
+#breadcrumb ul {
+  font-size: 12px;
+}
+
+#breadcrumb a {
+  text-decoration: none;
+  color: #999999;
+}
+
+#breadcrumb a:hover, #breadcrumb li.active a {
+  color: #4C4C4C;
+}
+
+
+/**
+ * OVERRIDES
+ */
+
+.availability-legend-item .availability-label {
+  color: #999999;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+
+/**
+ * SEARCH RESULT BUTTONS
+ */
+
+.ting-object ul {
+  text-transform: uppercase;
+}
+
+    .ting-object ul a {
+      text-decoration: none;
+    }
+
+      .ting-object ul span {
+        font: 12px/11px 'CartoGothicStdBook', Helvetica, Arial, sans-serif;
+        text-transform: none;
+      }
+
+      .ting-object ul span.info {
+        color: #0681B0;
+      }
+
+      .ting-object ul span.cart {
+        color: #4D4B50;
+      }
+
+      .ting-object ul span.reserve {
+        color: #6D137D;
+      }
+
+
+/**
+ * TING OBJECT
+ */
+
+.ting-object h2 a, .ting-object h2 a:hover, .ting-object h2 a:visited, .ting-object h2 a:active {
+  text-decoration: none;
+  color: #6D137D;
+}
+
+.ting-object .ting-object div.types p {
+  color: #999999;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.ting-object div.types p {
+  color: #797575;
+}
+
+.availability {
+  color: #ffffff;
+}
+
+/* ***** Facetbrowser ****** */
+
+.pane-search-result .panel-col-first form fieldset div.form-checkboxes .form-item,
+.page-search-ting .panel-col-first form fieldset div.form-checkboxes .form-item {
+  text-indent: -1.2em;
+}
+
+span#expand_more, span#expand_less {
+  color: #0681B0;
+}
+
+span#expand_more:hover, span#expand_less:hover {
+  text-decoration: underline;
+}
