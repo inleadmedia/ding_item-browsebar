@@ -85,6 +85,7 @@
       <!-- /#main-wrapper -->
     </div>
     <!-- /#page -->
+    <div class="footer-push"></div>
   </div>
   <!-- /#page-wrapper -->
 

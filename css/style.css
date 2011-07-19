@@ -27,26 +27,16 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 
-
-
 #page-wrapper {
   min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -366px;
 }
 
 #page {
-  overflow:auto;
-  padding-bottom: 366px;
+  overflow: hidden;
 }
-
-/* Opera Fix */
-body:before {
-  content:"";
-  height:100%;
-  float:left;
-  width:0;
-  margin-top:-32767px;/
-}
-
 
 /**
  * FONTS
@@ -357,10 +347,11 @@ p {
 
 div#footer {
   background: url("../images/footer_bg.png");
-  position: relative;
-  margin-top: -366px;
   height: 366px;
-  clear:both;
+}
+
+.footer-push {
+  height: 366px;
 }
 
   div#footer div.section {
