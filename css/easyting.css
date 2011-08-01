@@ -71,7 +71,7 @@
 
 #navigation .nav ul li .separator {
   float: left;
-  margin: 0 20px 0 20px;
+  margin: -4px 20px 0 20px;
 }
 
 #navigation #primary-nav {

@@ -44,7 +44,7 @@ function easyting_preprocess(&$variables, $hook) {
     foreach($menu as $key => $value) {
       $markup .= '<li>
         <a href="' . ($value['href'] == '<front>' ? 'index.php' : $value['href']) . '">' . $value['title'] . '</a>
-        <img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="16"  alt="" /></li>';
+        <img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="24"  alt="" /></li>';
     }
     
     $markup .= '</ul>';
@@ -65,7 +65,7 @@ function easyting_preprocess(&$variables, $hook) {
 
       // We don't need a separator after last item
       if ($i < 3) {
-        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="18"  alt="" />';
+        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="24"  alt="" />';
       }
 
       $markup .= '</li>';
