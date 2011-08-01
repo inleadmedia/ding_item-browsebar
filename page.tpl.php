@@ -4,7 +4,7 @@
       <div id="header">
         <div class="bg">
           <div class="section container_20">
-
+            <?php print render($easyting['header_nav']); ?>
             <div class="grid_4" style="padding-top: 20px;">
               <?php print render($page['header']); ?>
               <?php if ($logo): ?>
@@ -42,15 +42,19 @@
       </div>
       <!-- //#header -->
 
-      <?php if ($main_menu || $secondary_menu): ?>
+      <?php //if ($main_menu || $secondary_menu): ?>
         <div id="navigation">
           <div class="section container_20">
             <?php print render($page['navigation']); ?>
+            <?php
+              print render($easyting['main_nav']);
+              print render($easyting['secondary_nav']);
+            ?>
           </div>
           <!-- /.section -->
         </div>
         <!-- /#navigation -->
-      <?php endif; ?>
+      <?php //endif; ?>
 
       <div id="main-wrapper">
         <div id="main" class="container_20">
