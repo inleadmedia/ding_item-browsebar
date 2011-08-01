@@ -1,0 +1,40 @@
+#search_form {
+  height: 41px;
+  left: 300px;
+  position: absolute;
+  top: 28px;
+  width: 380px;
+}
+
+#search_form div {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#search_form #edit-actions input {
+  background-color: transparent;
+  background-image: url('../images/search_button.png');
+  border: 0;
+  height: 39px;
+  text-indent: -9999px;
+  width: 48px;
+}
+
+#search_form #edit-actions input:hover {
+  background-color: transparent;
+}
+
+#search_form .form-item-search-block-form input {
+  background-color: transparent;
+  background-image: url('../images/search_field.png');
+  background-position: left;
+  border: 0;
+  height: 40px;
+  margin-top: -1px;
+  width: 329px;
+}
+
+#search_form .form-item-search-block-form input:focus {
+  outline: none;
+}

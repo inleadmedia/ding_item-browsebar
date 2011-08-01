@@ -6,6 +6,7 @@ base theme = stark
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/grid.css
 stylesheets[all][] = css/text.css
+stylesheets[all][] = css/easyting.css
 
 scripts[] = js/dropdown.js
 

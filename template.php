@@ -24,6 +24,19 @@ function easyting_breadcrumb($variables) {
   }
 }
 
+function easyting_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['#prefix'] = '<div id="search_form">';
+    $form['#suffix'] = '</div>';
+
+    $form['actions']['#weight'] = '10';
+    $form['search_block_form']['#weight'] = '11';
+  }
+}
+
+function easyting_preprocess(&$variables, $hook) {
+  
+}
 
 
 ?>

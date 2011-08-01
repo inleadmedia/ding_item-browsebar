@@ -6,6 +6,7 @@
           <div class="section container_20">
 
             <div class="grid_4" style="padding-top: 20px;">
+              <?php print render($page['header']); ?>
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
                   <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
