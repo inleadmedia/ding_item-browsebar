@@ -4,8 +4,8 @@
       <div id="header">
         <div class="bg">
           <div class="section container_20">
-            <?php print render($easyting['header_nav']); ?>
             <div class="grid_4" style="padding-top: 20px;">
+              <?php print render($easyting['header_nav']); ?>
               <?php print render($page['header']); ?>
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">

@@ -65,7 +65,7 @@ function easyting_preprocess(&$variables, $hook) {
 
       // We don't need a separator after last item
       if ($i < 3) {
-        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="16"  alt="" />';
+        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="18"  alt="" />';
       }
 
       $markup .= '</li>';
@@ -78,8 +78,32 @@ function easyting_preprocess(&$variables, $hook) {
     $variables['easyting']['secondary_nav'] = theme('secondary_nav', array('menu' => $markup));
 
     // Preprocess header navigation menu
-    /*$menu = menu_navigation_links('menu-easyscreen-header-menu');
-    $variables['easyting']['header_nav'] = theme('secondary_nav', $menu);*/
+    $menu = menu_navigation_links('menu-easyscreen-header-menu');
+
+    $markup = '<ul id="h-nav">';
+    $i = 0;
+
+    foreach($menu as $key => $value) {
+      $markup .= '<li>
+        <a href="' . ($value['href'] == '<front>' ? 'index.php' : $value['href']) . '">' . $value['title'] . '</a>';
+
+      // We don't need a separator after last item
+      if ($i < 3) {
+        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="14"  alt="" />';
+      }
+
+      if ($i == 3) {
+        $markup .= '<a href="#"><img style="float:left; margin: 1px 0 0 5px;" src="/' . drupal_get_path('theme', 'easyting') . '/images/icons/more.png" width="10" height="10"  alt="" /></a>';
+      }
+
+      $markup .= '</li>';
+
+      $i++;
+    }
+
+    $markup .= '</ul>';
+
+    $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
   }
 }
 
