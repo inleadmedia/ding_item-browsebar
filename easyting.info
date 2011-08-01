@@ -9,6 +9,7 @@ stylesheets[all][] = css/text.css
 stylesheets[all][] = css/easyting.css
 
 scripts[] = js/dropdown.js
+scripts[] = js/easyting.js
 
 regions[header] = Header
 regions[navigation] = Navigation
