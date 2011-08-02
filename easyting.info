@@ -11,6 +11,7 @@ stylesheets[all][] = css/easyting.css
 stylesheets[all][] = css/item.css
 
 scripts[] = js/dropdown.js
+scripts[] = js/jquery-ui-1.8.14.custom.min.js
 scripts[] = js/easyting.js
 
 regions[header] = Header
