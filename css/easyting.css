@@ -162,6 +162,7 @@
 
 #carousel {
   color: #FFF;
+  height: 300px;
   margin: 0 auto;
   position: relative;
   width: 1000px;
@@ -174,6 +175,16 @@
 
 #carousel .result-item img {
   border: 2px solid #540f63;
+  position: relative;
+}
+
+#carousel .result-item img.active {
+  height: 240px;
+  width: 170px;
+}
+
+#carousel .result-item img.inactive {
+  margin-top: 33px;
 }
 
 #carousel .result-item .title, #carousel .result-item .creator {
@@ -183,14 +194,14 @@
 }
 
 #carousel .caroufredsel_wrapper {
-  margin: 50px auto 0 auto !important;
+  margin: 20px auto 0 auto !important;
 }
 
 #carousel #prev, #carousel #next {
   background-repeat: no-repeat;
   height: 45px;
   position: absolute;
-  top: 75px;
+  top: 105px;
   width: 45px;
 }
 
