@@ -163,9 +163,72 @@
 #carousel {
   color: #FFF;
   margin: 0 auto;
+  position: relative;
   width: 1000px;
 }
 
 #carousel .result-item {
   float: left;
+  padding: 15px;
+}
+
+#carousel .result-item img {
+  border: 2px solid #540f63;
+}
+
+#carousel .result-item .title, #carousel .result-item .creator {
+  margin: 0;
+  text-align: left;
+  padding: 0;
+}
+
+#carousel .caroufredsel_wrapper {
+  margin: 50px auto 0 auto !important;
+}
+
+#carousel #prev, #carousel #next {
+  background-repeat: no-repeat;
+  height: 45px;
+  position: absolute;
+  top: 75px;
+  width: 45px;
+}
+
+#carousel #prev {
+  background-image: url('../images/buttons/prev.png');
+  left: 0px;
+}
+
+#carousel #next {
+  background-image: url('../images/buttons/next.png');
+  right: 0px;
+}
+
+#carousel-bar {
+  background-image: url('../images/carousel_pager_bg.jpg');
+  background-repeat: repeat-x;
+  height: 29px;
+  position: relative;
+  width: 100%;
+}
+
+#carousel-bar #carousel_pager {
+  position: absolute;
+  left: 47%;
+  top: 7px;
+}
+
+#carousel-bar #carousel_pager a span {
+  display: none;
+}
+
+#carousel-bar #carousel_pager a {
+  background-image: url('../images/icons/bullet.png');
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+#carousel-bar #carousel_pager a.selected {
+  background-image: url('../images/icons/bullet_a.png');
 }

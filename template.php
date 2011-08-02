@@ -106,7 +106,7 @@ function easyting_preprocess(&$variables, $hook) {
     // @todo
     // Carousel items stub
     $result = array();
-    for($i = 0; $i < 6; $i++) {
+    for($i = 0; $i < 23; $i++) {
       $result[$i] = new stdClass();
       $result[$i]->image = 'ting_item.jpg';
       $result[$i]->title = 'Sumobrodre - ' . $i;

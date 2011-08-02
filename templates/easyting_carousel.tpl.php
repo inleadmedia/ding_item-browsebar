@@ -5,8 +5,10 @@
     <div id="foo">
       <?php print $carousel_items; ?>
     </div>
+    <a id="prev" href="#"></a>
+    <a id="next" href="#"></a>
+  </div>
+  <div id="carousel-bar">
     <div id="carousel_pager"></div>
-    <a id="prev" href="#">Prev</a>
-    <a id="next" href="#">Next</a>
   </div>
 </div>
