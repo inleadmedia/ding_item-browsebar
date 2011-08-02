@@ -43,10 +43,12 @@ html[xmlns] .clearfix {
  * GENERAL
  */
 
+/**
 * {
   margin: 0;
   padding: 0;
 }
+**/
 
 body {
   margin: 0 auto;
@@ -61,6 +63,8 @@ body {
 
 h1, h2, h3 {
   padding: 11px 0;
+  font-weight: inherit;
+  margin: 1em 0 0.5em;
 }
 
 
