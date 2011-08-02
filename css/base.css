@@ -91,6 +91,7 @@ html[xmlns] .clearfix {
 
 .ting-object h2 { 
     padding-bottom: 0em;
+    color: #6d137d;
 }
 
 .ding-format-short .ting-object h2 {
@@ -234,12 +235,17 @@ html[xmlns] .clearfix {
 }
 
 .ting-object .object-information .item-list h4 {
+    text-transform: capitalize;
     width: 8em;
+    margin: 0px;
+}
+
+.ting-object .object-information .item-list h4:after {
+   content:":";
 }
 
 .ting-object .object-information .item-list {
     line-height: 1.3em;
-    border-bottom: 1px solid #e7e7e6;
     padding: 0 0 0.5em 0;
 }
 
@@ -266,6 +272,9 @@ html[xmlns] .clearfix {
 
 .ting-object .object-information .item-list ul li {
     margin: 0em;
+}
+.ting-object .object-information li  {
+    width: 100%;
 }
 
 .ting-object .object-information .item-list ul li.last {
@@ -859,4 +868,8 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 .search-results li {
   margin-bottom: 24px;
+}
+
+.field .field-label {
+  font-size: 16px;
 }

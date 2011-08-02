@@ -225,7 +225,7 @@ ul.primary li a {
  */
 
 .ting-object ul {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
     .ting-object ul a {
@@ -286,4 +286,9 @@ span#expand_more, span#expand_less {
 
 span#expand_more:hover, span#expand_less:hover {
   text-decoration: underline;
+}
+
+a {
+  color: #76ac10;
+  text-decoration: none;
 }
