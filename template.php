@@ -38,7 +38,6 @@ function easyting_preprocess(&$variables, $hook) {
   if ($hook == 'page') {
     // Preprocess main navigation menu
     $menu = menu_navigation_links('menu-easyscreen-main-menu');
-    
     $markup = '<ul>';
 
     foreach($menu as $key => $value) {
