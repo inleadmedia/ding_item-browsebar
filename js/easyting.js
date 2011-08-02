@@ -10,5 +10,23 @@
       $(this).removeClass('active');
       $(this).find('img').css({'opacity':'1'});
     });
+
+    $("#foo").carouFredSel({
+	curcular: false,
+	infinite: false,
+	auto : false,
+        items: 5,
+        scroll: 1,
+	prev : {
+		button	: "#prev"
+		//key		: "left"
+	},
+	next : {
+		button	: "#next"
+		//key		: "right"
+	},
+	pagination	: "#carousel_pager"
+});
+
   });
 })(jQuery);
