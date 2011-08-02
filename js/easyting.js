@@ -11,22 +11,25 @@
       $(this).find('img').css({'opacity':'1'});
     });
 
-    $("#foo").carouFredSel({
-	curcular: false,
-	infinite: false,
-	auto : false,
+    if ($('body').hasClass('front')) {
+      $("#foo").carouFredSel({
+        curcular: false,
+        infinite: false,
+        auto : false,
         items: 5,
         scroll: 1,
-	prev : {
-		button	: "#prev"
-		//key		: "left"
-	},
-	next : {
-		button	: "#next"
-		//key		: "right"
-	},
-	pagination	: "#carousel_pager"
-});
-
+        prev : {
+          button : "#prev"
+        },
+        next : {
+          button : "#next"
+        },
+        pagination : "#carousel_pager"
+      });
+    }
+    else {
+      $('#carousel-wrapper').hide();
+    }
+    
   });
 })(jQuery);
