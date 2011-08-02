@@ -104,6 +104,11 @@ function easyting_preprocess(&$variables, $hook) {
 
     $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
   }
+
+  if ($hook == 'search_result') {
+     watchdog('qwe','<pre>'.print_r($variables,1).'</pre>');
+  }
+
 }
 
 function easyting_theme($existing, $type, $theme, $path) {
