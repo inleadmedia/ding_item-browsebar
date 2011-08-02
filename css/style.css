@@ -171,7 +171,7 @@ div#header
  * NAVIGATION
  */
 
-div#navigation { background: url("../images/nav_bg.png"); margin-bottom: 48px; }
+div#navigation { background: url("../images/nav_bg.png"); }
 div#navigation div.section { height: 36px; margin: 0 auto; }
 
 #block-system-main-menu .nav_separator, #block-menu-menu-secondary-menu .nav_separator { height: 36px; width: 1px; background: url("../images/nav_separator.png"); }
