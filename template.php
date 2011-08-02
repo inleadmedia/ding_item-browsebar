@@ -103,6 +103,7 @@ function easyting_preprocess(&$variables, $hook) {
     $markup .= '</ul>';
 
     $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
+    $variables['easyting']['carousel'] = theme('carousel', array());
   }
 }
 
@@ -124,6 +125,12 @@ function easyting_theme($existing, $type, $theme, $path) {
   $hooks['header_nav'] = array(
     'variables' => array('menu' => NULL),
     'template' => 'easyting_header_nav',
+    'path' => $path . '/templates',
+  );
+
+  $hooks['carousel'] = array(
+    'variables' => array(),
+    'template' => 'easyting_carousel',
     'path' => $path . '/templates',
   );
 

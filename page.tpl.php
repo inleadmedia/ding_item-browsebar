@@ -5,7 +5,7 @@
         <div class="bg">
           <div class="section container_20">
             <div class="grid_4" style="padding-top: 20px;">
-              <?php print render($easyting['header_nav']); ?>
+              <?php print $easyting['header_nav']; ?>
               <?php print render($page['header']); ?>
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -43,22 +43,25 @@
       <!-- //#header -->
 
       <?php //if ($main_menu || $secondary_menu): ?>
+      <div id="nav_wrapper">
         <div id="navigation">
           <div class="section container_20">
             <?php print render($page['navigation']); ?>
             <?php
-              print render($easyting['main_nav']);
-              print render($easyting['secondary_nav']);
+              print $easyting['main_nav'];
+              print $easyting['secondary_nav'];
             ?>
           </div>
           <!-- /.section -->
         </div>
         <!-- /#navigation -->
+        <?php print $easyting['carousel']; ?>
+      </div>
       <?php //endif; ?>
 
       <div id="main-wrapper">
+        
         <div id="main" class="container_20">
-
           <div id="content" class="column">
             <div class="grid_20">
 

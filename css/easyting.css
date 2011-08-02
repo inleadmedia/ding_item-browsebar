@@ -50,6 +50,16 @@
   outline: none;
 }
 
+#nav_wrapper {
+  background-color: #6d137d;
+}
+
+#navigation {
+  box-shadow: 0 5px 5px #500d5c;
+  -webkit-box-shadow: 0 5px 5px #500d5c;
+  -moz-box-shadow: 0 5px 5px #500d5c;
+}
+
 #navigation #m-nav, #navigation #s-nav {
   margin: 0;
   padding: 0;
@@ -93,6 +103,8 @@
 
 #navigation #primary-nav ul li.active {
   background-color: #6d137d;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
 }
 
 #navigation #primary-nav ul li.active a:link { color: #FFF; text-decoration: none; }
@@ -146,4 +158,8 @@
 #header-nav .separator {
   float: left;
   margin: 0 10px 0 10px;
+}
+
+#carousel {
+  
 }
