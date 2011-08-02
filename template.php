@@ -38,8 +38,7 @@ function easyting_preprocess(&$variables, $hook) {
   if ($hook == 'page') {
     // Preprocess main navigation menu
     $menu = menu_navigation_links('menu-easyscreen-main-menu');
-    
-    $markup = '<ul>';
+    $markup = '<ul id="m-nav">';
 
     foreach($menu as $key => $value) {
       $markup .= '<li>
@@ -55,7 +54,7 @@ function easyting_preprocess(&$variables, $hook) {
 
     // This menu contains images... so define them here
     $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
-    $markup = '<ul>';
+    $markup = '<ul id="s-nav">';
     $i = 0;
     
     foreach($menu as $key => $value) {
@@ -104,7 +103,20 @@ function easyting_preprocess(&$variables, $hook) {
     $markup .= '</ul>';
 
     $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
+    $variables['easyting']['carousel'] = theme('carousel', array());
   }
+
+
+  if ($hook == 'search_result') {
+
+    require_once('fb.php');
+    fb($variables, 'qwe');
+
+    // watchdog('qwe','<pre>'.print_r($variables,1).'</pre>');
+    ;
+  }
+
+
 }
 
 function easyting_theme($existing, $type, $theme, $path) {
@@ -125,6 +137,12 @@ function easyting_theme($existing, $type, $theme, $path) {
   $hooks['header_nav'] = array(
     'variables' => array('menu' => NULL),
     'template' => 'easyting_header_nav',
+    'path' => $path . '/templates',
+  );
+
+  $hooks['carousel'] = array(
+    'variables' => array(),
+    'template' => 'easyting_carousel',
     'path' => $path . '/templates',
   );
 
