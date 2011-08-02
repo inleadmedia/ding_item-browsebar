@@ -129,6 +129,7 @@ function easyting_theme($existing, $type, $theme, $path) {
   );
 
   return $hooks;
+}
 
 function easyting_preprocess_ting_object(&$variables) {
 echo "<pre>";
