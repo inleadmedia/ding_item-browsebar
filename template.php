@@ -115,8 +115,6 @@ function easyting_preprocess(&$variables, $hook) {
     // watchdog('qwe','<pre>'.print_r($variables,1).'</pre>');
     ;
   }
-
-
 }
 
 function easyting_theme($existing, $type, $theme, $path) {
@@ -150,10 +148,17 @@ function easyting_theme($existing, $type, $theme, $path) {
 }
 
 function easyting_preprocess_ting_object(&$variables) {
-echo "<pre>";
+  $variables['content']['actions']['reserve']['submit']['#value'] = '';
+  $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
+      'class' => array('reserve-button')
+  );
+  
+// this is not working;
+//  $variables['content']['actions']['reserve']['submit']['#weight'] = '100';
+  
 
-
-  if (isset($variables['content']['ting_type'])) {
+  //var_dump($variables['content']['actions']['reserve']['submit']);
+/*  if (isset($variables['content']['ting_type'])) {
     $variables['content']['ting_type'][0]['#attributes']['class'][] = 'clearfix';
   }
 
@@ -175,21 +180,9 @@ echo "<pre>";
       unset($variables['content'][$name]);
     }
   }
+ * 
+ * 
+ */
   $variables['content']['ting_details']['#title'] = t("Detaljer");
-
-
-//$variables['elements']['actions']['reserve']['submit']['#value'] = t("Reserver Tak");
-
-
-
-//var_dump(array_keys($variables['elements']['actions']['reserve']));
-//var_dump($variables['elements']['actions']['reserve']['submit']);
-
-
-//var_dump($variables['content']['actions']['reserve']['#action']['reservable']['server']['submit']);
-//var_dump($variables['elements']['ting_cover']['#formatter']['actions']['reserve']['#action']['reservable']);
-echo "</pre>";
 }
-
-
 ?>
