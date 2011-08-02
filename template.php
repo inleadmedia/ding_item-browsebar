@@ -38,7 +38,7 @@ function easyting_preprocess(&$variables, $hook) {
   if ($hook == 'page') {
     // Preprocess main navigation menu
     $menu = menu_navigation_links('menu-easyscreen-main-menu');
-    $markup = '<ul>';
+    $markup = '<ul id="m-nav">';
 
     foreach($menu as $key => $value) {
       $markup .= '<li>
@@ -54,7 +54,7 @@ function easyting_preprocess(&$variables, $hook) {
 
     // This menu contains images... so define them here
     $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
-    $markup = '<ul>';
+    $markup = '<ul id="s-nav">';
     $i = 0;
     
     foreach($menu as $key => $value) {

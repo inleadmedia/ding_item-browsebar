@@ -42,11 +42,17 @@
   border: 0;
   height: 40px;
   margin-top: -1px;
+  padding: 0;
   width: 329px;
 }
 
 #search_form .form-item-search-block-form input:focus {
   outline: none;
+}
+
+#navigation #m-nav, #navigation #s-nav {
+  margin: 0;
+  padding: 0;
 }
 
 #navigation .nav {
@@ -111,6 +117,11 @@
   position: absolute;
   left: 750px;
   width: 250px;
+}
+
+#header-nav ul#h-nav {
+  margin: 0;
+  padding: 0;
 }
 
 #header-nav ul#h-nav li {
