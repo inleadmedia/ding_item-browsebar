@@ -40,13 +40,17 @@
 
   var magnify = function(ele) {
     ele.find('img').animate({
-      'height' : 240,
+      'height' : '240',
       'margin-top' : '-60',
-      'width' : 170
+      'width' : '170'
     }, 500);
   }
 
   var restore = function(ele) {
-    
+    ele.find('img').animate({
+      'height' : '160',
+      'margin-top' : '33',
+      'width' : '120'
+    });
   }
 })(jQuery);

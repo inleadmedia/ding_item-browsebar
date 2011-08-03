@@ -117,8 +117,8 @@ function easyting_preprocess(&$variables, $hook) {
     $markup = '';
     $i = 0;
     foreach($result as $key => $value) {
-      $markup .= '<div class="result-item">';
-      $markup .= '<img class="' . (($i == 2) ? 'active' : 'inactive') . '" src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
+      $markup .= '<div class="result-item' . (($i == 2) ? ' active' : ' inactive') . '">';
+      $markup .= '<img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
       $markup .= '<p class="title">' . $value->title . '</p>';
       $markup .= '<p class="creator">' . $value->creator . '</p>';
       $markup .= '</div>';

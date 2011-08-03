@@ -171,19 +171,19 @@
 #carousel .result-item {
   float: left;
   padding: 15px;
+  position: relative;
 }
 
 #carousel .result-item img {
   border: 2px solid #540f63;
-  position: relative;
 }
 
-#carousel .result-item img.active {
+#carousel .active img {
   height: 240px;
   width: 170px;
 }
 
-#carousel .result-item img.inactive {
+#carousel .inactive {
   margin-top: 33px;
 }
 
