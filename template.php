@@ -135,15 +135,11 @@ function easyting_preprocess(&$variables, $hook) {
     $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
   }
 
-
-  if ($hook == 'search_result') {
-
-    require_once('fb.php');
-    fb($variables, 'qwe');
-
+  // if ($hook == 'search_result') {
+    // require_once('fb.php');
+    // fb($variables, 'qwe');
     // watchdog('qwe','<pre>'.print_r($variables,1).'</pre>');
-    ;
-  }
+  // }
 }
 
 function easyting_theme($existing, $type, $theme, $path) {
@@ -177,6 +173,16 @@ function easyting_theme($existing, $type, $theme, $path) {
 }
 
 function easyting_preprocess_ting_object(&$variables) {
+
+
+require_once('fb.php');
+fb($variables, 'qwe');
+
+
+  if ($variables['content']['ting_primary_object'][0]['#view_mode'] == 'teaser') {
+    $variables['content']['actions']['reserve']['submit']['#value'] = 'reserver';
+  }
+
   $variables['content']['actions']['reserve']['submit']['#value'] = '';
   $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
       'class' => array('reserve-button')
