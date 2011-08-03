@@ -26,7 +26,7 @@
   color: #4d4b50;
 }
 
-.ding-format-short .ting-object #edit-submit {
+.ding-format-short .ting-object .form-submit {
   background-image: url('../images/buttons/search-results-reserver.png');
   background-color: transparent;
   font-size: 11px;

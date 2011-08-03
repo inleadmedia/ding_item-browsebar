@@ -174,26 +174,19 @@ function easyting_theme($existing, $type, $theme, $path) {
 
 function easyting_preprocess_ting_object(&$variables) {
 
-
-require_once('fb.php');
-fb($variables, 'qwe');
-
-
-  if ($variables['content']['ting_primary_object'][0]['#view_mode'] == 'teaser') {
-    $variables['content']['actions']['reserve']['submit']['#value'] = 'reserver';
+  if (arg(0) == 'ting' && arg(1) == 'object') {
+    $variables['content']['actions']['reserve']['submit']['#value'] = '';
+    $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
+        'class' => array('reserve-button')
+    );
   }
 
-  $variables['content']['actions']['reserve']['submit']['#value'] = '';
-  $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
-      'class' => array('reserve-button')
-  );
-  
 // this is not working;
 //  $variables['content']['actions']['reserve']['submit']['#weight'] = '100';
-  
 
   //var_dump($variables['content']['actions']['reserve']['submit']);
-/*  if (isset($variables['content']['ting_type'])) {
+/*
+  if (isset($variables['content']['ting_type'])) {
     $variables['content']['ting_type'][0]['#attributes']['class'][] = 'clearfix';
   }
 
@@ -215,9 +208,8 @@ fb($variables, 'qwe');
       unset($variables['content'][$name]);
     }
   }
- * 
- * 
- */
+*/
   $variables['content']['ting_details']['#title'] = t("Detaljer");
+
 }
 ?>
