@@ -9,7 +9,7 @@ stylesheets[all][] = css/grid.css
 stylesheets[all][] = css/text.css
 stylesheets[all][] = css/easyting.css
 stylesheets[all][] = css/item.css
-stylesheets[all][] = css/search-result.css
+stylesheets[all][] = css/search-results.css
 
 scripts[] = js/dropdown.js
 scripts[] = js/jquery-ui-1.8.14.custom.min.js
