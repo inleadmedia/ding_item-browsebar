@@ -66,11 +66,11 @@
           items: 1
         },
         pagination : {
-          container : '#carousel_pager'
+          container : '#carousel-pager'
         }
       });
 
-      $('#carousel_pager a').unbind('click').bind('click', function() {return false;});
+      $('#carousel-pager a').unbind('click').bind('click', function() {return false;});
       $('#carousel .active .item-overlay').show();
       $('#carousel .active .item-overlay-details').show();
     }
@@ -105,7 +105,7 @@
     });
 
     ele.animate({
-      'margin-top' : '33'
+      'margin-top' : '42'
     }, 500);
   }
 })(jQuery);

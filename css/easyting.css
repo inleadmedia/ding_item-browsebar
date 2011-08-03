@@ -163,7 +163,7 @@
 #carousel {
   color: #FFF;
   height: 300px;
-  margin: 0 auto;
+  margin: 0px auto;
   position: relative;
   width: 1000px;
 }
@@ -184,7 +184,7 @@
 }
 
 #carousel .inactive {
-  margin-top: 33px;
+  margin-top: 42px;
 }
 
 #carousel .result-item .title, #carousel .result-item .creator {
@@ -231,7 +231,7 @@
 }
 
 #carousel .caroufredsel_wrapper {
-  margin: 20px auto 0 auto !important;
+  margin: 30px auto 0 auto !important;
 }
 
 #carousel #prev, #carousel #next {
@@ -260,26 +260,53 @@
   width: 100%;
 }
 
-#carousel-bar #carousel_pager {
+#carousel-bar #carousel-pager {
   position: absolute;
   left: 47%;
   top: 7px;
 }
 
-#carousel-bar #carousel_pager a span {
+#carousel-bar #carousel-pager a span {
   display: none;
 }
 
-#carousel-bar #carousel_pager a {
+#carousel-bar #carousel-pager a {
   background-image: url('../images/icons/bullet.png');
   display: inline-block;
   height: 14px;
   width: 14px;
 }
 
-#carousel-bar #carousel_pager a.selected {
+#carousel-bar #carousel-pager a.selected {
   background-image: url('../images/icons/bullet_a.png');
 }
+
+#carousel-menu {
+  position: absolute;
+  left: 105px;
+  top: -20px;
+  z-index: 10;
+}
+
+#carousel-menu h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+#carousel-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#carousel-menu ul li {
+  float: left;
+  margin-right: 18px;
+}
+
+#carousel-menu ul li a:link { color: #b689be; text-decoration: none; }
+#carousel-menu ul li a:hover { color: #00aeef !important; text-decoration: underline; }
+#carousel-menu ul li a:visited { color: #b689be; text-decoration: none; }
 
 #content {
   margin-top: 30px;

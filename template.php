@@ -111,6 +111,8 @@ function easyting_preprocess(&$variables, $hook) {
       $result[$i]->image = 'ting_item.jpg';
       $result[$i]->title = 'Sumøbrødre - ' . $i;
       $result[$i]->creator = 'Morten Ramsland';
+      $result[$i]->type = 1;
+      $result[$i]->is_new = mt_rand(0, 1);
     }
 
     // Create items markup
