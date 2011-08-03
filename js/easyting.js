@@ -10,5 +10,47 @@
       $(this).removeClass('active');
       $(this).find('img').css({'opacity':'1'});
     });
+
+    if ($('body').hasClass('front')) {
+      //var ele = $('#carousel .result-item:eq(2)');
+      //magnify(ele);
+      
+      $("#foo").carouFredSel({
+        curcular: false,
+        infinite: false,
+        auto : false,
+        items: 5,
+        scroll: 1,
+        height: 300,
+        width: 850,
+        prev : {
+          button : "#prev"
+        },
+        next : {
+          button : "#next"
+        },
+        pagination : "#carousel_pager"
+      });
+    }
+    else {
+      $('#carousel-wrapper').hide();
+    }
+    
   });
+
+  var magnify = function(ele) {
+    ele.find('img').animate({
+      'height' : '240',
+      'margin-top' : '-60',
+      'width' : '170'
+    }, 500);
+  }
+
+  var restore = function(ele) {
+    ele.find('img').animate({
+      'height' : '160',
+      'margin-top' : '33',
+      'width' : '120'
+    });
+  }
 })(jQuery);

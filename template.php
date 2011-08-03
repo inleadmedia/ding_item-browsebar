@@ -103,7 +103,29 @@ function easyting_preprocess(&$variables, $hook) {
     $markup .= '</ul>';
 
     $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
-    $variables['easyting']['carousel'] = theme('carousel', array());
+    // @todo
+    // Carousel items stub
+    $result = array();
+    for($i = 0; $i < 23; $i++) {
+      $result[$i] = new stdClass();
+      $result[$i]->image = 'ting_item.jpg';
+      $result[$i]->title = 'Sumobrodre - ' . $i;
+      $result[$i]->creator = 'Morten Ramsland';
+    }
+
+    // Create items markup
+    $markup = '';
+    $i = 0;
+    foreach($result as $key => $value) {
+      $markup .= '<div class="result-item' . (($i == 2) ? ' active' : ' inactive') . '">';
+      $markup .= '<img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
+      $markup .= '<p class="title">' . $value->title . '</p>';
+      $markup .= '<p class="creator">' . $value->creator . '</p>';
+      $markup .= '</div>';
+      $i++;
+    }
+    
+    $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
   }
 
 
@@ -139,7 +161,7 @@ function easyting_theme($existing, $type, $theme, $path) {
   );
 
   $hooks['carousel'] = array(
-    'variables' => array(),
+    'variables' => array('carousel_items' => NULL),
     'template' => 'easyting_carousel',
     'path' => $path . '/templates',
   );
