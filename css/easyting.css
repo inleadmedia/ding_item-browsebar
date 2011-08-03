@@ -193,6 +193,43 @@
   padding: 0;
 }
 
+#carousel .result-item .title {
+  font-family: 'DroidSerifRegular';
+  font-size: 15px;
+  line-height: 18px;
+}
+
+#carousel .result-item .creator {
+  color: #b689be;
+  font-family: 'CartoGothicStdBook';
+  font-size: 12px;
+  line-height: 16px !important;
+}
+
+#carousel .result-item .item-overlay {
+  background-color: #000;
+  bottom: 25px;
+  display: none;
+  height: 45px;
+  left: 17px;
+  opacity: 0.5;
+  position: absolute;
+  width: 170px;
+}
+
+#carousel .active>p {
+  display: none;
+}
+
+#carousel .result-item .item-overlay-details {
+  bottom: 18px;
+  display: none;
+  height: 45px;
+  left: 20px;
+  position: absolute;
+  width: 170px;
+}
+
 #carousel .caroufredsel_wrapper {
   margin: 20px auto 0 auto !important;
 }

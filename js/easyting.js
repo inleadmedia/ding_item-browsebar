@@ -12,25 +12,67 @@
     });
 
     if ($('body').hasClass('front')) {
-      //var ele = $('#carousel .result-item:eq(2)');
-      //magnify(ele);
-      
       $("#foo").carouFredSel({
         curcular: false,
         infinite: false,
         auto : false,
         items: 5,
-        scroll: 1,
         height: 300,
         width: 850,
         prev : {
-          button : "#prev"
+          button : '#prev',
+          onBefore : function() {
+            // Restore previously magnified item and show it's details
+            var ele = $('#carousel .result-item:eq(3)');
+            restore(ele);
+            ele.children('p').fadeIn();
+            ele.find('.item-overlay').hide();
+            ele.find('.item-overlay-details').hide();
+
+            // Magnify item in the middle and style it's details
+            ele = $('#carousel .result-item:eq(2)');
+            magnify(ele);
+            ele.children('p').fadeOut();
+            
+          },
+          onAfter : function() {
+            var ele = $('#carousel .result-item:eq(2)');
+            ele.find('.item-overlay').fadeIn('fast');
+            ele.find('.item-overlay-details').fadeIn('fast');
+          }
         },
         next : {
-          button : "#next"
+          button : '#next',
+          onBefore : function() {
+            // Restore previously magnified item and show it's details
+            var ele = $('#carousel .result-item:eq(2)');
+            restore(ele);
+            ele.children('p').fadeIn();
+            ele.find('.item-overlay').hide();
+            ele.find('.item-overlay-details').hide();
+            
+            // Magnify item in the middle and style it's details
+            ele = $('#carousel .result-item:eq(3)');
+            magnify(ele);
+            ele.children('p').fadeOut();
+          },
+          onAfter : function() {
+            var ele = $('#carousel .result-item:eq(2)');
+            ele.find('.item-overlay').fadeIn('fast');
+            ele.find('.item-overlay-details').fadeIn('fast');
+          }
         },
-        pagination : "#carousel_pager"
+        scroll : {
+          items: 1
+        },
+        pagination : {
+          container : '#carousel_pager'
+        }
       });
+
+      $('#carousel_pager a').unbind('click').bind('click', function() {return false;});
+      $('#carousel .active .item-overlay').show();
+      $('#carousel .active .item-overlay-details').show();
     }
     else {
       $('#carousel-wrapper').hide();
@@ -41,16 +83,29 @@
   var magnify = function(ele) {
     ele.find('img').animate({
       'height' : '240',
-      'margin-top' : '-60',
       'width' : '170'
+    }, 500, function() {
+      ele.removeClass('inactive').addClass('active');
+      
+    });
+
+    ele.animate({
+      'margin-top' : '0'
     }, 500);
   }
 
   var restore = function(ele) {
     ele.find('img').animate({
       'height' : '160',
-      'margin-top' : '33',
       'width' : '120'
+    }, 500, function() {
+      ele.removeClass('active').addClass('inactive');
+      ele.find('p').fadeIn(500);
+      
     });
+
+    ele.animate({
+      'margin-top' : '33'
+    }, 500);
   }
 })(jQuery);

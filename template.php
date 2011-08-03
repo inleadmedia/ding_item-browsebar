@@ -109,7 +109,7 @@ function easyting_preprocess(&$variables, $hook) {
     for($i = 0; $i < 23; $i++) {
       $result[$i] = new stdClass();
       $result[$i]->image = 'ting_item.jpg';
-      $result[$i]->title = 'Sumobrodre - ' . $i;
+      $result[$i]->title = 'Sumøbrødre - ' . $i;
       $result[$i]->creator = 'Morten Ramsland';
     }
 
@@ -121,6 +121,11 @@ function easyting_preprocess(&$variables, $hook) {
       $markup .= '<img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
       $markup .= '<p class="title">' . $value->title . '</p>';
       $markup .= '<p class="creator">' . $value->creator . '</p>';
+      $markup .= '<div class="item-overlay"></div>';
+      $markup .= '<div class="item-overlay-details">';
+      $markup .= '<p class="title">' . $value->title . '</p>';
+      $markup .= '<p class="creator">' . t('Af') . ' ' .  $value->creator . '</p>';
+      $markup .= '</div>';
       $markup .= '</div>';
       $i++;
     }
