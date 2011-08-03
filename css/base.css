@@ -826,7 +826,7 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 /* #ding-reservation-reserve-form input */
 .page-user form input {
-  border-width: 0;
+  border-width: 1;
   padding: 0.1em 1em;
 }
 

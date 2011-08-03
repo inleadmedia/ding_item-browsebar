@@ -5,7 +5,22 @@
   background-color: transparent;
 }
 
+.star-off {
+    background-image: url("../images/star-off.png");
+}
 
+.star-on {
+    background-image: url("../images/star-on.png");
+}
+
+.star-hover {
+    background-image: url("../images/star-hover.png");
+}
+
+.rating {
+  width: 21px;
+  height: 21px!important;
+}
 
 
 
