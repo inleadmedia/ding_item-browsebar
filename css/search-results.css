@@ -1,11 +1,42 @@
 
 
-.ting-object .field-name-ting-title {
-  // border: 4px dotted red;
+
+.ding-format-short .ting-object h2 {
+  //-border: 4px dotted red;
+  font-size: 20px;
   color: #6d137d;
 }
 
-.ting-object .field-name-ting-author {
+.ding-format-short .ting-object .field-name-ting-author {
+  font-size: 13px;
   color: #999999;
 }
+
+.ding-format-short .ting-object .field-name-ting-collection-types {
+  font-size: 10px;
+  color: #999999;
+}
+
+.ding-format-short .ting-object .field-name-ting-collection-types li {
+  text-transform: uppercase;
+}
+
+.ding-format-short .ting-object .field-name-ting-abstract {
+  font-size: 13px;
+  color: #4d4b50;
+}
+
+.ding-format-short .ting-object #edit-submit {
+  background-image: url('../images/buttons/search-results-reserver.png');
+  background-color: transparent;
+  font-size: 11px;
+  width: 85px;
+  height: 20px;
+  padding: 0 0 0 21px;
+  margin: 0 auto;
+  line-height: 20;
+  text-align: left;
+}
+
+
 
