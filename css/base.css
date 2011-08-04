@@ -644,15 +644,15 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 /* ***** extended search, 'sort by' & 'records shown' ***** */
 
-.pane-ting-search-search-controls .pane-content {
-  padding-top: 0;
-}
-
 .pane-ting-search-search-controls {
   display: block;
   float: left;
-  width: 74%;
-  float: left;
+  line-height: 68px;
+  // margin: 30px;
+}
+
+.pane-ting-search-search-controls label {
+  font-weight: normal;
 }
 
 #block-ting-search-search-extend {
@@ -697,23 +697,46 @@ div.pane-ding-toggle-format-toggle div.pane-content {
   display: none;
 }
 
-#search-controls-form .form-item-sort,
-#search-controls-form .form-item-size {
-  display: block;
+#search-controls-form .form-type-select,
+#search-controls-form .form-type-radios {
   float: left;
 }
 
-#search-controls-form .form-item-sort {
-  width: 50%;
+#search-controls-form .form-type-select label,
+#search-controls-form .form-type-radios label {
+  font-size: 13px;
 }
 
-#search-controls-form .form-item-size {
-  width: 50%;
+#search-controls-form .form-type-select select {
+  border: 1px solid #999999;
+  background-color: white;
+  // width: 93px;
+  height: 18px;
+  font-size: 13px;
 }
 
-#search-controls-form .form-item-sort select {
+#search-controls-form label {
+  margin: 0px;
+}
+
+
+#search-controls-form .form-type-radio select {
   width: 9em;
 }
+
+#search-controls-form .form-type-radios {
+  margin-left: 29px;
+}
+
+#search-controls-form .form-type-radios .form-radios {
+  margin-left: 0px;
+}
+
+#search-controls-form .form-type-radios .form-radios div {
+  margin-left: 0px;
+}
+
+
 
 #search-controls-form #edit-size .form-item-size {
   width: auto;
@@ -727,8 +750,8 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 }
 
 #search-controls-form .form-type-radio label {
-  margin-left: -1em;
-  margin-right: 0.5em;
+  margin-left: 1em;
+  // margin-right: 0.5em;
   color: #666;
   cursor: pointer;
 }
@@ -740,13 +763,13 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 #search-controls-form .form-item-size label {
     display: block;
     float: left;
-    margin-right: 0.5em;
+    // margin-right: 0px;
 }
 
 #search-controls-form .form-item-size .form-radios {
     display: block;
     float: left;
-    margin-left: 1em;
+    // margin-left: 0px;
 }
 
 
