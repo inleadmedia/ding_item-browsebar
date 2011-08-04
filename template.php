@@ -103,55 +103,60 @@ function easyting_preprocess(&$variables, $hook) {
     $markup .= '</ul>';
 
     $variables['easyting']['header_nav'] = theme('header_nav', array('menu' => $markup));
-    // @todo
-    // Carousel items stub
-    $result = array();
-    for($i = 0; $i < 23; $i++) {
-      $result[$i] = new stdClass();
-      $result[$i]->image = 'ting_item.jpg';
-      $result[$i]->title = 'Sumøbrødre - ' . $i;
-      $result[$i]->creator = 'Morten Ramsland';
-      $result[$i]->year = mt_rand(1990, 2011);
-      $result[$i]->description = 'Første bind i trilogien Ringenes Herre.<br />Hobbitten Frodo forsøger at bringe en magisk ring, der giver uindskrænket magt, frem til Dommedagsbjerget, hvor den skal ødelægges. I eventyrets og mytens form skildres kampen mellem det gode og onde...';
-      $result[$i]->subject = 'Ringenes Herre 2. del / 3 del';
-      $result[$i]->rating = mt_rand(0, 5);
-      $result[$i]->rating_count = mt_rand(100, 5000);
-      $result[$i]->comment_count = mt_rand(10, 1000);
-      $result[$i]->type = 1;
-      $result[$i]->is_new = mt_rand(0, 1);
-    }
-
-    // Create items markup
-    $markup = '';
-    $i = 0;
-    foreach($result as $key => $value) {
-
-      $stars = '';
-      for($j = 0; $j < 5; $j++) {
-        $stars .= '<img src="/' . path_to_theme() . '/images/carousel-star-' . (($j <= $value->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
+    $variables['easyting']['carousel'] = '';
+    if ($variables['is_front']) {
+      // @todo
+      // Carousel items stub
+      $result = array();
+      for($i = 0; $i < 23; $i++) {
+        $result[$i] = new stdClass();
+        $result[$i]->image = 'ting_item.jpg';
+        $result[$i]->title = 'Sumøbrødre - ' . $i;
+        $result[$i]->creator = 'Morten Ramsland';
+        $result[$i]->year = mt_rand(1990, 2011);
+        $result[$i]->description = 'Første bind i trilogien Ringenes Herre.<br />Hobbitten Frodo forsøger at bringe en magisk ring, der giver uindskrænket magt, frem til Dommedagsbjerget, hvor den skal ødelægges. I eventyrets og mytens form skildres kampen mellem det gode og onde...';
+        $result[$i]->subject = 'Ringenes Herre 2. del / 3 del';
+        $result[$i]->rating = mt_rand(0, 5);
+        $result[$i]->rating_count = mt_rand(100, 5000);
+        $result[$i]->comment_count = mt_rand(10, 1000);
+        $result[$i]->type = 1;
+        $result[$i]->is_new = mt_rand(0, 1);
       }
 
-      $markup .= '<div class="result-item' . (($i == 2) ? ' active' : ' inactive') . '">';
-      $markup .= '<img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
-      $markup .= '<p class="title">' . $value->title . '</p>';
-      $markup .= '<p class="creator">' . $value->creator . '</p>';
-      $markup .= '<div class="item-overlay"></div>';
-      $markup .= '<div class="item-overlay-details">';
-      $markup .= '<p class="title">' . $value->title . '</p>';
-      $markup .= '<p class="creator">' . t('Af') . ' ' .  $value->creator . '</p>';
-      $markup .= '</div>';
-      $markup .= '<div class="result-item-details">';
-      $markup .= '<h1>' . $value->title . '</h1>';
-      $markup .= '<p>' . t('Af') . ' <span class="creator">' . $value->creator . '</span> (' . $value->year . ')</p>';
-      $markup .= '<p class="description">' . $value->description . '</p>';
-      $markup .= '<p class="subject"><span class="hightlight">' . t('Emner') . ': </span>' . $value->subject . '</p>';
-      $markup .= '<p class="stats"><span class="rating-label">Rating: </span>' . $stars . ' <span class="rating-count">(' . $value->rating_count . ')</span><span class="comment-count">' . t('Anmeldelser') . ' (' . $value->comment_count . ')</span></p>';
-      $markup .= '</div>';
-      $markup .= '</div>';
-      $i++;
+      // Create items markup
+      $markup = '';
+      $i = 0;
+      foreach($result as $key => $value) {
+
+        $stars = '';
+        for($j = 0; $j < 5; $j++) {
+          $stars .= '<img src="/' . path_to_theme() . '/images/carousel-star-' . (($j <= $value->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
+        }
+
+        $markup .= '<div class="result-item' . (($i == 2) ? ' active' : ' inactive') . '">';
+        $markup .= '<img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $value->image . '" width="120" height="160" alt="" />';
+        $markup .= '<p class="title">' . $value->title . '</p>';
+        $markup .= '<p class="creator">' . $value->creator . '</p>';
+        $markup .= '<div class="item-overlay"></div>';
+        $markup .= '<div class="item-overlay-details">';
+        $markup .= '<p class="title">' . $value->title . '</p>';
+        $markup .= '<p class="creator">' . t('Af') . ' ' .  $value->creator . '</p>';
+        $markup .= '</div>';
+        $markup .= '<div class="result-item-details">';
+        $markup .= '<h1>' . $value->title . '</h1>';
+        $markup .= '<p>' . t('Af') . ' <span class="creator">' . $value->creator . '</span> (' . $value->year . ')</p>';
+        $markup .= '<p class="description">' . $value->description . '</p>';
+        $markup .= '<p class="subject"><span class="hightlight">' . t('Emner') . ': </span>' . $value->subject . '</p>';
+        $markup .= '<p class="stats"><span class="rating-label">Rating: </span>' . $stars . ' <span class="rating-count">(' . $value->rating_count . ')</span><span class="comment-count">' . t('Anmeldelser') . ' (' . $value->comment_count . ')</span></p>';
+        $markup .= '</div>';
+        $markup .= '</div>';
+        $i++;
+      }
+
+      $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
+
+      $variables['page']['content'] = theme('main_content');
     }
-    
-    $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
   }
 
   // if ($hook == 'search_result') {
@@ -185,6 +190,12 @@ function easyting_theme($existing, $type, $theme, $path) {
   $hooks['carousel'] = array(
     'variables' => array('carousel_items' => NULL),
     'template' => 'easyting_carousel',
+    'path' => $path . '/templates',
+  );
+
+  $hooks['main_content'] = array(
+    'variables' => array('content' => NULL),
+    'template' => 'easyting_main_page',
     'path' => $path . '/templates',
   );
 
