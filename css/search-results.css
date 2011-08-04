@@ -58,23 +58,25 @@
 
 .search-result .field-name-ting-cover {
   float: left;
-  width: 140px;
+  margin-right: 25px;
+}
+
+.search-result .field-name-ting-cover .ting-cover {
+  // border: 2px solid #999999;
+  // float: left;
+  // width: 140px;
+}
+
+.search-result .field-name-ting-cover img {
+  border: 2px solid #999999;
+  border-radius: 2px 2px 2px 2px;
+  padding: 0px;
 }
 
 .search-result .field-name-ting-cover img:hover {
   border: 2px solid #6D137D;
   border-radius: 5px 5px 5px 5px;
   padding: 2px;
-}
-
-.search-result .field-name-ting-cover img {
-  border: 0;
-  padding: 4px;
-
-  // border: 2px solid #999999;
-  // border-radius: 0px 0px 0px 0px;
-  // padding: 0px;
-  // margin: 3px;
 }
 
 .search-result form {
@@ -96,7 +98,7 @@
 
 .search-result .field-name-ting-title {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
 }
 .search-result .field-name-ting-title h2 {
@@ -109,7 +111,7 @@
 
 .search-result .field-name-ting-author {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
   color: #999999;
 }
@@ -119,7 +121,7 @@
 
 .search-result .field-name-ting-abstract {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
   color: #4d4b50;
 }
