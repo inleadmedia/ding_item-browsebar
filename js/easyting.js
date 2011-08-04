@@ -113,6 +113,8 @@
       $(this).parent().parent().hide('fast');
     });
     
+    
+    
   });
 
   var magnify = function(ele) {

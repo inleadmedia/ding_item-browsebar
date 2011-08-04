@@ -12,7 +12,7 @@ stylesheets[all][] = css/item.css
 stylesheets[all][] = css/search-results.css
 
 scripts[] = js/dropdown.js
-scripts[] = js/jquery-ui-1.8.14.custom.min.js
+scripts[] = js/item.tabs.js
 scripts[] = js/easyting.js
 
 regions[header] = Header

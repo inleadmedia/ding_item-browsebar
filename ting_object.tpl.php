@@ -12,7 +12,6 @@
 ?>
 
 
-
 <?php if (arg(0) == 'ting' && arg(1) == 'object') { ?>
 
 <!-- ting_object.tpl.php ? -->
@@ -28,21 +27,55 @@
   <!--<div class="ting-object-additional">
     <?php echo render($content); ?>
   </div>-->
-  <div class="social-icons"></div>
-  <div class="ting-object-additional">
-    <div class="col"><?php print render($easyting['ting_cover']); ?></div>
-    <div class="col" style="width: 400px;"><?php print render($easyting['ting_object']); ?></div>
+  <div class="item-container">
+    <div class="item-header">
+      <div class="social-icons">
+        <div class="social-icon facebook">Like</div>
+        <div class="social-icon twitt">Twitt</div>
+        <div class="social-icon rss">Rss</div>
+        <div class="social-icon print">Print</div>
+      </div>
+      <div class="tab-container">
+        <div class="tab-header active description-tab-header">
+          <div class="tab-inner"><?php print(t('Beskrivelse')); ?></div>
+        </div>  
+        <div class="tab-header details-tab-header">
+          <div class="tab-inner"><?php print(t('Detaljer')); ?></div>
+        </div> 
+      </div>
+      <div class="clear"></div>
+    </div>
     <div class="clear"></div>
-    <?php echo render($content); ?>
+    <div class="ting-object-additional">
+      <div class="cover"><?php print render($easyting['ting_cover']); ?></div>
+
+      <div class="tab description">
+        <?php print render($easyting['ting_object']); ?>
+        <div class="author"><?php print render($easyting['ting_author']); ?></div>
+        <div class="description-content"><?php print render($easyting['ting_abstract']); ?></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="tab details" style="display: none">
+        <div class="details-content"><?php print render($easyting['ting_details']); ?></div>
+      </div>
+      <div class="clear"></div>
+      <?php print render($easyting['voxb']); ?>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+ 
+    <?php //echo render($content); ?>
   </div>
+  <br />
+  <br />
+  <br />
+  
   <!--?php dpm($content); ?-->
 </div>
 
 <?php } if (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
-  <?php
-  // echo render($content);
-  ?>
   <div class="ting-object-additional">
     <?php
     print render($easyting['ting_cover']);
@@ -50,7 +83,6 @@
     <?php
     print render($easyting['ting_object']);
     ?>
-    <div class="clear"></div>
     <?php
     echo render($content);
     ?>

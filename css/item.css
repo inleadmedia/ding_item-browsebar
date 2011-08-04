@@ -76,3 +76,118 @@
 .voxb-review .review-content {
   font-size: 13px;
 }
+
+.item-container .item-header {
+  border-bottom: 1px solid #c6c6c6;
+  margin-bottom: 24px;
+}
+
+.item-container .tab-container {
+  float: right;
+}
+
+.item-container .tab-header {
+  border-top: 1px solid #C6C6C6;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  float: left;
+  margin: 0px 2px;
+  width: 114px;
+  background-color: #F7F7F7;
+  cursor: pointer;
+}
+
+.item-container .tab-header .tab-inner {
+   border-left: 1px solid #C6C6C6;
+   border-right: 1px solid #C6C6C6;
+   margin-top: 2px;
+   width: 99%;
+   text-align: center;
+   color: #4d4b50;
+   background-image: url('../images/tab-bg.png');
+}
+
+.item-container .active {
+  background-color: #ffffff;
+}
+
+.item-container .active .tab-inner{
+  color: #0681b0;
+  background-image: none;
+  background-color: #ffffff;
+}
+
+.social-icons .social-icon {
+  padding-left: 20px;
+  margin-right: 10px;
+  height: 18px;
+  color: #ababab; 
+  float: left;
+  
+}
+.social-icons .facebook{
+  background-image: url(../images/icon-facebook.png);
+  background-repeat: no-repeat;
+}
+.social-icons .twitt{
+  background-image: url(../images/icon-twitter.png);
+  background-repeat: no-repeat;
+}
+.social-icons .rss{
+  background-image: url(../images/icon-rss.png);
+  background-repeat: no-repeat;
+}
+.social-icons .print{
+  background-image: url(../images/icon-print.png);
+  background-repeat: no-repeat;
+}
+.ting-object-additional .tab {
+  width: 320px;
+  float: right;
+}
+
+.ting-object-additional .cover {
+  width: 200px;
+  float: left;
+  text-align: center;
+}
+
+.ting-object-additional .cover img {
+  border: 2px solid #c6c6c6;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.ting-object-additional .cover img:hover {
+  border: 2px solid #6d1b7c;
+}
+
+.ting-object-additional .author {
+  color: #999999;
+}
+.ting-object-additional .author a {
+  color: #76AC10;
+}
+
+.ting-object-additional .description-content {
+  height: auto;
+}
+.page-ting-collection .ting-object-additional div.description, .ting-object div.description {
+  height: 150px;
+}
+
+.ting-object .object-information .item-list .item-list {
+  float: none;
+}
+.ting-object-additional .tab .field .field-label {
+  font-weight: normal;
+}
+
+.tab .object-information {
+  padding-top: 4px;
+  
+}
+.tab h4 {
+  font-weight: normal;
+  padding: 0px!important;
+  width: 150px!important;
+}
