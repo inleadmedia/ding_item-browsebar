@@ -1,32 +1,64 @@
 
 
+
+
+
+
+
+.availability-legend {
+  border-bottom: 1px solid #E7E7E6;
+  border-top: 2px solid #E7E7E6;
+  height: 31px;
+  line-height: 31px;
+  margin-bottom: 27px;
+}
+
+
+
 .pane-search-result ol{
   padding: 0;
   margin: 0;
 }
 
-.ding-format-short .ting-object h2 {
+.search-result h2 {
   //-border: 4px dotted red;
   font-size: 20px;
   color: #6d137d;
 }
 
-.ding-format-short .ting-object .field-name-ting-collection-types li {
+.search-result .field-name-ting-collection-types li {
   font-size: 10px;
   color: #999999;
   text-transform: uppercase;
+  list-style: none;
 }
 
-.ding-format-short .ting-object .field-name-ting-cover {
+.search-result .field-name-ting-cover {
   float: left;
   width: 140px;
 }
 
-.ding-format-short .ting-object form {
-  float: left;
+.search-result .field-name-ting-cover img:hover {
+  border: 2px solid #6D137D;
+  border-radius: 5px 5px 5px 5px;
+  padding: 2px;
 }
 
-.ding-format-short .ting-object form .form-submit {
+.search-result .field-name-ting-cover img {
+  border: 0;
+  padding: 4px;
+
+  // border: 2px solid #999999;
+  // border-radius: 0px 0px 0px 0px;
+  // padding: 0px;
+  // margin: 3px;
+}
+
+.search-result form {
+  // float: left;
+}
+
+.search-result form .form-submit {
   background-image: url('../images/buttons/search-results-reserver.png');
   background-color: transparent;
   font-size: 11px;
@@ -39,27 +71,26 @@
   border: 0;
 }
 
-.ding-format-short .ting-object .field-name-ting-title {
+.search-result .field-name-ting-title {
   float: left;
   width: 380px;
   font-size: 13px;
   color: #999999;
 }
 
-.ding-format-short .ting-object .field-name-ting-author {
+.search-result .field-name-ting-author {
   float: left;
   width: 380px;
   font-size: 13px;
   color: #999999;
 }
 
-.ding-format-short .ting-object .field-name-ting-abstract {
+.search-result .field-name-ting-abstract {
   float: left;
   width: 380px;
   font-size: 13px;
   color: #4d4b50;
 }
-
 
 
 

@@ -401,11 +401,79 @@
   margin-top: 30px;
 }
 
-.ting-object-additional .col {
+#content  .col {
   float: left;
 }
 
 .ting-object-additional .col h2 {
   margin: 0;
   padding: 0;
+}
+
+#content .news .col {
+  width: 235px;
+}
+
+#content h3 {
+  color: #6d137d;
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+#content p {
+  color: #4d4b50;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+#content p.where {
+  color: #76ac10;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+#content p.when {
+  color: #999999;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+#content p.more {
+  float: right;
+}
+
+#content p.rss {
+  float: left;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+#content p.rss img {
+  float: left;
+  margin: 4px 4px 0 0;
+}
+
+#content .block {
+  margin-bottom: 9px;
+}
+
+#content input.button {
+  background-color: #FFF;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  color: #0681b0;
+  font-size: 12px;
+  height: 24px;
+}
+
+#content p.rss a:link { color: #0681b0; text-decoration: none; }
+#content p.rss a:hover { color: #0681b0; text-decoration: none; }
+#content p.rss a:visited { color: #0681b0; text-decoration: none; }
+
+#content p.more, #content p.rss {
+  margin-top: 10px;
 }

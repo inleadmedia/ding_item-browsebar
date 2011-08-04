@@ -11,7 +11,9 @@
  */
 ?>
 
-    
+
+<?php if (arg(0) == 'ting' && arg(1) == 'object') { ?>
+
 <!-- ting_object.tpl.php ? -->
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 <!--
@@ -71,3 +73,29 @@
   
   <!--?php dpm($content); ?-->
 </div>
+
+<?php } if (arg(0) == 'search' && arg(1) == 'ting') { ?>
+
+  <?php
+  // echo render($content);
+  ?>
+  <div class="ting-object-additional">
+    <?php
+    print render($easyting['ting_cover']);
+    ?>
+    <?php
+    print render($easyting['ting_object']);
+    ?>
+    <div class="clear"></div>
+    <?php
+    echo render($content);
+    ?>
+    <?php
+    print render($easyting['ting_collection_types']);
+    ?>
+  </div>
+
+<?php } ?>
+
+
+
