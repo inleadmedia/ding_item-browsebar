@@ -3,6 +3,8 @@
   width: 126px;
   height: 26px;
   background-color: transparent;
+  border-width: 0px;
+  float: right;
 }
 
 .star-off {
@@ -22,13 +24,55 @@
   height: 21px!important;
 }
 
+.ting-object form input[button] {
+  border-width: 0;
+}
 
+.ting-object form {
+    text-align: left;
+}
 
+#ding-voxb-tag-form .form-submit, #ding-voxb-review-form .form-submit{
+  background-image: url("../images/send-button.png");
+  border-width: 0px;
+  width: 72px;
+  height: 28px;
+  text-indent: -9999px;
+}
 
+.tag a {
+  color: #0681b0;
+}
 
+#voxb {
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+   border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 0px 10px 10px 10px;
+}
+#voxb h2 {
+  background-image: url("../images/voxb-title-icon.png");
+  background-repeat:no-repeat;
+  padding-left: 22px;
+}
 
+.reviews-container h3 {
+  background-image: url("../images/voxb-reviews-icon.png");
+  background-repeat: no-repeat;
+  color: #6D137D;
+  padding: 0 0 0 22px;
+  font-size: 17px;
+}
 
+.voxb-review {
+  font-size: 12px;
+  border-bottom: 1px solid #c6c6c6;
+}
+.voxb-review em {
+  color: #76ac10;
+}
 
-
-
-
+.voxb-review .review-content {
+  font-size: 13px;
+}

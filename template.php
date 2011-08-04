@@ -192,50 +192,24 @@ function easyting_theme($existing, $type, $theme, $path) {
 }
 
 function easyting_preprocess_ting_object(&$variables) {
+  if (arg(0) == 'ting' && arg(1) == 'object') {
+    $variables['content']['actions']['reserve']['submit']['#value'] = '';
+    $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
+        'class' => array('reserve-button')
+    );
 
-  //require_once('fb.php');
-  //fb($variables['content'], 'qwe');
+    // this is not working;
+    // $variables['content']['actions']['reserve']['submit']['#weight'] = '100';
 
-
-  if ($variables['content']['ting_primary_object'][0]['#view_mode'] == 'teaser') {
-    $variables['content']['actions']['reserve']['submit']['#value'] = 'reserver';
+    //var_dump($variables['content']['actions']['reserve']['submit']);
+    $variables['content']['ting_details']['#title'] = t("Detaljer");
   }
 
-  $variables['content']['actions']['reserve']['submit']['#value'] = '';
-  $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
-    'class' => array('reserve-button')
-  );
-  
-// this is not working;
-//  $variables['content']['actions']['reserve']['submit']['#weight'] = '100';
-  
 
-  //var_dump($variables['content']['actions']['reserve']['submit']);
-/*  if (isset($variables['content']['ting_type'])) {
-    $variables['content']['ting_type'][0]['#attributes']['class'][] = 'clearfix';
+  if (arg(0) == 'search' && arg(1) == 'ting') {
+
   }
 
-  $places = array(
-    'ting_cover' => 'left',
-    'ting_title' => 'right',
-    'ting_abstract' => 'right',
-    'ting_author' => 'right',
-    'ting_type' => 'right',
-    'ting_subjects' => 'right',
-    'ding_availability_item' => 'right',
-  );
-  $variables['content']['left'] = array();
-  $variables['content']['right'] = array();
 
-  foreach ($variables['content'] as $name => $render) {
-    if (isset($places[$name])) {
-      $variables['content'][$places[$name]][] = $render;
-      unset($variables['content'][$name]);
-    }
-  }
- * 
- * 
- */
-  $variables['content']['ting_details']['#title'] = t("Detaljer");
 }
 ?>
