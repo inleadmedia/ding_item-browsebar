@@ -11,106 +11,111 @@
       $(this).find('img').css({'opacity':'1'});
     });
 
-    $("#foo").carouFredSel({
-      curcular: false,
-      infinite: false,
-      auto : false,
-      items: 5,
-      height: 300,
-      width: 850,
-      prev : {
-        button : '#prev',
-        onBefore : function() {
-          // Restore previously magnified item and show it's details
-          var ele = $('#carousel .result-item:eq(3)');
-          restore(ele);
-          ele.children('p').fadeIn();
-          ele.find('.item-overlay').hide();
-          ele.find('.item-overlay-details').hide();
-          ele.find('.result-item-details').fadeOut(100);
+    if ($('body').hasClass('front')) {
+      $("#foo").carouFredSel({
+        curcular: false,
+        infinite: false,
+        auto : false,
+        items: 5,
+        height: 300,
+        width: 850,
+        prev : {
+          button : '#prev',
+          onBefore : function() {
+            // Restore previously magnified item and show it's details
+            var ele = $('#carousel .result-item:eq(3)');
+            restore(ele);
+            ele.children('p').fadeIn();
+            ele.find('.item-overlay').hide();
+            ele.find('.item-overlay-details').hide();
+            ele.find('.result-item-details').fadeOut(100);
 
-          // Magnify item in the middle and style it's details
-          ele = $('#carousel .result-item:eq(2)');
-          magnify(ele);
-          ele.children('p').fadeOut();
+            // Magnify item in the middle and style it's details
+            ele = $('#carousel .result-item:eq(2)');
+            magnify(ele);
+            ele.children('p').fadeOut();
+          },
+          onAfter : function() {
+            var ele = $('#carousel .result-item:eq(2)');
+            ele.find('.item-overlay').fadeIn('fast');
+            ele.find('.item-overlay-details').fadeIn('fast');
+
+            $('#carousel .inactive').each(function() {
+              $(this).animate({
+                'opacity' : 1
+              }, 100);
+            });
+          }
         },
-        onAfter : function() {
-          var ele = $('#carousel .result-item:eq(2)');
-          ele.find('.item-overlay').fadeIn('fast');
-          ele.find('.item-overlay-details').fadeIn('fast');
+        next : {
+          button : '#next',
+          onBefore : function() {
+            // Restore previously magnified item and show it's details
+            var ele = $('#carousel .result-item:eq(2)');
+            restore(ele);
+            ele.children('p').fadeIn();
+            ele.find('.item-overlay').hide();
+            ele.find('.item-overlay-details').hide();
+            ele.find('.result-item-details').fadeOut(100);
+            
+            
+            // Magnify item in the middle and style it's details
+            ele = $('#carousel .result-item:eq(3)');
+            magnify(ele);
+            ele.children('p').fadeOut();
+          },
+          onAfter : function() {
+            var ele = $('#carousel .result-item:eq(2)');
+            ele.find('.item-overlay').fadeIn('fast');
+            ele.find('.item-overlay-details').fadeIn('fast');
 
-          $('#carousel .inactive').each(function() {
-            $(this).animate({
-              'opacity' : 1
-            }, 100);
-          });
-        }
-      },
-      next : {
-        button : '#next',
-        onBefore : function() {
-          // Restore previously magnified item and show it's details
-          var ele = $('#carousel .result-item:eq(2)');
-          restore(ele);
-          ele.children('p').fadeIn();
-          ele.find('.item-overlay').hide();
-          ele.find('.item-overlay-details').hide();
-          ele.find('.result-item-details').fadeOut(100);
-
-
-          // Magnify item in the middle and style it's details
-          ele = $('#carousel .result-item:eq(3)');
-          magnify(ele);
-          ele.children('p').fadeOut();
+            $('#carousel .result-item').each(function() {
+              $(this).animate({
+                'opacity' : 1
+              }, 100);
+            });
+          }
         },
-        onAfter : function() {
-          var ele = $('#carousel .result-item:eq(2)');
-          ele.find('.item-overlay').fadeIn('fast');
-          ele.find('.item-overlay-details').fadeIn('fast');
-
-          $('#carousel .result-item').each(function() {
-            $(this).animate({
-              'opacity' : 1
-            }, 100);
-          });
+        scroll : {
+          items: 1
+        },
+        pagination : {
+          container : '#carousel-pager'
         }
-      },
-      scroll : {
-        items: 1
-      },
-      pagination : {
-        container : '#carousel-pager'
-      }
-    });
+      });
 
-    // Disable the pager, as it is laggy
-    $('#carousel-pager a').unbind('click').bind('click', function() {return false;});
-    $('#carousel .active .item-overlay').show();
-    $('#carousel .active .item-overlay-details').show();
+      // Disable the pager, as it is laggy
+      $('#carousel-pager a').unbind('click').bind('click', function() {return false;});
+      $('#carousel .active .item-overlay').show();
+      $('#carousel .active .item-overlay-details').show();
 
-    // Animation for carousel menu
-    $('#carousel-menu ul li a').click(function() {
-      $(this).parent().parent().find('a').removeClass('active');
-      $(this).addClass('active');
+      // Animation for carousel menu
+      $('#carousel-menu ul li a').click(function() {
+        $(this).parent().parent().find('a').removeClass('active');
+        $(this).addClass('active');
 
-      return false;
-    });
+        return false;
+      });
 
-    // Handler for clicking on carousel active item
-    $('#carousel .active').live('click', function() {
-      $(this).children('.result-item-details').fadeIn(500);
-      $('#carousel .result-item:eq(3)').animate({
-        'opacity' : 0
-      }, 500)
-      $('#carousel .result-item:eq(4)').animate({
-        'opacity' : 0
-      }, 500)
-    });
+      // Handler for clicking on carousel active item
+      $('#carousel .active').live('click', function() {
+        $(this).children('.result-item-details').fadeIn(500);
+        $('#carousel .result-item:eq(3)').animate({
+          'opacity' : 0
+        }, 500)
+        $('#carousel .result-item:eq(4)').animate({
+          'opacity' : 0
+        }, 500)
+      });
 
-    // Handler for hiding the carousel
-    $('#carousel .carousel-close').click(function() {
-      $(this).parent().parent().hide('fast');
-    });
+      // Handler for hiding the carousel
+      $('#carousel .carousel-close').click(function() {
+        $(this).parent().parent().hide('fast');
+      })
+    }
+    else {
+      $('#carousel-wrapper').hide();
+    }
     
   });
 

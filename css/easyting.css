@@ -160,10 +160,6 @@
   margin: 0 10px 0 10px;
 }
 
-.not-front #carousel-wrapper {
-  display: none;
-}
-
 #carousel {
   color: #FFF;
   height: 300px;
