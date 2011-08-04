@@ -83,7 +83,6 @@
     <?php
     print render($easyting['ting_object']);
     ?>
-    <div class="clear"></div>
     <?php
     echo render($content);
     ?>

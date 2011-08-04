@@ -2,6 +2,11 @@
 
 
 .pane-ding-toggle-format-toggle {
+  width: 47px;
+}
+
+.pane-ding-toggle-format-toggle .ding-toggle-format-label {
+  display: none;
 }
 
 .pane-ding-toggle-format-toggle a.ding-toggle-format-long img.
@@ -113,6 +118,9 @@
   width: 380px;
   font-size: 13px;
   color: #999999;
+}
+.search-result .field-name-ting-author a {
+  color: #76AC10;
 }
 
 .search-result .field-name-ting-abstract {
