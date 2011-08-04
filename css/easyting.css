@@ -400,3 +400,12 @@
 #content {
   margin-top: 30px;
 }
+
+.ting-object-additional .col {
+  float: left;
+}
+
+.ting-object-additional .col h2 {
+  margin: 0;
+  padding: 0;
+}

@@ -195,7 +195,7 @@ function easyting_preprocess_ting_object(&$variables) {
   if (arg(0) == 'ting' && arg(1) == 'object') {
     $variables['content']['actions']['reserve']['submit']['#value'] = '';
     $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
-        'class' => array('reserve-button')
+      'class' => array('reserve-button')
     );
 
     // this is not working;
@@ -203,6 +203,17 @@ function easyting_preprocess_ting_object(&$variables) {
 
     //var_dump($variables['content']['actions']['reserve']['submit']);
     $variables['content']['ting_details']['#title'] = t("Detaljer");
+
+    //var_dump(array_keys($variables['content']));die();
+
+    $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
+    unset($variables['content']['ting_cover']);
+    $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
+    unset($variables['content']['ting_title']);
+    $variables['easyting']['ting_object'] .= render($variables['content']['ting_author']);
+    unset($variables['content']['ting_author']);
+    $variables['easyting']['ting_object'] .= render($variables['content']['ting_abstract']);
+    unset($variables['content']['ting_abstract']);
   }
 
 
