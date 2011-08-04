@@ -121,9 +121,9 @@
   padding-left: 20px;
   margin-right: 10px;
   height: 18px;
-  color: #ababab; 
+  color: #ababab;
   float: left;
-  
+
 }
 .social-icons .facebook{
   background-image: url(../images/icon-facebook.png);
@@ -184,7 +184,7 @@
 
 .tab .object-information {
   padding-top: 4px;
-  
+
 }
 .tab h4 {
   font-weight: normal;

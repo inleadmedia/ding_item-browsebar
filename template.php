@@ -45,7 +45,7 @@ function easyting_preprocess(&$variables, $hook) {
         <a href="' . ($value['href'] == '<front>' ? 'index.php' : $value['href']) . '">' . $value['title'] . '</a>
         <img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="24"  alt="" /></li>';
     }
-    
+
     $markup .= '</ul>';
     $variables['easyting']['main_nav'] = theme('main_nav', array('menu' => $markup));
 
@@ -56,7 +56,7 @@ function easyting_preprocess(&$variables, $hook) {
     $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
     $markup = '<ul id="s-nav">';
     $i = 0;
-    
+
     foreach($menu as $key => $value) {
       $markup .= '<li>
         <img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $images[$i] . '" width="16" height="16"  alt="" />
@@ -68,7 +68,7 @@ function easyting_preprocess(&$variables, $hook) {
       }
 
       $markup .= '</li>';
-    
+
       $i++;
     }
 
@@ -213,7 +213,7 @@ function easyting_preprocess_ting_object(&$variables) {
 //  drupal_add_css('css/ui-lightness/jquery-tabs.css');
     //drupal_add_js('js/jquery-ui-1.8.14.custom.min.js');
     drupal_add_js('js/item.tabs.js');
-    
+
     $variables['content']['ting_details']['#title'] = t("Detaljer");
 
     $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
