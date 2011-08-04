@@ -17,6 +17,7 @@
     </div>
     <a id="prev" href="#"></a>
     <a id="next" href="#"></a>
+    <a href="#" class="carousel-close"><img src="/<?php print path_to_theme(); ?>/images/carousel-close.png" width="57" height="24" alt="" /></a>
   </div>
   <div id="carousel-bar">
     <div id="carousel-pager"></div>

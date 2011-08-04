@@ -97,7 +97,7 @@
         return false;
       });
 
-      // Handler for clicking on an active item
+      // Handler for clicking on carousel active item
       $('#carousel .active').live('click', function() {
         $(this).children('.result-item-details').fadeIn(500);
         $('#carousel .result-item:eq(3)').animate({
@@ -107,6 +107,11 @@
           'opacity' : 0
         }, 500)
       });
+
+      // Handler for hiding the carousel
+      $('#carousel .carousel-close').click(function() {
+        $(this).parent().parent().hide('fast');
+      })
     }
     else {
       $('#carousel-wrapper').hide();

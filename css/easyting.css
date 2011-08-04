@@ -331,6 +331,15 @@
   right: 0px;
 }
 
+#carousel .carousel-close {
+  bottom: -25px;
+  position: absolute;
+  right: 0;
+  height: 24px;
+  width: 57px;
+  z-index: 30;
+}
+
 #carousel-bar {
   background-image: url('../images/carousel_pager_bg.jpg');
   background-repeat: repeat-x;
@@ -351,6 +360,7 @@
 
 #carousel-bar #carousel-pager a {
   background-image: url('../images/icons/bullet.png');
+  cursor: default;
   display: inline-block;
   height: 14px;
   width: 14px;
