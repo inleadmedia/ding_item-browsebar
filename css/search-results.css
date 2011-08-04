@@ -1,5 +1,10 @@
 
 
+.pane-search-result ol{
+  padding: 0;
+  margin: 0;
+border:1px dotted red;
+}
 
 .ding-format-short .ting-object h2 {
   //-border: 4px dotted red;
@@ -7,26 +12,22 @@
   color: #6d137d;
 }
 
-.ding-format-short .ting-object .field-name-ting-author {
-  font-size: 13px;
-  color: #999999;
-}
-
-.ding-format-short .ting-object .field-name-ting-collection-types {
+.ding-format-short .ting-object .field-name-ting-collection-types li {
   font-size: 10px;
   color: #999999;
-}
-
-.ding-format-short .ting-object .field-name-ting-collection-types li {
   text-transform: uppercase;
 }
 
-.ding-format-short .ting-object .field-name-ting-abstract {
-  font-size: 13px;
-  color: #4d4b50;
+.ding-format-short .ting-object .field-name-ting-cover {
+  float: left;
+  width: 140px;
 }
 
-.ding-format-short .ting-object .form-submit {
+.ding-format-short .ting-object form {
+  float: left;
+}
+
+.ding-format-short .ting-object form .form-submit {
   background-image: url('../images/buttons/search-results-reserver.png');
   background-color: transparent;
   font-size: 11px;
@@ -36,7 +37,31 @@
   margin: 0 auto;
   line-height: 20;
   text-align: left;
+  border: 0;
 }
+
+.ding-format-short .ting-object .field-name-ting-title {
+  float: left;
+  width: 380px;
+  font-size: 13px;
+  color: #999999;
+}
+
+.ding-format-short .ting-object .field-name-ting-author {
+  float: left;
+  width: 380px;
+  font-size: 13px;
+  color: #999999;
+}
+
+.ding-format-short .ting-object .field-name-ting-abstract {
+  float: left;
+  width: 380px;
+  font-size: 13px;
+  color: #4d4b50;
+}
+
+
 
 
 
