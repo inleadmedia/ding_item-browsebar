@@ -28,17 +28,23 @@
             ele.children('p').fadeIn();
             ele.find('.item-overlay').hide();
             ele.find('.item-overlay-details').hide();
+            ele.find('.result-item-details').fadeOut(100);
 
             // Magnify item in the middle and style it's details
             ele = $('#carousel .result-item:eq(2)');
             magnify(ele);
             ele.children('p').fadeOut();
-            
           },
           onAfter : function() {
             var ele = $('#carousel .result-item:eq(2)');
             ele.find('.item-overlay').fadeIn('fast');
             ele.find('.item-overlay-details').fadeIn('fast');
+
+            $('#carousel .inactive').each(function() {
+              $(this).animate({
+                'opacity' : 1
+              }, 100);
+            });
           }
         },
         next : {
@@ -50,6 +56,8 @@
             ele.children('p').fadeIn();
             ele.find('.item-overlay').hide();
             ele.find('.item-overlay-details').hide();
+            ele.find('.result-item-details').fadeOut(100);
+            
             
             // Magnify item in the middle and style it's details
             ele = $('#carousel .result-item:eq(3)');
@@ -60,6 +68,12 @@
             var ele = $('#carousel .result-item:eq(2)');
             ele.find('.item-overlay').fadeIn('fast');
             ele.find('.item-overlay-details').fadeIn('fast');
+
+            $('#carousel .result-item').each(function() {
+              $(this).animate({
+                'opacity' : 1
+              }, 100);
+            });
           }
         },
         scroll : {
@@ -70,9 +84,29 @@
         }
       });
 
+      // Disable the pager, as it is laggy
       $('#carousel-pager a').unbind('click').bind('click', function() {return false;});
       $('#carousel .active .item-overlay').show();
       $('#carousel .active .item-overlay-details').show();
+
+      // Animation for carousel menu
+      $('#carousel-menu ul li a').click(function() {
+        $(this).parent().parent().find('a').removeClass('active');
+        $(this).addClass('active');
+
+        return false;
+      });
+
+      // Handler for clicking on an active item
+      $('#carousel .active').live('click', function() {
+        $(this).children('.result-item-details').fadeIn(500);
+        $('#carousel .result-item:eq(3)').animate({
+          'opacity' : 0
+        }, 500)
+        $('#carousel .result-item:eq(4)').animate({
+          'opacity' : 0
+        }, 500)
+      });
     }
     else {
       $('#carousel-wrapper').hide();
@@ -81,7 +115,7 @@
   });
 
   var magnify = function(ele) {
-    ele.find('img').animate({
+    ele.children('img').animate({
       'height' : '240',
       'width' : '170'
     }, 500, function() {
@@ -95,7 +129,7 @@
   }
 
   var restore = function(ele) {
-    ele.find('img').animate({
+    ele.children('img').animate({
       'height' : '160',
       'width' : '120'
     }, 500, function() {

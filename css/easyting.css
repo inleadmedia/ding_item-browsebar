@@ -54,7 +54,7 @@
   background-color: #6d137d;
 }
 
-#navigation {
+.front #navigation {
   box-shadow: 0 5px 5px #500d5c;
   -webkit-box-shadow: 0 5px 5px #500d5c;
   -moz-box-shadow: 0 5px 5px #500d5c;
@@ -178,6 +178,10 @@
   border: 2px solid #540f63;
 }
 
+#carousel .active {
+  cursor: pointer;
+}
+
 #carousel .active img {
   height: 240px;
   width: 170px;
@@ -228,6 +232,30 @@
   left: 20px;
   position: absolute;
   width: 170px;
+}
+
+#carousel .result-item .result-item-details {
+  cursor: default;
+  height: 170px;
+  position: absolute;
+  top: -15px;
+  right: -330px;
+  width: 320px;
+  z-index: 20;
+}
+
+#carousel .result-item-details img {
+  border: 0;
+  height: 15px;
+  width: 15px;
+}
+
+#carousel .result-item-details .stats * {
+  float: left;
+}
+
+#carousel .result-item-details {
+  display: none;
 }
 
 #carousel .caroufredsel_wrapper {
@@ -288,7 +316,7 @@
   z-index: 10;
 }
 
-#carousel-menu h1 {
+#carousel-menu h2 {
   font-size: 20px;
   margin: 0;
 }
@@ -305,7 +333,7 @@
 }
 
 #carousel-menu ul li a:link { color: #b689be; text-decoration: none; }
-#carousel-menu ul li a:hover { color: #00aeef !important; text-decoration: underline; }
+#carousel-menu ul li a:hover, #carousel-menu ul li a.active { color: #00aeef !important; text-decoration: underline; }
 #carousel-menu ul li a:visited { color: #b689be; text-decoration: none; }
 
 #content {

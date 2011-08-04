@@ -3,7 +3,7 @@
 <div id="carousel-wrapper">
   <div id="carousel">
     <div id="carousel-menu">
-      <h1><?php print t('Seneste bøger'); ?></h1>
+      <h2><?php print t('Seneste bøger'); ?></h2>
       <ul id="carousel-sort">
         <li><a href="#" class="rating"><?php print t('Rating'); ?></a></li>
         <li><a href="#" class="genre"><?php print t('Genre'); ?></a></li>
