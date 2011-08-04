@@ -117,6 +117,8 @@
       $('#carousel-wrapper').hide();
     }
     
+    
+    
   });
 
   var magnify = function(ele) {
