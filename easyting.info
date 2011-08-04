@@ -1,4 +1,4 @@
-name = "easy.TING" 
+name = "easy.TING"
 description = "Theme for the Artesis Web project."
 core = 7.x
 base theme = stark
