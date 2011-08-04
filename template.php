@@ -145,7 +145,7 @@ function easyting_preprocess(&$variables, $hook) {
       $markup .= '<p>' . t('Af') . ' <span class="creator">' . $value->creator . '</span> (' . $value->year . ')</p>';
       $markup .= '<p class="description">' . $value->description . '</p>';
       $markup .= '<p class="subject"><span class="hightlight">' . t('Emner') . ': </span>' . $value->subject . '</p>';
-      $markup .= '<p class="stats"><span>Rating: </span>' . $stars . ' <span class="rating-count">(' . $value->rating_count . ')</span><span class="comment-count">' . t('Anmeldelser') . '(' . $value->comment_count . ')</span></p>';
+      $markup .= '<p class="stats"><span class="rating-label">Rating: </span>' . $stars . ' <span class="rating-count">(' . $value->rating_count . ')</span><span class="comment-count">' . t('Anmeldelser') . ' (' . $value->comment_count . ')</span></p>';
       $markup .= '</div>';
       $markup .= '</div>';
       $i++;

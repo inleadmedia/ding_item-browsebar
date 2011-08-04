@@ -238,13 +238,64 @@
   cursor: default;
   height: 170px;
   position: absolute;
-  top: -15px;
+  top: 10px;
   right: -330px;
   width: 320px;
   z-index: 20;
 }
 
-#carousel .result-item-details img {
+#carousel .result-item .result-item-details h1 {
+  font-size: 25px;
+  line-height: 25px;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+#carousel .result-item .result-item-details p {
+  font-size: 13px;
+  margin: 0;
+}
+
+#carousel .result-item .result-item-details .creator {
+  color: #00aeef;
+}
+
+#carousel .result-item .result-item-details .description {
+  margin-top: 5px;
+}
+
+#carousel .result-item .result-item-details .subject {
+  margin-top: 10px;
+}
+
+#carousel .result-item .result-item-details .subject .hightlight {
+  color: #f7941d;
+}
+
+#carousel .result-item .result-item-details .stats {
+  margin-top: 10px;
+}
+
+#carousel .result-item .result-item-details .stats img {
+  margin-top: 2px;
+}
+
+#carousel .result-item .result-item-details .stats .rating-label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#carousel .result-item .result-item-details .stats .rating-count {
+  color: #b689be;
+}
+
+#carousel .result-item .result-item-details .stats .comment-count {
+  color: #00aeef;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+#carousel .result-item .result-item-details img {
   border: 0;
   height: 15px;
   width: 15px;
