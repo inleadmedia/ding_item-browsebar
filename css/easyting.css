@@ -66,7 +66,7 @@
 }
 
 #navigation .nav {
-  
+
 }
 
 #navigation .nav ul {
@@ -104,6 +104,7 @@
 #navigation #primary-nav ul li.active {
   background-color: #6d137d;
   border-radius: 2px;
+  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
 }
 
@@ -410,8 +411,12 @@
   padding: 0;
 }
 
+.grid_20 {
+  margin: 0;
+}
+
 #content .news .col {
-  width: 235px;
+  width: 230px;
 }
 
 #content h3 {
@@ -430,34 +435,34 @@
   padding: 0;
 }
 
-#content p.where {
+#content .news p.where {
   color: #76ac10;
   font-size: 12px;
   line-height: 18px;
 }
 
-#content p.when {
+#content .news p.when {
   color: #999999;
   font-size: 12px;
   line-height: 18px;
 }
 
-#content p.more {
+#content .news p.more {
   float: right;
 }
 
-#content p.rss {
+#content .news p.rss {
   float: left;
   font-size: 12px;
   line-height: 25px;
 }
 
-#content p.rss img {
+#content .news p.rss img {
   float: left;
   margin: 4px 4px 0 0;
 }
 
-#content .block {
+#content .news .block {
   margin-bottom: 9px;
 }
 
@@ -476,4 +481,24 @@
 
 #content p.more, #content p.rss {
   margin-top: 10px;
+}
+
+#content .recommend {
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+}
+
+#content .recommend .col, #content .recommend .top-bar {
+  padding: 10px;
+}
+
+#content .recommend .top-bar {
+  border-bottom: 1px solid #c6c6c6;
+}
+
+#content .recommend .top-bar h1 {
+  color: #4d4b50;
+  font-size: 17px;
+  margin: 0;
+  padding: 0;
 }
