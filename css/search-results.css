@@ -37,6 +37,20 @@
   line-height: 31px;
   margin-bottom: 27px;
 }
+.pane-ding-availability-legend .available {
+  margin: 0 37px 0 0;
+}
+.pane-ding-availability-legend .available-ill {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .on-loan {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .unavailable {
+  margin: 0 0 0 37px;
+}
+
+
 
 .pane-search-result ol{
   padding: 0;
@@ -68,9 +82,11 @@
 }
 
 .search-result .field-name-ting-cover img {
-  border: 2px solid #999999;
-  border-radius: 2px 2px 2px 2px;
-  padding: 0px;
+  // border: 2px solid #999999;
+  // border-radius: 2px 2px 2px 2px;
+  // padding: 0px;
+  border: 0px;
+  padding: 4px;
 }
 
 .search-result .field-name-ting-cover img:hover {
