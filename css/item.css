@@ -85,6 +85,7 @@
 
 .item-container .tab-container {
   float: right;
+  margin-right: 5px;
 }
 
 .item-container .tab-header {
@@ -94,7 +95,7 @@
   border-radius: 5px;
   float: left;
   margin: 0px 2px;
-  width: 114px;
+  width: 94px;
   background-color: #F7F7F7;
   cursor: pointer;
 }
@@ -130,12 +131,11 @@
 }
 
 .social-icons .social-icon {
-  padding-left: 20px;
+  padding-left: 22px;
   margin-right: 10px;
   height: 18px;
   color: #ababab;
   float: left;
-
 }
 .social-icons .facebook{
   background-image: url(../images/icon-facebook.png);
@@ -154,12 +154,13 @@
   background-repeat: no-repeat;
 }
 .ting-object-additional .tab {
-  width: 320px;
-  float: right;
+  width: 350px;
+  float: left;
+  margin-left: 25px;
 }
 
 .ting-object-additional .cover {
-  width: 200px;
+  // width: 200px;
   float: left;
   text-align: center;
 }
@@ -176,6 +177,7 @@
 
 .ting-object-additional .author {
   color: #999999;
+  margin: 0 0 10px 0;
 }
 .ting-object-additional .author a {
   color: #76AC10;
@@ -185,7 +187,7 @@
   height: auto;
 }
 .page-ting-collection .ting-object-additional div.description, .ting-object div.description {
-  height: 150px;
+  // height: 150px;
 }
 
 .ting-object .object-information .item-list .item-list {

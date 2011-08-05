@@ -534,19 +534,28 @@ ul.primary li a {
 }
 
 .ting-object div.description {
-  height: 100px;
-  overflow: hidden;
+  // height: 100px;
+  // overflow: hidden;
 }
 
 .page-ting-collection .ting-object-additional div.description,
 .ting-object div.description {
-  height: 100px;
-  overflow: hidden;
+  // height: 100px;
+  // overflow: hidden;
+}
+
+.ting-object div.description h2 {
+  padding: 0px;
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  line-height: 30px;
+  // height: 100px;
+  // overflow: hidden;
 }
 
 .page-ting-collection .ting-object div.description {
-  min-height: 130px;
-  overflow: hidden;
+  // min-height: 130px;
+  // overflow: hidden;
 }
 
 .ting-object .ting-object div.types {
@@ -573,7 +582,7 @@ ul.primary li a {
 }
 
 .page-ting-collection .ting-object-additional .ting-cover-style-ding_medium img, .ting-cover-style-ding_small img {
-  width: 72px;
+  width: 120px;
   border: 2px solid #C6C6C6;
 }
 
