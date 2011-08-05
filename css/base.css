@@ -884,6 +884,7 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 .search-results .ting-cover img {
     width: 118px;
     border: 2px solid #6D137D;
+    -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 2px;
