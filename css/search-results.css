@@ -91,14 +91,17 @@
   // border: 2px solid #999999;
   // border-radius: 2px 2px 2px 2px;
   // padding: 0px;
+
   border: 0px;
-  padding: 4px;
+  border-radius: 0px;
+  padding: 3px;
+  width: 120px;
 }
 
 .search-result .field-name-ting-cover img:hover {
   border: 2px solid #6D137D;
-  border-radius: 5px 5px 5px 5px;
-  padding: 2px;
+  border-radius: 3px;
+  padding: 1px;
 }
 
 .search-result form {
