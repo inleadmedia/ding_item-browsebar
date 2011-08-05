@@ -6,10 +6,10 @@ base theme = stark
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/base.css
 stylesheets[all][] = css/grid.css
-stylesheets[all][] = css/text.css
 stylesheets[all][] = css/easyting.css
 stylesheets[all][] = css/item.css
 stylesheets[all][] = css/search-results.css
+stylesheets[all][] = css/text.css
 
 scripts[] = js/dropdown.js
 scripts[] = js/item.tabs.js
