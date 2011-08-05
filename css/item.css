@@ -178,13 +178,16 @@
 .ting-object-additional .author {
   color: #999999;
   margin: 0 0 10px 0;
+  font-size: 14px;
 }
 .ting-object-additional .author a {
   color: #76AC10;
 }
 
 .ting-object-additional .description-content {
-  height: auto;
+  // height: auto;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 .page-ting-collection .ting-object-additional div.description, .ting-object div.description {
   // height: 150px;
@@ -195,6 +198,7 @@
 }
 .ting-object-additional .tab .field .field-label {
   font-weight: normal;
+  font-size: 19px;
 }
 
 .tab .object-information {
