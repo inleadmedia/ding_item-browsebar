@@ -1,4 +1,4 @@
-<div class="col" style="width: 50%;">
+<div class="col">
   <div class="news">
     <div class="col">
       <img src="/<?php print path_to_theme();?>/images/dancer.jpg" width="226" height="126" alt="" />
@@ -271,6 +271,48 @@
     <div class="clear"></div>
   </div>
 </div>
-<div class="col">
+<div class="col" style="width: 224px; margin-left: 24px;">
+  <div class="info-boxes">
+    <div class="block">
+      <img class="left" src="/<?php print path_to_theme(); ?>/images/key.png" width="20" height="20" alt="" />
+      <h3 class="left"><?php print t('Log ind'); ?></h3>
+      <div class="clear"></div>
+      <div class="fields">
+        <input class="input" type="text" value="<?php print t('Bruger nav');?>" />
+        <input class="input" type="text" value="<?php print t('Password');?>" />
+      </div>
+      <div class="additional">
+        <img class="left" src="/<?php print path_to_theme(); ?>/images/plus.png" width="18" height="18" alt="" />
+        <p class="left register"><a href="#"><?php print t('Opret ny bruger'); ?></a></p>
+        <p class="submit right"><input type="button" value="<?php print t('log ind');?>" /></p>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Biblioteks åbningstider:</h3>
+      <div class="col days" style="width: 50%;">
+        <p>Mandag</p>
+        <p>Tirsdag</p>
+        <p>Onsdag</p>
+        <p>Torsdag</p>
+        <p>Fredag</p>
+        <p>Lørdag</p>
+      </div>
+      <div class="col days" style="width: 50%;">
+        <p>10:00 – 19:00 </p>
+        <p>10:00 – 19:00 </p>
+        <p>10:00 – 19:00 </p>
+        <p>10:00 – 19:00 </p>
+        <p>13:00 – 17:00</p>
+        <p>10:00 – 14:00</p>
+      </div>
+      <div class="clear"></div>
+      <div class="on-map">
+        <img class="left"src="/<?php print path_to_theme(); ?>/images/map.png" width="50" height="50" alt="" />
+        <p class="map-link left"><a href="#"><?php print t('Se på kort'); ?></a></p>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="clear"></div>
