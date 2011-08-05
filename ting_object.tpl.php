@@ -38,10 +38,10 @@
       <div class="tab-container">
         <div class="tab-header active description-tab-header">
           <div class="tab-inner"><?php print(t('Beskrivelse')); ?></div>
-        </div>  
+        </div>
         <div class="tab-header details-tab-header">
           <div class="tab-inner"><?php print(t('Detaljer')); ?></div>
-        </div> 
+        </div>
       </div>
       <div class="clear"></div>
     </div>
@@ -64,13 +64,13 @@
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
- 
+
     <?php //echo render($content); ?>
   </div>
   <br />
   <br />
   <br />
-  
+
   <!--?php dpm($content); ?-->
 </div>
 

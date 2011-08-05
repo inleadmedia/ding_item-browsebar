@@ -1,6 +1,12 @@
 
 
 
+#search-controls-form .form-type-select.form-item-size {
+  margin-left: 29px;
+}
+   
+
+
 .pane-ding-toggle-format-toggle {
   width: 47px;
 }
@@ -14,12 +20,6 @@
   width: 47px;
   height: 25px;
 }
-
-// .pane-ding-toggle-format-toggle a.ding-toggle-format-short img#ding-toggle-format-image,
-// .pane-ding-toggle-format-toggle a.ding-toggle-format-long img#ding-toggle-format-image {
-  // width: 47px;
-  // height: 25px;
-// }
 
 .pane-ding-toggle-format-toggle a.ding-toggle-format-short,
 .pane-ding-toggle-format-toggle a.ding-toggle-format-long {
@@ -43,6 +43,20 @@
   line-height: 31px;
   margin-bottom: 27px;
 }
+.pane-ding-availability-legend .available {
+  margin: 0 37px 0 0;
+}
+.pane-ding-availability-legend .available-ill {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .on-loan {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .unavailable {
+  margin: 0 0 0 37px;
+}
+
+
 
 .pane-search-result ol{
   padding: 0;
@@ -64,23 +78,30 @@
 
 .search-result .field-name-ting-cover {
   float: left;
-  width: 140px;
+  margin-right: 25px;
+}
+
+.search-result .field-name-ting-cover .ting-cover {
+  // border: 2px solid #999999;
+  // float: left;
+  // width: 140px;
+}
+
+.search-result .field-name-ting-cover img {
+  // border: 2px solid #999999;
+  // border-radius: 2px 2px 2px 2px;
+  // padding: 0px;
+
+  border: 0px;
+  border-radius: 0px;
+  padding: 3px;
+  width: 120px;
 }
 
 .search-result .field-name-ting-cover img:hover {
   border: 2px solid #6D137D;
-  border-radius: 5px 5px 5px 5px;
-  padding: 2px;
-}
-
-.search-result .field-name-ting-cover img {
-  border: 0;
-  padding: 4px;
-
-  // border: 2px solid #999999;
-  // border-radius: 0px 0px 0px 0px;
-  // padding: 0px;
-  // margin: 3px;
+  border-radius: 3px;
+  padding: 1px;
 }
 
 .search-result form {
@@ -102,7 +123,7 @@
 
 .search-result .field-name-ting-title {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
 }
 .search-result .field-name-ting-title h2 {
@@ -115,7 +136,7 @@
 
 .search-result .field-name-ting-author {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
   color: #999999;
 }
@@ -125,7 +146,7 @@
 
 .search-result .field-name-ting-abstract {
   float: left;
-  width: 380px;
+  width: 370px;
   font-size: 13px;
   color: #4d4b50;
 }

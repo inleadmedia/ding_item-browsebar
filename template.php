@@ -32,6 +32,12 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['#weight'] = '10';
     $form['search_block_form']['#weight'] = '11';
   }
+
+  if ($form_id == 'search_controls_form') {
+    // $form['size']['#type'] = 'select';
+    // $form['size']['#attributes'] = array('onchange' => 'var i = this.selectedIndex; extendSearch("controls_search_size",this[i].value)');
+    // $form['size']['#attributes'] = array('onchange' => 'extendSearch("controls_search_size",this.value)');
+  }
 }
 
 function easyting_preprocess(&$variables, $hook) {
@@ -45,7 +51,7 @@ function easyting_preprocess(&$variables, $hook) {
         <a href="' . ($value['href'] == '<front>' ? 'index.php' : $value['href']) . '">' . $value['title'] . '</a>
         <img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="24"  alt="" /></li>';
     }
-    
+
     $markup .= '</ul>';
     $variables['easyting']['main_nav'] = theme('main_nav', array('menu' => $markup));
 
@@ -56,7 +62,7 @@ function easyting_preprocess(&$variables, $hook) {
     $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
     $markup = '<ul id="s-nav">';
     $i = 0;
-    
+
     foreach($menu as $key => $value) {
       $markup .= '<li>
         <img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $images[$i] . '" width="16" height="16"  alt="" />
@@ -68,7 +74,7 @@ function easyting_preprocess(&$variables, $hook) {
       }
 
       $markup .= '</li>';
-    
+
       $i++;
     }
 
@@ -213,7 +219,7 @@ function easyting_preprocess_ting_object(&$variables) {
 //  drupal_add_css('css/ui-lightness/jquery-tabs.css');
     //drupal_add_js('js/jquery-ui-1.8.14.custom.min.js');
     drupal_add_js('js/item.tabs.js');
-    
+
     $variables['content']['ting_details']['#title'] = t("Detaljer");
 
     $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
@@ -231,22 +237,28 @@ function easyting_preprocess_ting_object(&$variables) {
     // require_once('fb.php');
     // fb($variables['content'],'');
 
+
+    // $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
+    // $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
+    // $variables['easyting']['ting_author'] .= render($variables['content']['ting_author']);
+    // $variables['easyting']['ting_abstract'] .= render($variables['content']['ting_abstract']);
+    // $variables['easyting']['availability'] = $variables['content']['ding_availability_item'];
+    // $variables['easyting']['ting_details'] = $variables['content']['ting_details'];
+    // $variables['easyting']['relations'] = $variables['content']['relations'];
+    // $variables['easyting']['voxb'] = $variables['content']['voxb'];
+
+
     $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
     unset($variables['content']['ting_collection_types']);
-
     $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
     unset($variables['content']['ting_cover']);
-
     $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
     unset($variables['content']['ting_title']);
-
     $variables['easyting']['ting_object'] .= render($variables['content']['ting_author']);
     unset($variables['content']['ting_author']);
-
     $variables['easyting']['ting_object'] .= render($variables['content']['ting_abstract']);
     unset($variables['content']['ting_abstract']);
-
-    // $variables['easyting']['ting_object'] .= render($variables['content']['ting_subjects']);
+    //-$variables['easyting']['ting_object'] .= render($variables['content']['ting_subjects']);
     unset($variables['content']['ting_subjects']);
 
   }

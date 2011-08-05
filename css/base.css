@@ -57,7 +57,7 @@ html[xmlns] .clearfix {
 
 /* suppress title rendered by ting-search-results.tpl.php */
 .pane-search-result h3.title,
-.page-search-ting h3.title { 
+.page-search-ting h3.title {
     display: none;
 }
 
@@ -89,7 +89,7 @@ html[xmlns] .clearfix {
     width: 100%;
 }
 
-.ting-object h2 { 
+.ting-object h2 {
     padding-bottom: 0em;
     color: #6d137d;
 }
@@ -99,11 +99,11 @@ html[xmlns] .clearfix {
     margin-right: 0.5em;
 }
 
-.ting-object h3 { 
+.ting-object h3 {
     padding-bottom: 0em;
 }
 
-.ting-object div.creator { 
+.ting-object div.creator {
     padding: 0 0 0.5em 0;
     float: none;
 }
@@ -112,7 +112,7 @@ html[xmlns] .clearfix {
     float: left;
 }
 
-.ting-object div.abstract { 
+.ting-object div.abstract {
     padding: 0 0 0.5em 0;
 }
 
@@ -120,7 +120,7 @@ html[xmlns] .clearfix {
     display: none;
 }
 
-.ting-object h3.serie-title { 
+.ting-object h3.serie-title {
     padding: 0 0 0.5em 0;
 }
 
@@ -128,14 +128,14 @@ html[xmlns] .clearfix {
     display: none;
 }
 
-.ting-object span.subjects-label { 
+.ting-object span.subjects-label {
 }
 
-.ting-object div.moreinfo a { 
+.ting-object div.moreinfo a {
     padding-right: 10px;
 }
 
-.ting-object div.moreinfo { 
+.ting-object div.moreinfo {
     display: none;
     padding-bottom: 0.5em;
 }
@@ -144,40 +144,40 @@ html[xmlns] .clearfix {
     display: none;
 }
 
-.ting-object div.subjects { 
+.ting-object div.subjects {
  }
 
 .ding-format-short .ting-object div.subjects {
     display: none;
 }
 
-.ting-object div.types { 
+.ting-object div.types {
     padding-bottom: 0.5em;
 }
 
-.ting-object div.types p { 
+.ting-object div.types p {
     color: #797575;
     padding-bottom: 0;
     padding-right: 0.5em;
     float: left;
 }
 
-.ting-object p.type { 
+.ting-object p.type {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typebog { 
+.ting-object p.typebog {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typenetdokument { 
+.ting-object p.typenetdokument {
    padding-left: 16px;
    background: url('../images/icons/book.png') no-repeat center left;
 }
 
-.ting-object p.typenode { 
+.ting-object p.typenode {
    padding-left: 16px;
    background: url('../images/icons/movie.png') no-repeat center left;
 }
@@ -186,7 +186,7 @@ html[xmlns] .clearfix {
 /* periodikum, netdokument, playstation2-spil. node */
 
 .pane-search-result p.clearfix,
-.page-search-ting p.clearfix { 
+.page-search-ting p.clearfix {
     clear: both;
 }
 
@@ -225,7 +225,7 @@ html[xmlns] .clearfix {
 .ting-object .object-information .object-information-header {
     padding: 0.5em 0;
     min-height: 40px;
-    background: url('../images/icons/book.png') no-repeat center left;    
+    background: url('../images/icons/book.png') no-repeat center left;
 }
 
 .ting-object .object-information .object-information-header h2 {
@@ -308,7 +308,7 @@ html[xmlns] .clearfix {
 
 .ting-relation.ting-relation-hasauthordescription h2 {
     min-height: 40px;
-    background: url('../images/icons/book.png') no-repeat center left;    
+    background: url('../images/icons/book.png') no-repeat center left;
     padding-left: 40px;
     border-bottom: 2px solid #e7e7e6;
     line-height: 40px;
@@ -335,7 +335,7 @@ html[xmlns] .clearfix {
 
 .holdings h2 {
     min-height: 40px;
-    background: url('../images/icons/book.png') no-repeat center left;    
+    background: url('../images/icons/book.png') no-repeat center left;
     padding-left: 40px;
     border-bottom: 2px solid #e7e7e6;
     line-height: 40px;
@@ -474,19 +474,19 @@ html[xmlns] .clearfix {
 
 /* ***** Primary tabs ***** */
 
-.page-search #main div.tabs { 
+.page-search #main div.tabs {
   display: none;
 }
 
 /*
-.page-search #tabs { 
+.page-search #tabs {
   padding: 0 5px 0 5px;
   background: url(../images/bg_primary_tab_left.png) no-repeat left bottom,
               url(../images/bg_primary_tab_right.png) no-repeat right bottom;
 }
 */
 
-.page-search ul.primary { 
+.page-search ul.primary {
   white-space: nowrap;
   border-bottom: 0px solid #eeeff0;
   background: url(../images/bg_primary_tab.png) no-repeat center bottom;
@@ -496,14 +496,14 @@ html[xmlns] .clearfix {
   white-space: nowrap;
 }
 
-.page-search ul.primary > span { 
+.page-search ul.primary > span {
   border-style: none;
   width: auto;
   display: block;
-  float: left; 
+  float: left;
 }
 
-.page-search ul.primary li { 
+.page-search ul.primary li {
   border-color: #eeeff0;
   border-width: 2px;
   background: url(../images/bg_primary_tab_li_left.png) repeat-y left top;
@@ -511,29 +511,29 @@ html[xmlns] .clearfix {
   line-height: 1.8em;
   height: 2em;
   display: block;
-  float: left; 
+  float: left;
   margin-top: 0.6em;
 }
 
-.page-search ul.primary span.last li { 
+.page-search ul.primary span.last li {
   border-style: solid solid none none;
 }
 
-.page-search ul.primary li.active { 
+.page-search ul.primary li.active {
   height: 2.8em;
   line-height: 2.8em;
   border-style: none;
   margin-top: 0em;
 }
 
-.page-search ul.primary li a { 
+.page-search ul.primary li a {
   background-color: inherit;
   border-style: none;
   margin-right: 0em;
   padding: 0.4em 1.2em;
 }
 
-.page-search ul.primary li.active a { 
+.page-search ul.primary li.active a {
   background: url(../images/bg_tabs_active.png) no-repeat center bottom;
   padding: 0.8em 1.2em;
 }
@@ -594,18 +594,18 @@ span#expand_more:hover, span#expand_less:hover {
 }
 
 div.ajax-progress {
-    position: absolute; 
+    position: absolute;
     padding: 0.5em;
     border: 1px solid #000;
     background-color: #fff;
 }
 
 div.ajax-progress .throbber {
-    
+
 }
 
 div.ajax-progress .message {
-    
+
 }
 
 .panel-separator {
@@ -884,6 +884,7 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 .search-results .ting-cover img {
     width: 118px;
     border: 2px solid #6D137D;
+    -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 2px;
