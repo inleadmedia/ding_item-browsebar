@@ -1,6 +1,12 @@
 
 
 
+#search-controls-form .form-type-select.form-item-size {
+  margin-left: 29px;
+}
+   
+
+
 .pane-ding-toggle-format-toggle {
   width: 47px;
 }

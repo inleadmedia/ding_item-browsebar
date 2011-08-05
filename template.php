@@ -32,6 +32,10 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['#weight'] = '10';
     $form['search_block_form']['#weight'] = '11';
   }
+
+  if ($form_id == 'search_controls_form') {
+    $form['size']['#type'] = 'select';
+  }
 }
 
 function easyting_preprocess(&$variables, $hook) {
