@@ -34,7 +34,9 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if ($form_id == 'search_controls_form') {
-    $form['size']['#type'] = 'select';
+    // $form['size']['#type'] = 'select';
+    // $form['size']['#attributes'] = array('onchange' => 'var i = this.selectedIndex; extendSearch("controls_search_size",this[i].value)');
+    // $form['size']['#attributes'] = array('onchange' => 'extendSearch("controls_search_size",this.value)');
   }
 }
 
