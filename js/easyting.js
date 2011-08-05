@@ -12,7 +12,7 @@
     });
 
     
-    $("#foo").carouFredSel({
+    $("#coverflow").carouFredSel({
       curcular: false,
       infinite: false,
       auto : false,

@@ -12,7 +12,7 @@
         <li><a href="#" class="alpha"><?php print t('Alfabetisk'); ?></a></li>
       </ul>
     </div>
-    <div id="foo">
+    <div id="coverflow">
       <?php print $carousel_items; ?>
     </div>
     <a id="prev" href="#"></a>

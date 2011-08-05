@@ -7,6 +7,14 @@
   float: none;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 #search_form {
   height: 41px;
   left: 300px;
@@ -405,6 +413,11 @@
   float: left;
 }
 
+#content .col .image {
+  border: 2px solid #c6c6c6;
+  border-radius: 2px;
+}
+
 .ting-object-additional .col h2 {
   margin: 0;
   padding: 0;
@@ -415,10 +428,10 @@
 }
 
 #content .news .col {
-  width: 230px;
+  width: 234px;
 }
 
-#content h3 {
+#content .col h3 {
   color: #6d137d;
   font-size: 15px;
   line-height: 22px;
@@ -426,7 +439,7 @@
   padding: 0;
 }
 
-#content p {
+#content .col p {
   color: #4d4b50;
   font-size: 14px;
   line-height: 18px;
@@ -434,30 +447,47 @@
   padding: 0;
 }
 
-#content .news p.where {
+#content .col p.where {
   color: #76ac10;
   font-size: 12px;
   line-height: 18px;
 }
 
-#content .news p.when {
+#content .col .creator {
+  color: #76ac10;
+  font-size: 12px;
+}
+
+#content .col .creator .by {
+  color: #999999;
+}
+
+#content .col p.when {
   color: #999999;
   font-size: 12px;
   line-height: 18px;
 }
 
-#content .news p.more {
+#content .col p.more {
   float: right;
 }
 
-#content .news p.rss {
+#content .col p.rss {
   float: left;
   font-size: 12px;
   line-height: 25px;
 }
 
-#content .news p.rss img {
-  float: left;
+#content .col p.rss img, #content .col p.rss span {
+   float: left;
+}
+
+#content .col p.rss span {
+  display: inline-block;
+  margin-top: 2px;
+}
+
+#content .col p.rss img {
   margin: 4px 4px 0 0;
 }
 
@@ -472,6 +502,7 @@
   color: #0681b0;
   font-size: 12px;
   height: 24px;
+  margin: 0;
 }
 
 #content p.rss a:link { color: #0681b0; text-decoration: none; }
@@ -479,12 +510,14 @@
 #content p.rss a:visited { color: #0681b0; text-decoration: none; }
 
 #content p.more, #content p.rss {
-  margin-top: 10px;
+  height: 24px;
+  margin-top: 3px;
 }
 
 #content .recommend {
   border: 1px solid #c6c6c6;
   border-radius: 5px;
+  margin-top: 36px;
 }
 
 #content .recommend .col, #content .recommend .top-bar {
@@ -493,11 +526,113 @@
 
 #content .recommend .top-bar {
   border-bottom: 1px solid #c6c6c6;
+  height: 16px;
 }
 
 #content .recommend .top-bar h1 {
   color: #4d4b50;
+  float: left;
   font-size: 17px;
   margin: 0;
   padding: 0;
+}
+
+#content .recommend .top-bar .bullets {
+  float: right;
+}
+
+#content .recommend .top-bar .bullets a {
+  background-image: url('../images/circle_off.png');
+  background-repeat: no-repeat;
+  float: left;
+  display: block;
+  height: 14px;
+  margin-left: 2px;
+  width: 14px;
+}
+
+#content .recommend .top-bar .bullets a.active {
+  background-image: url('../images/circle_on.png');
+  background-repeat: no-repeat;
+}
+
+#content span.more a:link { color: #0681b0; }
+#content span.more a:visited { color: #0681b0; }
+#content span.more a:hover { color: #0681b0; }
+
+#content .recommend .col .social {
+  float: left;
+  margin-top: 5px;
+}
+
+#content .recommend .col .recommend-button {
+  float: right;
+  margin-top: 2px;
+}
+
+#content .users {
+  margin-top: 37px;
+}
+
+#content .users > .col {
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+}
+
+#content .users .block {
+  margin-top: 13px;
+}
+
+#content .users .block .user-rating {
+  margin-top: 3px;
+}
+
+#content .users .block .user-rating img {
+  float: left;
+}
+
+#content .users .block .user-rating .rating-count {
+  color: #999999;
+  display: inline-block;
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+  margin-left: 2px;
+}
+
+#content .users .block .favorites {
+  float: right;
+  margin: 20px 0 0 0;
+}
+
+#content .users .block .description {
+  color: #999999;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 3px 0 3px 0;
+}
+
+#content .users .bordered {
+  border-bottom: 1px dashed #999999;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+}
+
+#content .calendar {
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  padding: 10px;
+  width: 205px;
+}
+
+#content .calendar .block {
+  margin-bottom: 14px;
+}
+
+#content .calendar .col > .where {
+  margin-top: 10px;
+}
+
+#content .calendar > h3 {
+  margin: -3px 0 0 5px;
 }
