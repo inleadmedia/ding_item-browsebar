@@ -19,5 +19,3 @@ regions[header] = Header
 regions[navigation] = Navigation
 regions[content] = Main content area
 regions[footer] = Footer
-
-plugins[panels][layouts] = layouts
