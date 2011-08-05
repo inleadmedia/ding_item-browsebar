@@ -104,7 +104,17 @@
    width: 99%;
    text-align: center;
    color: #4d4b50;
-   background-image: url('../images/tab-bg.png');
+   background-image: -ms-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Mozilla Firefox */ 
+   background-image: -moz-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Opera */ 
+   background-image: -o-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Webkit (Safari/Chrome 10) */
+   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(, #F7F7F7), color-stop(1, #E2E2E2));
+   /* Webkit (Chrome 11+) */ 
+   background-image: -webkit-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Proposed W3C Markup */ 
+   background-image: linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
 }
 
 .item-container .active {
