@@ -237,29 +237,45 @@ function easyting_preprocess_ting_object(&$variables) {
     // require_once('fb.php');
     // fb($variables['content'],'');
 
+    $variables['easyting']['ting_cover'] = $variables['content']['ting_primary_object'][0]['ting_cover'];
+    unset($variables['content']['ting_primary_object'][0]['ting_cover']);
 
-    // $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
-    // $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
-    // $variables['easyting']['ting_author'] .= render($variables['content']['ting_author']);
-    // $variables['easyting']['ting_abstract'] .= render($variables['content']['ting_abstract']);
-    // $variables['easyting']['availability'] = $variables['content']['ding_availability_item'];
-    // $variables['easyting']['ting_details'] = $variables['content']['ting_details'];
-    // $variables['easyting']['relations'] = $variables['content']['relations'];
-    // $variables['easyting']['voxb'] = $variables['content']['voxb'];
+    $variables['easyting']['ting_title'] = $variables['content']['ting_primary_object'][0]['ting_title'];
+    unset($variables['content']['ting_primary_object'][0]['ting_title']);
 
+    $variables['easyting']['ting_author'] = $variables['content']['ting_primary_object'][0]['ting_author'];
+    unset($variables['content']['ting_primary_object'][0]['ting_author']);
 
-    $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
-    unset($variables['content']['ting_collection_types']);
-    $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
-    unset($variables['content']['ting_cover']);
-    $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
-    unset($variables['content']['ting_title']);
-    $variables['easyting']['ting_object'] .= render($variables['content']['ting_author']);
-    unset($variables['content']['ting_author']);
-    $variables['easyting']['ting_object'] .= render($variables['content']['ting_abstract']);
-    unset($variables['content']['ting_abstract']);
-    //-$variables['easyting']['ting_object'] .= render($variables['content']['ting_subjects']);
+    $variables['easyting']['ting_abstract'] = $variables['content']['ting_primary_object'][0]['ting_abstract'];
+    unset($variables['content']['ting_primary_object'][0]['ting_abstract']);
+
+    $variables['easyting']['availability'] = $variables['content']['ting_primary_object'][0]['ding_availability_item'];
+    unset($variables['content']['ting_primary_object'][0]['ding_availability_item']);
+
+    $variables['easyting']['ting_details'] = $variables['content']['ting_primary_object'][0]['ting_details'];
+    unset($variables['content']['ting_primary_object'][0]['ting_details']);
+
+    // $variables['easyting']['relations'] = $variables['content']['ting_primary_object'][0]['relations'];
+    // unset($variables['content']['ting_primary_object'][0]['relations']);
+
+    // $variables['easyting']['voxb'] = $variables['content']['ting_primary_object'][0]['voxb'];
+    // unset();
+
     unset($variables['content']['ting_subjects']);
+
+
+    // $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
+    // unset($variables['content']['ting_collection_types']);
+    // $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
+    // unset($variables['content']['ting_cover']);
+    // $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
+    // unset($variables['content']['ting_title']);
+    // $variables['easyting']['ting_object'] .= render($variables['content']['ting_author']);
+    // unset($variables['content']['ting_author']);
+    // $variables['easyting']['ting_object'] .= render($variables['content']['ting_abstract']);
+    // unset($variables['content']['ting_abstract']);
+    // //-$variables['easyting']['ting_object'] .= render($variables['content']['ting_subjects']);
+    // unset($variables['content']['ting_subjects']);
 
   }
 

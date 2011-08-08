@@ -76,20 +76,17 @@
 
 <?php } if (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
-  <div class="ting-object-additional">
-    <?php
+  <!--div class="ting-object-search-result-additional"-->
+  <!--div class="ting-object-additional"-->
+  <?php
     print render($easyting['ting_cover']);
-    ?>
-    <?php
+    print render($easyting['ting_title']);
     print render($easyting['ting_object']);
-    ?>
-    <?php
-    echo render($content);
-    ?>
-    <?php
-    print render($easyting['ting_collection_types']);
-    ?>
-  </div>
+    print render($easyting['ting_author']);
+    print render($easyting['ting_abstract']);
+    print render($content);
+  ?>
+  <!--/div-->
 
 <?php } ?>
 

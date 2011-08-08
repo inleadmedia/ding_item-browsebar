@@ -170,6 +170,7 @@
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  padding: 1px;
 }
 .ting-object-additional .cover img:hover {
   border: 2px solid #6d1b7c;

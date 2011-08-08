@@ -116,7 +116,7 @@
 }
 
 .search-result form {
-  // float: left;
+  clear: both;
 }
 
 .search-result form .form-submit {
