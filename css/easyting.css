@@ -748,6 +748,18 @@
   margin-right: 17px;
 }
 
+#voxb {
+  margin-top: 20px;
+}
+
+#voxb input {
+  background-color: transparent;
+}
+
+#voxb input:hover {
+  background-color: transparent;
+}
+
 #voxb #pager-block {
   width: 210px;
 }
