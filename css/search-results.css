@@ -79,8 +79,12 @@
   margin-right: 25px;
 }
 
-.ting-object-search-result-additional .ting-cover-main img {
+.ting-object-search-result-additional .ting-cover-main {
+  height: 200px;
   width: 120px;
+}
+
+.ting-object-search-result-additional .ting-cover-main img {
   border: 2px solid #999999;
   border-radius: 2px 2px 2px 2px;
   padding: 1px;
@@ -93,7 +97,6 @@
 }
 
 .ting-object-search-result-additional .ting-title {
-  float: left;
   width: 370px;
   font-size: 13px;
 }
@@ -111,7 +114,6 @@
 }
 
 .ting-object-search-result-additional .ting-author {
-  float: left;
   width: 370px;
   font-size: 13px;
   color: #999999;
@@ -122,7 +124,6 @@
 }
           
 .ting-object-search-result-additional .ting-abstract {
-  float: left;
   width: 370px;
   font-size: 13px;
   color: #4d4b50;
@@ -130,14 +131,6 @@
 
 .ting-object-search-result-additional .ting-abstract .field-name-ting-abstract {
   padding-bottom: 50px;
-}
-
-.ting-object-search-result-additional .ting-actions {
-  float: left;
-}
-
-.ting-object-search-result-additional .ting-collection-types {
-  float: right;
 }
 
 .ting-object-search-result-additional .ting-collection-types li {

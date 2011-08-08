@@ -269,30 +269,22 @@ function easyting_preprocess_ting_object(&$variables) {
     fb($variables['content'], '');
 
     if (isset($variables['content']['ting_primary_object'])) {
-      $variables['easyting']['ting_cover'] = $variables['content']['ting_primary_object'][0]['ting_cover'];
-      unset($variables['content']['ting_primary_object'][0]['ting_cover']);
 
-      $variables['easyting']['ting_title'] = $variables['content']['ting_primary_object'][0]['ting_title'];
-      unset($variables['content']['ting_primary_object'][0]['ting_title']);
+      $locations = array_keys($variables['content']['ting_primary_object'][0]);
 
-      $variables['easyting']['ting_author'] = $variables['content']['ting_primary_object'][0]['ting_author'];
-      unset($variables['content']['ting_primary_object'][0]['ting_author']);
-
-      $variables['easyting']['ting_abstract'] = $variables['content']['ting_primary_object'][0]['ting_abstract'];
-      unset($variables['content']['ting_primary_object'][0]['ting_abstract']);
+      foreach($locations as $key => $value) {
+        if (isset($variables['content']['ting_primary_object'][0][$value])) {
+          $variables['easyting'][$locations[$key]] = $variables['content']['ting_primary_object'][0][$value];
+          unset($variables['content']['ting_primary_object'][0][$value]);
+        }
+      }
 
       $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
       unset($variables['content']['ting_collection_types']);
-
-      $variables['easyting']['ting_actions'] = $variables['content']['ting_primary_object'][0]['actions'];
-      unset($variables['content']['ting_primary_object'][0]['actions']);
-
-      // unset($variables['content']['ting_primary_object'][0]['ting_subjects']);
     }
 
     print render($content);
 
   }
-
 }
 ?>

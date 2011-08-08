@@ -78,29 +78,31 @@
 <?php } if (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
   <div class="ting-object-search-result-additional">
+    <div class="col">
     <div class="ting-cover-main">
       <?php print render($easyting['ting_cover']); ?>
     </div>
-    <div class="ting-title">
-      <?php print render($easyting['ting_title']); ?>
     </div>
-    <div class="ting-author">
-      <?php print render($easyting['ting_author']); ?>
-    </div>
-    <div class="ting-abstract">
-      <?php print render($easyting['ting_abstract']); ?>
-      <div class="clear"></div>
-      <div class="ting-actions">
-        <?php print render($easyting['ting_actions']); ?>
+    <div class="col">
+      <div class="ting-title">
+        <?php print render($easyting['ting_title']); ?>
       </div>
-      <div class="ting-collection-types">
-        <?php print render($easyting['ting_collection_types']); ?>
+      <div class="ting-author">
+        <?php print render($easyting['ting_author']); ?>
+      </div>
+      <div class="ting-abstract">
+        <?php print render($easyting['ting_abstract']); ?>
+        <div class="clear"></div>
+        <div class="ting-actions left">
+          <?php print render($easyting['actions']); ?>
+        </div>
+        <div class="ting-collection-types right">
+          <?php print render($easyting['ting_collection_types']); ?>
+        </div>
+        <div class="clear"></div>
       </div>
     </div>
     <div class="clear"></div>
   </div>
 
 <?php } ?>
-
-
-
