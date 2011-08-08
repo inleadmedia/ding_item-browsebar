@@ -172,7 +172,7 @@
 #content .pane-content ul.pager li a {
   text-decoration: none;
   color: #999999;
-  padding: 10px;
+  padding: 10px 10px 6px 10px;
 }
 
 #content .pane-content ul.pager li.pager-first a:hover,
@@ -182,14 +182,16 @@
 #content .pane-content ul.pager li.pager-last a:hover {
   border: 1px solid #d6d6d6;
   border-radius: 3px;
-  padding: 9px;
+  padding: 9px 9px 5px 9px;
   // color: #999999;
 }
 
-#content .pane-content .pager li .pager-current a {
-// 0681b0
+#content .pane-content ul.pager li.pager-current {
   color: #6d137d;
-  padding: 9px;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  padding: 9px 9px 5px 9px;
+  background-color: #e7e7e7;
 }
 
 
