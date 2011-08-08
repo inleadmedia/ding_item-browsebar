@@ -48,7 +48,8 @@ html[xmlns] .clearfix {
 
 .pane-search-result li.search-result,
 .page-search-ting li.search-result  {
-    border-bottom: 1px solid #e7e7e6;
+  border-bottom: 1px solid #e7e7e6;
+  padding-bottom: 24px; 
 }
 
 .page-search-ting p.search-snippet {
@@ -878,8 +879,13 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 
 .search-results .search-snippet-info {
-    padding-left: 0;
-    margin-bottom: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results .search-snippet-info p {
+  padding: 0;
+  margin: 0;
 }
 
 .search-results .ting-cover img {
