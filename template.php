@@ -286,6 +286,5 @@ function easyting_preprocess_ting_object(&$variables) {
     print render($content);
 
   }
-
 }
 ?>
