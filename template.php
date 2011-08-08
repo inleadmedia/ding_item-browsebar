@@ -162,6 +162,7 @@ function easyting_preprocess(&$variables, $hook) {
       $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
 
       $variables['page']['content'] = theme('main_content');
+      $variables['page']['footer_menu'] = theme('footer_menus');
     }
   }
 
@@ -202,6 +203,12 @@ function easyting_theme($existing, $type, $theme, $path) {
   $hooks['main_content'] = array(
     'variables' => array('content' => NULL),
     'template' => 'easyting_main_page',
+    'path' => $path . '/templates',
+  );
+
+  $hooks['footer_menus'] = array(
+    'variables' => array(),
+    'template' => 'easyting_footer_menu',
     'path' => $path . '/templates',
   );
 

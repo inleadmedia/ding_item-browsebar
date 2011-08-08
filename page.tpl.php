@@ -100,6 +100,7 @@
   <div id="footer">
     <div class="section">
       <?php print render($page['footer']); ?>
+      <?php print render($page['footer_menu']); ?>
     </div>
     <!-- /.section -->
   </div>

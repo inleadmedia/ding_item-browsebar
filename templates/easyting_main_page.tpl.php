@@ -29,10 +29,11 @@
         <p class="when">11.otkober 2010 - NYE INDKOB</p>
         <h3 class="title">Københavns biblioteker fylder 125 år</h3>
       </div>
-      <p class="rss">
-        <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" /><span> RSS</span></a>
+      <p class="rss left">
+        <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
+        <a class="left" href="#"> RSS</a>
       </p>
-      <p class="more"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
+      <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
     </div>
     <div class="clear"></div>
   </div>
@@ -167,10 +168,11 @@
         <div class="clear"></div>
         <p class="description">Den var kedelig og lang... <span class="more"><a href="#"><?php print t('Laes mere'); ?></a></span></p>
       </div>
-      <p class="rss">
-        <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" /><span> RSS</span></a>
+      <p class="rss left">
+        <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
+        <a class="left" href="#"> RSS</a>
       </p>
-      <p class="more"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
+      <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
       <div class="clear"></div>
     </div>
   </div>
@@ -191,7 +193,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Baboulja</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -202,7 +204,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Fremtidsforsker om H. G. Wells</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -213,7 +215,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Morten Ramsland</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -224,7 +226,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Omans kvinder</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -235,7 +237,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Omans kvinder</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -246,7 +248,7 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Dorian Grays Billede bog</h3>
         <p class="when">kl. 16:30 - Gratis</p>
@@ -257,17 +259,18 @@
       <div class="col" style="padding: 0 5px 0 0; height: 84px; width: 64px;">
         <img class="image" src="/<?php print path_to_theme(); ?>/images/blank.jpg" width="60" height="80" alt="" />
       </div>
-      <div class="col" style="padding: 0 0 5px 0; width: 135px;">
+      <div class="col" style="padding: 0 0 0 1px; width: 135px;">
         <p class="where">Blågårdens Bibliotek</p>
         <h3>Morten Ramsland</h3>
         <p class="when">kl. 16:30 - Gratis</p>
       </div>
       <div class="clear"></div>
     </div>
-    <p class="rss">
-      <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" /><span> RSS</span></a>
+    <p class="rss left">
+      <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
+      <a class="left" href="#"> RSS</a>
     </p>
-    <p class="more"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
+    <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
     <div class="clear"></div>
   </div>
 </div>
@@ -310,6 +313,29 @@
       <div class="on-map">
         <img class="left"src="/<?php print path_to_theme(); ?>/images/map.png" width="50" height="50" alt="" />
         <p class="map-link left"><a href="#"><?php print t('Se på kort'); ?></a></p>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Selvbetjening</h3>
+      <ul class="v-list">
+        <li>Tjek din lånestatus</li>
+        <li>Tilmeld SMS og email-service</li>
+        <li>Betal gebyrer og regninger</li>
+        <li>Brug netbaser</li>
+        <li>Se film på nettet</li>
+      </ul>
+      <p class="right" style="margin-top: 15px;">
+        <input class="button" type="button" value="<?php print t('Mere selvbetjening '); ?>" />
+      </p>
+      <div class="clear"></div>
+    </div>
+    <div class="block">
+      <h3>Opret dig som bruger</h3>
+      <p style="margin-top: 10px;">Opret dig som bruger af biblioteket, så du let kan reservere materialer og få afngang til online ressourcer.</p>
+      <div class="card">
+        <img class="left" src="/<?php print path_to_theme(); ?>/images/card.png" width="52" height="41" alt="" />
+        <p class="left"><a href="#"><?php print t('Opret dig her'); ?></a></p>
         <div class="clear"></div>
       </div>
     </div>
