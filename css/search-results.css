@@ -154,7 +154,9 @@
   border: 0;
 }
 
-
+.ting-actions .form-submit {
+  color: #6d137d !important;
+}
 
 
 .pane-content ul.pager {
