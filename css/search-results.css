@@ -103,6 +103,7 @@
   color: #6d137d;
   margin: 5px 0 7px 0;
   padding: 0px;
+  line-height: 30px;
 }
 
 .ting-object-search-result-additional .ting-title h2 a {
@@ -159,6 +160,48 @@
   text-align: left;
   border: 0;
 }
+
+
+
+
+.pane-content ul.pager {
+  padding: 0px;
+  margin: 10px 0;
+}
+
+#content .pane-content ul.pager li {
+  padding: 0px;
+  margin: 0px;
+}
+
+#content .pane-content ul.pager li a:hover,
+#content .pane-content ul.pager li a:link,
+#content .pane-content ul.pager li a {
+  text-decoration: none;
+  color: #999999;
+  padding: 10px;
+}
+
+#content .pane-content ul.pager li.pager-first a:hover,
+#content .pane-content ul.pager li.pager-previous a:hover,
+#content .pane-content ul.pager li.pager-item a:hover,
+#content .pane-content ul.pager li.pager-next a:hover,
+#content .pane-content ul.pager li.pager-last a:hover {
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  padding: 9px;
+  // color: #999999;
+}
+
+#content .pane-content .pager li .pager-current a {
+// 0681b0
+  color: #6d137d;
+  padding: 9px;
+}
+
+
+
+
 
 
 
