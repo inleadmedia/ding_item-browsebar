@@ -11,10 +11,10 @@ function easyting_breadcrumb($variables) {
     while ( $i < $array_size) {
       $crumbs .= '<li class="';
       if ($i == 0) {
-	$crumbs .= ' home';
+        $crumbs .= ' home';
       }
       if ($i+1 == $array_size) {
-	$crumbs .= ' active';
+        $crumbs .= ' active';
       }
       $crumbs .=  '">' . $breadcrumb[$i] . '</li>';
       $i++;
