@@ -242,7 +242,7 @@ function easyting_preprocess_ting_object(&$variables) {
   if (arg(0) == 'search' && arg(1) == 'ting') {
 
     require_once('fb.php');
-    fb($variables['content'],'');
+    fb($variables['content'], '');
 
 
     $variables['easyting']['ting_cover'] = $variables['content']['ting_primary_object'][0]['ting_cover'];
