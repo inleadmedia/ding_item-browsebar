@@ -747,3 +747,27 @@
 #footer #footer-menu a {
   margin-right: 17px;
 }
+
+#voxb #pager-block {
+  width: 210px;
+}
+
+#voxb #pager-block ul {
+  margin: 0;
+  padding: 0;
+}
+
+#voxb #pager-block ul li {
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  padding: 0 !important;
+}
+
+#voxb #pager-block ul li a {
+  margin: 0;
+  padding: 3px 0 0 0;
+  outline: none;
+  height: 25px;
+  width: 25px;
+}
