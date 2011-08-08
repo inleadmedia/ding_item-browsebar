@@ -162,8 +162,9 @@ function easyting_preprocess(&$variables, $hook) {
       $variables['easyting']['carousel'] = theme('carousel', array('carousel_items' => $markup));
 
       $variables['page']['content'] = theme('main_content');
-      $variables['page']['footer_menu'] = theme('footer_menus');
     }
+
+    $variables['page']['footer_menu'] = theme('footer_menus');
   }
 
   // if ($hook == 'search_result') {
@@ -284,7 +285,6 @@ function easyting_preprocess_ting_object(&$variables) {
     }
 
     print render($content);
-
   }
 }
 ?>
