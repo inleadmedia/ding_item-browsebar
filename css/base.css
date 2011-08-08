@@ -245,8 +245,9 @@ html[xmlns] .clearfix {
 }
 
 .ting-object .object-information .item-list {
-    line-height: 1.3em;
-    padding: 0 0 0.5em 0;
+  line-height: 1.3em;
+  padding: 0 0 0.5em 0;
+  font-size: 14px;
 }
 
 .ting-object .object-information .item-list .item-list {
