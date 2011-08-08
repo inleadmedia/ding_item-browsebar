@@ -103,9 +103,9 @@
         print render($easyting['ting_collection_types']);
       ?>
     </div>
-    <div class="">
+    <div class="ting_actions">
       <?php
-        print render($content);
+        print render($easyting['ting_actions']);
       ?>
     </div>
   </div>

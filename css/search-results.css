@@ -1,60 +1,23 @@
 
 
 
-#search-controls-form .form-type-select.form-item-size {
-  margin-left: 29px;
-}
-   
 
 
-.pane-ding-toggle-format-toggle {
-  width: 47px;
+.ting-object-search-result-additional .ting_cover {
 }
 
-.pane-ding-toggle-format-toggle .ding-toggle-format-label {
-  display: none;
+.ting-object-search-result-additional .ting_title{
 }
 
-.pane-ding-toggle-format-toggle a.ding-toggle-format-long img.
-.pane-ding-toggle-format-toggle a.ding-toggle-format-short img {
-  width: 47px;
-  height: 25px;
+.ting-object-search-result-additional .ting_author{
 }
 
-.pane-ding-toggle-format-toggle a.ding-toggle-format-short,
-.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
-  width: 47px;
-  height: 25px;
-  display: block;
+.ting-object-search-result-additional .ting_abstract{
 }
 
-.pane-ding-toggle-format-toggle a.ding-toggle-format-short {
-  background: url("../images/display-format-button.png") no-repeat 0 -25px transparent;
+.ting-object-search-result-additional .ting_collection_types{
 }
 
-.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
-  background: url("../images/display-format-button.png") no-repeat 0 0 transparent;
-}
-
-.pane-ding-availability-legend .availability-legend {
-  border-bottom: 1px solid #E7E7E6;
-  border-top: 2px solid #E7E7E6;
-  height: 31px;
-  line-height: 31px;
-  margin-bottom: 27px;
-}
-.pane-ding-availability-legend .available {
-  margin: 0 37px 0 0;
-}
-.pane-ding-availability-legend .available-ill {
-  margin: 0 37px;
-}
-.pane-ding-availability-legend .on-loan {
-  margin: 0 37px;
-}
-.pane-ding-availability-legend .unavailable {
-  margin: 0 0 0 37px;
-}
 
 
 
@@ -162,6 +125,81 @@
   color: #4d4b50;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ting-object-search-result-additional {
+
+}
+
+
+#search-controls-form .form-type-select.form-item-size {
+  margin-left: 29px;
+}
+   
+
+
+.pane-ding-toggle-format-toggle {
+  width: 47px;
+}
+
+.pane-ding-toggle-format-toggle .ding-toggle-format-label {
+  display: none;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long img.
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short img {
+  width: 47px;
+  height: 25px;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short,
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
+  width: 47px;
+  height: 25px;
+  display: block;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short {
+  background: url("../images/display-format-button.png") no-repeat 0 -25px transparent;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
+  background: url("../images/display-format-button.png") no-repeat 0 0 transparent;
+}
+
+.pane-ding-availability-legend .availability-legend {
+  border-bottom: 1px solid #E7E7E6;
+  border-top: 2px solid #E7E7E6;
+  height: 31px;
+  line-height: 31px;
+  margin-bottom: 27px;
+}
+.pane-ding-availability-legend .available {
+  margin: 0 37px 0 0;
+}
+.pane-ding-availability-legend .available-ill {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .on-loan {
+  margin: 0 37px;
+}
+.pane-ding-availability-legend .unavailable {
+  margin: 0 0 0 37px;
+}
 
 
 

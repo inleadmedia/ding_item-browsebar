@@ -268,23 +268,29 @@ function easyting_preprocess_ting_object(&$variables) {
     require_once('fb.php');
     fb($variables['content'], '');
 
+    if (isset($variables['content']['ting_primary_object'])) {
+      $variables['easyting']['ting_cover'] = $variables['content']['ting_primary_object'][0]['ting_cover'];
+      unset($variables['content']['ting_primary_object'][0]['ting_cover']);
 
-    $variables['easyting']['ting_cover'] = $variables['content']['ting_primary_object'][0]['ting_cover'];
-    unset($variables['content']['ting_primary_object'][0]['ting_cover']);
+      $variables['easyting']['ting_title'] = $variables['content']['ting_primary_object'][0]['ting_title'];
+      unset($variables['content']['ting_primary_object'][0]['ting_title']);
 
-    $variables['easyting']['ting_title'] = $variables['content']['ting_primary_object'][0]['ting_title'];
-    unset($variables['content']['ting_primary_object'][0]['ting_title']);
+      $variables['easyting']['ting_author'] = $variables['content']['ting_primary_object'][0]['ting_author'];
+      unset($variables['content']['ting_primary_object'][0]['ting_author']);
 
-    $variables['easyting']['ting_author'] = $variables['content']['ting_primary_object'][0]['ting_author'];
-    unset($variables['content']['ting_primary_object'][0]['ting_author']);
+      $variables['easyting']['ting_abstract'] = $variables['content']['ting_primary_object'][0]['ting_abstract'];
+      unset($variables['content']['ting_primary_object'][0]['ting_abstract']);
 
-    $variables['easyting']['ting_abstract'] = $variables['content']['ting_primary_object'][0]['ting_abstract'];
-    unset($variables['content']['ting_primary_object'][0]['ting_abstract']);
+      $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
+      unset($variables['content']['ting_collection_types']);
 
-    $variables['easyting']['ting_collection_types'] = $variables['content']['ting_collection_types'];
-    unset($variables['content']['ting_collection_types']);
+      $variables['easyting']['ting_actions'] = $variables['content']['ting_primary_object'][0]['actions'];
+      unset($variables['content']['ting_primary_object'][0]['actions']);
 
-    unset($variables['content']['ting_primary_object'][0]['ting_subjects']);
+      // unset($variables['content']['ting_primary_object'][0]['ting_subjects']);
+    }
+
+    print render($content);
 
   }
 
