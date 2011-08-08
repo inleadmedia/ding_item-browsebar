@@ -56,16 +56,17 @@
         <div class="clear"></div>
       </div>
 
-      <div class="tab details" style="display: none">
+      <div class="tab details" style="display: none;">
         <div class="details-content"><?php print render($easyting['ting_details']); ?></div>
       </div>
       <div class="clear"></div>
-      <?php print render($easyting['voxb']); ?>
-      <div class="clear"></div>
+      <?php print render($easyting['ting_actions']) ;?>
+      <?php print render($easyting['ting_availability']) ;?>
+      <?php print render($content); ?>
     </div>
     <div class="clear"></div>
 
-    <?php //echo render($content); ?>
+    
   </div>
   <br />
   <br />

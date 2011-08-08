@@ -223,20 +223,44 @@ function easyting_preprocess_ting_object(&$variables) {
       'class' => array('reserve-button')
     );
 
-//  drupal_add_css('css/ui-lightness/jquery-tabs.css');
-    //drupal_add_js('js/jquery-ui-1.8.14.custom.min.js');
     drupal_add_js('js/item.tabs.js');
 
     $variables['content']['ting_details']['#title'] = t("Detaljer");
 
-    $variables['easyting']['ting_cover'] = $variables['content']['ting_cover'];
-    $variables['easyting']['ting_object'] = render($variables['content']['ting_title']);
-    $variables['easyting']['ting_author'] .= render($variables['content']['ting_author']);
-    $variables['easyting']['ting_abstract'] .= render($variables['content']['ting_abstract']);
-    $variables['easyting']['availability'] = $variables['content']['ding_availability_item'];
-    $variables['easyting']['ting_details'] = $variables['content']['ting_details'];
-    $variables['easyting']['relations'] = $variables['content']['relations'];
-    $variables['easyting']['voxb'] = $variables['content']['voxb'];
+    $items = array(
+      'ting_cover',
+      'ting_title',
+      'ting_author',
+      'ting_abstract',
+      'ding_availability_item',
+      'ding_availability_holdings',
+      'ting_details',
+      'relations',
+      'ting_type',
+      'ting_subjects',
+      'actions',
+    );
+
+    $locations = array(
+      'ting_cover',
+      'ting_object',
+      'ting_author',
+      'ting_abstract',
+      'ting_availability',
+      'ting_holdings',
+      'ting_details',
+      'ting_relations',
+      'ting_type',
+      'ting_subjects',
+      'ting_actions',
+    );
+
+    foreach($items as $key => $value) {
+      if (isset($variables['content'][$value])) {
+        $variables['easyting'][$locations[$key]] = $variables['content'][$value];
+        unset($variables['content'][$value]);
+      }
+    }
   }
 
   if (arg(0) == 'search' && arg(1) == 'ting') {
