@@ -43,7 +43,7 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
 function easyting_preprocess(&$variables, $hook) {
   if ($hook == 'page') {
     // Preprocess main navigation menu
-    $menu = menu_navigation_links('menu-easyscreen-main-menu');
+    $menu = menu_navigation_links('menu-easyting-main-menu');
     $markup = '<ul id="m-nav">';
 
     foreach($menu as $key => $value) {
@@ -56,7 +56,7 @@ function easyting_preprocess(&$variables, $hook) {
     $variables['easyting']['main_nav'] = theme('main_nav', array('menu' => $markup));
 
     // Preprocess secondary navigation menu
-    $menu = menu_navigation_links('menu-easyscreen-secondary-menu');
+    $menu = menu_navigation_links('menu-easyting-secondary-menu');
 
     // This menu contains images... so define them here
     $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
@@ -83,7 +83,7 @@ function easyting_preprocess(&$variables, $hook) {
     $variables['easyting']['secondary_nav'] = theme('secondary_nav', array('menu' => $markup));
 
     // Preprocess header navigation menu
-    $menu = menu_navigation_links('menu-easyscreen-header-menu');
+    $menu = menu_navigation_links('menu-easyting-header-menu');
 
     $markup = '<ul id="h-nav">';
     $i = 0;
