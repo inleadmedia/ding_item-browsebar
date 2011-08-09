@@ -11,7 +11,6 @@
  */
 ?>
 
-
 <?php if (arg(0) == 'ting' && arg(1) == 'object') { ?>
 
 <!-- ting_object.tpl.php ? -->
@@ -75,7 +74,7 @@
   <!--?php dpm($content); ?-->
 </div>
 
-<?php } if (arg(0) == 'search' && arg(1) == 'ting') { ?>
+<?php } elseif (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
   <div class="ting-object-search-result-additional">
     <div class="col">
@@ -105,4 +104,6 @@
     <div class="clear"></div>
   </div>
 
-<?php } ?>
+<?php } else {
+  print render($content);
+} ?>
