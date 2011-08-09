@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
 <?php drupal_add_js(drupal_get_path('theme', 'easyting') . '/js/jquery.carouFredSel-4.3.3.js', 'file'); ?>
 
 <div id="carousel-wrapper">

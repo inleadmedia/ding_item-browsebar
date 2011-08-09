@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @file
+ *
+ */
 
 /* Put Breadcrumbs in a ul li structure */
 function easyting_breadcrumb($variables) {
