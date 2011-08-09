@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
 <div class="col">
   <div class="news">
     <div class="col">

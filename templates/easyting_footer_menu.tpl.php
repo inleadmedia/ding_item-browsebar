@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
 <div id="footer-menu">
   <div class="col">
     <h3>Seneste nyt:</h3>
