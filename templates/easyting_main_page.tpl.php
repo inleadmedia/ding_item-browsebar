@@ -311,7 +311,7 @@
       </div>
       <div class="clear"></div>
       <div class="on-map">
-        <img class="left"src="/<?php print path_to_theme(); ?>/images/map.png" width="50" height="50" alt="" />
+        <img class="left" src="/<?php print path_to_theme(); ?>/images/map.png" width="50" height="50" alt="" />
         <p class="map-link left"><a href="#"><?php print t('Se på kort'); ?></a></p>
         <div class="clear"></div>
       </div>
