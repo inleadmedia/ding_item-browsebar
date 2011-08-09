@@ -45,7 +45,7 @@
     <h3>Sådan gør du:</h3>
     <ul>
       <li>Søg på hjemmesiden</li>
-      <li>Søg efter forfattere & titler</li>
+      <li>Søg efter forfattere&amp; titler</li>
       <li>Sådan reserverer du bøger</li>
       <li>Sådan bruger du kurven</li>
       <li>Ændrer du din brugerprofil</li>
