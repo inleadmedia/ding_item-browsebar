@@ -220,7 +220,6 @@ function easyting_theme($existing, $type, $theme, $path) {
 }
 
 function easyting_preprocess_ting_object(&$variables) {
-
   if (arg(0) == 'ting' && arg(1) == 'object') {
     $variables['content']['actions']['reserve']['submit']['#value'] = '';
     $variables['content']['actions']['reserve']['submit']['#attributes'] = array(

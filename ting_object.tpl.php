@@ -9,6 +9,7 @@
  * - $object: The TingClientObject instance we're rendering.
  * - $content: Render array of content.
  */
+
 ?>
 
 <?php if (arg(0) == 'ting' && arg(1) == 'object') { ?>
@@ -76,7 +77,7 @@
 
 <?php } elseif (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
-  <div class="ting-object-search-result-additional">
+  <div class="ting-object-search-result-additional ting-object-id-<?php print $object->primary_object->localId; ?>">
     <div class="col">
     <div class="ting-cover-main">
       <?php print render($easyting['ting_cover']); ?>
@@ -97,6 +98,21 @@
         </div>
         <div class="ting-collection-types right">
           <?php print render($easyting['ting_collection_types']); ?>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="voxb-details">
+        <div class="voxb-rating">
+          <p class="left"><?php print t('Rating'); ?>:</p>
+          <div style="margin-left: 10px;" class="rating-star left inactive"></div>
+          <div class="rating-star left inactive"></div>
+          <div class="rating-star left inactive"></div>
+          <div class="rating-star left inactive"></div>
+          <div class="rating-star left inactive"></div>
+          <p class="rating-count left">(<span>0</span>)</p>
+        </div>
+        <div class="voxb-reviews left" style="display: none;">
+          <p class="review-count"><?php print t('Anmeldelser'); ?> (<span class="count">0</span>)</p>
         </div>
         <div class="clear"></div>
       </div>
