@@ -783,3 +783,39 @@
   height: 25px;
   width: 25px;
 }
+
+.voxb-details .voxb-rating .rating-star {
+  height: 15px;
+  width: 15px;
+}
+
+.voxb-details .voxb-rating .inactive {
+  background-image: url('../images/search-star-off.png');
+}
+
+.voxb-details .voxb-rating .active {
+  background-image: url('../images/search-star-on.png');
+}
+
+.voxb-details .voxb-rating p {
+  color: #4d4b50;
+  font-family: 'DroidSerifRegular';
+  font-size: 13px !important;
+  line-height: 16px !important;
+}
+
+.voxb-details .voxb-rating .rating-count {
+  color: #999999 !important;
+  font-family: 'CartoGothicStdBook' !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  margin-left: 5px !important;
+}
+
+.voxb-details .voxb-reviews .review-count {
+  color: #0681b0 !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  margin-left: 15px !important;
+}
+
