@@ -1,11 +1,19 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
   <div id="page-wrapper">
     <div id="page">
 
       <div id="header">
         <div class="bg">
           <div class="section container_20">
-
             <div class="grid_4" style="padding-top: 20px;">
+              <?php print $easyting['header_nav']; ?>
+              <?php print render($page['header']); ?>
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
                   <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -41,19 +49,26 @@
       </div>
       <!-- //#header -->
 
-      <?php if ($main_menu || $secondary_menu): ?>
+      <?php //if ($main_menu || $secondary_menu): ?>
+      <div id="nav_wrapper">
         <div id="navigation">
           <div class="section container_20">
             <?php print render($page['navigation']); ?>
+            <?php
+              print $easyting['main_nav'];
+              print $easyting['secondary_nav'];
+            ?>
           </div>
           <!-- /.section -->
         </div>
         <!-- /#navigation -->
-      <?php endif; ?>
+        <?php print $easyting['carousel']; ?>
+      </div>
+      <?php //endif; ?>
 
       <div id="main-wrapper">
-        <div id="main" class="container_20">
 
+        <div id="main" class="container_20">
           <div id="content" class="column">
             <div class="grid_20">
 
@@ -92,6 +107,7 @@
   <div id="footer">
     <div class="section">
       <?php print render($page['footer']); ?>
+      <?php print render($page['footer_menu']); ?>
     </div>
     <!-- /.section -->
   </div>

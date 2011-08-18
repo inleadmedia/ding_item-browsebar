@@ -48,7 +48,8 @@ html[xmlns] .clearfix {
 
 .pane-search-result li.search-result,
 .page-search-ting li.search-result  {
-    border-bottom: 1px solid #e7e7e6;
+  border-bottom: 1px solid #e7e7e6;
+  padding-bottom: 24px; 
 }
 
 .page-search-ting p.search-snippet {
@@ -245,8 +246,9 @@ html[xmlns] .clearfix {
 }
 
 .ting-object .object-information .item-list {
-    line-height: 1.3em;
-    padding: 0 0 0.5em 0;
+  line-height: 1.3em;
+  padding: 0 0 0.5em 0;
+  font-size: 14px;
 }
 
 .ting-object .object-information .item-list .item-list {
@@ -623,7 +625,7 @@ div.ajax-progress .message {
 
 /* #ding-reservation-reserve-form input */
 .ting-object form input {
-  border-width: 0;
+  border-width: 1;
   padding: 0.1em 1em;
 }
 
@@ -644,15 +646,15 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 /* ***** extended search, 'sort by' & 'records shown' ***** */
 
-.pane-ting-search-search-controls .pane-content {
-  padding-top: 0;
-}
-
 .pane-ting-search-search-controls {
   display: block;
   float: left;
-  width: 74%;
-  float: left;
+  line-height: 68px;
+  // margin: 30px;
+}
+
+.pane-ting-search-search-controls label {
+  font-weight: normal;
 }
 
 #block-ting-search-search-extend {
@@ -697,23 +699,46 @@ div.pane-ding-toggle-format-toggle div.pane-content {
   display: none;
 }
 
-#search-controls-form .form-item-sort,
-#search-controls-form .form-item-size {
-  display: block;
+#search-controls-form .form-type-select,
+#search-controls-form .form-type-radios {
   float: left;
 }
 
-#search-controls-form .form-item-sort {
-  width: 50%;
+#search-controls-form .form-type-select label,
+#search-controls-form .form-type-radios label {
+  font-size: 13px;
 }
 
-#search-controls-form .form-item-size {
-  width: 50%;
+#search-controls-form .form-type-select select {
+  border: 1px solid #999999;
+  background-color: white;
+  // width: 93px;
+  height: 18px;
+  font-size: 13px;
 }
 
-#search-controls-form .form-item-sort select {
+#search-controls-form label {
+  margin: 0px;
+}
+
+
+#search-controls-form .form-type-radio select {
   width: 9em;
 }
+
+#search-controls-form .form-type-radios {
+  margin-left: 29px;
+}
+
+#search-controls-form .form-type-radios .form-radios {
+  margin-left: 0px;
+}
+
+#search-controls-form .form-type-radios .form-radios div {
+  margin-left: 0px;
+}
+
+
 
 #search-controls-form #edit-size .form-item-size {
   width: auto;
@@ -727,8 +752,8 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 }
 
 #search-controls-form .form-type-radio label {
-  margin-left: -1em;
-  margin-right: 0.5em;
+  margin-left: 1em;
+  // margin-right: 0.5em;
   color: #666;
   cursor: pointer;
 }
@@ -740,13 +765,13 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 #search-controls-form .form-item-size label {
     display: block;
     float: left;
-    margin-right: 0.5em;
+    // margin-right: 0px;
 }
 
 #search-controls-form .form-item-size .form-radios {
     display: block;
     float: left;
-    margin-left: 1em;
+    // margin-left: 0px;
 }
 
 
@@ -826,7 +851,7 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 /* #ding-reservation-reserve-form input */
 .page-user form input {
-  border-width: 0;
+  border-width: 1;
   padding: 0.1em 1em;
 }
 
@@ -854,13 +879,19 @@ div.pane-ding-toggle-format-toggle div.pane-content {
 
 
 .search-results .search-snippet-info {
-    padding-left: 0;
-    margin-bottom: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results .search-snippet-info p {
+  padding: 0;
+  margin: 0;
 }
 
 .search-results .ting-cover img {
     width: 118px;
     border: 2px solid #6D137D;
+    -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 2px;

@@ -104,12 +104,14 @@ h1, h2, h3 {
 }
 
 .oneBlock.border, .twoBlocks.border, .threeBlocks.border, .fourBlocks.border {
+  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #EAE8E8;
 }
 
 .messages.error {
+  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border-width: 1px;
@@ -171,7 +173,7 @@ div#header
  * NAVIGATION
  */
 
-div#navigation { background: url("../images/nav_bg.png"); margin-bottom: 48px; }
+div#navigation { background: url("../images/nav_bg.png"); }
 div#navigation div.section { height: 36px; margin: 0 auto; }
 
 #block-system-main-menu .nav_separator, #block-menu-menu-secondary-menu .nav_separator { height: 36px; width: 1px; background: url("../images/nav_separator.png"); }
@@ -422,8 +424,8 @@ ul.primary li a {
  */
 
 .availability-legend-item img {
-  -moz-border-radius:6px;
   -webkit-border-radius: 6px;
+  -moz-border-radius:6px;
   width: 12px;
   height: 12px;
   vertical-align: text-top;
@@ -461,7 +463,6 @@ ul.primary li a {
 
   .ting-object ul li {
     list-style: none;
-    float: left;
     position: relative;
     padding: 0;
     margin: 0;
@@ -533,19 +534,28 @@ ul.primary li a {
 }
 
 .ting-object div.description {
-  height: 100px;
-  overflow: hidden;
+  // height: 100px;
+  // overflow: hidden;
 }
 
 .page-ting-collection .ting-object-additional div.description,
 .ting-object div.description {
-  height: 100px;
-  overflow: hidden;
+  // height: 100px;
+  // overflow: hidden;
+}
+
+.ting-object div.description h2 {
+  padding: 0px;
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  line-height: 30px;
+  // height: 100px;
+  // overflow: hidden;
 }
 
 .page-ting-collection .ting-object div.description {
-  min-height: 130px;
-  overflow: hidden;
+  // min-height: 130px;
+  // overflow: hidden;
 }
 
 .ting-object .ting-object div.types {
@@ -554,6 +564,7 @@ ul.primary li a {
 }
 
 .ting-object .ting-cover img {
+  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
@@ -571,7 +582,7 @@ ul.primary li a {
 }
 
 .page-ting-collection .ting-object-additional .ting-cover-style-ding_medium img, .ting-cover-style-ding_small img {
-  width: 72px;
+  width: 120px;
   border: 2px solid #C6C6C6;
 }
 
@@ -736,8 +747,8 @@ ul.primary li a {
 }
 
 .search-results .search-snippet-info {
-  padding-left: 0;
-  margin-bottom: 1em;
+  padding: 0;
+  margin: 0;
 }
 
 

@@ -1,0 +1,213 @@
+.reserve-button{
+  background-image: url(../images/reserve_button.png);
+  width: 126px;
+  height: 26px;
+  background-color: transparent;
+  border-width: 0px;
+  float: right;
+}
+
+.star-off {
+    background-image: url("../images/star-off.png");
+}
+
+.star-on {
+    background-image: url("../images/star-on.png");
+}
+
+.star-hover {
+    background-image: url("../images/star-hover.png");
+}
+
+.rating {
+  width: 21px;
+  height: 21px!important;
+}
+
+.ting-object form input[button] {
+  border-width: 0;
+}
+
+.ting-object form {
+    text-align: left;
+}
+
+#ding-voxb-tag-form .form-submit, #ding-voxb-review-form .form-submit{
+  background-image: url("../images/send-button.png");
+  border-width: 0px;
+  width: 72px;
+  height: 28px;
+  text-indent: -9999px;
+}
+
+.tag a {
+  color: #0681b0;
+}
+
+#voxb {
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 0px 10px 10px 10px;
+}
+#voxb h2 {
+  background-image: url("../images/voxb-title-icon.png");
+  background-repeat:no-repeat;
+  padding-left: 22px;
+}
+
+.reviews-container h3 {
+  background-image: url("../images/voxb-reviews-icon.png");
+  background-repeat: no-repeat;
+  color: #6D137D;
+  padding: 0 0 0 22px;
+  font-size: 17px;
+}
+
+.voxb-review {
+  font-size: 12px;
+  border-bottom: 1px solid #c6c6c6;
+}
+.voxb-review em {
+  color: #76ac10;
+}
+
+.voxb-review .review-content {
+  font-size: 13px;
+}
+
+.item-container .item-header {
+  border-bottom: 1px solid #c6c6c6;
+  margin-bottom: 24px;
+}
+
+.item-container .tab-container {
+  float: right;
+  margin-right: 5px;
+}
+
+.item-container .tab-header {
+  border-top: 1px solid #C6C6C6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  float: left;
+  margin: 0px 2px;
+  width: 94px;
+  background-color: #F7F7F7;
+  cursor: pointer;
+}
+
+.item-container .tab-header .tab-inner {
+   border-left: 1px solid #C6C6C6;
+   border-right: 1px solid #C6C6C6;
+   margin-top: 2px;
+   width: 99%;
+   text-align: center;
+   color: #4d4b50;
+   background-image: -ms-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Mozilla Firefox */ 
+   background-image: -moz-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Opera */ 
+   background-image: -o-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Webkit (Safari/Chrome 10) */
+   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(, #F7F7F7), color-stop(1, #E2E2E2));
+   /* Webkit (Chrome 11+) */ 
+   background-image: -webkit-linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+   /* Proposed W3C Markup */ 
+   background-image: linear-gradient(top, #F7F7F7 0%, #E2E2E2 100%);
+}
+
+.item-container .active {
+  background-color: #ffffff;
+}
+
+.item-container .active .tab-inner{
+  color: #0681b0;
+  background-image: none;
+  background-color: #ffffff;
+}
+
+.social-icons .social-icon {
+  padding-left: 22px;
+  margin-right: 10px;
+  height: 18px;
+  color: #ababab;
+  float: left;
+}
+.social-icons .facebook{
+  background-image: url(../images/icon-facebook.png);
+  background-repeat: no-repeat;
+}
+.social-icons .twitt{
+  background-image: url(../images/icon-twitter.png);
+  background-repeat: no-repeat;
+}
+.social-icons .rss{
+  background-image: url(../images/icon-rss.png);
+  background-repeat: no-repeat;
+}
+.social-icons .print{
+  background-image: url(../images/icon-print.png);
+  background-repeat: no-repeat;
+}
+.ting-object-additional .tab {
+  width: 350px;
+  float: left;
+  margin-left: 25px;
+}
+
+.ting-object-additional .cover {
+  // width: 200px;
+  float: left;
+  text-align: center;
+}
+
+.ting-object-additional .cover img {
+  border: 2px solid #c6c6c6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 1px;
+}
+.ting-object-additional .cover img:hover {
+  border: 2px solid #6d1b7c;
+}
+
+.ting-object-additional .author {
+  color: #999999;
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+.ting-object-additional .author a {
+  color: #76AC10;
+}
+
+.ting-object-additional .description-content {
+  // height: auto;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.page-ting-collection .ting-object-additional div.description, .ting-object div.description {
+  // height: 150px;
+}
+
+.ting-object .object-information .item-list .item-list {
+  float: none;
+}
+.ting-object-additional .tab .field .field-label {
+  font-weight: normal;
+  font-size: 19px;
+}
+
+.tab .object-information {
+  padding-top: 4px;
+
+}
+.tab h4 {
+  font-weight: normal;
+  padding: 0px!important;
+  width: 150px!important;
+}
