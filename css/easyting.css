@@ -377,7 +377,7 @@
 }
 
 #carousel-bar #carousel-pager a {
-  background-image: url('../images/icons/bullet.png');
+  background-image: url('../images/icons/bullet_a.png');
   cursor: default;
   display: inline-block;
   height: 14px;
@@ -385,7 +385,7 @@
 }
 
 #carousel-bar #carousel-pager a.selected {
-  background-image: url('../images/icons/bullet_a.png');
+  background-image: url('../images/icons/bullet.png');
 }
 
 #carousel-menu {
