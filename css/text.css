@@ -80,6 +80,13 @@ h3 { font-size: 15px; }
               color: #0681B0;
             }
 
+#search_form .form-item-search-block-form input {
+  color: #919093;
+  font-family: 'CartoGothicStdBook',Helvetica,Arial,sans-serif;
+  font-size: 14px
+}
+
+
 /**
  * NAVIGATION
  */

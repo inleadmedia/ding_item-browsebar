@@ -58,9 +58,11 @@
   background-position: left;
   border: 0;
   height: 40px;
+  line-height: 43px;
   margin-top: -1px;
   padding: 0;
-  width: 329px;
+  padding-left: 9px;
+  width: 320px;
 }
 
 #search_form .form-item-search-block-form input:focus {
