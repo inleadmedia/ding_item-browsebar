@@ -1,0 +1,254 @@
+<?php
+
+/**
+ * @file
+ * Carousel widget for search results with a predefined search query.
+ * Defines own content type.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function carousel_menu() {
+  
+  $items['admin/config/ding/carousel'] = array(
+    'title' => 'Carousel widget settings',
+    'description' => 'Configure carousel options such as search keyword, number of items etc.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('carousel_admin_settings'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  
+  return $items;
+}
+
+/**
+ * Implementation of hook_block_info.
+ */
+function carousel_block_info() {
+  $blocks['main'] = array(
+    'info' => t('Carousel widget'),
+    'region' => 'content',
+    'weight' => 0,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function carousel_theme($existing, $type, $theme, $path) {
+  $hooks['carousel'] = array(
+    'variables' => array('carousel_items' => NULL),
+    'template' => 'carousel',
+    'path'  => $path . '/templates'
+  );  
+  
+  $hooks['carousel_items'] = array(
+    'variables' => array('carousel_items' => NULL),
+    'template' => 'carousel_items',
+    'path'  => $path . '/templates'
+  );
+  
+  return $hooks;
+}
+
+/**
+ * Implementation of hook_block_view().
+ */
+function carousel_block_view($delta) {
+  switch ($delta) {
+    case 'main':
+      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
+      
+      $block['content'] = 
+        theme('carousel', array('carousel_items' => 
+            theme('carousel_items', array('carousel_items' => carousel_load_items())
+        )));
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Carousel configuration form.
+ * @see system_settings_form().
+ */
+function carousel_admin_settings() {
+  $form['carousel_keyword'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search keyword'),
+    '#description' => t('The keyword used to search by in Ting.'),
+    '#default_value' => variable_get('carousel_keyword')
+
+  );
+  
+  $form['carousel_item_limit'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Item limit'),
+    '#description' => t('The number of items to be returned in search result.'),
+    '#default_value' => variable_get('carousel_item_limit', 24)
+  );
+  
+  $form['carousel_cache_ttl'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cache TTL'),
+    '#description' => t('How many hours the cache lives.'),
+    '#default_value' => variable_get('carousel_cache_ttl', 1)
+  );
+  
+  return system_settings_form($form);
+}
+
+/**
+ * Validate settings submission.
+ */
+function carousel_admin_settings_validate($form, &$form_state) {
+  $limit = $form_state['values']['carousel_item_limit'];
+  $cache_ttl = $form_state['values']['carousel_cache_ttl'];
+  if (!is_numeric($limit)) {
+    form_set_error('carousel_item_limit', t('Please enter a valid number.'));
+  }
+  
+  if (!is_numeric($cache_ttl)) {
+    form_set_error('carousel_cache_ttl', t('Please enter a valid number.'));
+  }  
+}
+
+/**
+ * Retrieves search results either from Ting or 
+ * from cache.
+ * @return array Search result items
+ */
+function carousel_load_items() {
+  $keyword = variable_get('carousel_keyword');
+  $items = null;
+  
+  if ($keyword) {
+    $cid = 'carousel-' . md5($keyword);
+    if (!($items = cache_get($cid))) {
+      module_load_include('client.inc', 'ting');
+
+      $result = carousel_search_ting($keyword, variable_get('carousel_item_limit', 24));
+      $items = array();
+
+      foreach ($result->collections as $collection) {
+        $searchItem = $collection->reply->objects[0];
+
+        $item = new stdClass();
+        $item->id = $searchItem->id;
+        $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
+                      $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : null;
+        $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ? 
+                            $searchItem->record['ac:source'][''][0] : null;
+        $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
+                            $searchItem->record['dc:source'][''][0] : null;
+        $item->title = $searchItem->record['dc:title'][''][0];
+
+        if (isset($searchItem->record['dc:creator'])) {
+          if (isset($searchItem->record['dc:creator']['oss:aut'][0])) {
+            $item->creator = $searchItem->record['dc:creator']['oss:aut'][0];
+          }
+          elseif (isset($searchItem->record['dc:creator']['oss:mus'][0])) {
+            $item->creator = $searchItem->record['dc:creator']['oss:mus'][0];
+          }
+          elseif (isset($searchItem->record['dc:creator']['oss:sort'][0])) {
+            $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
+          }
+          else {
+            $item->creator = null;
+          }
+        }
+        else {
+          $item->creator = null;
+        }
+
+        if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
+          $item->subject = $searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0];
+        }
+        elseif (isset($searchItem->record['dc:subject']['oss:genre'][0])) {
+          $item->subject = $searchItem->record['dc:subject']['oss:genre'][0];
+        }
+        elseif (isset($searchItem->record['dc:subject'][''][0])) {
+          $item->subject = $searchItem->record['dc:subject'][''][0];
+        }
+        else {
+          $item->subject = null;
+        }
+
+        /**
+         * @todo: where to take image from?
+         * How to cache and store images?
+         */
+        $item->image = 'ting_item.jpg';
+
+        if (isset($searchItem->record['dc:description'][''][0])) {
+          /**
+           * @todo: Which field of three is description?
+           */        
+          $item->description = $searchItem->record['dc:description'][''][0];
+        }
+        elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
+          $item->description = $searchItem->record['dcterms:abstract'][''][0];
+        }
+        elseif (isset($searchItem->record['dcterms:hasPart'])) {
+          $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
+        }
+        else {
+          $item->description = '';
+        }
+        
+        $item->year = isset($searchItem->record['dc:date'][''][0]) ? 
+                        $searchItem->record['dc:date'][''][0] : null;
+        /**
+         * @todo: what are these ratings, comments etc?
+         */
+        $item->rating = mt_rand(0, 5);
+        $item->rating_count = mt_rand(100, 5000);
+        $item->comment_count = mt_rand(10, 1000);
+        $item->type = 1;
+        $item->is_new = mt_rand(0, 1);
+
+        $items[] = $item;
+      }
+      
+      cache_set($cid, $items, 'cache', REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
+    }
+    else {
+      $items = $items->data;
+    }
+  }
+  
+  return $items;
+}
+
+/**
+ * Make an item search
+ *
+ * @param $query
+ *   The searched query
+ * @param $records
+ *   Limit the amount of fetched records
+ * @param $page
+ *   Records offset
+ * @return
+ *   Search result data
+ */
+function carousel_search_ting($query, $records) {
+  if (!empty($query)) {
+    $query = '(' . $query . ')';
+
+    $options = array(
+      'allObjects' => TRUE,
+      'enrich' => TRUE
+    );
+
+    $search_result = ting_do_search($query, 1, $records, $options);
+
+    return $search_result;
+  }
+}
