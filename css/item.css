@@ -135,7 +135,9 @@
   height: 18px !important;
   float: left;
 }
-.social-icon a, a.social-icon {
+
+.social-icon a,
+a.social-icon {
   display: block;
   height: 100%;
   padding-left: 22px;
@@ -143,21 +145,31 @@
   background-repeat: no-repeat;
   background-position: 0 -18px;
 }
-.social-icon a:hover, a.social-icon:hover {
+
+.social-icon a:hover,
+a.social-icon:hover {
   color: #0681B0 !important;
   text-decoration: none !important;
   background-position: 0 0;
 }
-.social-icon.facebook a, a.social-icon.facebook {
+
+.social-icon.facebook a,
+a.social-icon.facebook {
   background-image: url(../images/icons-facebook.png);
 }
-.social-icon.twitt a, a.social-icon.twitt {
+
+.social-icon.twitt a,
+a.social-icon.twitt {
   background-image: url(../images/icons-twitter.png);
 }
-.social-icon.rss a, a.social-icon.rss {
+
+.social-icon.rss a,
+a.social-icon.rss {
   background-image: url(../images/icons-rss.png);
 }
-.social-icon.print a, a.social-icon.print {
+
+.social-icon.print a,
+a.social-icon.print {
   background-image: url(../images/icons-print.png);
 }
 
