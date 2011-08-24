@@ -27,6 +27,127 @@ function carousel_install() {
   // Set some default settings.
   variable_set('carousel_item_limit', 24);
   variable_set('carousel_cache_ttl', 2);
+
+  // Add custom menus to Easyting theme --- {{{
+  // Easyting header menu
+  $menu = array(
+  'menu_name' => 'menu-easyting-header-menu',
+  'title' => 'Easyting header menu',
+  'description' => '',
+  );
+  menu_save($menu);
+  $item = array(
+    'link_title' => st('sitemap'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-header-menu',
+    'weight' => 1,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('kontakt'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-header-menu',
+    'weight' => 2,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('hælp'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-header-menu',
+    'weight' => 3,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('english'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-header-menu',
+    'weight' => 4,
+  );
+  menu_link_save($item);
+
+  // Easyting main menu
+  $menu = array(
+  'menu_name' => 'menu-easyting-main-menu',
+  'title' => 'Easyting main menu',
+  'description' => '',
+  );
+  menu_save($menu);
+  $item = array(
+    'link_title' => st('forside	'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-main-menu',
+    'weight' => 1,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('biblioteker	'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-main-menu',
+    'weight' => 2,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('arrangementer	'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-main-menu',
+    'weight' => 3,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('inspiration	'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-main-menu',
+    'weight' => 4,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('temaer'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-main-menu',
+    'weight' => 5,
+  );
+  menu_link_save($item);
+
+  // Easyting secondary menu
+  $menu = array(
+  'menu_name' => 'menu-easyting-secondary-menu',
+  'title' => 'Easyting secondary menu',
+  'description' => '',
+  );
+  menu_save($menu);
+  $item = array(
+    'link_title' => st('boger'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-secondary-menu',
+    'weight' => 1,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('film'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-secondary-menu',
+    'weight' => 2,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('lyd'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-secondary-menu',
+    'weight' => 3,
+  );
+  menu_link_save($item);
+  $item = array(
+    'link_title' => st('spil'),
+    'link_path' => '<front>',
+    'menu_name' => 'menu-easyting-secondary-menu',
+    'weight' => 4,
+  );
+  menu_link_save($item);
+
+  menu_cache_clear_all();
+  menu_rebuild();
+  // Add custom menus to Easyting theme --- }}}
+
 }
 
 function carousel_uninstall() {
