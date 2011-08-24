@@ -141,25 +141,28 @@
   clear: both;
 }
 
-.ting-object-search-result-additional .ting-actions form .form-submit {
-  background-image: url('../images/buttons/search-results-reserver.png');
-  background-color: transparent;
-  font-size: 11px;
-  width: 85px;
-  height: 20px;
-  padding: 0 0 0 25px;
-  margin: 0 auto;
-  line-height: 20;
-  text-align: left;
-  border: 0;
+.ting-actions > form {
+  display: block;
+  float: left;
+  margin-right: 6px;
 }
 
 .ting-actions .form-submit {
-  color: #6d137d !important;
-  font-size: 14px;
-  line-height: 16px !important;
+  padding: 0 5px 0 15px;
+  color: #4d4b50;
+  font-size: 11px;
+  background: url('../images/buttons/cart_bg.png') no-repeat 5px center;
+  border: 1px solid #D6D6D6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  cursor: pointer;
 }
-
+.ting-actions .form-submit[value=Reserve],
+.ting-actions .form-submit[value=Reserver] {
+  color: #6D137D;
+  background-image: url('../images/buttons/reserve_bg.png');
+}
 
 .page-search #main div.tabs {
   display: none;
