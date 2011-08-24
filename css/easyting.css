@@ -173,14 +173,11 @@
   float: left;
   padding: 15px;
   position: relative;
+  cursor: pointer;
 }
 
 #carousel .result-item img {
   border: 2px solid #540f63;
-}
-
-#carousel .active {
-  cursor: pointer;
 }
 
 #carousel .active img {
@@ -202,6 +199,7 @@
   font-family: 'DroidSerifRegular';
   font-size: 15px;
   line-height: 18px;
+  width: 120px;
 }
 
 #carousel .result-item .creator {
@@ -209,6 +207,7 @@
   font-family: 'CartoGothicStdBook';
   font-size: 12px;
   line-height: 16px !important;
+  width: 120px;
 }
 
 #carousel .result-item .item-overlay {

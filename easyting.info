@@ -17,5 +17,6 @@ scripts[] = js/easyting.js
 
 regions[header] = Header
 regions[navigation] = Navigation
+regions[carousel] = Carousel widget
 regions[content] = Main content area
 regions[footer] = Footer
