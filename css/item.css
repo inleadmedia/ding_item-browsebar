@@ -108,7 +108,8 @@
   cursor: pointer;
 }
 
-.item-container .tab-header .tab-inner:hover, .item-container .tab-header.active .tab-inner {
+.item-container .tab-header .tab-inner:hover,
+.item-container .tab-header.active .tab-inner {
   color: #0681b0;
   background: #fefefe;
 }
