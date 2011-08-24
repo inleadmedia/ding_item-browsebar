@@ -1,0 +1,10 @@
+name = Carousel widget
+description = Carousel widget for search results with a predefined search query
+package = Ding!
+version = 0.1
+core = 7.x
+files[] = carousel.module
+files[] = carousel.install
+dependencies[] = ting
+dependencies[] = search
+configure = admin/config/ding/carousel
