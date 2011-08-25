@@ -41,6 +41,10 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
     // $form['size']['#attributes'] = array('onchange' => 'var i = this.selectedIndex; extendSearch("controls_search_size",this[i].value)');
     // $form['size']['#attributes'] = array('onchange' => 'extendSearch("controls_search_size",this.value)');
   }
+  elseif ($form_id == 'ding_reservation_reserve_form') {
+    $form['submit']['#prefix'] = '<div class="button reserve">';
+    $form['submit']['#suffix'] = '</div>';
+  }
 }
 
 function easyting_preprocess(&$variables, $hook) {

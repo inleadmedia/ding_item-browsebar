@@ -147,21 +147,36 @@
   margin-right: 6px;
 }
 
-.ting-actions .form-submit {
-  padding: 0 5px 0 15px;
-  color: #4d4b50;
-  font-size: 11px;
-  background: url('../images/buttons/cart_bg.png') no-repeat 5px center;
+.ting-actions .button {
+  background-: url('../images/buttons/cart_bg.png') no-repeat 5px center;
   border: 1px solid #D6D6D6;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
   cursor: pointer;
+  line-height: 17px;
+  padding: 0 5px;
+  background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0.5, #FEFEFE), color-stop(1, #EEEEEE));
+  background-image: -moz-linear-gradient(center top, #FEFEFE 50%, #EEEEEE);
 }
-.ting-actions .form-submit[value=Reserve],
-.ting-actions .form-submit[value=Reserver] {
+
+.ting-actions .button:hover {
+  background: #e7e7e7;
+}
+
+.ting-actions .button .form-submit {
+  background: none;
+  border: none;
+  color: #4d4b50;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 0;
+}
+
+.ting-actions .button.reserve .form-submit {
+  background: url('../images/buttons/reserve_bg.png') no-repeat left center;
   color: #6D137D;
-  background-image: url('../images/buttons/reserve_bg.png');
+  padding-left: 10px;
 }
 
 .page-search #main div.tabs {
