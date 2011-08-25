@@ -30,10 +30,10 @@
   <div class="item-container">
     <div class="item-header">
       <div class="social-icons">
-        <div class="social-icon facebook">Like</div>
-        <div class="social-icon twitt">Twitt</div>
-        <div class="social-icon rss">Rss</div>
-        <div class="social-icon print">Print</div>
+        <div class="social-icon facebook"><a href="#">Like</a></div>
+        <div class="social-icon twitt"><a href="#">Twitt</a></div>
+        <div class="social-icon rss"><a href="#">Rss</a></div>
+        <div class="social-icon print"><a href="#">Print</a></div>
       </div>
       <div class="tab-container">
         <div class="tab-header active description-tab-header">

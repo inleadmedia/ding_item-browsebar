@@ -130,28 +130,35 @@
   background-color: #ffffff;
 }
 
-.social-icons .social-icon {
-  padding-left: 22px;
+.social-icons .social-icon{
   margin-right: 10px;
   height: 18px;
-  color: #ababab;
   float: left;
 }
-.social-icons .facebook{
-  background-image: url(../images/icon-facebook.png);
+.social-icons .social-icon a{
+  display: block;
+  height: 100%;
+  padding-left: 22px;
+  color: #ababab !important;
   background-repeat: no-repeat;
+  background-position: 0 -18px;
 }
-.social-icons .twitt{
-  background-image: url(../images/icon-twitter.png);
-  background-repeat: no-repeat;
+.social-icons .social-icon a:hover{
+  color: #0681B0 !important;
+  text-decoration: none !important;
+  background-position: 0 0;
 }
-.social-icons .rss{
-  background-image: url(../images/icon-rss.png);
-  background-repeat: no-repeat;
+.social-icons .facebook a{
+  background-image: url(../images/icons-facebook.png);
 }
-.social-icons .print{
-  background-image: url(../images/icon-print.png);
-  background-repeat: no-repeat;
+.social-icons .twitt a{
+  background-image: url(../images/icons-twitter.png);
+}
+.social-icons .rss a{
+  background-image: url(../images/icons-rss.png);
+}
+.social-icons .print a{
+  background-image: url(../images/icons-print.png);
 }
 .ting-object-additional .tab {
   width: 350px;
