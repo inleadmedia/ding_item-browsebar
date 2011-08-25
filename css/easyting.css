@@ -480,17 +480,8 @@
   float: right;
 }
 
-#content .col p.rss {
-  font-size: 12px;
-  line-height: 25px;
-}
-
-#content .col p.rss a {
-  margin-top: 2px;
-}
-
-#content .col p.rss img {
-  margin: 4px 4px 0 0;
+#content .col .icons {
+  margin-top: 6px;
 }
 
 #content .news .block {

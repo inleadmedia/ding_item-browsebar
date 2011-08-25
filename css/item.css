@@ -130,29 +130,49 @@
   background-color: #ffffff;
 }
 
-.social-icons .social-icon {
-  padding-left: 22px;
+.social-icon{
   margin-right: 10px;
-  height: 18px;
-  color: #ababab;
+  height: 18px !important;
   float: left;
 }
-.social-icons .facebook{
-  background-image: url(../images/icon-facebook.png);
+
+.social-icon a,
+a.social-icon {
+  display: block;
+  height: 100%;
+  padding-left: 22px;
+  color: #ababab !important;
   background-repeat: no-repeat;
+  background-position: 0 -18px;
 }
-.social-icons .twitt{
-  background-image: url(../images/icon-twitter.png);
-  background-repeat: no-repeat;
+
+.social-icon a:hover,
+a.social-icon:hover {
+  color: #0681B0 !important;
+  text-decoration: none !important;
+  background-position: 0 0;
 }
-.social-icons .rss{
-  background-image: url(../images/icon-rss.png);
-  background-repeat: no-repeat;
+
+.social-icon.facebook a,
+a.social-icon.facebook {
+  background-image: url(../images/icons-facebook.png);
 }
-.social-icons .print{
-  background-image: url(../images/icon-print.png);
-  background-repeat: no-repeat;
+
+.social-icon.twitt a,
+a.social-icon.twitt {
+  background-image: url(../images/icons-twitter.png);
 }
+
+.social-icon.rss a,
+a.social-icon.rss {
+  background-image: url(../images/icons-rss.png);
+}
+
+.social-icon.print a,
+a.social-icon.print {
+  background-image: url(../images/icons-print.png);
+}
+
 .ting-object-additional .tab {
   width: 350px;
   float: left;

@@ -36,10 +36,9 @@
         <p class="when">11.otkober 2010 - NYE INDKOB</p>
         <h3 class="title">Københavns biblioteker fylder 125 år</h3>
       </div>
-      <p class="rss left">
-        <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
-        <a class="left" href="#"> RSS</a>
-      </p>
+      <div class="left icons">
+        <a class="social-icon rss" href="#">Rss</a>
+      </div>
       <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
     </div>
     <div class="clear"></div>
@@ -64,9 +63,9 @@
       <p class="creator"><span class="by"><?php print t('Af'); ?></span> Berit Sørensen</p>
       <p class="description">Denne bog er rigtig fin fordi den henvender sig til alle der kan lide spænding og gys. Den handler om en ung pige, der forvilder sig ud i en skov. der venter faren, både i form af en.. <span class="more"><a href="#"><?php print t('Laes mere'); ?></a></span></p>
       <p class="social">
-        <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-facebook.png" width="18" height="18" alt="" /></a>
-        <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-twitter.png" width="18" height="18" alt="" /></a>
-        <a href="#"><img class="icon" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" /></a>
+        <a class="social-icon facebook" href="#"></a>
+        <a class="social-icon twitt" href="#"></a>
+        <a class="social-icon rss" href="#"></a>
       </p>
       <p class="recommend-button"><input class="button" type="button" value="<?php print t('Flere anbefaligner'); ?>" /></p>
     </div>
@@ -175,10 +174,9 @@
         <div class="clear"></div>
         <p class="description">Den var kedelig og lang... <span class="more"><a href="#"><?php print t('Laes mere'); ?></a></span></p>
       </div>
-      <p class="rss left">
-        <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
-        <a class="left" href="#"> RSS</a>
-      </p>
+      <div class="left icons">
+        <a class="social-icon rss" href="#">Rss</a>
+      </div>
       <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
       <div class="clear"></div>
     </div>
@@ -273,10 +271,9 @@
       </div>
       <div class="clear"></div>
     </div>
-    <p class="rss left">
-      <img class="icon left" src="/<?php print path_to_theme(); ?>/images/icon-rss.png" width="18" height="18" alt="" />
-      <a class="left" href="#"> RSS</a>
-    </p>
+    <div class="left icons">
+      <a class="social-icon rss" href="#">Rss</a>
+    </div>
     <p class="more right"><input class="button" type="button" value="<?php print t('Flere nyheder'); ?>" /></p>
     <div class="clear"></div>
   </div>
