@@ -208,10 +208,6 @@
   background: #f7f7f7 url('../images/tabs_item_bg.gif') repeat-x bottom;
   border: 1px #e4e4e4 solid;
   border-width: 1px 1px 0 1px;
-  /*
-  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
-  background: -moz-linear-gradient(top,  #f7f7f7,  #e7e7e7);
-  */
 }
 .pane-page-tabs #tabs ul.primary li a:hover {
   color: #0681b0;
