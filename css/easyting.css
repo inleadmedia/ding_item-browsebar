@@ -157,6 +157,7 @@
 }
 
 #header-nav ul#h-nav li {
+  position: relative;
   border: 0;
   float: left;
   font-size: 12px;
@@ -179,6 +180,51 @@
   float: left;
   margin: 0 10px 0 10px;
 }
+
+#h-nav a.subnav-trigger {
+  padding-right: 13px;
+  background: url('../images/icons/more.png') no-repeat right 2px;
+}
+
+#header-nav #h-nav ul.subnav-popup {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  margin: -0.3em 0 0 -12px;
+  padding: 0px 3px;
+  box-shadow: 0 0 5px 3px #a6a6a6;
+  -moz-box-shadow: 0 0 5px 3px #a6a6a6;
+  -webkit-box-shadow: 0 0 5px 3px #a6a6a6;
+  background-color: #f7f7f7;
+  border: 1px #717171 solid;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+#header-nav #h-nav ul.subnav-popup li {
+  height: auto;
+  padding: 5px 8px;
+  border-bottom: 1px #c8c8c8 solid;
+  line-height: normal;
+}
+
+#header-nav #h-nav ul.subnav-popup li.last {
+  border-bottom: none;
+}
+
+#header-nav #h-nav #popup-language-menu{
+  margin-left: -35px;
+}
+
+#popup-language-menu li a {
+  padding-left: 23px;
+  background: url('../images/flag_icons.png') no-repeat -1000px 0;
+}
+#popup-language-menu li.dk a { background-position: 0 1px; }
+#popup-language-menu li.en a { background-position: 0 -23px; }
+#popup-language-menu li.de a { background-position: 0 -47px; }
 
 #carousel {
   color: #FFF;

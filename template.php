@@ -99,6 +99,16 @@ function easyting_preprocess(&$variables, $hook) {
     // Preprocess header navigation menu
     $menu = menu_navigation_links('menu-easyting-header-menu');
 
+    // Hardcoded html represents language menu item.
+    $language_menu_html = '
+      <a class="subnav-trigger" href="#popup-language-menu">English</a>
+      <ul id="popup-language-menu" class=subnav-popup language-list>
+        <li class="dk first"><a href="/">Danish</a></li>
+        <li class="en actvie"><a href="/">English</a></li>
+        <li class="de last"><a href="/">German</a></li>
+      </ul>
+    ';
+
     $markup = '<ul id="h-nav">';
     $i = 0;
 
@@ -119,6 +129,8 @@ function easyting_preprocess(&$variables, $hook) {
 
       $i++;
     }
+    // Last item always will be choose language item
+    $markup .= '<li>' . $language_menu_html . '</li>';
 
     $markup .= '</ul>';
 
