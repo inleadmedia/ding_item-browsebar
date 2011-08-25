@@ -489,13 +489,19 @@
 }
 
 #content input.button {
+  padding: 1px 7px;
   background-color: #FFF;
   border: 1px solid #d6d6d6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
   color: #0681b0;
-  font-size: 12px;
-  height: 24px;
+  font-size: 11px;
   margin: 0;
+  cursor: pointer;
+}
+#content input.button:hover {
+  background-color: #e7e7e7;
 }
 
 #content a:link { color: #0681b0; text-decoration: none; }
