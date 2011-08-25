@@ -86,6 +86,8 @@
     <div class="col">
       <div class="ting-title">
         <?php print render($easyting['ting_title']); ?>
+        <?php var_dump($easyting); ?>
+        
       </div>
       <div class="ting-author">
         <?php print render($easyting['ting_author']); ?>

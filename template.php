@@ -27,6 +27,13 @@ function easyting_breadcrumb($variables) {
   }
 }
 
+/**
+ * Altering search form
+ * 
+ * @param type $form
+ * @param type $form_state
+ * @param type $form_id 
+ */
 function easyting_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'search_block_form') {
     $form['#prefix'] = '<div id="search_form">';
@@ -38,11 +45,15 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
 
   if ($form_id == 'search_controls_form') {
     $form['size']['#type'] = 'select';
-    // $form['size']['#attributes'] = array('onchange' => 'var i = this.selectedIndex; extendSearch("controls_search_size",this[i].value)');
-    // $form['size']['#attributes'] = array('onchange' => 'extendSearch("controls_search_size",this.value)');
   }
 }
 
+/**
+ * Preprocess template hook
+ * 
+ * @param type $variables
+ * @param type $hook 
+ */
 function easyting_preprocess(&$variables, $hook) {
   if ($hook == 'page') {
     // Preprocess main navigation menu
@@ -88,6 +99,16 @@ function easyting_preprocess(&$variables, $hook) {
     // Preprocess header navigation menu
     $menu = menu_navigation_links('menu-easyting-header-menu');
 
+    // Hardcoded html represents language menu item.
+    $language_menu_html = '
+      <a class="subnav-trigger" href="#popup-language-menu">English</a>
+      <ul id="popup-language-menu" class=subnav-popup language-list>
+        <li class="dk first"><a href="/">Danish</a></li>
+        <li class="en actvie"><a href="/">English</a></li>
+        <li class="de last"><a href="/">German</a></li>
+      </ul>
+    ';
+
     $markup = '<ul id="h-nav">';
     $i = 0;
 
@@ -108,6 +129,8 @@ function easyting_preprocess(&$variables, $hook) {
 
       $i++;
     }
+    // Last item always will be choose language item
+    $markup .= '<li>' . $language_menu_html . '</li>';
 
     $markup .= '</ul>';
 
@@ -169,14 +192,16 @@ function easyting_preprocess(&$variables, $hook) {
 
     $variables['page']['footer_menu'] = theme('footer_menus');
   }
-
-  // if ($hook == 'search_result') {
-    // require_once('fb.php');
-    // fb($variables, 'qwe');
-    // watchdog('qwe','<pre>'.print_r($variables,1).'</pre>');
-  // }
 }
 
+/**
+ * Theme hooks
+ * @param type $existing
+ * @param type $type
+ * @param type $theme
+ * @param type $path
+ * @return array 
+ */
 function easyting_theme($existing, $type, $theme, $path) {
   $hooks = array();
 
@@ -220,6 +245,7 @@ function easyting_theme($existing, $type, $theme, $path) {
 }
 
 function easyting_preprocess_ting_object(&$variables) {
+  // for landing page only
   if (arg(0) == 'ting' && arg(1) == 'object') {
     $variables['content']['actions']['reserve']['submit']['#value'] = '';
     $variables['content']['actions']['reserve']['submit']['#attributes'] = array(
@@ -266,11 +292,8 @@ function easyting_preprocess_ting_object(&$variables) {
     }
   }
 
+  // for search result only
   if (arg(0) == 'search' && arg(1) == 'ting') {
-
-    require_once('fb.php');
-    fb($variables['content'], '');
-
     if (isset($variables['content']['ting_primary_object'])) {
 
       $locations = array_keys($variables['content']['ting_primary_object'][0]);
