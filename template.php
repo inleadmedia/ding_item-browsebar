@@ -292,6 +292,11 @@ function easyting_preprocess_ting_object(&$variables) {
     }
   }
 
+  // for collection page only
+  if (arg(0) == 'ting' && arg(1) == 'collection') {
+    
+  }
+
   // for search result only
   if (arg(0) == 'search' && arg(1) == 'ting') {
     if (isset($variables['content']['ting_primary_object'])) {

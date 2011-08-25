@@ -75,6 +75,12 @@
   <!--?php dpm($content); ?-->
 </div>
 
+<?php } elseif (arg(0) == 'ting' && arg(1) == 'collection') { ?>
+
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php print render($content); ?>
+</div>
+
 <?php } elseif (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
   <div class="ting-object-search-result-additional ting-object-id-<?php print $object->primary_object->localId; ?>">
