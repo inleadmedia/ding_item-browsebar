@@ -46,6 +46,10 @@ function easyting_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'search_controls_form') {
     $form['size']['#type'] = 'select';
   }
+  elseif ($form_id == 'ding_reservation_reserve_form') {
+    $form['submit']['#prefix'] = '<div class="button plus reserve">';
+    $form['submit']['#suffix'] = '</div>';
+  }
 }
 
 /**

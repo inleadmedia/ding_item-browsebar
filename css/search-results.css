@@ -142,31 +142,51 @@
 }
 
 .ting-actions > form,
-.ting-actions > input.button {
+.ting-actions > .button {
   display: block;
   float: left;
   margin-right: 6px !important;
 }
 
-.ting-actions .form-submit {
-  padding: 1px 7px 1px 17px;
-  color: #4d4b50;
-  font-size: 11px;
-  background: url('../images/buttons/cart_bg.png') no-repeat 6px center;
+.ting-actions div.button {
   border: 1px solid #D6D6D6;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   cursor: pointer;
-}
-.ting-actions .form-submit:hover {
-  background-color: #e7e7e7;
+  line-height: 14px;
+  padding: 1px 7px;
+  background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0.5, #FEFEFE), color-stop(1, #EEEEEE));
+  background-image: -moz-linear-gradient(center top, #FEFEFE 50%, #EEEEEE);
 }
 
-.ting-actions .form-submit[value=Reserve],
-.ting-actions .form-submit[value=Reserver] {
-  color: #6D137D;
+.ting-actions div.button:hover {
+  background: #e7e7e7;
+}
+
+.ting-actions div.button input {
+  background: none;
+  border: none;
+  color: #0681B0;
+  cursor: pointer;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+}
+
+.ting-actions div.button.plus {
+  padding-left: 5px;
+}
+
+.ting-actions div.button.plus input {
+  background: url('../images/buttons/cart_bg.png') no-repeat left center;
+  color: #4d4b50;
+  padding-left: 11px;
+}
+
+.ting-actions div.button.reserve input {
   background-image: url('../images/buttons/reserve_bg.png');
+  color: #6D137D;
 }
 
 .page-search #main div.tabs {
