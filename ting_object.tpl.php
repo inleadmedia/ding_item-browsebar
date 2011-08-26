@@ -77,9 +77,57 @@
 
 <?php } elseif (arg(0) == 'ting' && arg(1) == 'collection') { ?>
 
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content); ?>
-</div>
+  <?php if (isset($primary_item)) { ?>
+    <!-- ting Collection page -->
+
+    <div class="ting-object ting-collection clearfix" <?php print $attributes; ?>>
+
+      <div class="ting-object-additional pimary-item">
+        <div class="cover"><?php print render($primary_item['ting_cover']); ?></div>
+
+        <div class="tab description">
+          <?php print render($primary_item['ting_title']); ?>
+          <div class="author"><?php print render($primary_item['ting_author']); ?></div>
+          <div class="description-content"><?php print render($primary_item['ting_abstract']); ?></div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="field">
+        <div class="related-items-label field-label"><?php print render($related_items_label); ?></div>
+      </div>
+
+      <?php print render($availability_legend); ?>
+
+      <?php print render($related_items); ?>
+    </div>
+
+  <?php } else { ?>
+
+    <!-- ting Collection related item -->
+    <div class="related-item">
+      <div class="ting-object-additional">
+        <div class="cover"><?php print render($primary_item['ting_cover']); ?></div>
+        <div class="description">
+          <?php print render($content['ding_availability_item']); ?>
+          <?php print render($content['ting_type']); ?>
+          <?php print render($content['ting_title']); ?>
+          <div class="about">
+            <div class="author"><?php print render($content['ting_author']); ?></div>
+          </div>
+          <div class="ting-actions right">
+            <?php print render($content['actions']) ;?>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+  <?php } ?>
 
 <?php } elseif (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
@@ -92,8 +140,6 @@
     <div class="col">
       <div class="ting-title">
         <?php print render($easyting['ting_title']); ?>
-        <?php var_dump($easyting); ?>
-        
       </div>
       <div class="ting-author">
         <?php print render($easyting['ting_author']); ?>

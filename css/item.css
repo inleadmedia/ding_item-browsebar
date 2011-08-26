@@ -24,6 +24,14 @@
   height: 21px!important;
 }
 
+.ting-object h2 a{
+  color: #6d137d !important;
+}
+
+.ting-object a.author{
+  color: #76ac10 !important;
+}
+
 .ting-object form input[button] {
   border-width: 0;
 }
@@ -211,6 +219,63 @@ a.social-icon.print {
 }
 .page-ting-collection .ting-object-additional div.description, .ting-object div.description {
   // height: 150px;
+}
+
+.ting-collection .related-items-label {
+  margin-bottom: 15px;
+}
+
+.ting-collection .availability-legend-item {
+  margin-right: 13%;
+  min-width: 0;
+}
+.ting-collection .availability-legend-item.unavailable {
+  margin-right: 0;
+}
+
+.ting-collection .related-item {
+  border-bottom: 1px #c6c6c6 solid;
+  padding: 25px 0;
+}
+
+.ting-collection div.related-item .cover {
+  margin-right: 15px;
+}
+
+.ting-collection div.related-item .description {
+  overflow: hidden;
+}
+
+.ting-collection div.related-item .field-name-ting-type {
+  color: #939393;
+  float: right;
+  font-size: 10px;
+  height: 20px;
+  margin-left: 30px;
+  overflow: hidden;
+}
+.ting-collection div.related-item .field-name-ting-type *{
+  display: inline !important;
+  text-transform: uppercase !important;
+}
+
+.ting-collection div.related-item h2 {
+  font-size: 17px;
+  line-height: normal;
+  margin: 0;
+}
+
+.ting-collection div.related-item .description .about {
+  margin-right: 50%;
+  min-height: 40px;
+}
+
+.ting-collection div.related-item .author {
+  margin: 0;
+}
+
+.ting-collection div.related-item .ting-actions {
+  margin-top: -30px;
 }
 
 .ting-object .object-information .item-list .item-list {
