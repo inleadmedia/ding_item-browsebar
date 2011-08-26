@@ -193,4 +193,8 @@
     $("#carousel-content").html(response.content);
   }
 
+  Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {
+    $('#carousel-bar-filter').html(response.content);
+  }
+
 })(jQuery);
