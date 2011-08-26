@@ -113,6 +113,57 @@
       $('#carousel .carousel-close').click(function() {
         $(this).parent().parent().hide('fast');
       });
+
+
+      /**
+       * Carousel filter popup menu
+       */
+
+      // Open popup
+      $('#carousel-bar-filter .open').live('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $this = $(this);
+        var popup = $this.prev().filter('.popup');
+        try {
+          popup.show();
+        }
+        catch (err) {
+        }
+      });
+
+      // Close popup
+      $('body, #carousel-bar-filter .close').live('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $this = $(this);
+
+        if ($this.hasClass('close')) {
+          var popup = $this.parents('.popup:first');
+          popup.hide();
+        }
+        else {
+          $('#carousel-bar-filter .close').click();
+        }
+      });
+
+      // Select filter param from popup
+      $('#carousel-bar-filter .popup li a').live('click', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+
+        $this.parents('ul:first').find('a').removeClass('selected');
+        $this.addClass('selected');
+
+        var selectedText = $(this).text();
+        var openButtonTextWrapper = $('#carousel-bar-filter .open .text');
+        openButtonTextWrapper.text(selectedText);
+        $('body').click();
+      });
+
+      // Select default filter param
+      $('#carousel-bar-filter .popup li a.selected').click();
+
     }
   });
 
