@@ -148,7 +148,7 @@ function carousel_admin_settings_validate($form, &$form_state) {
  */
 function carousel_facets_request_builder($keyword, $type, $subject) {
   return '(' . $keyword . ') AND facet.type="' . $type . '"' . 
-          ($subject != '' ? ' AND face.subject="' . $subject . '"' : '');
+          ($subject != '' ? ' AND facet.subject="' . $subject . '"' : '');
 }
 
 /**
@@ -333,7 +333,8 @@ function carousel_search_ting($query, $records) {
  * @param type $type
  * @param type $subject 
  */
-function carousel_filter($type, $subject) {
+function carousel_filter($type) {
+  $subject = $_REQUEST['facet'];
   $response = carousel_load_items($type, $subject);
   $content = theme('carousel_items', 
           array('carousel_items' => $response['items']));
@@ -344,14 +345,9 @@ function carousel_filter($type, $subject) {
           'content' => $content
         );
 
-  $facets = array(
-    'facet_1' => 'facet 1',
-    'facet_2' => 'facet 2'
-  );
-
   $commands[] = array(
           'command' => 'carousel_update_facets',
-          'content' => theme('browserbar_filter', array('facets' => $facets))
+          'content' => theme('browserbar_filter', array('facets' => $response['facets']))
         );
 
 
