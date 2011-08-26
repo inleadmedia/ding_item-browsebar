@@ -138,4 +138,9 @@
     });
   }
   
+  Drupal.ajax.prototype.commands['carousel_refresh'] = function (ajax, response, status) {
+    alert(1);
+    console.log(response);
+  }
+  
 })(jQuery);
