@@ -346,14 +346,12 @@ function carousel_filter($type, $subject) {
 
   $facets = array(
     'facet_1' => 'facet 1',
-    'facet_2' => 'facet 2',
-    'facet_3' => 'facet 3',
-    'facet_4' => 'facet 4'
+    'facet_2' => 'facet 2'
   );
 
   $commands[] = array(
           'command' => 'carousel_update_facets',
-          'content' => theme('browserbar_filter', $facets)
+          'content' => theme('browserbar_filter', array('facets' => $facets))
         );
 
 
