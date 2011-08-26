@@ -299,3 +299,22 @@ a {
   color: #76ac10;
   text-decoration: none;
 }
+
+.nodelist-block {
+  float: left;
+  padding: 4px;
+  margin: 4px;
+  border: 1px dashed #CCC;
+}
+
+.nodelist-1col {
+  width: 241px;
+}
+
+.nodelist-2col {
+  width: 500px;
+}
+
+.nodelist-3col {
+  width: 750px;
+}

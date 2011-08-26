@@ -62,7 +62,7 @@
           <!-- /.section -->
         </div>
         <!-- /#navigation -->
-        <?php print $easyting['carousel']; ?>
+        <?php print render($page['carousel']);/*$easyting['carousel']*/ ?>
       </div>
       <?php //endif; ?>
 

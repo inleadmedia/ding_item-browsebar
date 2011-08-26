@@ -9,6 +9,7 @@
       $(this).parent().find('li').removeClass('active');
       $(this).removeClass('active');
       $(this).find('img').css({'opacity':'1'});
+<<<<<<< HEAD
     });
 
 
@@ -114,34 +115,8 @@
         $(this).parent().parent().hide('fast');
       });
     }
+=======
+    });  
+>>>>>>> case-11995
   });
-
-  var magnify = function(ele) {
-    ele.children('img').animate({
-      'height' : '240',
-      'width' : '170'
-    }, 500, function() {
-      ele.removeClass('inactive').addClass('active');
-      
-    });
-
-    ele.animate({
-      'margin-top' : '0'
-    }, 500);
-  }
-
-  var restore = function(ele) {
-    ele.children('img').animate({
-      'height' : '160',
-      'width' : '120'
-    }, 500, function() {
-      ele.removeClass('active').addClass('inactive');
-      ele.find('p').fadeIn(500);
-      
-    });
-
-    ele.animate({
-      'margin-top' : '42'
-    }, 500);
-  }
 })(jQuery);
