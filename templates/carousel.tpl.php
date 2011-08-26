@@ -22,6 +22,13 @@
 
     <div id="carousel-bar-filter">
       <?php
+        $facets = array(
+          'facet_1' => 'facet 1',
+          'facet_2' => 'facet 2',
+          'facet_3' => 'facet 3',
+          'facet_4' => 'facet 4'
+        );
+
         echo theme('browserbar_filter', array('facets' => $facets));
       ?>
     </div>
