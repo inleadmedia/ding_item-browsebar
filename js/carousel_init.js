@@ -43,7 +43,7 @@
       }
     })
     // Scroll to the selected item
-    .find('div.result-item').click(function() {
+    .find('div.result-item').live('click', function() {
       if ($(this).hasClass('active')) {
         return;
       }
@@ -190,8 +190,7 @@
   }
   
   Drupal.ajax.prototype.commands['carousel_refresh'] = function (ajax, response, status) {
-    alert(1);
-    console.log(response);
+    $("#carousel-content").html(response.content);
   }
 
 })(jQuery);
