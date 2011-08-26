@@ -12,7 +12,17 @@
   ?>
 
   <div class="result-item <?php print (($i == 2) ? 'active' : 'inactive') ?>">
-    <img src="<?php print $image_base_path . $item->image ?>" width="120" height="160" alt="" />
+    <?php 
+    if ($item->image) {
+      echo theme('image_style', 
+             array('style_name' => 'ding_medium', 
+                 'path' => $item->image, 
+                 'getsize' => TRUE, 
+                 'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160')));
+    } else {
+      echo '<img src="' . $image_base_path . 'ting_item.jpg" width="120" height="160" alt=""/>';
+    }
+    ?>
     <p class="title"><?php print $item->title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
     <div class="item-overlay"></div>

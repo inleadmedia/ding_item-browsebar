@@ -180,11 +180,16 @@ function carousel_load_items() {
           $item->subject = null;
         }
 
-        /**
-         * @todo: where to take image from?
-         * How to cache and store images?
-         */
-        $item->image = 'ting_item.jpg';
+        // Exracting images
+        $path = ting_covers_object_path($searchItem->localId);
+        if (file_exists($path)) {
+          //If we we already have a valid cover image w/o style then just use it
+          $item->image = $path;
+        } else {
+          //Mark the image for retrieval;
+          $missing_images_local_ids[] = $searchItem->localId;
+        }
+       // $item->image = 'ting_item.jpg';
 
         if (isset($searchItem->record['dc:description'][''][0])) {
           /**
@@ -208,14 +213,15 @@ function carousel_load_items() {
          * @todo: what are these ratings, comments etc?
          */
         $item->rating = mt_rand(0, 5);
-        $item->rating_count = mt_rand(100, 5000);
-        $item->comment_count = mt_rand(10, 1000);
+        $item->rating_count = mt_rand(1, 10);
+        $item->comment_count = mt_rand(1, 10);
         $item->type = 1;
         $item->is_new = mt_rand(0, 1);
 
-        $items[] = $item;
+        $items[$searchItem->localId] = $item;
       }
-      
+      carousel_get_images_from_addi($items, $missing_images_local_ids);
+     
       cache_set($cid, $items, 'cache', REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
     }
     else {
@@ -224,6 +230,37 @@ function carousel_load_items() {
   }
   
   return $items;
+}
+
+function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
+  require_once drupal_get_path('module', 'ting_covers'). '/ting_covers.pages.inc';
+  $service = new AdditionalInformationService(variable_get('addi_wsdl_url'), variable_get('addi_username'), variable_get('addi_group'), variable_get('addi_password'));
+    
+  //Local ids = Faust numbers. Library object identifiers can be confusing...
+  $additional_informations = $service->getByFaustNumber($missing_images_local_ids);
+  foreach($missing_images_local_ids as $local_id) {
+    //Try to extract the image url from the result 
+    $source_url = FALSE;
+    if (isset($additional_informations[$local_id]) && $ai = $additional_informations[$local_id]) {
+      if ($ai->detailUrl) {
+        $source_url = $ai->detailUrl;
+      } elseif ($ai->thumbnailUrl) {
+        $source_url = $ai->thumbnailUrl;
+      }
+    }
+
+    //No cover image found? Cache this for future reference to avoid unnecessary requests
+    if (!$source_url && false) {
+      cache_set('ting_covers:'.$local_id, 1, 'cache', $_SERVER['REQUEST_TIME'] + TING_COVERS_CACHE_LIFETIME);
+      continue;
+    }
+
+    //Try to download the image locally
+    if ($file = _ting_covers_pages_fetch_image(ting_covers_object_path($local_id), $source_url)) {
+      //Generate a path corresponding to the downloaded image, styled
+      $items[$local_id]->image = image_style_url($image_style, $file->uri);
+    }
+  }
 }
 
 /**
