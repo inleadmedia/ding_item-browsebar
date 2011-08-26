@@ -190,7 +190,8 @@
   }
   
   Drupal.ajax.prototype.commands['carousel_refresh'] = function (ajax, response, status) {
-    $("#carousel-content").html(response.content);
+    $('#carousel-wrapper:hidden').show('fast');
+    $('#carousel-content').html(response.content);
   }
 
 })(jQuery);
