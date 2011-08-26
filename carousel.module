@@ -321,6 +321,12 @@ function carousel_filter($filter) {
           'content' => $content
         );
 
+  $commands[] = array(
+          'command' => 'carousel_update_facets',
+          'facets' => array('facet 1', 'facet 2', 'facet 3', 'facet 3')
+        );
+
+
   $result = array('#type' => 'ajax', '#commands' => $commands);
   ajax_deliver($result);
 }
