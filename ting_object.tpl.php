@@ -75,6 +75,60 @@
   <!--?php dpm($content); ?-->
 </div>
 
+<?php } elseif (arg(0) == 'ting' && arg(1) == 'collection') { ?>
+
+  <?php if (isset($primary_item)) { ?>
+    <!-- ting Collection page -->
+
+    <div class="ting-object ting-collection clearfix" <?php print $attributes; ?>>
+
+      <div class="ting-object-additional pimary-item">
+        <div class="cover"><?php print render($primary_item['ting_cover']); ?></div>
+
+        <div class="tab description">
+          <?php print render($primary_item['ting_title']); ?>
+          <div class="author"><?php print render($primary_item['ting_author']); ?></div>
+          <div class="description-content"><?php print render($primary_item['ting_abstract']); ?></div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="field">
+        <div class="related-items-label field-label"><?php print render($related_items_label); ?></div>
+      </div>
+
+      <?php print render($availability_legend); ?>
+
+      <?php print render($related_items); ?>
+    </div>
+
+  <?php } else { ?>
+
+    <!-- ting Collection related item -->
+    <div class="related-item">
+      <div class="ting-object-additional">
+        <div class="cover"><?php print render($primary_item['ting_cover']); ?></div>
+        <div class="description">
+          <?php print render($content['ding_availability_item']); ?>
+          <?php print render($content['ting_type']); ?>
+          <?php print render($content['ting_title']); ?>
+          <div class="about">
+            <div class="author"><?php print render($content['ting_author']); ?></div>
+          </div>
+          <div class="ting-actions right">
+            <?php print render($content['actions']) ;?>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+  <?php } ?>
+
 <?php } elseif (arg(0) == 'search' && arg(1) == 'ting') { ?>
 
   <div class="ting-object-search-result-additional ting-object-id-<?php print $object->primary_object->localId; ?>">

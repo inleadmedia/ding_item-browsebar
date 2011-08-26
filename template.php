@@ -208,6 +208,31 @@ function easyting_preprocess_ting_object(&$variables) {
     }
   }
 
+  // for collection page only
+  if (arg(0) == 'ting' && arg(1) == 'collection') {
+    //require_once('fb.php');
+
+    if (isset($variables['content']['ting_entities'])) {
+      //fb($variables['content']);
+      // Prepare primary collection item for render
+      $variables['primary_item'] = $variables['content']['ting_entities'][0];
+
+      // Prepare other items for render
+      $variables['related_items'] = $variables['content'];
+
+      // Shift label into separate variable
+      $variables['related_items_label'] = $variables['related_items']['ting_entities']['#title'];
+      $variables['related_items']['ting_entities']['#label_display'] = 'hidden';
+
+      // Get availability legent block
+      $ding_availability_legend_block = module_invoke('ding_availability','block_view');
+      $variables['availability_legend'] = $ding_availability_legend_block['content'];
+
+      unset($variables['content']);
+    }
+    
+  }
+
   // for search result only
   if (arg(0) == 'search' && arg(1) == 'ting') {
     if (isset($variables['content']['ting_primary_object'])) {
