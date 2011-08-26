@@ -71,13 +71,23 @@
 
     // Handler for clicking on carousel active item
     $('#carousel .active').live('click', function() {
-      $(this).children('.result-item-details').fadeIn(500);
-      $('#carousel .result-item:eq(3)').animate({
-        'opacity' : 0
-      }, 500).addClass('show-me');
-      $('#carousel .result-item:eq(4)').animate({
-        'opacity' : 0
-      }, 500).addClass('show-me');
+      if ($(this).children('.result-item-details:visible').length > 0) {
+        $(this).children('.result-item-details').fadeOut(500);
+        $('#carousel .result-item:eq(3)').animate({
+          'opacity' : 1
+        }, 500).addClass('show-me');
+        $('#carousel .result-item:eq(4)').animate({
+          'opacity' : 1
+        }, 500).addClass('show-me');
+      } else {
+        $(this).children('.result-item-details').fadeIn(500);
+        $('#carousel .result-item:eq(3)').animate({
+          'opacity' : 0
+        }, 500).addClass('show-me');
+        $('#carousel .result-item:eq(4)').animate({
+          'opacity' : 0
+        }, 500).addClass('show-me');
+      }
     });
 
     // Handler for hiding the carousel
