@@ -64,6 +64,12 @@ function carousel_theme($existing, $type, $theme, $path) {
     'path' => $path . '/templates',
   );
   
+  $hooks['browserbar_filter'] = array(
+    'variables' => array('facets' => NULL),
+    'template' => 'browserbar_filter',
+    'path' => $path . '/templates',
+  );
+
   return $hooks;
 }
 
@@ -337,6 +343,17 @@ function carousel_filter($type, $subject) {
           'command' => 'carousel_refresh',
           'content' => $content
         );
+
+  $facets = array(
+    'facet_1' => 'facet 1',
+    'facet_2' => 'facet 2'
+  );
+
+  $commands[] = array(
+          'command' => 'carousel_update_facets',
+          'content' => theme('browserbar_filter', array('facets' => $facets))
+        );
+
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
   ajax_deliver($result);
