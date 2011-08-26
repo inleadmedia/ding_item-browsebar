@@ -1,0 +1,906 @@
+/* Throbber */
+html.js input.form-autocomplete {
+  background-position: 100% 6px; /* LTR */
+}
+html.js input.throbbing {
+  background-position: 100% -14px; /* LTR */
+}
+
+
+/* ***** Clearfix ***** */
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+
+
+/* *****  pane-search-result  ****** */
+/* *****   pane-search-ting   ****** */
+/* *****   page-ting-object   ****** */
+/* ***** page-ting-collection ****** */
+
+.page-ting-collection .pane-content,
+.page-ting-object .pane-content,
+.pane-search-result .pane-content,
+.page-search-ting .pane-content {
+}
+
+.pane-search-result li.search-result,
+.page-search-ting li.search-result  {
+  border-bottom: 1px solid #e7e7e6;
+  padding-bottom: 24px; 
+}
+
+.page-search-ting p.search-snippet {
+    display: none;
+}
+
+/* suppress title rendered by ting-search-results.tpl.php */
+.pane-search-result h3.title,
+.page-search-ting h3.title {
+    display: none;
+}
+
+
+/* ***** ting-object ***** */
+
+.ting-object .left-column {
+    float: left;
+    margin-right: 24px;
+    width: 126px;
+    height: 200px;
+}
+
+.ting-object .left-column .picture {
+}
+
+.ding-format-short .ting-object .left-column .picture {
+    display: none;
+}
+
+.ting-object .right-column {
+    float: left;
+    width: 374px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.ding-format-short .ting-object .right-column {
+    width: 100%;
+}
+
+.ting-object h2 {
+    padding-bottom: 0em;
+    color: #6d137d;
+}
+
+.ding-format-short .ting-object h2 {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.ting-object h3 {
+    padding-bottom: 0em;
+}
+
+.ting-object div.creator {
+    padding: 0 0 0.5em 0;
+    float: none;
+}
+
+.ding-format-short .ting-object div.creator {
+    float: left;
+}
+
+.ting-object div.abstract {
+    padding: 0 0 0.5em 0;
+}
+
+.ding-format-short .ting-object div.abstract {
+    display: none;
+}
+
+.ting-object h3.serie-title {
+    padding: 0 0 0.5em 0;
+}
+
+.ding-format-short .ting-object h3.serie-title {
+    display: none;
+}
+
+.ting-object span.subjects-label {
+}
+
+.ting-object div.moreinfo a {
+    padding-right: 10px;
+}
+
+.ting-object div.moreinfo {
+    display: none;
+    padding-bottom: 0.5em;
+}
+
+.ding-format-short .ting-object div.moreinfo {
+    display: none;
+}
+
+.ting-object div.subjects {
+ }
+
+.ding-format-short .ting-object div.subjects {
+    display: none;
+}
+
+.ting-object div.types {
+    padding-bottom: 0.5em;
+}
+
+.ting-object div.types p {
+    color: #797575;
+    padding-bottom: 0;
+    padding-right: 0.5em;
+    float: left;
+}
+
+.ting-object p.type {
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typebog {
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typenetdokument {
+   padding-left: 16px;
+   background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object p.typenode {
+   padding-left: 16px;
+   background: url('../images/icons/movie.png') no-repeat center left;
+}
+
+
+/* periodikum, netdokument, playstation2-spil. node */
+
+.pane-search-result p.clearfix,
+.page-search-ting p.clearfix {
+    clear: both;
+}
+
+/* ***** page-ting-object ****** */
+
+.availability {
+  display: inline;
+  background-color: #444;
+  color: #ffffff;
+  padding: 0.5em;
+}
+
+.availability.available {
+  background-color: #CC0;
+}
+
+.availability.available.reservable {
+  background-color: #0C0;
+}
+
+
+.page-ting-object .left-column .picture {
+    width: 134px;
+    height: 194px;
+}
+
+.page-ting-object .right-column {
+    width: 320px;
+}
+
+
+.ting-object .object-information {
+    padding: 2em 0;
+}
+
+.ting-object .object-information .object-information-header {
+    padding: 0.5em 0;
+    min-height: 40px;
+    background: url('../images/icons/book.png') no-repeat center left;
+}
+
+.ting-object .object-information .object-information-header h2 {
+    padding-left: 40px;
+    border-bottom: 2px solid #e7e7e6;
+    line-height: 40px;
+}
+
+.ting-object .object-information .item-list h4 {
+    text-transform: capitalize;
+    width: 8em;
+    margin: 0px;
+}
+
+.ting-object .object-information .item-list h4:after {
+   content:":";
+}
+
+.ting-object .object-information .item-list {
+  line-height: 1.3em;
+  padding: 0 0 0.5em 0;
+  font-size: 14px;
+}
+
+.ting-object .object-information .item-list .item-list {
+    border-width: 0px;
+    float: left;
+    width: 28em;
+}
+
+.ting-object .object-information .item-list ul {
+    margin: 0em;
+    padding: 0.5em 0;
+}
+
+.ting-object .object-information .item-list ul ul {
+    margin: 0em;
+    padding: 0em;
+}
+
+.ting-object .object-information ul {
+    background-color: #ffffff;
+    padding: 0;
+}
+
+.ting-object .object-information .item-list ul li {
+    margin: 0em;
+}
+.ting-object .object-information li  {
+    width: 100%;
+}
+
+.ting-object .object-information .item-list ul li.last {
+    padding: 0 0 0.75em 0;
+}
+
+.ting-object .object-information .item-list ul li li {
+    padding: 0em;
+}
+
+.ting-object .object-information .item-list ul li li.last {
+    padding: 0;
+}
+
+.ting-object .availability-legend {
+  display: none;
+}
+
+.ting-object h1.materials-heading {
+  display: none;
+}
+
+
+/* ***** page-ting-object relation ****** */
+
+.ting-relation {
+    background-color: #fff;
+    padding-top: 1em;
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.ting-relation.ting-relation-hasauthordescription h2 {
+    min-height: 40px;
+    background: url('../images/icons/book.png') no-repeat center left;
+    padding-left: 40px;
+    border-bottom: 2px solid #e7e7e6;
+    line-height: 40px;
+}
+
+.ting-relation.ting-relation-hasauthordescription h3 {
+    padding: 0.25em 0 0 0;
+}
+
+.ting-relation.ting-relation-hasauthordescription div {
+    padding: 0 0 0.25em 0;
+}
+
+.ting-relation.ting-relation-hasauthordescription p {
+    padding: 0em;
+}
+
+
+/* ***** page-ting-object holdings ****** */
+
+.holdings {
+    padding-top: 1em;
+}
+
+.holdings h2 {
+    min-height: 40px;
+    background: url('../images/icons/book.png') no-repeat center left;
+    padding-left: 40px;
+    border-bottom: 2px solid #e7e7e6;
+    line-height: 40px;
+}
+
+.holdings ul {
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.holdings ul li {
+    list-style-type: none;
+}
+
+
+
+/* ***** page-ting-collection ***** */
+
+.page-ting-collection .ting-object-overview {
+    border: 0px solid #e7e7e6;
+    padding-bottom: 0.5em;
+}
+
+.page-ting-collection .ting-object-overview .left-column .picture {
+    width: 134px;
+    height: 194px;
+}
+
+.page-ting-collection .ting-object-additional .left-column {
+    margin-right: 2em;
+}
+
+.page-ting-collection .ting-object-additional .left-column .picture {
+    width: 85px;
+    height: 132px;
+}
+
+.page-ting-collection .ting-object-overview .right-column {
+    width: 320px;
+}
+
+.page-ting-collection .ting-object-additional .right-column {
+    width: 350px;
+}
+
+.page-ting-collection .ting-object-additional .ting-object {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.page-ting-collection .ting-object-details {
+    border: 0px solid #369;
+}
+
+.page-ting-collection .ting-object-additional {
+    border: 0px solid #963;
+}
+
+.page-ting-collection .ting-object-additional > h2 {
+    Display: none;
+}
+
+.page-ting-collection .ting-overview {
+    padding-bottom: 4em;
+}
+
+.page-ting-collection .ting-object-additional .ting-overview {
+    padding-bottom: 0em;
+}
+
+.ting-object-overview {
+}
+
+.ting-object-details {
+}
+
+.ting-object-additional {
+}
+
+.pane-ding-availability-legend {
+    clear: both;
+}
+
+.page-ting-collection .ting-object .availability-legend {
+    display: block;
+}
+
+.page-ting-collection h1.materials-heading {
+    display: block;
+    line-height: 40px;
+    padding-left: 40px;
+    padding-bottom: 0em;
+    background: url("../images/icons/book.png") no-repeat scroll left center transparent;
+    min-height: 40px;
+}
+
+
+/* ***** pane-ting-ting-collection-types ***** */
+
+.pane-ting-ting-collection-types {
+    padding-top: 1em;
+}
+
+.pane-ting-ting-collection-types .pane-content {
+    padding-top: 0;
+}
+
+.pane-ting-ting-collection-types h2 {
+    background-color: #36a9e0;
+    color: #fff;
+    background: url('../images/bg_facet.png') no-repeat center right;
+}
+
+.pane-ting-ting-collection-types .ting-collection-types-header {
+    border-bottom: 1px solid #E5E8E4;
+    border-top: 1px solid #E7E7E6;
+    margin: 0 16px 0 0;
+    padding: 0.35em 0.5em;
+}
+
+.pane-ting-ting-collection-types ul {
+    list-style: none outside none;
+    margin: 0em 16px 0em 0em;
+}
+
+.pane-ting-ting-collection-types ul li {
+    margin: 0;
+    padding: 0.25em 0 0.25em 1.5em;
+    border-bottom: 1px solid #e7e7e6;
+}
+
+.pane-ting-ting-collection-types a {
+    color: #231f20;
+}
+
+
+/* ***** Primary tabs ***** */
+
+.page-search #main div.tabs {
+  display: none;
+}
+
+/*
+.page-search #tabs {
+  padding: 0 5px 0 5px;
+  background: url(../images/bg_primary_tab_left.png) no-repeat left bottom,
+              url(../images/bg_primary_tab_right.png) no-repeat right bottom;
+}
+*/
+
+.page-search ul.primary {
+  white-space: nowrap;
+  border-bottom: 0px solid #eeeff0;
+  background: url(../images/bg_primary_tab.png) no-repeat center bottom;
+  margin: 0em;
+  padding: 0em 0em 5px 0em;
+  height: 2.8em;
+  white-space: nowrap;
+}
+
+.page-search ul.primary > span {
+  border-style: none;
+  width: auto;
+  display: block;
+  float: left;
+}
+
+.page-search ul.primary li {
+  border-color: #eeeff0;
+  border-width: 2px;
+  background: url(../images/bg_primary_tab_li_left.png) repeat-y left top;
+  border-style: solid solid none none;
+  line-height: 1.8em;
+  height: 2em;
+  display: block;
+  float: left;
+  margin-top: 0.6em;
+}
+
+.page-search ul.primary span.last li {
+  border-style: solid solid none none;
+}
+
+.page-search ul.primary li.active {
+  height: 2.8em;
+  line-height: 2.8em;
+  border-style: none;
+  margin-top: 0em;
+}
+
+.page-search ul.primary li a {
+  background-color: inherit;
+  border-style: none;
+  margin-right: 0em;
+  padding: 0.4em 1.2em;
+}
+
+.page-search ul.primary li.active a {
+  background: url(../images/bg_tabs_active.png) no-repeat center bottom;
+  padding: 0.8em 1.2em;
+}
+
+
+/* ***** Facetbrowser ****** */
+
+.pane-search-result .panel-col-first form fieldset,
+.page-search-ting .panel-col-first form fieldset  {
+    border-bottom: 0px solid #e7e7e6;
+}
+
+.pane-search-result .panel-col-first form fieldset div.form-checkboxes,
+.page-search-ting .panel-col-first form fieldset div.form-checkboxes {
+    border-bottom: 0px solid #e7e7e6;
+}
+
+.pane-search-result .panel-col-first form fieldset div.form-checkboxes .form-item,
+.page-search-ting .panel-col-first form fieldset div.form-checkboxes .form-item {
+    margin: 0;
+    padding: 0;
+    text-indent: -1.2em;
+    margin-left: 1.2em;
+}
+
+.pane-search-result .panel-col-first form fieldset div.form-checkboxes label.option,
+.page-search-ting .panel-col-first form fieldset div.form-checkboxes label.option {
+}
+
+.pane-search-result .panel-col-first form legend,
+.page-search-ting .panel-col-first form legend  {
+    display: block;
+    width: 100%;
+}
+
+.pane-search-result .panel-col-first form legend span,
+.page-search-ting .panel-col-first form legend span {
+    padding: 0.35em 0.5em 0.35em 0.5em;
+    margin: 0em 16px 0em 0em;
+}
+
+.pane-search-result .panel-col-first span#expand_more,
+.pane-search-result .panel-col-first span#expand_less,
+.page-search-ting .panel-col-first span#expand_more,
+.page-search-ting .panel-col-first span#expand_less {
+    display: block;
+    padding: 0.25em 0em 0.25em 0em;
+    margin: 0em 16px 0em 0em;
+    cursor: pointer;
+}
+
+span#expand_more, span#expand_less {
+    color: #0681B0;
+}
+
+span#expand_more:hover, span#expand_less:hover {
+    text-decoration: underline;
+}
+
+div.ajax-progress {
+    position: absolute;
+    padding: 0.5em;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+div.ajax-progress .throbber {
+
+}
+
+div.ajax-progress .message {
+
+}
+
+.panel-separator {
+  display: none;
+}
+
+
+/* ***** reservation button ***** */
+
+/* #ding-reservation-reserve-form */
+.ting-object form {
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+/* #ding-reservation-reserve-form input */
+.ting-object form input {
+  border-width: 1;
+  padding: 0.1em 1em;
+}
+
+
+
+
+/* ***** search_result_toggle_amount ***** */
+
+div.pane-ding-toggle-format-toggle div.pane-content {
+  text-align: right;
+}
+
+.pane-ding-toggle-format-toggle {
+  width: 26%;
+  float: right;
+}
+
+
+/* ***** extended search, 'sort by' & 'records shown' ***** */
+
+.pane-ting-search-search-controls {
+  display: block;
+  float: left;
+  line-height: 68px;
+  // margin: 30px;
+}
+
+.pane-ting-search-search-controls label {
+  font-weight: normal;
+}
+
+#block-ting-search-search-extend {
+  clear: both;
+}
+
+#search-extend-form {
+  background-color: #fff;
+  border-style: solid;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  text-align: left;
+  clear: both;
+}
+
+#search-extend-form.extend-form-show {
+  display: block;
+}
+
+#search-extend-form .description {
+  display: none;
+}
+
+#search-extend-form fieldset {
+  margin-bottom: 0;
+  padding: 0 1em;
+}
+
+#search-extend-form fieldset legend {
+  display: none;
+}
+
+#search-extend-form label {
+  display: block;
+  float: left;
+  width: 6em;
+}
+
+#search-controls-form .description {
+  display: none;
+}
+
+#search-controls-form .form-type-select,
+#search-controls-form .form-type-radios {
+  float: left;
+}
+
+#search-controls-form .form-type-select label,
+#search-controls-form .form-type-radios label {
+  font-size: 13px;
+}
+
+#search-controls-form .form-type-select select {
+  border: 1px solid #999999;
+  background-color: white;
+  // width: 93px;
+  height: 18px;
+  font-size: 13px;
+}
+
+#search-controls-form label {
+  margin: 0px;
+}
+
+
+#search-controls-form .form-type-radio select {
+  width: 9em;
+}
+
+#search-controls-form .form-type-radios {
+  margin-left: 29px;
+}
+
+#search-controls-form .form-type-radios .form-radios {
+  margin-left: 0px;
+}
+
+#search-controls-form .form-type-radios .form-radios div {
+  margin-left: 0px;
+}
+
+
+
+#search-controls-form #edit-size .form-item-size {
+  width: auto;
+}
+
+#search-controls-form .form-type-radio input {
+  border-radius: 0;
+  position: relative;
+  left: 0em;
+  visibility: hidden;
+}
+
+#search-controls-form .form-type-radio label {
+  margin-left: 1em;
+  // margin-right: 0.5em;
+  color: #666;
+  cursor: pointer;
+}
+
+#search-controls-form .form-type-radio label.labelSelected {
+  text-decoration: underline;
+}
+
+#search-controls-form .form-item-size label {
+    display: block;
+    float: left;
+    // margin-right: 0px;
+}
+
+#search-controls-form .form-item-size .form-radios {
+    display: block;
+    float: left;
+    // margin-left: 0px;
+}
+
+
+/* ***** availability-legend ***** */
+
+.availability-legend-item {
+    margin-right: 1.5em;
+}
+
+
+/* ***** page-user ***** */
+
+.page-user #main > .tabs {
+    width: 20%;
+    float: left;
+    padding-top: 1em;
+}
+
+.page-user #main > span {
+    width: 76%;
+    float: right;
+    padding-top: 1em;
+}
+
+.page-user ul.primary,
+.page-user ul.secondary {
+    border-width: 0px;
+    margin: 0em;
+    white-space: normal;
+}
+
+.page-user ul.primary li,
+.page-user ul.secondary li {
+    padding: 0;
+    width: 100%;
+    border-width: 0;
+    display: block;
+}
+
+.page-user ul.primary li.active,
+.page-user ul.secondary li.active {
+    background: url('../images/bg_facet.png') no-repeat center right;
+}
+
+.page-user ul.primary li span,
+.page-user ul.secondary li span {
+    display: block;
+}
+
+.page-user ul.primary li a,
+.page-user ul.secondary li a {
+    margin-right: 16px;
+    padding: 0.5em 1em;
+    border-width: 0px;
+    color: #000;
+    background-color: #fff;
+    display: block;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.page-user ul.primary a.active,
+.page-user ul.secondary a.active {
+    border-bottom: 1px solid #999999;
+    color: #fff;
+    background-color: inherit;
+}
+
+
+.page-user #main > .region {
+    width: 76%;
+    float: right;
+}
+
+.page-user .ting-object .right-column {
+    width: 220px;
+}
+
+/* #ding-reservation-reserve-form input */
+.page-user form input {
+  border-width: 1;
+  padding: 0.1em 1em;
+}
+
+/* ***** page-user ***** */
+
+.page-user .ting-object .ting-relation {
+    display: none;
+}
+
+.page-user .ting-object .abstract {
+    display: none;
+}
+
+.page-user .ting-object .subjects {
+    display: none;
+}
+
+.page-user .ting-object .availability  {
+    display: none;
+}
+
+.page-user .ting-object .ting-object-additional {
+    display: none;
+}
+
+
+.search-results .search-snippet-info {
+    padding: 0;
+    margin: 0;
+}
+
+.search-results .search-snippet-info p {
+  padding: 0;
+  margin: 0;
+}
+
+.search-results .ting-cover img {
+    width: 118px;
+    border: 2px solid #6D137D;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.search-results li {
+  margin-bottom: 24px;
+}
+
+.field .field-label {
+  font-size: 16px;
+}

@@ -1,0 +1,298 @@
+
+
+
+/**
+ * Search control form.
+ */
+#search-controls-form .form-type-select.form-item-size {
+  margin-left: 29px;
+}
+
+.pane-ding-toggle-format-toggle {
+  width: 47px;
+}
+
+.pane-ding-toggle-format-toggle .ding-toggle-format-label {
+  display: none;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long img.
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short img {
+  width: 47px;
+  height: 25px;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short,
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
+  width: 47px;
+  height: 25px;
+  display: block;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-short {
+  background: url("../images/display-format-button.png") no-repeat 0 -25px transparent;
+}
+
+.pane-ding-toggle-format-toggle a.ding-toggle-format-long {
+  background: url("../images/display-format-button.png") no-repeat 0 0 transparent;
+}
+
+.pane-ding-availability-legend .availability-legend {
+  border-bottom: 1px solid #E7E7E6;
+  border-top: 2px solid #E7E7E6;
+  height: 31px;
+  line-height: 31px;
+  margin-bottom: 27px;
+}
+
+.pane-ding-availability-legend .available {
+  margin: 0 36px 0 0;
+}
+
+.pane-ding-availability-legend .available-ill {
+  margin: 0 36px;
+}
+
+.pane-ding-availability-legend .on-loan {
+  margin: 0 36px;
+}
+
+.pane-ding-availability-legend .unavailable {
+  margin: 0 0 0 36px;
+}
+
+
+/**
+ * Search results container.
+ */
+.pane-search-result ol {
+  padding: 0;
+  margin: 0;
+}
+
+
+/**
+ * Search result object.
+ */
+.ting-object-search-result-additional .ting-cover-main {
+  float: left;
+  margin-right: 25px;
+}
+
+.ting-object-search-result-additional .ting-cover-main {
+  height: 200px;
+  width: 120px;
+}
+
+.ting-object-search-result-additional .ting-cover-main img {
+  border: 2px solid #999999;
+  border-radius: 2px 2px 2px 2px;
+  padding: 1px;
+}
+
+.ting-object-search-result-additional .ting-cover-main img:hover {
+  border: 2px solid #6D137D;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.ting-object-search-result-additional .ting-title {
+  width: 370px;
+  font-size: 13px;
+}
+
+.ting-object-search-result-additional .ting-title h2 {
+  font-size: 20px;
+  color: #6d137d;
+  margin: 5px 0 7px 0;
+  padding: 0px;
+  line-height: 30px;
+}
+
+.ting-object-search-result-additional .ting-title h2 a {
+  color: #6d137d;
+}
+
+.ting-object-search-result-additional .ting-author {
+  width: 370px;
+  font-size: 13px;
+  color: #999999;
+}
+
+#content .ting-object-search-result-additional .ting-author a {
+  color: #76AC10;
+}
+          
+.ting-object-search-result-additional .ting-abstract {
+  width: 370px;
+  font-size: 13px;
+  color: #4d4b50;
+}
+
+.ting-object-search-result-additional .ting-abstract .field-name-ting-abstract {
+  padding-bottom: 50px;
+}
+
+.ting-object-search-result-additional .ting-collection-types li {
+  font-size: 10px;
+  color: #999999;
+  text-transform: uppercase;
+  list-style: none;
+  clear: both;
+}
+
+.ting-actions > form,
+.ting-actions > .button {
+  display: block;
+  float: left;
+  margin-right: 6px !important;
+}
+
+.ting-actions div.button {
+  border: 1px solid #D6D6D6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  line-height: 14px;
+  padding: 1px 7px;
+  background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0.5, #FEFEFE), color-stop(1, #EEEEEE));
+  background-image: -moz-linear-gradient(center top, #FEFEFE 50%, #EEEEEE);
+}
+
+.ting-actions div.button:hover {
+  background: #e7e7e7;
+}
+
+.ting-actions div.button input {
+  background: none;
+  border: none;
+  color: #0681B0;
+  cursor: pointer;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+}
+
+.ting-actions div.button.plus {
+  padding-left: 5px;
+}
+
+.ting-actions div.button.plus input {
+  background: url('../images/buttons/cart_bg.png') no-repeat left center;
+  color: #4d4b50;
+  padding-left: 11px;
+}
+
+.ting-actions div.button.reserve input {
+  background-image: url('../images/buttons/reserve_bg.png');
+  color: #6D137D;
+}
+
+.page-search #main div.tabs {
+  display: none;
+}
+
+
+.pane-page-tabs {
+}
+
+.pane-page-tabs #tabs {
+}
+
+
+.pane-page-tabs #tabs ul.primary {
+  float: left;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #c6c6c6;
+  padding: 0;
+}
+
+.pane-page-tabs #tabs ul.primary li {
+  float: left;
+  height: auto;
+  margin: 0;
+  margin-right: 1px;
+  line-height: 25px !important;
+  background: none;
+  border: none;
+}
+.pane-page-tabs #tabs ul.primary li a {
+  display: block;
+  position: relative;
+  padding: 2px 10px 0;
+  color: #4d4b50;
+  text-decoration: none !important;
+  background: #f7f7f7 url('../images/tabs_item_bg.gif') repeat-x bottom;
+  border: 1px #e4e4e4 solid;
+  border-width: 1px 1px 0 1px;
+}
+.pane-page-tabs #tabs ul.primary li a:hover {
+  color: #0681b0;
+  background: #fefefe;
+}
+
+.pane-page-tabs #tabs ul.primary li.active a {
+  color: #6d137d;
+  background: none;
+}
+.pane-page-tabs #tabs ul.primary li.active .element-invisible{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 17px;
+  height: 7px;
+  overflow: hidden;
+  clip: auto;
+  margin: 1px 0 0-8px;
+  text-indent: -999em;
+  background: url('../images/tabs_item_down_arrow.png') no-repeat;
+}
+
+
+
+.pane-content ul.pager {
+  padding: 0px;
+  margin: 10px 0;
+}
+
+#content .pane-content ul.pager li {
+  padding: 0px;
+  margin: 0px;
+}
+
+#content .pane-content ul.pager li a:hover,
+#content .pane-content ul.pager li a:link,
+#content .pane-content ul.pager li a {
+  text-decoration: none;
+  color: #999999;
+  padding: 10px 10px 6px 10px;
+}
+
+#content .pane-content ul.pager li.pager-first a:hover,
+#content .pane-content ul.pager li.pager-previous a:hover,
+#content .pane-content ul.pager li.pager-item a:hover,
+#content .pane-content ul.pager li.pager-next a:hover,
+#content .pane-content ul.pager li.pager-last a:hover {
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  padding: 9px 9px 5px 9px;
+  color: #0681b0;
+}
+
+#content .pane-content ul.pager li.pager-current {
+  color: #6d137d;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  padding: 9px 9px 5px 9px;
+  background-color: #e7e7e7;
+}
+
+
+
+
+
+
+

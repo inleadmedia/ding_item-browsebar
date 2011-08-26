@@ -1,0 +1,22 @@
+name = "easy.TING"
+description = "Theme for the Artesis Web project."
+core = 7.x
+base theme = stark
+
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/base.css
+stylesheets[all][] = css/grid.css
+stylesheets[all][] = css/easyting.css
+stylesheets[all][] = css/item.css
+stylesheets[all][] = css/search-results.css
+stylesheets[all][] = css/text.css
+
+scripts[] = js/dropdown.js
+scripts[] = js/item.tabs.js
+scripts[] = js/easyting.js
+
+regions[header] = Header
+regions[navigation] = Navigation
+regions[carousel] = Carousel widget
+regions[content] = Main content area
+regions[footer] = Footer
