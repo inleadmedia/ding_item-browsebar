@@ -2,7 +2,7 @@
   var carouselItems = 5;
   $(document).ready(function() {
     // Shows the items hidden by details layer.
-    $("#foo").carouFredSel({
+    $("#carousel-content").carouFredSel({
       curcular: false,
       infinite: false,
       auto : false,
@@ -49,10 +49,10 @@
       }
       window.selectedIndex = $('div.result-item').index(this);
       if (window.selectedIndex > carouselItems / 2) {
-        $("#foo").trigger("next", [null, window.selectedIndex - Math.floor(carouselItems / 2)]);
+        $("#carousel-content").trigger("next", [null, window.selectedIndex - Math.floor(carouselItems / 2)]);
       }
       else {
-        $("#foo").trigger("prev", [null, Math.floor(carouselItems / 2) - window.selectedIndex]);
+        $("#carousel-content").trigger("prev", [null, Math.floor(carouselItems / 2) - window.selectedIndex]);
       }
     });
 

@@ -1,5 +1,7 @@
 <?php if ($carousel_items): ?>
-  <?php foreach ($carousel_items as $i => $item): ?>
+  <?php 
+  $k = 0;
+  foreach ($carousel_items as $i => $item): ?>
   <?php  
     /**
      * @todo: replace Danish used in t() with English
@@ -11,7 +13,7 @@
     endfor;
   ?>
 
-  <div class="result-item <?php print (($i == 2) ? 'active' : 'inactive') ?>">
+  <div class="result-item <?php print (($k++ == 2) ? 'active' : 'inactive') ?>">
     <?php 
     if ($item->image) {
       echo theme('image_style', 

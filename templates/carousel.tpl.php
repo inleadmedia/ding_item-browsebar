@@ -11,7 +11,7 @@
         <li><a href="#" class="alpha"><?php print t('Alfabetisk'); ?></a></li>
       </ul>
     </div>
-    <div id="foo">
+    <div id="carousel-content">
       <?php print $carousel_items; ?>
     </div>
     <a id="prev" href="#"></a>
