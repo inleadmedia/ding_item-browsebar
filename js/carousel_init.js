@@ -196,6 +196,7 @@
 
   Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {
     $('#carousel-bar-filter').html(response.content);
+    Drupal.attachBehaviors($('#carousel-bar-filter'));
   }
 
 })(jQuery);
