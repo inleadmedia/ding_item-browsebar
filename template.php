@@ -72,29 +72,7 @@ function easyting_preprocess(&$variables, $hook) {
     // Preprocess secondary navigation menu
     $menu = menu_navigation_links('menu-easyting-secondary-menu');
 
-    // This menu contains images... so define them here
-    $images = array('icons/book.png', 'icons/movie.png', 'icons/music.png', 'icons/cd.png');
-    $markup = '<ul id="s-nav">';
-    $i = 0;
-
-    foreach($menu as $key => $value) {
-      $markup .= '<li>
-        <img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $images[$i] . '" width="16" height="16"  alt="" />
-        <a href="' . ($value['href'] == '<front>' ? 'index.php' : $value['href']) . '">' . $value['title'] . '</a>';
-
-      // We don't need a separator after last item
-      if ($i < 3) {
-        $markup .= '<img class="separator" src="/' . drupal_get_path('theme', 'easyting') . '/images/nav_separator.png" width="1" height="24"  alt="" />';
-      }
-
-      $markup .= '</li>';
-
-      $i++;
-    }
-
-    $markup .= '</ul>';
-
-    $variables['easyting']['secondary_nav'] = theme('secondary_nav', array('menu' => $markup));
+    $variables['easyting']['secondary_nav'] = theme('secondary_nav', array('menu' => $menu));
 
     // Preprocess header navigation menu
     $menu = menu_navigation_links('menu-easyting-header-menu');
@@ -208,12 +186,6 @@ function easyting_theme($existing, $type, $theme, $path) {
   $hooks['main_nav'] = array(
     'variables' => array('menu' => NULL),
     'template' => 'easyting_main_nav',
-    'path' => $path . '/templates',
-  );
-
-  $hooks['secondary_nav'] = array(
-    'variables' => array('menu' => NULL),
-    'template' => 'easyting_secondary_nav',
     'path' => $path . '/templates',
   );
 
