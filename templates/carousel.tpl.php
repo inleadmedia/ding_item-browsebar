@@ -19,6 +19,30 @@
     <a href="#" class="carousel-close"><img src="/<?php print drupal_get_path('theme', 'easyting'); ?>/images/carousel-close.png" width="57" height="24" alt="" /></a>
   </div>
   <div id="carousel-bar">
+
+    <div id="carousel-bar-filter">
+      <div class="popup">
+        <ul>
+          <li><a href="#1">Børnebøger</a></li>
+          <li><a href="#2">Ungdomsbøger</a></li>
+          <li><a href="#3">Folkebøger</a></li>
+          <li><a class="selected" href="#4">Gysere</a></li>
+          <li><a href="#5">Krimier</a></li>
+          <li><a href="#6">Noveller</a></li>
+          <li><a href="#7">Romaner</a></li>
+          <li><a href="#8">Science fiction</a></li>
+        </ul>
+        <a href="" class="close">
+          <div class="icon"></div>
+          <div class="text">Close menu</div>
+        </a>
+      </div>
+      <a href="#" class="current open">
+        <div class="icon"></div>
+        <div class="text"></div>
+      </a>
+    </div>
+
     <div id="carousel-pager"></div>
   </div>
 </div>
