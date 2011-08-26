@@ -10,9 +10,16 @@
     echo '<ul id="s-nav">';
     $i = 0;
 
+    $current = '';
     foreach($menu as $key => $value) {
-      echo '<li>
-        <img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $images[$i] . '" width="16" height="16"  alt="" />
+      if ($i == 0) {
+        $current = 'current';
+      } else {
+        $current = '';
+      }
+      //echo '<li class="s-nav-subitem-' . $i . ' ' . $current . '">
+      echo '<li class="' . $current . '">
+        <div class="s-nav-subitem-' . $i . '"></div>
         <a href="' . $value['href'] . '" class="use-ajax">' . $value['title'] . '</a>';
 
       // We don't need a separator after last item
