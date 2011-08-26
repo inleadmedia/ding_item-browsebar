@@ -1,8 +1,9 @@
   <div class="popup">
     <ul>
-    <?php foreach ($facets as $facet_value => $facet_name) { ?>
-      <li><a href="#<?php echo $facet_value; ?>"><?php echo $facet_name; ?></a></li>
-    <?php } ?>
+    <?php 
+    foreach ($facets['facet.subject']->terms as $facet=>$amount) {
+      echo '<li><a class="use-ajax" href="/ding/carousel/filter/bog?facet=' . htmlspecialchars($facet) . '">' . htmlspecialchars($facet) . '</a></li>';
+    } ?> 
     </ul>
     <a href="#" class="close">
       <div class="icon"></div>
