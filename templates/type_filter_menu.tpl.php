@@ -11,7 +11,7 @@
     $i = 0;
 
     $current = '';
-    foreach($menu as $key => $value) {
+    foreach ($menu as $key => $value) {
       if ($i == 0) {
         $current = 'current';
       } else {
