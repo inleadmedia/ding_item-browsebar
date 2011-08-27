@@ -17,7 +17,6 @@
       } else {
         $current = '';
       }
-      //echo '<li class="s-nav-subitem-' . $i . ' ' . $current . '">
       echo '<li class="' . $current . '">
         <div class="s-nav-subitem-' . $i . '"></div>
         <a href="' . $value['href'] . '" class="use-ajax">' . $value['title'] . '</a>';
