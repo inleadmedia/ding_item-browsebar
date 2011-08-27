@@ -15,7 +15,7 @@
 
   <div class="result-item <?php print (($k++ == 2) ? 'active' : 'inactive') ?>">
     <?php 
-    if ($item->image) {
+    if (isset($item->image)) {
       echo theme('image_style', 
              array('style_name' => 'ding_medium', 
                  'path' => $item->image, 
