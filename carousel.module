@@ -64,6 +64,12 @@ function carousel_theme($existing, $type, $theme, $path) {
     'path' => $path . '/templates',
   );
   
+  $hooks['browserbar_filter'] = array(
+    'variables' => array('facets' => NULL),
+    'template' => 'browserbar_filter',
+    'path' => $path . '/templates',
+  );
+
   return $hooks;
 }
 
@@ -143,7 +149,7 @@ function carousel_admin_settings_validate($form, &$form_state) {
  */
 function carousel_facets_request_builder($keyword, $type, $subject) {
   return '(' . $keyword . ') AND facet.type="' . $type . '"' . 
-          ($subject != '' ? ' AND face.subject="' . $subject . '"' : '');
+          ($subject != '' ? ' AND facet.subject="' . $subject . '"' : '');
 }
 
 /**
@@ -328,7 +334,8 @@ function carousel_search_ting($query, $records) {
  * @param type $type
  * @param type $subject 
  */
-function carousel_filter($type, $subject) {
+function carousel_filter($type) {
+  $subject = $_REQUEST['facet'];
   $response = carousel_load_items($type, $subject);
   $content = theme('carousel_items', 
           array('carousel_items' => $response['items']));
@@ -338,6 +345,12 @@ function carousel_filter($type, $subject) {
           'command' => 'carousel_refresh',
           'content' => $content
         );
+
+  $commands[] = array(
+          'command' => 'carousel_update_facets',
+          'content' => theme('browserbar_filter', array('facets' => $response['facets']))
+        );
+
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
   ajax_deliver($result);
