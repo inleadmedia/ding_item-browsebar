@@ -10,7 +10,7 @@
     echo '<ul id="s-nav">';
     $i = 0;
 
-    foreach($menu as $key => $value) {
+    foreach ($menu as $key => $value) {
       echo '<li>
         <img src="/' . drupal_get_path('theme', 'easyting') . '/images/' . $images[$i] . '" width="16" height="16"  alt="" />
         <a href="' . $value['href'] . '" class="use-ajax">' . $value['title'] . '</a>';
