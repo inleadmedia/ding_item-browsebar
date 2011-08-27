@@ -64,14 +64,14 @@ function carousel_install() {
     );
     menu_link_save($item);
     menu_cache_clear_all();
-    $item = array(
-      'link_title' => st('english'),
-      'link_path' => '<front>',
-      'menu_name' => 'menu-easyting-header-menu',
-      'weight' => 4,
-    );
-    menu_link_save($item);
-    menu_cache_clear_all();
+//    $item = array(
+//      'link_title' => st('english'),
+//      'link_path' => '<front>',
+//      'menu_name' => 'menu-easyting-header-menu',
+//      'weight' => 4,
+//    );
+//    menu_link_save($item);
+//    menu_cache_clear_all();
   }
   // Easyting header menu ---}}}
 
