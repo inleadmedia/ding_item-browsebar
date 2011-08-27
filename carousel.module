@@ -77,6 +77,54 @@ function carousel_theme($existing, $type, $theme, $path) {
  * Implementation of hook_block_view().
  */
 function carousel_block_view($delta) {
+
+
+  // Creatin of easyting secondary menu
+  $tree = array();
+  $tree = menu_tree_all_data('menu-easyting-secondary-menu');
+  if (empty($tree)) {
+    $menu = array(
+    'menu_name' => 'menu-easyting-secondary-menu',
+    'title' => 'Easyting secondary menu',
+    'description' => '',
+    );
+    menu_save($menu);
+    $item = array(
+      'link_title' => t('boger'),
+      'link_path' => drupal_get_normal_path('ding/carousel/filter/bog'),
+      'menu_name' => 'menu-easyting-secondary-menu',
+      'weight' => 1,
+    );
+    menu_link_save($item);
+    menu_cache_clear_all();
+    $item = array(
+      'link_title' => t('film'),
+      'link_path' => drupal_get_normal_path('ding/carousel/filter/dvd'),
+      'menu_name' => 'menu-easyting-secondary-menu',
+      'weight' => 2,
+    );
+    menu_link_save($item);
+    menu_cache_clear_all();
+    $item = array(
+      'link_title' => t('lyd'),
+      'link_path' => drupal_get_normal_path('ding/carousel/filter/lydbog (online)'),
+      'menu_name' => 'menu-easyting-secondary-menu',
+      'weight' => 3,
+    );
+    menu_link_save($item);
+    menu_cache_clear_all();
+    $item = array(
+      'link_title' => t('spil'),
+      'link_path' => drupal_get_normal_path('ding/carousel/filter/playstation2-spil'),
+      'menu_name' => 'menu-easyting-secondary-menu',
+      'weight' => 4,
+    );
+    menu_link_save($item);
+    menu_cache_clear_all();
+  }
+  menu_rebuild();
+
+
   switch ($delta) {
     case 'main':
       //drupal_add_library('system', 'drupal.ajax');
