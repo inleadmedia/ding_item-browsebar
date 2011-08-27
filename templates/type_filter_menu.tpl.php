@@ -19,6 +19,7 @@
       }
       echo '<li class="' . $current . '">
         <div class="s-nav-subitem-' . $i . '"></div>
+
         <a href="' . $value['href'] . '" class="use-ajax">' . $value['title'] . '</a>';
 
       // We don't need a separator after last item
