@@ -114,7 +114,7 @@
     });
 
     // Close popup
-    $('body, #carousel-bar-filter .close').live('click', function(e) {
+    $('#carousel-bar-filter .close').live('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       var $this = $(this);
@@ -139,7 +139,6 @@
       var selectedText = $(this).text();
       var openButtonTextWrapper = $('#carousel-bar-filter .open .text');
       openButtonTextWrapper.text(selectedText);
-      $('body').click();
     });
 
     // Select default filter param
