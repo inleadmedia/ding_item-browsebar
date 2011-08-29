@@ -353,7 +353,7 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
     //Try to download the image locally
     if ($file = _ting_covers_pages_fetch_image(ting_covers_object_path($local_id), $source_url)) {
       //Generate a path corresponding to the downloaded image, styled
-      $items[$local_id]->image = image_style_url($image_style, $file->uri);
+      $items[$local_id]->image = image_style_url('ding_medium', $file->uri);
     }
   }
 }
