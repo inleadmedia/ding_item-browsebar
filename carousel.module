@@ -279,7 +279,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
           $item->description = $searchItem->record['dc:description'][''][0];
         }
         elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
-          $item->description = $searchItem->record['dcterms:abstract'][''][0];image_style_url
+          $item->description = $searchItem->record['dcterms:abstract'][''][0];
         }
         elseif (isset($searchItem->record['dcterms:hasPart'])) {
           $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
