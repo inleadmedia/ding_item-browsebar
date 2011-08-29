@@ -127,9 +127,9 @@ function carousel_block_view($delta) {
 
   switch ($delta) {
     case 'main':
-      //drupal_add_library('system', 'drupal.ajax');
+      drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
-      //drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
       
       $response = carousel_load_items('bog');
       
@@ -279,7 +279,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
           $item->description = $searchItem->record['dc:description'][''][0];
         }
         elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
-          $item->description = $searchItem->record['dcterms:abstract'][''][0];
+          $item->description = $searchItem->record['dcterms:abstract'][''][0];image_style_url
         }
         elseif (isset($searchItem->record['dcterms:hasPart'])) {
           $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
