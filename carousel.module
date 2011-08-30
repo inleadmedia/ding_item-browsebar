@@ -268,7 +268,8 @@ function carousel_load_items($type = 'bog', $subject = '') {
         if (file_exists($path)) {
           //If we we already have a valid cover image w/o style then just use it
           $item->image = $path;
-        } else {
+        }
+        else {
           //Mark the image for retrieval;
           $missing_images_local_ids[] = $searchItem->localId;
         }
@@ -340,7 +341,8 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
     if (isset($additional_informations[$local_id]) && $ai = $additional_informations[$local_id]) {
       if ($ai->detailUrl) {
         $source_url = $ai->detailUrl;
-      } elseif ($ai->thumbnailUrl) {
+      }
+      elseif ($ai->thumbnailUrl) {
         $source_url = $ai->thumbnailUrl;
       }
     }
