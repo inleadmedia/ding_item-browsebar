@@ -65,7 +65,7 @@ function carousel_theme($existing, $type, $theme, $path) {
   );
 
   $hooks['browserbar_filter'] = array(
-    'variables' => array('facets' => NULL),
+    'variables' => array('facets' => NULL, 'active_facet' => NULL),
     'template' => 'browserbar_filter',
     'path' => $path . '/templates',
   );
@@ -407,7 +407,7 @@ function carousel_filter($type) {
 
   $commands[] = array(
           'command' => 'carousel_update_facets',
-          'content' => theme('browserbar_filter', array('facets' => $response['facets']))
+          'content' => theme('browserbar_filter', array('facets' => $response['facets'], 'active_facet' => $subject))
         );
 
 
