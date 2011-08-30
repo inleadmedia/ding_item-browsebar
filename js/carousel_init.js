@@ -199,11 +199,19 @@
   }
   
   Drupal.ajax.prototype.commands['carousel_refresh'] = function (ajax, response, status) {
+    // Check if something was found.
+    if (!response.content) {
+      alert(Drupal.t('Sorry, no items were found.'));
+      return;
+    }
     $('#carousel-wrapper:hidden').show('fast');
     $('#carousel-content').html(response.content);
   }
 
   Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {
+    if (!$(response.content).find('ul li').length) {
+      return;
+    }    
     $('#carousel-bar-filter').html(response.content);
     Drupal.attachBehaviors($('#carousel-bar-filter'));
   }
