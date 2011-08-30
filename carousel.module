@@ -311,7 +311,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
         carousel_get_images_from_addi($items, $missing_images_local_ids);
 
         cache_set($cid, $items, 'cache',
-             REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
+          REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
       }
 
 
