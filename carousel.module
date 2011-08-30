@@ -208,7 +208,7 @@ function carousel_facets_request_builder($keyword, $type, $subject) {
  */
 function carousel_load_items($type = 'bog', $subject = '') {
   $keyword = variable_get('carousel_keyword');
-  $items = null;
+  $items = NULL;
 
   if ($keyword) {
     $cid = 'carousel-' . md5($keyword . $type . $subject);
@@ -224,11 +224,11 @@ function carousel_load_items($type = 'bog', $subject = '') {
         $item = new stdClass();
         $item->id = $searchItem->id;
         $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
-                      $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : null;
+                      $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : NULL;
         $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
-                            $searchItem->record['ac:source'][''][0] : null;
+                            $searchItem->record['ac:source'][''][0] : NULL;
         $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
-                            $searchItem->record['dc:source'][''][0] : null;
+                            $searchItem->record['dc:source'][''][0] : NULL;
         $item->title = $searchItem->record['dc:title'][''][0];
 
         if (isset($searchItem->record['dc:creator'])) {
@@ -242,11 +242,11 @@ function carousel_load_items($type = 'bog', $subject = '') {
             $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
           }
           else {
-            $item->creator = null;
+            $item->creator = NULL;
           }
         }
         else {
-          $item->creator = null;
+          $item->creator = NULL;
         }
 
         if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
@@ -259,7 +259,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
           $item->subject = $searchItem->record['dc:subject'][''][0];
         }
         else {
-          $item->subject = null;
+          $item->subject = NULL;
         }
 
         // Exracting images
@@ -291,7 +291,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
         }
 
         $item->year = isset($searchItem->record['dc:date'][''][0]) ?
-                        $searchItem->record['dc:date'][''][0] : null;
+                        $searchItem->record['dc:date'][''][0] : NULL;
         /**
          * @todo: what are these ratings, comments etc?
          */
