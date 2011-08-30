@@ -12,7 +12,7 @@
 
     $current = '';
     foreach ($menu as $key => $value) {
-      if ($i == 0) {
+      if (drupal_is_front_page() && $i == 0) {
         $current = 'current';
       } else {
         $current = '';
