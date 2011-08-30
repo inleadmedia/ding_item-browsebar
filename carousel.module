@@ -10,7 +10,7 @@
  * Implements hook_menu().
  */
 function carousel_menu() {
-  
+
   $items['admin/config/ding/carousel'] = array(
     'title' => 'Carousel widget settings',
     'description' => 'Configure carousel options such as search keyword, number of items etc.',
@@ -19,7 +19,7 @@ function carousel_menu() {
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
   );
-  
+
   $items['ding/carousel/filter/%'] = array(
     'page arguments' => array(3),
     'type' => MENU_CALLBACK,
@@ -38,7 +38,7 @@ function carousel_block_info() {
     'region' => 'content',
     'weight' => 0,
   );
-  
+
   return $blocks;
 }
 
@@ -50,20 +50,20 @@ function carousel_theme($existing, $type, $theme, $path) {
     'variables' => array('carousel_items' => NULL, 'facets' => NULL),
     'template' => 'carousel',
     'path'  => $path . '/templates'
-  );  
-  
+  );
+
   $hooks['carousel_items'] = array(
     'variables' => array('carousel_items' => NULL),
     'template' => 'carousel_items',
     'path'  => $path . '/templates'
   );
-  
+
   $hooks['secondary_nav'] = array(
     'variables' => array('menu' => NULL),
     'template' => 'type_filter_menu',
     'path' => $path . '/templates',
   );
-  
+
   $hooks['browserbar_filter'] = array(
     'variables' => array('facets' => NULL),
     'template' => 'browserbar_filter',
@@ -130,15 +130,15 @@ function carousel_block_view($delta) {
       drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
-      
+
       $response = carousel_load_items('bog');
-      
+
       $block['content'] = theme('carousel', array(
             'carousel_items' => theme('carousel_items', array('carousel_items' => $response['items'])),
             'facets' => $response['facets']));
       break;
   }
-  
+
   return $block;
 }
 
@@ -154,21 +154,21 @@ function carousel_admin_settings() {
     '#default_value' => variable_get('carousel_keyword')
 
   );
-  
+
   $form['carousel_item_limit'] = array(
     '#type' => 'textfield',
     '#title' => t('Item limit'),
     '#description' => t('The number of items to be returned in search result.'),
     '#default_value' => variable_get('carousel_item_limit', 24)
   );
-  
+
   $form['carousel_cache_ttl'] = array(
     '#type' => 'textfield',
     '#title' => t('Cache TTL'),
     '#description' => t('How many hours the cache lives.'),
     '#default_value' => variable_get('carousel_cache_ttl', 1)
   );
-  
+
   return system_settings_form($form);
 }
 
@@ -181,34 +181,34 @@ function carousel_admin_settings_validate($form, &$form_state) {
   if (!is_numeric($limit)) {
     form_set_error('carousel_item_limit', t('Please enter a valid number.'));
   }
-  
+
   if (!is_numeric($cache_ttl)) {
     form_set_error('carousel_cache_ttl', t('Please enter a valid number.'));
-  }  
+  }
 }
 
 /**
- * Preprocess Ting request with facets 
- * 
+ * Preprocess Ting request with facets
+ *
  * @param string $keyword
  * @param string $type
  * @param string $subject
- * @return string 
+ * @return string
  */
 function carousel_facets_request_builder($keyword, $type, $subject) {
-  return '(' . $keyword . ') AND facet.type="' . $type . '"' . 
+  return '(' . $keyword . ') AND facet.type="' . $type . '"' .
           ($subject != '' ? ' AND facet.subject="' . $subject . '"' : '');
 }
 
 /**
- * Retrieves search results either from Ting or 
+ * Retrieves search results either from Ting or
  * from cache.
  * @return array Search result items
  */
 function carousel_load_items($type = 'bog', $subject = '') {
   $keyword = variable_get('carousel_keyword');
   $items = null;
-  
+
   if ($keyword) {
     $cid = 'carousel-' . md5($keyword . $type . $subject);
     if (!($items = cache_get($cid)) || 1) {
@@ -216,7 +216,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
       $request = carousel_facets_request_builder($keyword, $type, $subject);
       $result = carousel_search_ting($request, variable_get('carousel_item_limit', 24));
       $items = array();
-      
+
       foreach ($result->collections as $collection) {
         $searchItem = $collection->reply->objects[0];
 
@@ -224,7 +224,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
         $item->id = $searchItem->id;
         $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
                       $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : null;
-        $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ? 
+        $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
                             $searchItem->record['ac:source'][''][0] : null;
         $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
                             $searchItem->record['dc:source'][''][0] : null;
@@ -276,7 +276,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
         if (isset($searchItem->record['dc:description'][''][0])) {
           /**
            * @todo: Which field of three is description?
-           */        
+           */
           $item->description = $searchItem->record['dc:description'][''][0];
         }
         elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
@@ -288,8 +288,8 @@ function carousel_load_items($type = 'bog', $subject = '') {
         else {
           $item->description = '';
         }
-        
-        $item->year = isset($searchItem->record['dc:date'][''][0]) ? 
+
+        $item->year = isset($searchItem->record['dc:date'][''][0]) ?
                         $searchItem->record['dc:date'][''][0] : null;
         /**
          * @todo: what are these ratings, comments etc?
@@ -304,37 +304,37 @@ function carousel_load_items($type = 'bog', $subject = '') {
       }
 
       $items = array('items' => $items, 'facets' => $result->facets);
-      
+
       if (is_array($missing_images_local_ids)) {
         carousel_get_images_from_addi($items, $missing_images_local_ids);
-        
+
         cache_set($cid, $items, 'cache',
              REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
       }
 
-      
+
     }
     else {
       $items = $items->data;
     }
   }
-  
+
   return $items;
 }
 
 /**
  * Requ
  * @param array $itemsests Addi for covers that are not yet cached by drupal
- * @param array $missing_images_local_ids 
+ * @param array $missing_images_local_ids
  */
 function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
   require_once drupal_get_path('module', 'ting_covers'). '/ting_covers.pages.inc';
   $service = new AdditionalInformationService(variable_get('addi_wsdl_url'), variable_get('addi_username'), variable_get('addi_group'), variable_get('addi_password'));
-    
+
   //Local ids = Faust numbers. Library object identifiers can be confusing...
   $additional_informations = $service->getByFaustNumber($missing_images_local_ids);
   foreach($missing_images_local_ids as $local_id) {
-    //Try to extract the image url from the result 
+    //Try to extract the image url from the result
     $source_url = FALSE;
     if (isset($additional_informations[$local_id]) && $ai = $additional_informations[$local_id]) {
       if ($ai->detailUrl) {
@@ -388,15 +388,15 @@ function carousel_search_ting($query, $records) {
 /**
  *
  * @param type $type
- * @param type $subject 
+ * @param type $subject
  */
 function carousel_filter($type) {
   $subject = $_REQUEST['facet'];
   $response = carousel_load_items($type, $subject);
-  $content = theme('carousel_items', 
+  $content = theme('carousel_items',
           array('carousel_items' => $response['items']));
-  
-  
+
+
   $commands[] = array(
           'command' => 'carousel_refresh',
           'content' => $content
