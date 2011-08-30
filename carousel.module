@@ -144,7 +144,8 @@ function carousel_block_view($delta) {
 
 /**
  * Carousel configuration form.
- * @see system_settings_form().
+ *
+ * @see system_settings_form()
  */
 function carousel_admin_settings() {
   $form['carousel_keyword'] = array(
