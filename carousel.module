@@ -7,7 +7,7 @@
  */
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function carousel_menu() {
   
@@ -30,7 +30,7 @@ function carousel_menu() {
 }
 
 /**
- * Implementation of hook_block_info.
+ * Implements of hook_block_info.
  */
 function carousel_block_info() {
   $blocks['main'] = array(
@@ -74,7 +74,7 @@ function carousel_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implementation of hook_block_view().
+ * Implements of hook_block_view().
  */
 function carousel_block_view($delta) {
 
