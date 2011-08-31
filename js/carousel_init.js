@@ -137,7 +137,11 @@
     // Select default filter param
     $('#carousel-bar-filter .popup li a.selected').click();
 
-  })
+    // Show carousel only on front
+    if (!$('body').hasClass('front')) {
+      $('#carousel-wrapper').hide();
+    }
+  });
   
   // Magnification handler
   var magnify = function(ele) {
