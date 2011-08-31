@@ -61,14 +61,6 @@
     $('#carousel .active .item-overlay').show();
     $('#carousel .active .item-overlay-details').show();
 
-    // Animation for carousel menu
-    $('#carousel-menu ul li a').click(function() {
-      $(this).parent().parent().find('a').removeClass('active');
-      $(this).addClass('active');
-
-      return false;
-    });
-
     // Handler for clicking on carousel active item
     $('#carousel .active').live('click', function() {
       if ($(this).children('.result-item-details:visible').length > 0) {
@@ -93,6 +85,7 @@
     // Handler for hiding the carousel
     $('#carousel .carousel-close').click(function() {
       $(this).parent().parent().hide('fast');
+      $('#s-nav li').removeClass('current');
     });
 
 
@@ -202,6 +195,7 @@
     // Check if something was found.
     if (!response.content) {
       alert(Drupal.t('Sorry, no items were found.'));
+      $('#s-nav li').removeClass('current');
       return;
     }
     $('#carousel-wrapper:hidden').show('fast');
@@ -211,7 +205,8 @@
   Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {
     if (!$(response.content).find('ul li').length) {
       return;
-    }    
+    }
+    $('#carousel-wrapper:hidden').show('fast');
     $('#carousel-bar-filter').html(response.content);
     Drupal.attachBehaviors($('#carousel-bar-filter'));
   }
