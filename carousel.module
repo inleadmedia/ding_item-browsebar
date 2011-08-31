@@ -394,7 +394,7 @@ function carousel_search_ting($query, $records) {
  * @param type $subject
  */
 function carousel_filter($type) {
-  $subject = $_REQUEST['facet'];
+  $subject = $_REQUEST['facet'] ? $_REQUEST['facet'] : '';
   $response = carousel_load_items($type, $subject);
   $content = theme('carousel_items',
           array('carousel_items' => $response['items']));
