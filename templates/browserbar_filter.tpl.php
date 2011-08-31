@@ -2,6 +2,8 @@
     <ul>
     <?php 
     $max_facet_length = 0;
+    if (!$active_facet) $active_facet = '';
+    
     foreach ($facets['facet.subject']->terms as $facet=>$amount) {
       $max_facet_length = (strlen($facet) > $max_facet_length) ?  strlen($facet) : $max_facet_length;
       echo '<li><a class="use-ajax' . ($active_facet == $facet ? ' active' : '') . '" href="/ding/carousel/filter/bog?facet=' . htmlspecialchars($facet) . '">' . htmlspecialchars($facet) . '</a></li>';
