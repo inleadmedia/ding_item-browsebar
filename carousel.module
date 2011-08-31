@@ -335,7 +335,7 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
 
   //Local ids = Faust numbers. Library object identifiers can be confusing...
   $additional_informations = $service->getByFaustNumber($missing_images_local_ids);
-  foreach($missing_images_local_ids as $local_id) {
+  foreach ($missing_images_local_ids as $local_id) {
     //Try to extract the image url from the result
     $source_url = FALSE;
     if (isset($additional_informations[$local_id]) && $ai = $additional_informations[$local_id]) {
@@ -348,7 +348,7 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
     }
 
     //No cover image found? Cache this for future reference to avoid unnecessary requests
-    if (!$source_url && false) {
+    if (!$source_url && FALSE) {
       cache_set('ting_covers:' . $local_id, 1, 'cache', $_SERVER['REQUEST_TIME'] + TING_COVERS_CACHE_LIFETIME);
       continue;
     }
