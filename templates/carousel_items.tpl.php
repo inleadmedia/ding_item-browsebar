@@ -33,7 +33,7 @@
       <p class="creator"><?php isset($item->creator) ? print t('Af') . ' ' .  $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
-      <h1><?php print $item->title ?></h1>
+      <h1><?php print l($item->title,'ting/object/' . $item->id) ?></h1>
       <p>
         <?php if (isset($item->creator)): ?>
           <?php print t('Af') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>

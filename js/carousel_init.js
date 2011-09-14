@@ -82,6 +82,11 @@
       }
     });
 
+    // Make click on link prevent from hiding popup
+    $('#carousel .active a').live('click', function(e) {
+      e.stopPropagation();
+    });
+
     // Handler for hiding the carousel
     $('#carousel .carousel-close').click(function() {
       $(this).parent().parent().hide('fast');
