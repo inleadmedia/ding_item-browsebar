@@ -25,11 +25,15 @@
       echo '<img src="' . $image_base_path . 'ting_item.jpg" width="120" height="160" alt=""/>';
     }
     ?>
-    <p class="title"><?php print $item->title ?></p>
+    <?php
+      $title_arr = str_split($item->title, 20);
+      $title = (strlen($item->title) > 20) ? $title_arr[0] . '...' : $item->title;
+    ?>
+    <p class="title"><?php print $title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
     <div class="item-overlay"></div>
     <div class="item-overlay-details">
-      <p class="title"><?php print $item->title ?></p>
+      <p class="title"><?php print $title ?></p>
       <p class="creator"><?php isset($item->creator) ? print t('Af') . ' ' .  $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
