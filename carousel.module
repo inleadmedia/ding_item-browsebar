@@ -291,6 +291,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
           $item->description = '';
         }
 
+        // Cut the description if it too long
         if (strlen($item->description) > 275) {
           $item->description = substr($item->description, 0, 275) . '...';
         }
