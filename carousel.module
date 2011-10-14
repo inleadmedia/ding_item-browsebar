@@ -316,6 +316,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
 
       // Fetch details from voxb
       $voxb_details = new VoxbItems();
+      $voxb_details->addReviewHandler('review', new VoxbReviews());
       $response = $voxb_details->fetchByFaust($local_ids);
 
       // Assign voxb details to items
