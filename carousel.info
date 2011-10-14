@@ -7,4 +7,5 @@ files[] = carousel.module
 files[] = carousel.install
 dependencies[] = ting
 dependencies[] = search
+dependencies[] = ding_voxb
 configure = admin/config/ding/carousel
