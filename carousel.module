@@ -293,7 +293,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
 
         // Cut the description if it too long
         if (strlen($item->description) > 275) {
-          $item->description = substr($item->description, 0, 275) . '...';
+          $item->description = utf8_encode(substr(utf8_decode($item->description), 0, 275)) . '...';
         }
 
         $item->year = isset($searchItem->record['dc:date'][''][0]) ?

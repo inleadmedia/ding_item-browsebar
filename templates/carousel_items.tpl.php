@@ -26,8 +26,7 @@
     }
     ?>
     <?php
-      $title_arr = str_split($item->title, 20);
-      $title = (strlen($item->title) > 20) ? $title_arr[0] . '...' : $item->title;
+      $title = strlen($title) > 20 ? utf8_encode(substr(utf8_decode($title), 0, 20)) . '...' : $title;
     ?>
     <p class="title"><?php print $title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
