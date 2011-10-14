@@ -296,13 +296,30 @@ function carousel_load_items($type = 'bog', $subject = '') {
         /**
          * @todo: what are these ratings, comments etc?
          */
-        $item->rating = mt_rand(0, 5);
-        $item->rating_count = mt_rand(1, 10);
-        $item->comment_count = mt_rand(1, 10);
         $item->type = 1;
         $item->is_new = mt_rand(0, 1);
 
         $items[$searchItem->localId] = $item;
+      }
+
+      // Make an array of local id's, fetchable by voxb
+      $local_ids = array();
+      foreach ($items as $k => $v) {
+        $local_ids[] = $k;
+      }
+
+      // Fetch details from voxb
+      $voxb_details = new VoxbItems();
+      $response = $voxb_details->fetchByFaust($local_ids);
+
+      // Assign voxb details to items
+      if ($response) {
+        for ($i = 0; $i < $voxb_details->getCount(); $i++) {
+          $detail = $voxb_details->getItem($local_ids[$i]);
+          $items[$local_ids[$i]]->rating = (int)round($detail->getRating() / 20);
+          $items[$local_ids[$i]]->rating_count = $detail->getRatingCount();
+          $items[$local_ids[$i]]->comment_count = $detail->getReviews('review')->getCount();
+        }
       }
 
       $items = array('items' => $items, 'facets' => $result->facets);
@@ -313,8 +330,6 @@ function carousel_load_items($type = 'bog', $subject = '') {
         cache_set($cid, $items, 'cache',
           REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
       }
-
-
     }
     else {
       $items = $items->data;
