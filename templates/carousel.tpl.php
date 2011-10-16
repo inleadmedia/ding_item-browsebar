@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
 <?php if ($carousel_items): ?>
 <div id="carousel-wrapper">
   <div id="carousel">

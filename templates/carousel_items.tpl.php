@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *
+ */
+?>
+
 <?php if ($carousel_items): ?>
   <?php 
   $k = 0;
