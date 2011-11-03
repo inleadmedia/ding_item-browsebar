@@ -1,0 +1,50 @@
+.clear {
+  clear: both;
+  float: none;
+}
+
+#carousel-wrapper .search-controller {
+  background: none repeat scroll 0 0 #F3F5F5;
+  border-top: 1px solid #C2C4C4;
+  height: 20px;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  width: 710px;
+}
+
+#carousel-wrapper .search-controller li.active {
+  background: none repeat scroll 0 0 #918F91;
+  border-top: 1px solid #918F91;
+}
+
+#carousel-wrapper .search-controller li {
+  background: none repeat scroll 0 0 #D1D9D7;
+  border-top: 1px solid #A7AEAC;
+  color: #FFFFFF;
+  float: left;
+  font-size: 11px;
+  height: 18px;
+  line-height: 15px;
+  margin: -1px 2px 0 0;
+  padding: 0 17px;
+}
+
+#carousel-wrapper .search-controller li a {
+  color: #050505;
+  font-size: 11px;
+  line-height: 15px;
+  outline: none;
+}
+
+#carousel-wrapper .search-controller li.active a {
+  color: #FFF;
+}
+
+.search-carousel-query {
+  float: left;
+}
+
+.sort-hidden, .search-query-hidden {
+  display: none;
+}

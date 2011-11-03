@@ -50,13 +50,19 @@ function carousel_theme($existing, $type, $theme, $path) {
   $hooks['carousel'] = array(
     'variables' => array('carousel_items' => NULL, 'facets' => NULL),
     'template' => 'carousel',
-    'path'  => $path . '/templates'
+    'path'  => $path . '/templates',
   );
 
   $hooks['carousel_items'] = array(
     'variables' => array('carousel_items' => NULL),
     'template' => 'carousel_items',
-    'path'  => $path . '/templates'
+    'path'  => $path . '/templates',
+  );
+
+  $hooks['carousel_views'] = array(
+    'variables' => array('carousel_views' => NULL),
+    'template' => 'carousel_views',
+    'path' => $path . '/templates',
   );
 
   $hooks['secondary_nav'] = array(
@@ -82,103 +88,24 @@ function carousel_theme($existing, $type, $theme, $path) {
  * Implements hook_block_view().
  */
 function carousel_block_view($delta) {
-
-
-  // Creatin of easyting secondary menu
-  $tree = array();
-  $tree = menu_tree_all_data('menu-easyting-secondary-menu');
-  if (empty($tree)) {
-    $menu = array(
-    'menu_name' => 'menu-easyting-secondary-menu',
-    'title' => 'Easyting secondary menu',
-    'description' => '',
-    );
-    menu_save($menu);
-    $item = array(
-      'link_title' => t('boger'),
-      'link_path' => drupal_get_normal_path('ding/carousel/filter/bog'),
-      'menu_name' => 'menu-easyting-secondary-menu',
-      'weight' => 1,
-    );
-    menu_link_save($item);
-    menu_cache_clear_all();
-    $item = array(
-      'link_title' => t('film'),
-      'link_path' => drupal_get_normal_path('ding/carousel/filter/dvd'),
-      'menu_name' => 'menu-easyting-secondary-menu',
-      'weight' => 2,
-    );
-    menu_link_save($item);
-    menu_cache_clear_all();
-    $item = array(
-      'link_title' => t('lyd'),
-      'link_path' => drupal_get_normal_path('ding/carousel/filter/lydbog (online)'),
-      'menu_name' => 'menu-easyting-secondary-menu',
-      'weight' => 3,
-    );
-    menu_link_save($item);
-    menu_cache_clear_all();
-    $item = array(
-      'link_title' => t('spil'),
-      'link_path' => drupal_get_normal_path('ding/carousel/filter/playstation2-spil'),
-      'menu_name' => 'menu-easyting-secondary-menu',
-      'weight' => 4,
-    );
-    menu_link_save($item);
-    menu_cache_clear_all();
-  }
-  menu_rebuild();
-
-
   switch ($delta) {
     case 'main':
       drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
+      drupal_add_css(drupal_get_path('module', 'carousel') . '/css/item-browsebar_style.css', 'file');
 
       $response = carousel_load_items('bog');
-
+      
       $block['content'] = theme('carousel', array(
-            'carousel_items' => theme('carousel_items', array('carousel_items' => $response['items'])),
-            'facets' => $response['facets']));
+            'carousel_items' => theme('carousel_items', array('carousel_items' => $response[0]['items'])),
+            'views' => theme('carousel_views', array('views' => variable_get('carousel_search_queries', array()))),
+            'facets' => $response[0]['facets']));
       break;
   }
 
   return $block;
 }
-
-/**
- * Carousel configuration form.
- *
- * @see system_settings_form()
- */
-/*function carousel_admin_settings() {
-  $form['carousel_keyword'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Search keyword'),
-    '#description' => t('The keyword used to search by in Ting.'),
-    '#default_value' => variable_get('carousel_keyword')
-
-  );
-
-  $form['carousel_item_limit'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Item limit'),
-    '#description' => t('The number of items to be returned in search result.'),
-    '#default_value' => variable_get('carousel_item_limit', 24)
-  );
-
-  $form['carousel_cache_ttl'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Cache TTL'),
-    '#description' => t('How many hours the cache lives.'),
-    '#default_value' => variable_get('carousel_cache_ttl', 1)
-  );
-
-  return system_settings_form($form);
-}*/
-
-
 
 /**
  * Preprocess Ting request with facets
@@ -199,150 +126,159 @@ function carousel_facets_request_builder($keyword, $type, $subject) {
  * @return array Search result items
  */
 function carousel_load_items($type = 'bog', $subject = '') {
-  $keyword = variable_get('carousel_keyword');
-  $items = NULL;
+  $keywords = variable_get('carousel_search_queries', array());
+  $items = array();
+  $items_buffer = array();
 
-  if ($keyword) {
-    $cid = 'carousel-' . md5($keyword . $type . $subject);
-    if (!($items = cache_get($cid)) || 1) {
-      module_load_include('client.inc', 'ting');
-      $request = carousel_facets_request_builder($keyword, $type, $subject);
-      $result = carousel_search_ting($request, variable_get('carousel_item_limit', 24));
-      $items = array();
+  if (is_array($keywords) && is_array($keywords[0])) {
+    module_load_include('client.inc', 'ting');
+    foreach ($keywords as $item) {
+      $keyword = $item['query'];
+      $cid = 'carousel-' . md5($keyword . $type . $subject);
+      
+      if (!$items = cache_get($cid)) {
+        $request = carousel_facets_request_builder($keyword, $type, $subject);
+        $result = carousel_search_ting($request, variable_get('item_limit', 24));
+        $items = array();
+        
+        foreach ($result->collections as $collection) {
+          $searchItem = $collection->reply->objects[0];
+          
+          $item = new stdClass();
+          $item->id = $searchItem->id;
+          $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
+                        $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : NULL;
+          $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
+                              $searchItem->record['ac:source'][''][0] : NULL;
+          $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
+                              $searchItem->record['dc:source'][''][0] : NULL;
+          $item->title = $searchItem->record['dc:title'][''][0];
 
-      foreach ($result->collections as $collection) {
-        $searchItem = $collection->reply->objects[0];
-
-        $item = new stdClass();
-        $item->id = $searchItem->id;
-        $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
-                      $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : NULL;
-        $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
-                            $searchItem->record['ac:source'][''][0] : NULL;
-        $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
-                            $searchItem->record['dc:source'][''][0] : NULL;
-        $item->title = $searchItem->record['dc:title'][''][0];
-
-        if (isset($searchItem->record['dc:creator'])) {
-          if (isset($searchItem->record['dc:creator']['oss:aut'][0])) {
-            $item->creator = $searchItem->record['dc:creator']['oss:aut'][0];
-          }
-          elseif (isset($searchItem->record['dc:creator']['oss:mus'][0])) {
-            $item->creator = $searchItem->record['dc:creator']['oss:mus'][0];
-          }
-          elseif (isset($searchItem->record['dc:creator']['oss:sort'][0])) {
-            $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
+          if (isset($searchItem->record['dc:creator'])) {
+            if (isset($searchItem->record['dc:creator']['oss:aut'][0])) {
+              $item->creator = $searchItem->record['dc:creator']['oss:aut'][0];
+            }
+            elseif (isset($searchItem->record['dc:creator']['oss:mus'][0])) {
+              $item->creator = $searchItem->record['dc:creator']['oss:mus'][0];
+            }
+            elseif (isset($searchItem->record['dc:creator']['oss:sort'][0])) {
+              $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
+            }
+            else {
+              $item->creator = NULL;
+            }
           }
           else {
             $item->creator = NULL;
           }
-        }
-        else {
-          $item->creator = NULL;
+
+          if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
+            $item->subject = $searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0];
+          }
+          elseif (isset($searchItem->record['dc:subject']['oss:genre'][0])) {
+            $item->subject = $searchItem->record['dc:subject']['oss:genre'][0];
+          }
+          elseif (isset($searchItem->record['dc:subject'][''][0])) {
+            $item->subject = $searchItem->record['dc:subject'][''][0];
+          }
+          else {
+            $item->subject = NULL;
+          }
+
+          // Exracting images
+          $path = ting_covers_object_path($searchItem->localId);
+
+          if (file_exists($path)) {
+            //If we we already have a valid cover image w/o style then just use it
+            $item->image = $path;
+          }
+          else {
+            //Mark the image for retrieval;
+            $missing_images_local_ids[] = $searchItem->localId;
+          }
+         // $item->image = 'ting_item.jpg';
+
+          if (isset($searchItem->record['dc:description'][''][0])) {
+            /**
+             * @todo: Which field of three is description?
+             */
+            $item->description = $searchItem->record['dc:description'][''][0];
+          }
+          elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
+            $item->description = $searchItem->record['dcterms:abstract'][''][0];
+          }
+          elseif (isset($searchItem->record['dcterms:hasPart'])) {
+            $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
+          }
+          else {
+            $item->description = '';
+          }
+
+          // Cut the description if it too long
+          if (strlen($item->description) > 275) {
+            $item->description = substr($item->description, 0, 275) . '...';
+          }
+
+          $item->year = isset($searchItem->record['dc:date'][''][0]) ?
+                          $searchItem->record['dc:date'][''][0] : NULL;
+          // Default values
+          $item->type = 1;
+          $item->is_new = mt_rand(0, 1);
+          $item->rating = 0;
+          $item->rating_count = 0;
+          $item->comment_count = 0;
+
+          $items[$searchItem->localId] = $item;
         }
 
-        if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
-          $item->subject = $searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0];
-        }
-        elseif (isset($searchItem->record['dc:subject']['oss:genre'][0])) {
-          $item->subject = $searchItem->record['dc:subject']['oss:genre'][0];
-        }
-        elseif (isset($searchItem->record['dc:subject'][''][0])) {
-          $item->subject = $searchItem->record['dc:subject'][''][0];
-        }
-        else {
-          $item->subject = NULL;
+        // Make an array of local id's, fetchable by voxb
+        $local_ids = array();
+        foreach ($items as $k => $v) {
+          $local_ids[] = $k;
         }
 
-        // Exracting images
-        $path = ting_covers_object_path($searchItem->localId);
+        // Fetch details from voxb
+        $voxb_details = new VoxbItems();
+        $voxb_details->addReviewHandler('review', new VoxbReviews());
+        $response = $voxb_details->fetchByFaust($local_ids);
 
-        if (file_exists($path)) {
-          //If we we already have a valid cover image w/o style then just use it
-          $item->image = $path;
-        }
-        else {
-          //Mark the image for retrieval;
-          $missing_images_local_ids[] = $searchItem->localId;
-        }
-       // $item->image = 'ting_item.jpg';
-
-        if (isset($searchItem->record['dc:description'][''][0])) {
-          /**
-           * @todo: Which field of three is description?
-           */
-          $item->description = $searchItem->record['dc:description'][''][0];
-        }
-        elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
-          $item->description = $searchItem->record['dcterms:abstract'][''][0];
-        }
-        elseif (isset($searchItem->record['dcterms:hasPart'])) {
-          $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
-        }
-        else {
-          $item->description = '';
-        }
-
-        // Cut the description if it too long
-        if (strlen($item->description) > 275) {
-          $item->description = substr($item->description, 0, 275) . '...';
-        }
-
-        $item->year = isset($searchItem->record['dc:date'][''][0]) ?
-                        $searchItem->record['dc:date'][''][0] : NULL;
-        // Default values
-        $item->type = 1;
-        $item->is_new = mt_rand(0, 1);
-        $item->rating = 0;
-        $item->rating_count = 0;
-        $item->comment_count = 0;
-
-        $items[$searchItem->localId] = $item;
-      }
-
-      // Make an array of local id's, fetchable by voxb
-      $local_ids = array();
-      foreach ($items as $k => $v) {
-        $local_ids[] = $k;
-      }
-
-      // Fetch details from voxb
-      $voxb_details = new VoxbItems();
-      $voxb_details->addReviewHandler('review', new VoxbReviews());
-      $response = $voxb_details->fetchByFaust($local_ids);
-
-      // Assign voxb details to items
-      if ($response) {
-        $c = $voxb_details->getCount();
-        if ($c > 0) {
-          for ($i = 0; $i < $c; $i++) {
-            $detail = $voxb_details->getItem($local_ids[$i]);
-            $items[$local_ids[$i]]->rating = (int)round($detail->getRating() / 20);
-            $items[$local_ids[$i]]->rating_count = $detail->getRatingCount();
-            $items[$local_ids[$i]]->comment_count = $detail->getReviews('review')->getCount();
+        // Assign voxb details to items
+        if ($response) {
+          $c = $voxb_details->getCount();
+          if ($c > 0) {
+            for ($i = 0; $i < $c; $i++) {
+              $detail = $voxb_details->getItem($local_ids[$i]);
+              $items[$local_ids[$i]]->rating = (int)round($detail->getRating() / 20);
+              $items[$local_ids[$i]]->rating_count = $detail->getRatingCount();
+              $items[$local_ids[$i]]->comment_count = $detail->getReviews('review')->getCount();
+            }
           }
         }
+
+        $items = array('items' => $items, 'facets' => $result->facets);
+
+        if (is_array($missing_images_local_ids)) {
+          carousel_get_images_from_addi($items, $missing_images_local_ids);
+
+          cache_set($cid, $items, 'cache',
+            REQUEST_TIME + variable_get('cache_ttl', 2) * 60 * 60);
+        }
+
+        $items_buffer[] = $items;
       }
-
-      $items = array('items' => $items, 'facets' => $result->facets);
-
-      if (is_array($missing_images_local_ids)) {
-        carousel_get_images_from_addi($items, $missing_images_local_ids);
-
-        cache_set($cid, $items, 'cache',
-          REQUEST_TIME + variable_get('carousel_cache_ttl', 2) * 60 * 60);
+      else {
+        $items_buffer[] = $items->data;
       }
-    }
-    else {
-      $items = $items->data;
     }
   }
 
-  return $items;
+  // @todo
+  // Dunno if this return is still usable in new workflow
+  return $items_buffer;
 }
 
 /**
- * Requ
+ * Request
  * @param array $itemsests Addi for covers that are not yet cached by drupal
  * @param array $missing_images_local_ids
  */
@@ -401,7 +337,7 @@ function carousel_search_ting($query, $records) {
 
     $options = array(
       'allObjects' => FALSE,
-      'enrich' => TRUE
+      'enrich' => TRUE,
     );
 
     $search_result = ting_do_search($query, 1, $records, $options);
