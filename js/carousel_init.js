@@ -219,19 +219,4 @@
     $('#carousel-bar-filter').html(response.content);
     Drupal.attachBehaviors($('#carousel-bar-filter'));
   }
-  
-  Drupal.behaviors.tingSearchCarousel = {
-    attach: function(context) {
-      //carousel_init(0);
-
-      $('.search-controller li').click(function() {
-        $(this).parent().find('li').removeClass('active');
-        $(this).addClass('active');
-
-        //carousel_init($(this).index());
-
-        return false;
-      });
-    }
-  }
 })(jQuery);

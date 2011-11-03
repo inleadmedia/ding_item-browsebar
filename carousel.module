@@ -7,16 +7,21 @@
  */
 
 /**
+ * Implements hook_init().
+ */
+function carousel_init() {
+  drupal_add_css(drupal_get_path('module', 'carousel') . '/css/item-browsebar_style.css', 'file');
+}
+
+/**
  * Implements hook_menu().
  */
 function carousel_menu() {
-
   $items['admin/config/ding/carousel'] = array(
     'title' => 'Carousel widget settings',
     'description' => 'Configure carousel options such as search keyword, number of items etc.',
     'page callback' => 'carousel_admin_page',
     'page arguments' => array(),
-    //'page arguments' => array('carousel_admin_settings'),
     'access arguments' => array('access administration pages'),
     'file' => 'carousel.admin.inc',
   );
@@ -27,6 +32,14 @@ function carousel_menu() {
     'access arguments' => array('search content'),
     'page callback' => 'carousel_filter',
   );
+
+  $items['ding/carousel/view/%'] = array(
+    'page arguments' => array(3, 'bog', ''),
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('search content'),
+    'page callback' => 'carousel_view',
+  );
+
   return $items;
 }
 
@@ -93,7 +106,6 @@ function carousel_block_view($delta) {
       drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
-      drupal_add_css(drupal_get_path('module', 'carousel') . '/css/item-browsebar_style.css', 'file');
 
       $response = carousel_load_items('bog');
       
@@ -370,5 +382,26 @@ function carousel_filter($type) {
 
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
+  ajax_deliver($result);
+}
+
+function carousel_view($index, $type = 'bog', $subject = '') {
+  $commands = array();
+  $keywords = variable_get('carousel_search_queries', array());
+  $cid = 'carousel-' . md5($keywords[$index]['query'] . $type . $subject);
+
+  $items = cache_get($cid);
+  $content = theme('carousel_items', array('carousel_items' => $items->data['items']));
+
+  $commands[] = array(
+    'command' => 'carousel_refresh',
+    'content' => $content,
+  );
+
+  $commands[] = ajax_command_invoke('.search-controller li', 'removeClass', array('active'));
+  $commands[] = ajax_command_invoke('.search-controller li:eq(' . $index . ')', 'addClass', array('active'));
+
+  $result = array('#type' => 'ajax', '#commands' => $commands);
+
   ajax_deliver($result);
 }
