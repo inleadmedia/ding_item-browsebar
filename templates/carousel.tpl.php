@@ -1,6 +1,7 @@
 <?php if ($carousel_items): ?>
 <div id="carousel-wrapper">
   <div id="carousel">
+    <div id="carousel-pager"></div>
     <div id="carousel-menu">
       <h2><?php print t('Seneste bøger'); ?></h2>
       <ul id="carousel-sort">
@@ -19,15 +20,13 @@
     <a href="#" class="carousel-close"><img src="/<?php print drupal_get_path('theme', 'easyting'); ?>/images/carousel-close.png" width="57" height="24" alt="" /></a>
     <?php echo $views; ?>
   </div>
-  <!--<div id="carousel-bar">
+  <div id="carousel-bar">
     <div id="carousel-bar-filter">
       <?php
-        echo theme('browserbar_filter', array('facets' => $facets));
+        //echo theme('browserbar_filter', array('facets' => $facets));
       ?>
     </div>
-
-    <div id="carousel-pager"></div>
-  </div>-->
+  </div>
 </div>
 <?php else: ?>
 <h3 style="text-align: center; color: #fff;"><?php print t('No keyword specified.') ?></h3>
