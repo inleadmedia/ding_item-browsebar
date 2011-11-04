@@ -20,13 +20,7 @@
     <a href="#" class="carousel-close"><img src="/<?php print drupal_get_path('theme', 'easyting'); ?>/images/carousel-close.png" width="57" height="24" alt="" /></a>
     <?php echo $views; ?>
   </div>
-  <div id="carousel-bar">
-    <div id="carousel-bar-filter">
-      <?php
-        //echo theme('browserbar_filter', array('facets' => $facets));
-      ?>
-    </div>
-  </div>
+  <div id="carousel-bar"></div>
 </div>
 <?php else: ?>
 <h3 style="text-align: center; color: #fff;"><?php print t('No keyword specified.') ?></h3>
