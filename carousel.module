@@ -359,32 +359,42 @@ function carousel_search_ting($query, $records) {
 }
 
 /**
+ * Refine carousel items baes on selected filter.
  *
  * @param type $type
  * @param type $subject
  */
 function carousel_filter($type) {
   $subject = $_REQUEST['facet'] ? $_REQUEST['facet'] : '';
+  $tab = $_REQUEST['tab'] ? (int)$_REQUEST['tab'] : 0;
   $response = carousel_load_items($type, $subject);
   $content = theme('carousel_items',
-          array('carousel_items' => $response['items']));
-
-
-  $commands[] = array(
-          'command' => 'carousel_refresh',
-          'content' => $content
-        );
+          array('carousel_items' => $response[$tab]['items']));
 
   $commands[] = array(
-          'command' => 'carousel_update_facets',
-          'content' => theme('browserbar_filter', array('facets' => $response['facets'], 'active_facet' => $subject))
-        );
+    'command' => 'carousel_refresh',
+    'content' => $content
+  );
 
+  $commands[] = array(
+    'command' => 'carousel_update_facets',
+    'content' => theme('browserbar_filter', array('facets' => $response[$tab]['facets'], 'active_facet' => $subject, 'tab' => $tab))
+  );
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
   ajax_deliver($result);
 }
 
+/**
+ * Update the carousel with new item collection.
+ *
+ * @param $index
+ *   Cached item collection index.
+ * @param $type
+ *   Item type, defaults to book.
+ * @param $subject
+ *   Item filter, defaults to none.
+ */
 function carousel_view($index, $type = 'bog', $subject = '') {
   $commands = array();
   $keywords = variable_get('carousel_search_queries', array());
@@ -396,6 +406,12 @@ function carousel_view($index, $type = 'bog', $subject = '') {
   $commands[] = array(
     'command' => 'carousel_refresh',
     'content' => $content,
+    'tab' => $index,
+  );
+
+  $commands[] = array(
+    'command' => 'carousel_update_facets',
+    'content' => theme('browserbar_filter', array('facets' => $items->data['facets'], 'active_facet' => $subject, 'tab' => $index))
   );
 
   $commands[] = ajax_command_invoke('.search-controller li', 'removeClass', array('active'));

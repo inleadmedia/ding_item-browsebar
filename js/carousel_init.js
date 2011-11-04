@@ -103,7 +103,7 @@
       e.preventDefault();
       e.stopPropagation();
       var $this = $(this);
-      var popup = $this.prev().filter('.popup');
+      var popup = $this.next().filter('.popup');
       try {
         popup.show();
       }
@@ -207,6 +207,7 @@
       $('#s-nav li').removeClass('current');
       return;
     }
+
     $('#carousel-wrapper:hidden').show('fast');
     $('#carousel-content').html(response.content);
   }
