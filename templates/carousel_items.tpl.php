@@ -33,7 +33,7 @@
     }
     ?>
     <?php
-      $title = strlen($item->title) > 20 ? utf8_encode(substr(utf8_decode($item->title), 0, 20)) . '...' : $item->title;
+      $title = (drupal_strlen($item->title) > 20) ? drupal_substr($item->title, 0, 20) . '...' : $item->title;
     ?>
     <p class="title"><?php print $title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
