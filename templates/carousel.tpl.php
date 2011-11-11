@@ -13,6 +13,7 @@
         echo theme('browserbar_filter', array('facets' => $facets, 'tab' => 0));
       ?>
     </div>
+    <div id="carousel-pager"></div>
     <div id="carousel-menu">
       <h2><?php print t('Seneste bøger'); ?></h2>
       <ul id="carousel-sort">
