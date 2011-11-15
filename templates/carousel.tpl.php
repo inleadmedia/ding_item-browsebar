@@ -29,7 +29,7 @@
     </div>
     <a id="prev" href="#"></a>
     <a id="next" href="#"></a>
-    <a href="#" class="carousel-close"><img src="/<?php print drupal_get_path('theme', 'easyting'); ?>/images/carousel-close.png" width="57" height="24" alt="" /></a>
+    <a href="#" class="carousel-close"></a>
     <?php echo $views; ?>
   </div>
   <div id="carousel-bar"></div>

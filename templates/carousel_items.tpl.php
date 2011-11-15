@@ -14,9 +14,9 @@
      * @todo: replace Danish used in t() with English
      */
     $stars = '';
-    $image_base_path = '/' . drupal_get_path('theme', 'easyting') . '/images/';
+    $image_base_path = '/' . drupal_get_path('module', 'carousel') . '/images/';
     for ($j = 0; $j < 5; $j++):
-      $stars .= '<img src="' . $image_base_path . 'carousel-star-' . (($j < $item->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
+      $stars .= '<img src="' . $image_base_path . 'star-' . (($j < $item->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
     endfor;
   ?>
 
@@ -29,7 +29,7 @@
                  'getsize' => TRUE, 
                  'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160')));
     } else {
-      echo '<img src="' . $image_base_path . 'ting_item.jpg" width="120" height="160" alt=""/>';
+      echo '<img src="' . $image_base_path . 'default.png" width="120" height="160" alt=""/>';
     }
     ?>
     <?php
