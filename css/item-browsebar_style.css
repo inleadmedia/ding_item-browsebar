@@ -154,7 +154,8 @@
 }
 
 #carousel #prev, #carousel #next {
-  background-repeat: no-repeat;
+  background-repeat: repeat;
+  display: block;
   height: 45px;
   position: absolute;
   top: 105px;
@@ -162,11 +163,17 @@
 }
 
 #carousel #prev {
+  height: 20px;
+  background-image: url('../images/default.png');
   left: 0px;
+  width: 20px;
 }
 
 #carousel #next {
+  height: 20px;
+  background-image: url('../images/default.png');
   right: 0px;
+  width: 20px;
 }
 
 #carousel .carousel-close {
