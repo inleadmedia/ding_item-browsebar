@@ -27,8 +27,8 @@
     <div id="carousel-content">
       <?php print $carousel_items; ?>
     </div>
-    <a id="prev" href="#"></a>
-    <a id="next" href="#"></a>
+    <a class="scroll" id="prev" href="#"></a>
+    <a class="scroll" id="next" href="#"></a>
     <a href="#" class="carousel-close"></a>
     <?php echo $views; ?>
   </div>
