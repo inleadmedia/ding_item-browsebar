@@ -8,21 +8,29 @@
 <?php if ($carousel_items): ?>
 <div id="carousel-wrapper">
   <div id="carousel">
-    <div id="carousel-bar-filter">
-      <?php
-        echo theme('browserbar_filter', array('facets' => $facets, 'tab' => 0));
-      ?>
-    </div>
-    <div id="carousel-pager"></div>
-    <div id="carousel-menu">
-      <h2><?php print t('Seneste bøger'); ?></h2>
-      <ul id="carousel-sort">
-        <li><a href="#" class="rating"><?php print t('Rating'); ?></a></li>
-        <li><a href="#" class="genre"><?php print t('Genre'); ?></a></li>
-        <li><a href="#" class="date"><?php print t('Dato'); ?></a></li>
-        <li><a href="#" class="free"><?php print t('Udlånt'); ?></a></li>
-        <li><a href="#" class="alpha"><?php print t('Alfabetisk'); ?></a></li>
-      </ul>
+    <div class="carousel-header">
+      <div class="carousel-header-left">
+        <div id="carousel-menu">
+          <h2><?php print t('Seneste bøger'); ?></h2>
+          <ul id="carousel-sort" style="display: none;">
+            <li><a href="#" class="rating"><?php print t('Rating'); ?></a></li>
+            <li><a href="#" class="genre"><?php print t('Genre'); ?></a></li>
+            <li><a href="#" class="date"><?php print t('Dato'); ?></a></li>
+            <li><a href="#" class="free"><?php print t('Udlånt'); ?></a></li>
+            <li><a href="#" class="alpha"><?php print t('Alfabetisk'); ?></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="carousel-header-middle">
+        <div id="carousel-pager"></div>
+      </div>
+      <div class="carousel-header-right">
+        <div id="carousel-bar-filter">
+          <?php
+            echo theme('browserbar_filter', array('facets' => $facets, 'tab' => 0));
+          ?>
+        </div>
+      </div>
     </div>
     <div id="carousel-content">
       <?php print $carousel_items; ?>
