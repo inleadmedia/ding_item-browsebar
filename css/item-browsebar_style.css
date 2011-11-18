@@ -41,14 +41,12 @@
 
 #carousel .result-item .title {
   line-height: 18px;
-  font-family: serif;
   font-size: 14px;
 }
 
 #carousel .result-item.active .creator,
 #carousel .result-item.inactive .creator {
   line-height: 16px !important;
-  font-family: sans-serif;
   font-size: 11px;
 }
 #carousel .result-item.inactive .title,
@@ -58,7 +56,6 @@
 
 #carousel .result-item.active .title,
 #carousel .result-item.inactive .title {
-  font-family: serif;
   font-size: 14px;
   line-height: 18px;
 }
