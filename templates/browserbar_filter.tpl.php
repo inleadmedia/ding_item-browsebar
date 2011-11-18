@@ -1,6 +1,6 @@
   <a href="#" class="current open">
     <div class="icon"></div>
-    <div class="text"><?php echo t('Filter by...'); ?></div>
+    <div class="text"><?php echo t('Sort by...'); ?></div>
   </a>
   <div class="popup">
     <a href="#" class="close">
