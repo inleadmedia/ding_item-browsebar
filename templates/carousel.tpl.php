@@ -30,9 +30,8 @@
     <a id="prev" href="#"></a>
     <a id="next" href="#"></a>
     <a href="#" class="carousel-close"></a>
-    <?php echo $views; ?>
   </div>
-  <div id="carousel-bar"></div>
+  <div id="carousel-bar"><?php echo $views; ?></div>
 </div>
 <?php else: ?>
 <h3 style="text-align: center; color: #fff;"><?php print t('No keyword specified.') ?></h3>

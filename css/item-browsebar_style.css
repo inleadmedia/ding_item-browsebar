@@ -278,10 +278,22 @@
   margin-right: 18px;
 }
 
-#carousel .search-controller {
+#carousel-bar .search-controller {
   list-style: none outside none;
   margin: 0;
-  padding: 0;
+  margin-left: -400px;
+  position: relative;
+  padding-top: 4px;
+  left: 50%;
+}
+
+#carousel-bar .search-controller li {
+  float: left;
+  margin-left: 16px;
+}
+
+#carousel-bar .search-controller li a {
+  color: #ffffff;
 }
 
 #carousel .search-controller li {
