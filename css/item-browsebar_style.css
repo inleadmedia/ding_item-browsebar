@@ -64,6 +64,7 @@
   bottom: 25px;
   display: none;
   height: 45px;
+  left: 17px;
   opacity: 0.5;
   position: absolute;
   width: 170px;
@@ -188,6 +189,9 @@
 }
 
 #carousel #carousel-pager {
+  position: absolute;
+  left: 46.5%;
+  top: -20px;
 }
 
 #carousel #carousel-pager a span {
@@ -202,12 +206,17 @@
 }
 
 #carousel-bar-filter {
+  right: 120px;
+  margin: -11px 0 0 -395px;
+  position: absolute;
+  top: 0;
   width: 130px;
-  float: right;
 }
 
 #carousel-bar-filter .popup {
+  top: 0;
   display: none;
+  position: absolute;
   width: 100%;
   z-index: 10;
 }
@@ -244,6 +253,9 @@
 }
 
 #carousel-menu {
+  position: absolute;
+  left: 105px;
+  top: -20px;
   z-index: 10;
 }
 
@@ -290,35 +302,3 @@
 #carousel .search-controller li a {
   outline: none;
 }
-
-.carousel-header,
-.carousel-main {
-  width: 70%;
-  margin: 0 auto !important;
-}
-
-.carousel-main {
-  top: -20px;
-  position: relative;
-}
-
-.carousel-header-left,
-.carousel-header-middle,
-.carousel-header-right {
-  float: left;
-}
-
-.carousel-header-left {
-  width: 40%;
-}
-
-.carousel-header-middle {
-  width: 20%;
-  text-align: center;
-}
-
-.carousel-header-right {
-  width: 40%;
-}
-
-
