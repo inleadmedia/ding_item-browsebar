@@ -111,7 +111,7 @@ function carousel_block_view($delta) {
       
       $block['content'] = theme('carousel', array(
             'carousel_items' => theme('carousel_items', array('carousel_items' => $response[0]['items'])),
-            'views' => theme('carousel_views', array('views' => variable_get('carousel_search_queries', array()))),
+            'views' => variable_get('carousel_search_queries', array()),
             'facets' => $response[0]['facets']));
       break;
   }
@@ -416,6 +416,7 @@ function carousel_view($index, $type = 'bog', $subject = '') {
 
   $commands[] = ajax_command_invoke('.search-controller li', 'removeClass', array('active'));
   $commands[] = ajax_command_invoke('.search-controller li:eq(' . $index . ')', 'addClass', array('active'));
+  $commands[] = ajax_command_invoke('#carousel-menu h2', 'html', array(htmlspecialchars($keywords[$index]['title'])));
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
 

@@ -15,7 +15,7 @@
     </div>
     <div id="carousel-pager"></div>
     <div id="carousel-menu">
-      <h2><?php print t('Seneste bøger'); ?></h2>
+      <h2><?php print t($views[0]['title']); ?></h2>
       <ul id="carousel-sort">
         <li><a href="#" class="rating"><?php print t('Rating'); ?></a></li>
         <li><a href="#" class="genre"><?php print t('Genre'); ?></a></li>
@@ -31,7 +31,7 @@
     <a class="scroll" id="next" href="#"></a>
     <a href="#" class="carousel-close"></a>
   </div>
-  <div id="carousel-bar"><?php echo $views; ?></div>
+  <div id="carousel-bar"><?php echo theme('carousel_views', array('views' => $views)); ?></div>
 </div>
 <?php else: ?>
 <h3 style="text-align: center; color: #fff;"><?php print t('No keyword specified.') ?></h3>
