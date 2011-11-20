@@ -269,7 +269,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
 
         $items = array('items' => $items, 'facets' => $result->facets);
 
-        if (is_array($missing_images_local_ids)) {
+        if (@is_array($missing_images_local_ids)) {
           carousel_get_images_from_addi($items, $missing_images_local_ids);
 
           cache_set($cid, $items, 'cache',

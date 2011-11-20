@@ -61,9 +61,10 @@
 }
 
 #carousel .result-item .item-overlay {
-  bottom: 25px;
+  background-color: #000000;
+  bottom: 17px;
   display: none;
-  height: 45px;
+  height: 56px;
   left: 17px;
   opacity: 0.5;
   position: absolute;
@@ -75,12 +76,12 @@
 }
 
 #carousel .result-item .item-overlay-details {
-  bottom: 18px;
+  bottom: 22px;
   display: none;
-  height: 45px;
-  left: 20px;
+  height: 46px;
+  left: 22px;
   position: absolute;
-  width: 170px;
+  width: 160px;
 }
 
 #carousel .result-item .result-item-details {
