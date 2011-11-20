@@ -418,6 +418,8 @@ function carousel_view($index, $type = 'bog', $subject = '') {
   $commands[] = ajax_command_invoke('.search-controller li:eq(' . $index . ')', 'addClass', array('active'));
   $commands[] = ajax_command_invoke('#carousel-menu h2', 'html', array(htmlspecialchars($keywords[$index]['title'])));
 
+  $commands[] = ajax_command_invoke('#carousel .active .item-overlay', 'show');
+  $commands[] = ajax_command_invoke('#carousel .active .item-overlay-details', 'show');
   $result = array('#type' => 'ajax', '#commands' => $commands);
 
   ajax_deliver($result);
