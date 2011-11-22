@@ -269,7 +269,7 @@
   list-style: none outside none;
   margin: 0;
   margin-left: -400px;
-  position: relative;
+  position: absolute;
   padding-top: 4px;
   left: 50%;
 }
