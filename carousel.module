@@ -279,6 +279,17 @@ function carousel_load_items($type = 'bog', $subject = '') {
         $items_buffer[] = $items;
       }
       else {
+        // Check for covers existance.
+        $missing_images_local_ids = array();
+        foreach ($items->data['items'] as $item_id => $item) {
+          if (isset($item->image) && !file_exists($item->image)) {
+            $missing_images_ids[] = $item_id;
+          }
+        }
+        if (!empty($missing_images_ids)) {
+          carousel_get_images_from_addi($items->data['items'], $missing_images_ids);
+        }
+
         $items_buffer[] = $items->data;
       }
     }
