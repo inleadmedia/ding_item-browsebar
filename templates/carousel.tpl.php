@@ -15,9 +15,9 @@
           <ul id="carousel-sort" style="display: none;">
             <li><a href="#" class="rating"><?php print t('Rating'); ?></a></li>
             <li><a href="#" class="genre"><?php print t('Genre'); ?></a></li>
-            <li><a href="#" class="date"><?php print t('Dato'); ?></a></li>
-            <li><a href="#" class="free"><?php print t('Udlånt'); ?></a></li>
-            <li><a href="#" class="alpha"><?php print t('Alfabetisk'); ?></a></li>
+            <li><a href="#" class="date"><?php print t('Date'); ?></a></li>
+            <li><a href="#" class="free"><?php print t('On loan'); ?></a></li>
+            <li><a href="#" class="alpha"><?php print t('Alphabetical'); ?></a></li>
           </ul>
         </div>
       </div>

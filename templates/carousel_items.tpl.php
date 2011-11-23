@@ -40,7 +40,7 @@
     <div class="item-overlay"></div>
     <div class="item-overlay-details">
       <p class="title"><?php print $title ?></p>
-      <p class="creator"><?php isset($item->creator) ? print t('Af') . ' ' .  $item->creator : '' ?></p>
+      <p class="creator"><?php isset($item->creator) ? print t('By') . ' ' .  $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
     <?php
