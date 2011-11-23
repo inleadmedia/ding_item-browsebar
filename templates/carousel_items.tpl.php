@@ -50,14 +50,14 @@
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title))) ?></h1>
       <p>
         <?php if (isset($item->creator)): ?>
-          <?php print t('Af') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
+          <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>
       </p>
       <p class="description"><?php print is_array($item->description) ? join(', ', $item->description) : $item->description ?></p>
-      <p class="subject"><span class="hightlight"><?php print t('Emner') ?>: </span><?php print $item->subject ?></p>
+      <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
       <p class="stats">
-        <span class="rating-label">Rating: </span><?php print $stars ?><span class="rating-count">(<?php print $item->rating_count ?>)</span>
-        <span class="comment-count"><?php print t('Anmeldelser') ?>(<?php print $item->comment_count ?>)</span>
+        <span class="rating-label"><?php print t('Rating:'); ?> </span><?php print $stars ?><span class="rating-count">(<?php print $item->rating_count ?>)</span>
+        <span class="comment-count"><?php print t('User reviews') ?> (<?php print $item->comment_count ?>)</span>
       </p>
     </div>
   </div>
