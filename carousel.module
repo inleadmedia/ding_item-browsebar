@@ -380,7 +380,7 @@ function carousel_filter($type) {
   $subject = $_REQUEST['facet'] ? $_REQUEST['facet'] : '';
   $tab = $_REQUEST['tab'] ? (int)$_REQUEST['tab'] : 0;
   $keywords = variable_get('carousel_search_queries', array());
-  $keyword = $keywords[$tab];
+  $keyword = $keywords[$tab]['query'];
   $cid = carousel_generate_cache_id($keyword, $type, $subject);
 
   $response = carousel_load_items($type, $subject);
