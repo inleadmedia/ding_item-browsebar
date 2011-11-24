@@ -1,0 +1,3 @@
+The module provides a carousel functionality (relies on a contributed jQuery plugin carouFredsel).
+Module provides a block that can be placed anywhere on a page,
+and uses memchached for performance optimization.

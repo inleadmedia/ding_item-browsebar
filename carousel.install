@@ -1,0 +1,46 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this module.
+ */
+function carousel_install() {
+  $default_theme = variable_get('theme_default', 'easyting');
+
+  // Create main carousel widget block.
+  $block = array(
+    'module'  => 'carousel',
+    'delta'   => 'main',
+    'theme'   => $default_theme,
+    'status'  => 1,
+    'weight'  => 0,
+    'region'  => 'carousel',
+    'pages'   => '',
+    'cache'   => -1,
+    'title'   => '',
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title'));
+  $query->values($block);
+  $query->execute();
+
+  // Set some default settings.
+  variable_set('carousel_item_limit', 24);
+  variable_set('carousel_cache_ttl', 2);
+}
+
+function carousel_uninstall() {
+  // Remove block
+  $query = db_delete('block')->condition('module', 'carousel');
+  $query->execute();
+
+  // Remove settings.
+  variable_del('carousel_item_limit');
+  variable_del('carousel_keyword');
+  variable_del('carousel_cache_ttl');
+}
