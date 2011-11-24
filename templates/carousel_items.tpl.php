@@ -7,6 +7,7 @@
 
 <?php if ($carousel_items): ?>
   <?php 
+  carousel_create_missed_covers($carousel_items);
   $k = 0;
   foreach ($carousel_items as $i => $item): ?>
   <?php  
@@ -21,19 +22,21 @@
   ?>
 
   <div class="result-item <?php print (($k++ == 2) ? 'active' : 'inactive') ?>">
-    <?php 
-    if (isset($item->image)) {
-      echo theme('image_style', 
-             array('style_name' => 'ding_medium', 
-                 'path' => $item->image, 
-                 'getsize' => TRUE, 
-                 'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160')));
-    } else {
-      echo '<img src="' . $image_base_path . 'default.png" width="120" height="160" alt=""/>';
-    }
-    ?>
     <?php
-      $title = (drupal_strlen($item->title) > 20) ? drupal_substr($item->title, 0, 20) . '...' : $item->title;
+    $image_vars = array(
+      'style_name' => 'ding_medium',
+      'path' => $item->image,
+      'getsize' => TRUE,
+      'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160'),
+    );
+    if ($item->image == carousel_default_image()) {
+      echo theme('image', $image_vars);
+    }
+    else {
+      echo theme('image_style', $image_vars);
+    }
+
+    $title = (drupal_strlen($item->title) > 20) ? drupal_substr($item->title, 0, 20) . '...' : $item->title;
     ?>
     <p class="title"><?php print $title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
