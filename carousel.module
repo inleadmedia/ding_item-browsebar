@@ -198,18 +198,9 @@ function carousel_load_items($type = 'bog', $subject = '') {
             $item->subject = NULL;
           }
 
-          // Exracting images
-          $path = ting_covers_object_path($searchItem->localId);
-
-          if (file_exists($path)) {
-            //If we we already have a valid cover image w/o style then just use it
-            $item->image = $path;
-          }
-          else {
-            //Mark the image for retrieval;
-            $missing_images_local_ids[] = $searchItem->localId;
-          }
-         // $item->image = 'ting_item.jpg';
+          // Set image filepath.
+          // Image existance will be checked further.
+          $item->image = ting_covers_object_path($searchItem->localId);
 
           if (isset($searchItem->record['dc:description'][''][0])) {
             /**
@@ -268,9 +259,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
           }
         }
 
-        if (@is_array($missing_images_local_ids)) {
-          carousel_get_images_from_addi($items, $missing_images_local_ids);
-        }
+        carousel_create_missed_covers($items);
 
         $items = array('items' => $items, 'facets' => $result->facets);
 
@@ -280,17 +269,6 @@ function carousel_load_items($type = 'bog', $subject = '') {
         $items_buffer[$cid] = $items;
       }
       else {
-        // Check for covers existance.
-        $missing_images_local_ids = array();
-        foreach ($items->data['items'] as $item_id => $item) {
-          if (isset($item->image) && !file_exists($item->image)) {
-            $missing_images_ids[] = $item_id;
-          }
-        }
-        if (!empty($missing_images_ids)) {
-          carousel_get_images_from_addi($items->data['items'], $missing_images_ids);
-        }
-
         $items_buffer[$cid] = $items->data;
       }
     }
@@ -339,6 +317,9 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
     if ($file = _ting_covers_pages_fetch_image(ting_covers_object_path($local_id), $source_url)) {
       //Generate a path corresponding to the downloaded image, styled
       $items[$local_id]->image = $file->uri;
+    }
+    else {
+      $items[$local_id]->image = carousel_default_image();
     }
   }
 }
@@ -448,4 +429,25 @@ function carousel_view($index, $type = 'bog', $subject = '') {
  */
 function carousel_generate_cache_id($keyword, $type, $subject = '') {
   return 'carousel-' . md5($keyword . $type . $subject);
+}
+
+/**
+ * Create missed covers.
+ */
+function carousel_create_missed_covers(&$items) {
+  foreach ($items as $item_id => $item) {
+    if (!file_exists($item->image)) {
+      $missing_images_ids[] = $item_id;
+    }
+  }
+  if (!empty($missing_images_ids)) {
+    carousel_get_images_from_addi($items, $missing_images_ids);
+  }
+}
+
+/**
+ * Returns path to default image.
+ */
+function carousel_default_image() {
+  return drupal_get_path('module', 'carousel') . '/images/default.png';
 }
