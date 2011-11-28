@@ -209,7 +209,17 @@
     }
 
     $('#carousel-wrapper:hidden').show('fast');
-    $('#carousel-content').html(response.content);
+
+    // Safely remove items
+    var l = $('#carousel-content .result-item').length;
+    for (i = 0; i < l; i++) {
+      $("#carousel-content").trigger('removeItem', [i]);
+    }
+
+    // Safely add new item list
+    $(response.content).each(function(i, e) {
+      $("#carousel-content").trigger('insertItem', e);
+    });
   }
 
   Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {
