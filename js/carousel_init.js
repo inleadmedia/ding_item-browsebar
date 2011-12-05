@@ -1,8 +1,31 @@
 (function ($) {
   var carouselItems = 5;
   $(document).ready(function() {
+    // Create carousel jQuery object.
+    Carousel = $("#carousel-content");
+
+    // Add custom function for getting carousel config options.
+    Carousel.getOption = function(opt){
+      var val;
+      if (opt == 'centralIndex') {
+        var items = this.getOption('items.visible');
+        return Math.floor(items / 2);
+      }
+      // Get carousel config option.
+      else {
+        this.trigger('configuration', [opt, function(value){
+          val = value;
+        }]);
+      }
+      return val;
+    }
+
+    // Set active central item.
+    var centralIndex = Math.floor(carouselItems / 2);
+    Carousel.find('.inactive').eq(centralIndex).removeClass('inactive').addClass('active');
+
     // Shows the items hidden by details layer.
-    $("#carousel-content").carouFredSel({
+    Carousel.carouFredSel({
       curcular: false,
       infinite: false,
       auto : false,
@@ -13,7 +36,8 @@
         button : '#prev',
         onBefore : function() {
           // Restore previously magnified item and show it's details
-          var ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? carouselItems - window.selectedIndex - 1 : 3) + ')');
+          var centralIndex = Carousel.getOption('centralIndex');
+          var ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? carouselItems - window.selectedIndex - 1 : centralIndex + 1) + ')');
           restore(ele);
           
           // Magnify item in the middle and style it's details
@@ -26,11 +50,12 @@
         button : '#next',
         onBefore : function() {
           // Restore previously magnified item and show it's details
-          var ele = $('#carousel .result-item:eq(2)');
+          var centralIndex = Carousel.getOption('centralIndex');
+          var ele = $('#carousel .result-item').eq(centralIndex);
           restore(ele);
 
           // Magnify item in the middle and style it's details
-          ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? window.selectedIndex : 3) + ')');
+          ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? window.selectedIndex : centralIndex + 1) + ')');
           magnify(ele);
         },
         onAfter : afterScroll
@@ -63,20 +88,21 @@
 
     // Handler for clicking on carousel active item
     $('#carousel .active').live('click', function() {
+      var centralIndex = Carousel.getOption('centralIndex');
       if ($(this).children('.result-item-details:visible').length > 0) {
         $(this).children('.result-item-details').fadeOut(500);
-        $('#carousel .result-item:eq(3)').animate({
+        $('#carousel .result-item').eq(centralIndex + 1).animate({
           'opacity' : 1
         }, 500).addClass('show-me');
-        $('#carousel .result-item:eq(4)').animate({
+        $('#carousel .result-item').eq(centralIndex + 2).animate({
           'opacity' : 1
         }, 500).addClass('show-me');
       } else {
         $(this).children('.result-item-details').fadeIn(500);
-        $('#carousel .result-item:eq(3)').animate({
+        $('#carousel .result-item').eq(centralIndex + 1).animate({
           'opacity' : 0
         }, 500).addClass('show-me');
-        $('#carousel .result-item:eq(4)').animate({
+        $('#carousel .result-item').eq(centralIndex + 2).animate({
           'opacity' : 0
         }, 500).addClass('show-me');
       }
@@ -147,7 +173,8 @@
       $('#carousel-wrapper').hide();
     }
   });
-  
+
+
   // Magnification handler
   var magnify = function(ele) {
     ele.animate({
@@ -189,7 +216,8 @@
   }
   
   var afterScroll = function () {
-    var ele = $('#carousel .result-item:eq(2)');
+    var centralIndex = Carousel.getOption('centralIndex');
+    var ele = $('#carousel .result-item').eq(centralIndex);
     ele.find('.item-overlay').fadeIn('fast');
     ele.find('.item-overlay-details').fadeIn('fast');
 

@@ -21,7 +21,7 @@
     endfor;
   ?>
 
-  <div class="result-item <?php print (($k++ == 2) ? 'active' : 'inactive') ?>">
+  <div class="result-item inactive">
     <?php
     $image_vars = array(
       'style_name' => 'ding_medium',
