@@ -1,8 +1,35 @@
 (function ($) {
-  var carouselItems = 5;
   $(document).ready(function() {
     // Create carousel jQuery object.
     Carousel = $("#carousel-content");
+
+    // Responsivity.
+    Carousel.responsiveConfig = {
+      mobile: {
+        items: 1,
+        showItemInfo: 0
+      },
+      narrow: {
+        items: 3,
+        showItemInfo: 0
+      },
+      normal: {
+        items: 5,
+        showItemInfo: 1
+      }
+    }
+
+    // Select default config for first init.
+    var carouselWidth = Carousel.width();
+    if (carouselWidth < 480) {
+      Carousel.defaultConfig = Carousel.responsiveConfig.mobile;
+    }
+    else if (carouselWidth < 960) {
+      Carousel.defaultConfig = Carousel.responsiveConfig.narrow;
+    }
+    else {
+      Carousel.defaultConfig = Carousel.responsiveConfig.normal;
+    }
 
     // Add custom function for getting carousel config options.
     Carousel.getOption = function(opt){
@@ -20,44 +47,53 @@
       return val;
     }
 
+    Carousel.scrollOnBefore = function(direction) {
+      var items = Carousel.find('.result-item');
+      var activeItem = items.filter('.active');
+      var activeItemIndex = items.index(activeItem);
+      var magnifyItemIndex;
+      if (direction == 'prev') {
+        magnifyItemIndex = Carousel.getOption('centralIndex');
+      }
+      else {
+        magnifyItemIndex = window.selectedIndex != null ? window.selectedIndex : Carousel.getOption('centralIndex') + 1;
+      }
+      // Restore previously magnified item and show it's details.
+      if (Carousel.getOption('items.visible') == 1 || activeItemIndex != magnifyItemIndex) {
+        restore(activeItem);
+
+        // Magnify item in the middle and style it's details.
+        if (Carousel.getOption('items.visible') != 1) {
+          var ele = $('#carousel .result-item').eq(magnifyItemIndex);
+          magnify(ele);
+        }
+      }
+    }
+
     // Set active central item.
-    var centralIndex = Math.floor(carouselItems / 2);
-    Carousel.find('.inactive').eq(centralIndex).removeClass('inactive').addClass('active');
+    if (Carousel.defaultConfig.items != 1) {
+      var centralIndex = Math.floor(Carousel.defaultConfig.items / 2);
+      Carousel.find('.inactive').eq(centralIndex).removeClass('inactive').addClass('active');
+    }
+
+    // Show item details or not.
+    Carousel.find('.result-item').attr('showItemInfo', Carousel.defaultConfig.showItemInfo);
 
     // Shows the items hidden by details layer.
     Carousel.carouFredSel({
       curcular: false,
       infinite: false,
       auto : false,
-      items: carouselItems,
+      items: Carousel.defaultConfig.items,
       height: 300,
-      width: 820,
       prev : {
         button : '#prev',
-        onBefore : function() {
-          // Restore previously magnified item and show it's details
-          var centralIndex = Carousel.getOption('centralIndex');
-          var ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? carouselItems - window.selectedIndex - 1 : centralIndex + 1) + ')');
-          restore(ele);
-          
-          // Magnify item in the middle and style it's details
-          ele = $('#carousel .result-item:eq(2)');
-          magnify(ele);
-        },
+        onBefore : function() { Carousel.scrollOnBefore('prev') },
         onAfter : afterScroll
       },
       next : {
         button : '#next',
-        onBefore : function() {
-          // Restore previously magnified item and show it's details
-          var centralIndex = Carousel.getOption('centralIndex');
-          var ele = $('#carousel .result-item').eq(centralIndex);
-          restore(ele);
-
-          // Magnify item in the middle and style it's details
-          ele = $('#carousel .result-item:eq(' + (window.selectedIndex != null ? window.selectedIndex : centralIndex + 1) + ')');
-          magnify(ele);
-        },
+        onBefore : function() { Carousel.scrollOnBefore('next') },
         onAfter : afterScroll
       },
       scroll : {
@@ -69,15 +105,16 @@
     })
     // Scroll to the selected item
     .find('div.result-item').live('click', function() {
-      if ($(this).hasClass('active')) {
+      if ($(this).hasClass('active') || Carousel.getOption('items.visible') == 1) {
         return;
       }
       window.selectedIndex = $('div.result-item').index(this);
-      if (window.selectedIndex > carouselItems / 2) {
-        $("#carousel-content").trigger("next", [null, window.selectedIndex - Math.floor(carouselItems / 2)]);
+      var centralIndex = Carousel.getOption('centralIndex');
+      if (window.selectedIndex > Carousel.defaultConfig.items / 2) {
+        $("#carousel-content").trigger("next", window.selectedIndex - centralIndex);
       }
       else {
-        $("#carousel-content").trigger("prev", [null, Math.floor(carouselItems / 2) - window.selectedIndex]);
+        $("#carousel-content").trigger("prev", centralIndex - window.selectedIndex);
       }
     });
 
@@ -172,17 +209,87 @@
     if (!$('body').hasClass('front')) {
       $('#carousel-wrapper').hide();
     }
+
+    Carousel.bind('responsivelayout', function(event, layouts) {
+      var config;
+      var slideEvent;
+      if (layouts.to == 'mobile') {
+        config = Carousel.responsiveConfig.mobile;
+      }
+      else if (layouts.to == 'narrow') {
+        config = Carousel.responsiveConfig.narrow;
+      }
+      else {
+        config = Carousel.responsiveConfig.normal;
+      }
+      // Centralize active item direction.
+      if ((layouts.from == 'mobile') || (layouts.from == 'narrow' && layouts.to != 'mobile')) {
+        // Layout width increases
+        slideEvent = 'prev';
+      }
+      else if ((layouts.from != 'mobile') && (layouts.to == 'narrow' || layouts.to == 'mobile')) {
+        // Layout width decreases
+        slideEvent = 'next';
+      }
+      // Avoid meaningless carousel reinit.
+      if (Carousel.getOption('items.visible') != config.items) {
+        // Items counst from previous carousel init.
+        var prevItems = Carousel.getOption('items.visible');
+        var activeItem = Carousel.find('.result-item.active');
+        // From Mobile to any.
+        if (prevItems == 1) {
+          var el = Carousel.find('.result-item').eq(Math.floor(config.items / 2))
+          magnify(el, 0);
+        }
+        // From any to Mobile.
+        if (config.items == 1) {
+          restore(activeItem, 0);
+        }
+        // Show item details or not.
+        Carousel.find('.result-item').attr('showItemInfo', config.showItemInfo);
+        // View items.
+        Carousel.trigger('configuration', ['items.visible', config.items]);
+        // Correct pager.
+        Carousel.trigger('updatePageStatus', [true]);
+        // Centralize active item.
+        var qty = Math.abs((prevItems - config.items) / 2);
+        Carousel.trigger(slideEvent, qty);
+      }
+    });
+
+    // On click go to item landing page, if needed.
+    Carousel.find('.result-item').bind('click', function(){
+      var item = $(this);
+      var showItemInfo = item.attr('showItemInfo');
+      if (showItemInfo == '0') {
+        if (item.hasClass('active')) {
+          // Prevent item popup will be visible.
+          item.find('.result-item-details').show().find('*').hide();
+        }
+        // Go tp item page.
+        if (item.hasClass('active') || Carousel.getOption('items.visible') == 1) {
+          var href = item.find('h1 a').attr('href');
+          window.location = href;
+        }
+      }
+      else {
+        item.find('.result-item-details *').show();
+      }
+    });
   });
 
 
   // Magnification handler
-  var magnify = function(ele) {
+  var magnify = function(ele, duration) {
+    if (duration == undefined) {
+      duration = 500;
+    }
     ele.animate({
       'margin-top' : '0'
-    }, 500).children('img').animate({
+    }, duration).children('img').animate({
       'height' : '240',
       'width' : '170'
-    }, 500, function() {
+    }, duration, function() {
       ele.removeClass('inactive').addClass('active');
       window.selectedIndex = null;      
     });
@@ -191,35 +298,41 @@
     
     ele.animate({
       'margin-top' : '0'
-    }, 500);
+    }, duration);
   }
 
   // Restoration handler
-  var restore = function(ele) {
+  var restore = function(ele, duration) {
+    if (duration == undefined) {
+      duration = 500;
+    }
     ele.animate({
       'margin-top' : '42'
-    }, 500).children('img').animate({
+    }, duration).children('img').animate({
       'height' : '160',
       'width' : '120'
-    }, 500, function() {
+    }, duration, function() {
       ele.removeClass('active').addClass('inactive');
-      ele.children('p').fadeIn(500);      
+      ele.children('p').fadeIn(duration);
     });
     
     ele.find('.item-overlay').hide();
     ele.find('.item-overlay-details').hide();
-    ele.find('.result-item-details').fadeOut(100);    
+    ele.find('.result-item-details').fadeOut(duration / 5);
     
     ele.animate({
       'margin-top' : '42'
-    }, 500);
+    }, duration);
   }
   
   var afterScroll = function () {
-    var centralIndex = Carousel.getOption('centralIndex');
-    var ele = $('#carousel .result-item').eq(centralIndex);
-    ele.find('.item-overlay').fadeIn('fast');
-    ele.find('.item-overlay-details').fadeIn('fast');
+    var items = Carousel.getOption('items.visible');
+    if (items > 1) {
+      var centralIndex = Carousel.getOption('centralIndex');
+      var ele = $('#carousel .result-item').eq(centralIndex);
+      ele.find('.item-overlay').fadeIn('fast');
+      ele.find('.item-overlay-details').fadeIn('fast');
+    }
 
     $('#carousel .result-item.show-me').each(function() {
       $(this).animate({
