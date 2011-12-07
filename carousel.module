@@ -105,6 +105,7 @@ function carousel_block_view($delta) {
     case 'main':
       drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.touchwipe.1.1.1.js', 'file');
       drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
 
       $response = carousel_load_items('bog');
