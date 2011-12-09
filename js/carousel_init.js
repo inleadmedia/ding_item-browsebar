@@ -278,6 +278,16 @@
         item.find('.result-item-details *').show();
       }
     });
+
+    // Touchwipe.
+    Carousel.touchwipe({
+      wipeLeft: function() {
+        Carousel.trigger('next');
+      },
+      wipeRight: function() {
+        Carousel.trigger('prev');
+      }
+    });
   });
 
 
