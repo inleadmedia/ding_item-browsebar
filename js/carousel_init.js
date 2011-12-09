@@ -211,6 +211,8 @@
     }
 
     Carousel.bind('responsivelayout', function(event, layouts) {
+      if ($.browser.msie && $.browser.version < 9) return;
+
       var config;
       var slideEvent;
       if (layouts.to == 'mobile') {
@@ -357,8 +359,20 @@
       $("#carousel-content").trigger('removeItem', [i]);
     }
 
+    var responseItems = $(response.content).filter('.result-item');
+
+    // Set active central item.
+    if (Carousel.defaultConfig.items != 1) {
+      var itemsVisible = Carousel.getOption('items.visible');
+      var itemsCount = (responseItems.length < itemsVisible) ? responseItems.length : itemsVisible;
+      var centralIndex = Math.floor(itemsCount / 2);
+    }
+
     // Safely add new item list
-    $(response.content).each(function(i, e) {
+    responseItems.each(function(i, e) {
+      if (i == centralIndex) {
+        $(e).removeClass('inactive').addClass('active');
+      }
       $("#carousel-content").trigger('insertItem', e);
     });
   }
