@@ -47,7 +47,7 @@
     </div>
     <div class="result-item-details">
     <?php
-      $title = (drupal_strlen($item->title) > 40) ? drupal_substr($item->title, 0, 40) . '...' : $item->title;
+      $title = (drupal_strlen($item->title) > 18) ? drupal_substr($item->title, 0, 18) . '...' : $item->title;
     ?>
 
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title))) ?></h1>
