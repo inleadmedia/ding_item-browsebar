@@ -62,6 +62,10 @@
         <span class="rating-label"><?php print t('Rating:'); ?> </span><?php print $stars ?><span class="rating-count">(<?php print $item->rating_count ?>)</span>
         <span class="comment-count"><?php print t('User reviews') ?> (<?php print $item->comment_count ?>)</span>
       </p>
+      <div class="clear"></div>
+      <p class="item-operations">
+        <?php print l('<input type="button" value="' . t('Open') . '"/>', 'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'target' => '_blank'), 'html' => TRUE)) ?>
+      </p>
     </div>
   </div>
   <?php endforeach; ?>
