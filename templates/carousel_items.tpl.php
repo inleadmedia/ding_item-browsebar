@@ -59,9 +59,9 @@
       <p class="description"><?php print is_array($item->description) ? join(', ', $item->description) : $item->description ?></p>
       <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
       <p class="stats">
-        <?php if ((int)$item->rating_count > 0) { ?>
         <span class="rating-label"><?php print t('Rating:'); ?> </span>
         <?php print $stars ?>
+        <?php if ((int)$item->rating_count > 0) { ?>
         <span class="rating-count"><?php print '(' . $item->rating_count . ')'; ?></span>
         <?php } ?>
         <span class="comment-count">

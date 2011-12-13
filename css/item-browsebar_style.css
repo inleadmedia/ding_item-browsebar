@@ -134,8 +134,8 @@
   display: inline-block;
 }
 
-#carousel .result-item .result-item-details .stats .rating-count {
-  margin-right: 15px;
+#carousel .result-item .result-item-details .stats .comment-count {
+  margin-left: 15px;
 }
 
 #carousel .result-item .result-item-details img {
