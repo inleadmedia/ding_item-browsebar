@@ -59,8 +59,22 @@
       <p class="description"><?php print is_array($item->description) ? join(', ', $item->description) : $item->description ?></p>
       <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
       <p class="stats">
-        <span class="rating-label"><?php print t('Rating:'); ?> </span><?php print $stars ?><span class="rating-count">(<?php print $item->rating_count ?>)</span>
-        <span class="comment-count"><?php print t('User reviews') ?> (<?php print $item->comment_count ?>)</span>
+        <?php if ((int)$item->rating_count > 0) { ?>
+        <span class="rating-label"><?php print t('Rating:'); ?> </span>
+        <?php print $stars ?>
+        <span class="rating-count"><?php print '(' . $item->rating_count . ')'; ?></span>
+        <?php } ?>
+        <span class="comment-count">
+          <?php
+          $link = t('No user reviews');
+          
+          if ((int)$item->comment_count > 0) {
+            $link = t('User reviews') . '(' . $item->comment_count . ')';
+          }
+
+          print l($link, 'ting/object/' . $item->id, array('attributes' => array('target' => '_blank'), 'fragment' => 'top'));
+          ?>
+        </span>
       </p>
     </div>
   </div>
