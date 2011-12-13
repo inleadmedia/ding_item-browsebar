@@ -63,9 +63,17 @@
         <span class="comment-count"><?php print t('User reviews') ?> (<?php print $item->comment_count ?>)</span>
       </p>
       <div class="clear"></div>
-      <p class="item-operations">
-        <?php print l('<input type="button" value="' . t('Open') . '"/>', 'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'target' => '_blank'), 'html' => TRUE)) ?>
-      </p>
+      <div class="item-operations">
+        <div class="operation open-item">
+          <form action="/ting/object/<?php print $item->id; ?>" target="_blank">
+            <input type="submit" value="<?php print t('Open'); ?>" />
+          </form>
+        </div>
+        <div class="operation reserve-item">
+            <?php print render(ding_provider_get_form('ding_reservation_reserve_form', new DingReservationReservableEntity($item), TRUE)); ?>
+        </div>
+      </div>
+      <div class="clear"></div>
     </div>
   </div>
   <?php endforeach; ?>

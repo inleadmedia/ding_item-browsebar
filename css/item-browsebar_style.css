@@ -323,3 +323,11 @@
 .carousel-header-right {
   width: 40%;
 }
+
+.item-operations .operation {
+  float: left;
+}
+
+.item-operations .operation.reserve-item {
+  margin-left: 10px;
+}
