@@ -66,7 +66,7 @@
       <div class="item-operations">
         <div class="operation open-item">
           <form action="/ting/object/<?php print $item->id; ?>" target="_blank">
-            <input type="submit" value="<?php print t('Open'); ?>" />
+            <input type="submit" value="<?php print t('More information'); ?>" />
           </form>
         </div>
         <div class="operation reserve-item">
