@@ -36,7 +36,11 @@
       echo theme('image_style', $image_vars);
     }
 
-    $title = (drupal_strlen($item->title) > 20) ? drupal_substr($item->title, 0, 20) . '...' : $item->title;
+    $title = $item->title;
+
+    if (drupal_strlen($title) > 18) {
+      $title = drupal_substr($title, 0, 18) . '...';
+    }
     ?>
     <p class="title"><?php print $title ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
@@ -46,17 +50,22 @@
       <p class="creator"><?php isset($item->creator) ? print t('By') . ' ' .  $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
-    <?php
-      $title = (drupal_strlen($item->title) > 18) ? drupal_substr($item->title, 0, 18) . '...' : $item->title;
-    ?>
-
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
       <p>
         <?php if (isset($item->creator)): ?>
           <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>
       </p>
-      <p class="description"><?php print is_array($item->description) ? join(', ', $item->description) : $item->description ?></p>
+      <?php
+
+      $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
+
+      if (drupal_strlen($description) > 275) {
+        $description = drupal_substr($description, 0, 275) . '...';
+      }
+
+      ?>
+      <p class="description"><?php print $description; ?></p>
       <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
       <p class="stats">
         <span class="rating-label"><?php print t('Rating:'); ?> </span><?php print $stars ?><span class="rating-count">(<?php print $item->rating_count ?>)</span>
