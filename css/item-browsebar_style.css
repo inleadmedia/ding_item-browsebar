@@ -88,9 +88,9 @@
   cursor: default;
   height: 170px;
   position: absolute;
-  top: 10px;
-  right: -330px;
-  width: 320px;
+  top: 15px;
+  right: -305px;
+  width: 305px;
   z-index: 20;
 }
 
