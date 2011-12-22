@@ -107,9 +107,10 @@
 }
 
 #carousel .result-item .result-item-details .description {
+  line-height: 20px;
   margin-top: 5px;
-  width: 300px;
   overflow: hidden;
+  width: 300px;
 }
 
 #carousel .result-item .result-item-details .subject {
@@ -325,4 +326,12 @@
 
 .carousel-header-right {
   width: 40%;
+}
+
+.item-operations .operation {
+  float: left;
+}
+
+.item-operations .operation.reserve-item {
+  margin-left: 10px;
 }
