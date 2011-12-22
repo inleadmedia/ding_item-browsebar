@@ -11,21 +11,20 @@
  * Perform actions to set up the site for this module.
  */
 function carousel_install() {
-  $default_theme = variable_get('theme_default', 'easyting');
-
   // Create main carousel widget block.
   $block = array(
     'module'  => 'carousel',
     'delta'   => 'main',
-    'theme'   => $default_theme,
+    'theme'   => 'easybase',
     'status'  => 1,
     'weight'  => 0,
-    'region'  => 'carousel',
-    'pages'   => '',
+    'region'  => 'preface_first',
+    'visibility' => 1,
+    'pages'   => '<front>',
     'cache'   => -1,
     'title'   => '',
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title'));
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache', 'title'));
   $query->values($block);
   $query->execute();
 
