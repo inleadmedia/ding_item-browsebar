@@ -24,7 +24,7 @@
   <div class="result-item inactive">
     <?php
     $image_vars = array(
-      'style_name' => 'ding_medium',
+      'style_name' => 'ding_large',
       'path' => $item->image,
       'getsize' => TRUE,
       'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160'),
