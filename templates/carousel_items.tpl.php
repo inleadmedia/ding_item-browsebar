@@ -38,8 +38,8 @@
 
     $title = $item->title;
 
-    if (drupal_strlen($title) > 18) {
-      $title = drupal_substr($title, 0, 18) . '...';
+    if (drupal_strlen($title) > 36) {
+      $title = drupal_substr($title, 0, 36);
     }
     ?>
     <p class="title"><?php print $title ?></p>
@@ -60,8 +60,8 @@
 
       $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
 
-      if (drupal_strlen($description) > 275) {
-        $description = drupal_substr($description, 0, 275) . '...';
+      if (drupal_strlen($description) > 145) {
+        $description = drupal_substr($description, 0, 145) . '...';
       }
 
       ?>
