@@ -12,7 +12,7 @@
 }
 
 #carousel {
-  height: 300px;
+  height: 315px;
   position: relative;
 }
 
@@ -180,8 +180,8 @@
   width: 20px;
 }
 
-#carousel .carousel-close {
-  bottom: -26px;
+#carousel .carousel-display {
+  bottom: -3px;
   position: absolute;
   right: 10px;
   height: 24px;

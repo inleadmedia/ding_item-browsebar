@@ -85,7 +85,7 @@
       infinite: false,
       auto : false,
       items: Carousel.defaultConfig.items,
-      height: 300,
+      height: 315,
       prev : {
         button : '#prev',
         onBefore : function() { Carousel.scrollOnBefore('prev') },
@@ -151,9 +151,21 @@
     });
 
     // Handler for hiding the carousel
-    $('#carousel .carousel-close').click(function() {
-      $(this).parent().parent().hide('fast');
-      $('#s-nav li').removeClass('current');
+    $('#carousel .carousel-display').toggle(function() {
+      $('.caroufredsel_wrapper').animate({
+        'height':'0px'
+      }, 500);
+      $('.carousel-header').hide('fast');
+      $('.search-controller').hide('fast');
+      $('.scroll').hide();
+      $(this).removeClass('close').addClass('open');
+    }, function() {
+      $('.caroufredsel_wrapper').animate({
+        'height':'315px'
+      }, 500, function() { $('.scroll').show('fast'); });
+      $('.carousel-header').show('fast');
+      $('.search-controller').show('fast');
+      $(this).removeClass('open').addClass('close');
     });
 
 
