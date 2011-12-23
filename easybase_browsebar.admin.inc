@@ -10,12 +10,11 @@
  * @return
  *   Admin form.
  */
-function carousel_admin_page() {
-  drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel.admin.js');
-  drupal_add_css(drupal_get_path('module', 'carousel') . '/css/carousel.css');
-  variable_set('carousel_search_queries_hidden', array());
+function easybase_browsebar_admin_page() {
+  drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/carousel.admin.js');
+  variable_set('easybase_browsebar_search_queries_hidden', array());
 
-  return drupal_get_form('carousel_admin_form');
+  return drupal_get_form('easybase_browsebar_admin_form');
 }
 
 /**
@@ -29,11 +28,11 @@ function carousel_admin_page() {
  * @return
  *   Form structure.
  */
-function carousel_admin_form($form, &$form_state) {
+function easybase_browsebar_admin_form($form, &$form_state) {
   $searches_num = !empty($form_state['values']['num_searches']) ? $form_state['values']['num_searches'] : 0;
   $clicked_btn = '';
   $remove_btn = '';
-  $hidden = variable_get('carousel_search_queries_hidden', array());
+  $hidden = variable_get('easybase_browsebar_search_queries_hidden', array());
 
   if (isset($form_state['clicked_button'])) {
     $clicked_btn = $form_state['clicked_button']['#name'];
@@ -44,7 +43,7 @@ function carousel_admin_form($form, &$form_state) {
         if (preg_match('/edit-remove/', $v['#id'])) {
           $remove_btn = $k;
           $hidden[] = $remove_btn;
-          variable_set('carousel_search_queries_hidden', $hidden);
+          variable_set('easybase_browsebar_search_queries_hidden', $hidden);
           break;
         }
       }
@@ -57,7 +56,7 @@ function carousel_admin_form($form, &$form_state) {
   );
 
   // Get current saved queries.
-  $searches = variable_get('carousel_search_queries', array());
+  $searches = variable_get('easybase_browsebar_search_queries', array());
 
   $i = 0;
   $c = 1;
@@ -66,7 +65,7 @@ function carousel_admin_form($form, &$form_state) {
   if (isset($searches[0]['title'])) {
     $c = count($searches);
     for (; $i < $c; $i++) {
-      $form['carousel']['ting_searches']['search_' . $i] = carousel_query_form($searches[$i], $i);
+      $form['carousel']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($searches[$i], $i);
     }
   }
 
@@ -86,7 +85,7 @@ function carousel_admin_form($form, &$form_state) {
       );
     }
 
-    $form['carousel']['ting_searches']['search_' . $i] = carousel_query_form($unsubmitted, $i);
+    $form['carousel']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($unsubmitted, $i);
   }
 
   // Hide removed fields.
@@ -111,34 +110,34 @@ function carousel_admin_form($form, &$form_state) {
     '#value' => 'Add another',
     '#name' => 'add_query',
     '#ajax' => array(
-      'callback' => 'carousel_admin_form_ajaxify',
+      'callback' => 'easybase_browsebar_admin_form_ajaxify',
       'wrapper' => 'ting-search-carousel-queries',
       'method' => 'replace',
       'effect' => 'fade'
     ),
   );
 
-  $form['carousel']['item_limit'] = array(
+  $form['carousel']['easybase_browsebar_item_limit'] = array(
     '#type' => 'textfield',
     '#title' => t('Item limit'),
     '#description' => t('The number of items to be returned in search result.'),
-    '#default_value' => variable_get('item_limit', 24)
+    '#default_value' => variable_get('easybase_browsebar_item_limit', 24)
   );
 
-  $form['carousel']['cache_ttl'] = array(
+  $form['carousel']['easybase_browsebar_cache_ttl'] = array(
     '#type' => 'textfield',
     '#title' => t('Cache TTL'),
     '#description' => t('How many hours the cache lives.'),
-    '#default_value' => variable_get('cache_ttl', 1)
+    '#default_value' => variable_get('easybase_browsebar_cache_ttl', 1)
   );
 
   // Wrap the form, due to draggable items renewal.
   $form['#prefix'] = '<div id="ting-search-carousel-queries">';
   $form['#suffix'] = '</div>';
   // Custom themer, mainly used for dragable table creation.
-  $form['#theme'] = array('carousel_admin_form');
+  $form['#theme'] = array('easybase_browsebar_admin_form');
   // Custom form submit handler.
-  $form['#submit'] = array('carousel_search_submit');
+  $form['#submit'] = array('easybase_browsebar_search_submit');
 
   return system_settings_form($form);
 }
@@ -152,7 +151,7 @@ function carousel_admin_form($form, &$form_state) {
  * @return
  *   Changed field to be updated.
  */
-function carousel_admin_form_ajaxify($form, &$form_state) {
+function easybase_browsebar_admin_form_ajaxify($form, &$form_state) {
   return $form;
 }
 
@@ -165,7 +164,7 @@ function carousel_admin_form_ajaxify($form, &$form_state) {
  * @return
  *   Themed form output.
  */
-function theme_carousel_admin_form($variables) {
+function theme_easybase_browsebar_admin_form($variables) {
   $form = $variables['form'];
   drupal_add_tabledrag('ting-search-carousel-admin-sort', 'order', 'sibling', 'sort');
 
@@ -220,7 +219,7 @@ function theme_carousel_admin_form($variables) {
  * @return
  *   Fields structure.
  */
-function carousel_query_form($item = array(), $index = 0) {
+function easybase_browsebar_query_form($item = array(), $index = 0) {
   $form = array();
 
   $form['sort[]'] = array(
@@ -269,7 +268,7 @@ function carousel_query_form($item = array(), $index = 0) {
     ),
     '#suffix' => '</div><div class="clear"></div>',
     '#ajax' => array(
-      'callback' => 'carousel_admin_form_ajaxify',
+      'callback' => 'easybase_browsebar_admin_form_ajaxify',
       'wrapper' => 'ting-search-carousel-queries',
       'method' => 'replace',
       'effect' => 'fade'
@@ -287,24 +286,28 @@ function carousel_query_form($item = array(), $index = 0) {
  * @param $form_state
  *   Form state.
  */
-function carousel_search_submit($form, &$form_state) {
+function easybase_browsebar_search_submit($form, &$form_state) {
   $c = count($form_state['input']['title']);
   $searches = array();
   $search_items = array();
 
   for ($i = 0; $i < $c; $i++) {
     // Make an array for saving, ignoring queries w/o title.
-    if (!empty($form_state['input']['title'][$i])) {
+    $title = trim($form_state['input']['title'][$i]);
+    $subtitle = trim($form_state['input']['subtitle'][$i]);
+    $query = trim($form_state['input']['query'][$i]);
+    
+    if (!empty($title) && !empty($query)) {
       $searches[] = array(
-        'title' => $form_state['input']['title'][$i],
-        'subtitle' => $form_state['input']['subtitle'][$i],
-        'query' => $form_state['input']['query'][$i]
+        'title' => $title,
+        'subtitle' => $subtitle,
+        'query' => $query
       );
     }
   }
 
   // Save the queries as a persistent variable.
-  variable_set('carousel_search_queries', $searches);
+  variable_set('easybase_browsebar_search_queries', $searches);
 
   // Make ting search requests.
   // carousel_do_request();
@@ -313,14 +316,14 @@ function carousel_search_submit($form, &$form_state) {
 /**
  * Validate settings submission.
  */
-function carousel_admin_form_validate($form, &$form_state) {
-  $limit = $form_state['values']['item_limit'];
-  $cache_ttl = $form_state['values']['cache_ttl'];
+function easybase_browsebar_admin_form_validate($form, &$form_state) {
+  $limit = $form_state['values']['easybase_browsebar_item_limit'];
+  $cache_ttl = $form_state['values']['easybase_browsebar_cache_ttl'];
   if (!is_numeric($limit)) {
-    form_set_error('item_limit', t('Please enter a valid number.'));
+    form_set_error('easybase_browsebar_item_limit', t('Please enter a valid number.'));
   }
 
   if (!is_numeric($cache_ttl)) {
-    form_set_error('cache_ttl', t('Please enter a valid number.'));
+    form_set_error('easybase_browsebar_cache_ttl', t('Please enter a valid number.'));
   }
 }

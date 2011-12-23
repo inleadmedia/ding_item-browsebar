@@ -10,10 +10,10 @@
  *
  * Perform actions to set up the site for this module.
  */
-function carousel_install() {
+function easybase_browsebar_install() {
   // Create main carousel widget block.
   $block = array(
-    'module'  => 'carousel',
+    'module'  => 'easybase_browsebar',
     'delta'   => 'main',
     'theme'   => 'easybase',
     'status'  => 1,
@@ -29,17 +29,17 @@ function carousel_install() {
   $query->execute();
 
   // Set some default settings.
-  variable_set('carousel_item_limit', 24);
-  variable_set('carousel_cache_ttl', 2);
+  variable_set('easybase_browsebar_item_limit', 24);
+  variable_set('easybase_browsebar_cache_ttl', 2);
 }
 
-function carousel_uninstall() {
+function easybase_browsebar_uninstall() {
   // Remove block
-  $query = db_delete('block')->condition('module', 'carousel');
+  $query = db_delete('block')->condition('module', 'easybase_browsebar');
   $query->execute();
 
   // Remove settings.
-  variable_del('carousel_item_limit');
-  variable_del('carousel_keyword');
-  variable_del('carousel_cache_ttl');
+  variable_del('easybase_browsebar_item_limit');
+  variable_del('easybase_browsebar_search_queries');
+  variable_del('easybase_browsebar_cache_ttl');
 }

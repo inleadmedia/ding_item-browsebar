@@ -14,7 +14,7 @@
     
     foreach ($facets['facet.subject']->terms as $facet=>$amount) {
       $max_facet_length = (strlen($facet) > $max_facet_length) ?  strlen($facet) : $max_facet_length;
-      echo '<li><a class="use-ajax' . ($active_facet == $facet ? ' active' : '') . '" href="/ding/carousel/filter/bog?facet=' . htmlspecialchars($facet) . '&tab=' . (int)$tab . '">' . htmlspecialchars($facet) . '</a></li>';
+      echo '<li><a class="use-ajax' . ($active_facet == $facet ? ' active' : '') . '" href="/ding/easybase_browsebar/filter/bog?facet=' . htmlspecialchars($facet) . '&tab=' . (int)$tab . '">' . htmlspecialchars($facet) . '</a></li>';
     } ?> 
     </ul>
     

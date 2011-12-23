@@ -6,38 +6,42 @@
  * Defines own content type.
  */
 
+define('TITLE_LARGE', 36);
+define('TITLE_SMALL', 18);
+define('DESCRIPTION_SMALL', 145);
+
 /**
  * Implements hook_init().
  */
-function carousel_init() {
-  drupal_add_css(drupal_get_path('module', 'carousel') . '/css/item-browsebar_style.css', 'file');
+function easybase_browsebar_init() {
+  drupal_add_css(drupal_get_path('module', 'easybase_browsebar') . '/css/item-browsebar_style.css', 'file');
 }
 
 /**
  * Implements hook_menu().
  */
-function carousel_menu() {
-  $items['admin/config/ding/carousel'] = array(
-    'title' => 'Carousel widget settings',
-    'description' => 'Configure carousel options such as search keyword, number of items etc.',
-    'page callback' => 'carousel_admin_page',
+function easybase_browsebar_menu() {
+  $items['admin/config/ding/easybase_browsebar'] = array(
+    'title' => 'Easybase browsebar settings',
+    'description' => 'Configure borwsebar options such as search keyword, number of items etc.',
+    'page callback' => 'easybase_browsebar_admin_page',
     'page arguments' => array(),
     'access arguments' => array('access administration pages'),
-    'file' => 'carousel.admin.inc',
+    'file' => 'easybase_browsebar.admin.inc',
   );
 
-  $items['ding/carousel/filter/%'] = array(
+  $items['ding/easybase_browsebar/filter/%'] = array(
     'page arguments' => array(3),
     'type' => MENU_CALLBACK,
     'access arguments' => array('search content'),
-    'page callback' => 'carousel_filter',
+    'page callback' => 'easybase_browsebar_filter',
   );
 
-  $items['ding/carousel/view/%'] = array(
+  $items['ding/easybase_browsebar/view/%'] = array(
     'page arguments' => array(3, 'bog', ''),
     'type' => MENU_CALLBACK,
     'access arguments' => array('search content'),
-    'page callback' => 'carousel_view',
+    'page callback' => 'easybase_browsebar_view',
   );
 
   return $items;
@@ -46,7 +50,7 @@ function carousel_menu() {
 /**
  * Implements hook_block_info().
  */
-function carousel_block_info() {
+function easybase_browsebar_block_info() {
   $blocks['main'] = array(
     'info' => t('Carousel widget'),
     'region' => 'content',
@@ -59,7 +63,7 @@ function carousel_block_info() {
 /**
  * Implements hook_theme().
  */
-function carousel_theme($existing, $type, $theme, $path) {
+function easybase_browsebar_theme($existing, $type, $theme, $path) {
   $hooks['carousel'] = array(
     'variables' => array('carousel_items' => NULL, 'facets' => NULL),
     'template' => 'carousel',
@@ -78,19 +82,13 @@ function carousel_theme($existing, $type, $theme, $path) {
     'path' => $path . '/templates',
   );
 
-  $hooks['secondary_nav'] = array(
-    'variables' => array('menu' => NULL),
-    'template' => 'type_filter_menu',
-    'path' => $path . '/templates',
-  );
-
   $hooks['browserbar_filter'] = array(
     'variables' => array('facets' => NULL, 'active_facet' => NULL),
     'template' => 'browserbar_filter',
     'path' => $path . '/templates',
   );
 
-  $hooks['carousel_admin_form'] = array(
+  $hooks['easybase_browsebar_admin_form'] = array(
     'render element' => 'form',
   );
 
@@ -100,21 +98,21 @@ function carousel_theme($existing, $type, $theme, $path) {
 /**
  * Implements hook_block_view().
  */
-function carousel_block_view($delta) {
+function easybase_browsebar_block_view($delta) {
   switch ($delta) {
     case 'main':
       drupal_add_library('system', 'drupal.ajax');
-      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
-      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/jquery.touchwipe.1.1.1.js', 'file');
-      drupal_add_js(drupal_get_path('module', 'carousel') . '/js/carousel_init.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/jquery.touchwipe.1.1.1.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/carousel_init.js', 'file');
 
-      $response = carousel_load_items('bog');
+      $response = easybase_browsebar_load_items('bog');
       $first_tab = array_shift($response);
       
-      $block['content'] = theme('carousel', array(
+      $block['content'] = ($first_tab != NULL) ? theme('carousel', array(
             'carousel_items' => theme('carousel_items', array('carousel_items' => $first_tab['items'])),
-            'views' => variable_get('carousel_search_queries', array()),
-            'facets' => $first_tab['facets']));
+            'views' => variable_get('easybase_browsebar_search_queries', array()),
+            'facets' => $first_tab['facets'])) : '';
       break;
   }
 
@@ -129,7 +127,7 @@ function carousel_block_view($delta) {
  * @param string $subject
  * @return string
  */
-function carousel_facets_request_builder($keyword, $type, $subject) {
+function easybase_browsebar_facets_request_builder($keyword, $type, $subject) {
   return '(' . $keyword . ') AND facet.type="' . $type . '"' .
           ($subject != '' ? ' AND facet.subject="' . $subject . '"' : '');
 }
@@ -137,10 +135,12 @@ function carousel_facets_request_builder($keyword, $type, $subject) {
 /**
  * Retrieves search results either from Ting or
  * from cache.
- * @return array Search result items
+ * 
+ * @return array
+ *   Search result items
  */
-function carousel_load_items($type = 'bog', $subject = '') {
-  $keywords = variable_get('carousel_search_queries', array());
+function easybase_browsebar_load_items($type = 'bog', $subject = '') {
+  $keywords = variable_get('easybase_browsebar_search_queries', array());
   $items = array();
   $items_buffer = array();
 
@@ -148,11 +148,11 @@ function carousel_load_items($type = 'bog', $subject = '') {
     module_load_include('client.inc', 'ting');
     foreach ($keywords as $item) {
       $keyword = $item['query'];
-      $cid = carousel_generate_cache_id($keyword, $type, $subject);
+      $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
       
       if (!$items = cache_get($cid)) {
-        $request = carousel_facets_request_builder($keyword, $type, $subject);
-        $result = carousel_search_ting($request, variable_get('item_limit', 24));
+        $request = easybase_browsebar_facets_request_builder($keyword, $type, $subject);
+        $result = easybase_browsebar_search_ting($request, variable_get('easybase_browsebar_item_limit', 24));
         $items = array();
         
         foreach ($result->collections as $collection) {
@@ -255,12 +255,12 @@ function carousel_load_items($type = 'bog', $subject = '') {
           }
         }
 
-        carousel_create_missed_covers($items);
+        easybase_browsebar_create_missed_covers($items);
 
         $items = array('items' => $items, 'facets' => $result->facets);
 
         cache_set($cid, $items, 'cache',
-          REQUEST_TIME + variable_get('cache_ttl', 2) * 60 * 60);
+          REQUEST_TIME + variable_get('easybase_browsebar_cache_ttl', 2) * 60 * 60);
 
         $items_buffer[$cid] = $items;
       }
@@ -280,7 +280,7 @@ function carousel_load_items($type = 'bog', $subject = '') {
  * @param array $itemsests Addi for covers that are not yet cached by drupal
  * @param array $missing_images_local_ids
  */
-function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
+function easybase_browsebar_get_images_from_addi(&$items, $missing_images_local_ids) {
   require_once drupal_get_path('module', 'ting_covers') . '/ting_covers.pages.inc';
   $service = new AdditionalInformationService(variable_get('addi_wsdl_url'), variable_get('addi_username'), variable_get('addi_group'), variable_get('addi_password'));
 
@@ -315,7 +315,7 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
       $items[$local_id]->image = $file->uri;
     }
     else {
-      $items[$local_id]->image = carousel_default_image();
+      $items[$local_id]->image = easybase_browsebar_default_image();
     }
   }
 }
@@ -332,7 +332,7 @@ function carousel_get_images_from_addi(&$items, $missing_images_local_ids) {
  * @return
  *   Search result data
  */
-function carousel_search_ting($query, $records) {
+function easybase_browsebar_search_ting($query, $records) {
   if (!empty($query)) {
     $query = '(' . $query . ')';
 
@@ -353,14 +353,14 @@ function carousel_search_ting($query, $records) {
  * @param type $type
  * @param type $subject
  */
-function carousel_filter($type) {
+function easybase_browsebar_filter($type) {
   $subject = $_REQUEST['facet'] ? $_REQUEST['facet'] : '';
   $tab = $_REQUEST['tab'] ? (int)$_REQUEST['tab'] : 0;
-  $keywords = variable_get('carousel_search_queries', array());
+  $keywords = variable_get('easybase_browsebar_search_queries', array());
   $keyword = $keywords[$tab]['query'];
-  $cid = carousel_generate_cache_id($keyword, $type, $subject);
+  $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
 
-  $response = carousel_load_items($type, $subject);
+  $response = easybase_browsebar_load_items($type, $subject);
 
   $content = theme('carousel_items',
           array('carousel_items' => $response[$cid]['items']));
@@ -389,12 +389,12 @@ function carousel_filter($type) {
  * @param $subject
  *   Item filter, defaults to none.
  */
-function carousel_view($index, $type = 'bog', $subject = '') {
+function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   $commands = array();
-  $keywords = variable_get('carousel_search_queries', array());
-  $cid = carousel_generate_cache_id($keywords[$index]['query'], $type, $subject);
+  $keywords = variable_get('easybase_browsebar_search_queries', array());
+  $cid = easybase_browsebar_generate_cache_id($keywords[$index]['query'], $type, $subject);
 
-  $response = carousel_load_items($type, $subject);
+  $response = easybase_browsebar_load_items($type, $subject);
   $items_data = $response[$cid];
   $content = theme('carousel_items', array('carousel_items' => $items_data['items']));
 
@@ -423,27 +423,27 @@ function carousel_view($index, $type = 'bog', $subject = '') {
 /**
  * Generates cache id for carousel cache entries.
  */
-function carousel_generate_cache_id($keyword, $type, $subject = '') {
-  return 'carousel-' . md5($keyword . $type . $subject);
+function easybase_browsebar_generate_cache_id($keyword, $type, $subject = '') {
+  return 'easybase_browsebar-' . md5($keyword . $type . $subject);
 }
 
 /**
  * Create missed covers.
  */
-function carousel_create_missed_covers(&$items) {
+function easybase_browsebar_create_missed_covers(&$items) {
   foreach ($items as $item_id => $item) {
     if (!file_exists($item->image)) {
       $missing_images_ids[] = $item_id;
     }
   }
   if (!empty($missing_images_ids)) {
-    carousel_get_images_from_addi($items, $missing_images_ids);
+    easybase_browsebar_get_images_from_addi($items, $missing_images_ids);
   }
 }
 
 /**
  * Returns path to default image.
  */
-function carousel_default_image() {
-  return drupal_get_path('module', 'carousel') . '/images/default.png';
+function easybase_browsebar_default_image() {
+  return drupal_get_path('module', 'easybase_browsebar') . '/images/default.png';
 }
