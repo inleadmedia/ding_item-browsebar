@@ -293,11 +293,15 @@ function easybase_browsebar_search_submit($form, &$form_state) {
 
   for ($i = 0; $i < $c; $i++) {
     // Make an array for saving, ignoring queries w/o title.
-    if (!empty($form_state['input']['title'][$i])) {
+    $title = trim($form_state['input']['title'][$i]);
+    $subtitle = trim($form_state['input']['subtitle'][$i]);
+    $query = trim($form_state['input']['query'][$i]);
+    
+    if (!empty($title) && !empty($query)) {
       $searches[] = array(
-        'title' => $form_state['input']['title'][$i],
-        'subtitle' => $form_state['input']['subtitle'][$i],
-        'query' => $form_state['input']['query'][$i]
+        'title' => $title,
+        'subtitle' => $subtitle,
+        'query' => $query
       );
     }
   }
