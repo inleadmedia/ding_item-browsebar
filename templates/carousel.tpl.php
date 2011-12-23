@@ -37,7 +37,7 @@
     </div>
     <a class="scroll" id="prev" href="#"></a>
     <a class="scroll" id="next" href="#"></a>
-    <a href="#" class="carousel-close"></a>
+    <a href="#" class="carousel-display close"></a>
   </div>
   <div id="carousel-bar"><?php echo theme('carousel_views', array('views' => $views)); ?></div>
 </div>

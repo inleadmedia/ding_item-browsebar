@@ -1,11 +1,11 @@
-name = Carousel widget
+name = Easybase Browsebar
 description = Carousel widget for search results with a predefined search query
 package = Ding!
 version = 0.1
 core = 7.x
-files[] = carousel.module
-files[] = carousel.install
+files[] = easybase_browsebar.module
+files[] = easybase_browsebar.install
 dependencies[] = ting
 dependencies[] = search
 dependencies[] = ding_voxb
-configure = admin/config/ding/carousel
+configure = admin/config/ding/easybase_browsebar

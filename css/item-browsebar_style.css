@@ -12,7 +12,7 @@
 }
 
 #carousel {
-  height: 300px;
+  height: 315px;
   position: relative;
 }
 
@@ -122,11 +122,12 @@
 }
 
 #carousel .result-item .result-item-details .stats img {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 #carousel .result-item .result-item-details .stats .rating-label {
   display: inline-block;
+  line-height: 1.7em !important;
   margin-right: 10px;
 }
 
@@ -180,8 +181,8 @@
   width: 20px;
 }
 
-#carousel .carousel-close {
-  bottom: -26px;
+#carousel .carousel-display {
+  bottom: -3px;
   position: absolute;
   right: 10px;
   height: 24px;
