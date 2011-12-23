@@ -5,22 +5,19 @@
  */
 ?>
 
-<?php if ($carousel_items): ?>
-  <?php 
-  carousel_create_missed_covers($carousel_items);
+<?php if ($carousel_items) :
+  easybase_browsebar_create_missed_covers($carousel_items);
   $k = 0;
-  foreach ($carousel_items as $i => $item): ?>
-  <?php  
+  foreach ($carousel_items as $i => $item) :
     /**
      * @todo: replace Danish used in t() with English
      */
     $stars = '';
-    $image_base_path = '/' . drupal_get_path('module', 'carousel') . '/images/';
-    for ($j = 0; $j < 5; $j++):
+    $image_base_path = '/' . drupal_get_path('module', 'easybase_browsebar') . '/images/';
+    for ($j = 0; $j < 5; $j++) {
       $stars .= '<img src="' . $image_base_path . 'star-' . (($j < $item->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
-    endfor;
+    }
   ?>
-
   <div class="result-item inactive">
     <?php
     $image_vars = array(
@@ -29,24 +26,28 @@
       'getsize' => TRUE,
       'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160'),
     );
-    if ($item->image == carousel_default_image()) {
+    if ($item->image == easybase_browsebar_default_image()) {
       echo theme('image', $image_vars);
     }
     else {
       echo theme('image_style', $image_vars);
     }
 
-    $title = $item->title;
+    $title = $title_sm = $title_lr = $item->title;
 
-    if (drupal_strlen($title) > 36) {
-      $title = drupal_substr($title, 0, 36);
+    if (drupal_strlen($title) > TITLE_LARGE) {
+      $title_lr = drupal_substr($title, 0, TITLE_LARGE);
+    }
+
+    if (drupal_strlen($title) > TITLE_SMALL) {
+      $title_sm = drupal_substr($title, 0, TITLE_SMALL);
     }
     ?>
-    <p class="title"><?php print $title ?></p>
+    <p class="title"><?php print $title_sm ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
     <div class="item-overlay"></div>
     <div class="item-overlay-details">
-      <p class="title"><?php print $title ?></p>
+      <p class="title"><?php print $title_lr ?></p>
       <p class="creator"><?php isset($item->creator) ? print t('By') . ' ' .  $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
@@ -60,8 +61,8 @@
 
       $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
 
-      if (drupal_strlen($description) > 145) {
-        $description = drupal_substr($description, 0, 145) . '...';
+      if (drupal_strlen($description) > DESCRIPTION_SMALL) {
+        $description = drupal_substr($description, 0, DESCRIPTION_SMALL) . '...';
       }
 
       ?>

@@ -369,7 +369,6 @@
     // Check if something was found.
     if (!response.content) {
       alert(Drupal.t('Sorry, no items were found.'));
-      $('#s-nav li').removeClass('current');
       return;
     }
 
@@ -397,6 +396,9 @@
       }
       $("#carousel-content").trigger('insertItem', e);
     });
+
+    $('#carousel .active .item-overlay').show();
+    $('#carousel .active .item-overlay-details').show();
   }
 
   Drupal.ajax.prototype.commands['carousel_update_facets'] = function (ajax, response, status) {

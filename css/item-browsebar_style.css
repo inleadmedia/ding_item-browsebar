@@ -122,11 +122,12 @@
 }
 
 #carousel .result-item .result-item-details .stats img {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 #carousel .result-item .result-item-details .stats .rating-label {
   display: inline-block;
+  line-height: 1.7em !important;
   margin-right: 10px;
 }
 
