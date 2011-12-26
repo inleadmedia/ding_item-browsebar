@@ -144,7 +144,7 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
   $items = array();
   $items_buffer = array();
 
-  if (is_array($keywords) && is_array($keywords[0])) {
+  if (isset($keywords[0]) && is_array($keywords[0])) {
     module_load_include('client.inc', 'ting');
     foreach ($keywords as $item) {
       $keyword = $item['query'];
