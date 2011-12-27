@@ -108,7 +108,7 @@ function easybase_browsebar_block_view($delta) {
 
       $response = easybase_browsebar_load_items('bog');
       $first_tab = array_shift($response);
-      
+
       $block['content'] = ($first_tab != NULL) ? theme('carousel', array(
             'carousel_items' => theme('carousel_items', array('carousel_items' => $first_tab['items'])),
             'views' => variable_get('easybase_browsebar_search_queries', array()),
@@ -135,7 +135,7 @@ function easybase_browsebar_facets_request_builder($keyword, $type, $subject) {
 /**
  * Retrieves search results either from Ting or
  * from cache.
- * 
+ *
  * @return array
  *   Search result items
  */
@@ -149,86 +149,106 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
     foreach ($keywords as $item) {
       $keyword = $item['query'];
       $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
-      
+
       if (!$items = cache_get($cid)) {
         $request = easybase_browsebar_facets_request_builder($keyword, $type, $subject);
-        $result = easybase_browsebar_search_ting($request, variable_get('easybase_browsebar_item_limit', 24));
+        $page = 1;
         $items = array();
-        
-        foreach ($result->collections as $collection) {
-          $searchItem = $collection->reply->objects[0];
-          
-          $item = new stdClass();
-          $item->id = $searchItem->id;
-          $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
-                        $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : NULL;
-          $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
-                              $searchItem->record['ac:source'][''][0] : NULL;
-          $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
-                              $searchItem->record['dc:source'][''][0] : NULL;
-          $item->title = $searchItem->record['dc:title'][''][0];
+        $result = new StdClass();
 
-          if (isset($searchItem->record['dc:creator'])) {
-            if (isset($searchItem->record['dc:creator']['oss:aut'][0])) {
-              $item->creator = $searchItem->record['dc:creator']['oss:aut'][0];
+        // Search with portions of 10 items
+        while($result = easybase_browsebar_search_ting($request, $page++, 10)) {
+          // This query is out of results OR we have needed amount of items
+          if ($result->numTotalCollections == 0 || count($items) == variable_get('easybase_browsebar_item_limit', 24)) {
+            break;
+          }
+
+          foreach ($result->collections as $collection) {
+            // Whether we reached our item limit per query
+            if (count($items) == variable_get('easybase_browsebar_item_limit', 24)) {
+              break;
             }
-            elseif (isset($searchItem->record['dc:creator']['oss:mus'][0])) {
-              $item->creator = $searchItem->record['dc:creator']['oss:mus'][0];
+
+            foreach ($collection->reply->objects as $searchItem) {
+              // No cover for this item? Skip it!
+              if (!easybase_browsebar_check_cover($searchItem->localId)) {
+                break;
+              }
+
+              $item = new stdClass();
+              $item->id = $searchItem->id;
+              $item->isbn = isset($searchItem->record['dc:identifier']['dkdcplus:ISBN'][0]) ?
+                            $searchItem->record['dc:identifier']['dkdcplus:ISBN'][0] : NULL;
+              $item->ac_source = isset($searchItem->record['ac:source'][''][0]) ?
+                                  $searchItem->record['ac:source'][''][0] : NULL;
+              $item->dc_source = isset($searchItem->record['dc:source'][''][0]) ?
+                                  $searchItem->record['dc:source'][''][0] : NULL;
+              $item->title = $searchItem->record['dc:title'][''][0];
+
+              if (isset($searchItem->record['dc:creator'])) {
+                if (isset($searchItem->record['dc:creator']['oss:aut'][0])) {
+                  $item->creator = $searchItem->record['dc:creator']['oss:aut'][0];
+                }
+                elseif (isset($searchItem->record['dc:creator']['oss:mus'][0])) {
+                  $item->creator = $searchItem->record['dc:creator']['oss:mus'][0];
+                }
+                elseif (isset($searchItem->record['dc:creator']['oss:sort'][0])) {
+                  $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
+                }
+                else {
+                  $item->creator = NULL;
+                }
+              }
+              else {
+                $item->creator = NULL;
+              }
+
+              if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
+                $item->subject = $searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0];
+              }
+              elseif (isset($searchItem->record['dc:subject']['oss:genre'][0])) {
+                $item->subject = $searchItem->record['dc:subject']['oss:genre'][0];
+              }
+              elseif (isset($searchItem->record['dc:subject'][''][0])) {
+                $item->subject = $searchItem->record['dc:subject'][''][0];
+              }
+              else {
+                $item->subject = NULL;
+              }
+
+              // Set image filepath.
+              // Image existence will be checked further.
+              $item->image = ting_covers_object_path($searchItem->localId);
+
+              if (isset($searchItem->record['dc:description'][''][0])) {
+                /**
+                 * @todo: Which field of three is description?
+                 */
+                $item->description = $searchItem->record['dc:description'][''][0];
+              }
+              elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
+                $item->description = $searchItem->record['dcterms:abstract'][''][0];
+              }
+              elseif (isset($searchItem->record['dcterms:hasPart'])) {
+                $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
+              }
+              else {
+                $item->description = '';
+              }
+
+              $item->year = isset($searchItem->record['dc:date'][''][0]) ?
+                              $searchItem->record['dc:date'][''][0] : NULL;
+              // Default values
+              $item->type = 1;
+              $item->is_new = mt_rand(0, 1);
+              $item->rating = 0;
+              $item->rating_count = 0;
+              $item->comment_count = 0;
+
+              $items[$searchItem->localId] = $item;
+              break;
             }
-            elseif (isset($searchItem->record['dc:creator']['oss:sort'][0])) {
-              $item->creator = $searchItem->record['dc:creator']['oss:sort'][0];
-            }
-            else {
-              $item->creator = NULL;
-            }
           }
-          else {
-            $item->creator = NULL;
-          }
-
-          if (isset($searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0])) {
-            $item->subject = $searchItem->record['dc:subject']['dkdcplus:DK5-Text'][0];
-          }
-          elseif (isset($searchItem->record['dc:subject']['oss:genre'][0])) {
-            $item->subject = $searchItem->record['dc:subject']['oss:genre'][0];
-          }
-          elseif (isset($searchItem->record['dc:subject'][''][0])) {
-            $item->subject = $searchItem->record['dc:subject'][''][0];
-          }
-          else {
-            $item->subject = NULL;
-          }
-
-          // Set image filepath.
-          // Image existance will be checked further.
-          $item->image = ting_covers_object_path($searchItem->localId);
-
-          if (isset($searchItem->record['dc:description'][''][0])) {
-            /**
-             * @todo: Which field of three is description?
-             */
-            $item->description = $searchItem->record['dc:description'][''][0];
-          }
-          elseif (isset($searchItem->record['dcterms:abstract'][''][0])) {
-            $item->description = $searchItem->record['dcterms:abstract'][''][0];
-          }
-          elseif (isset($searchItem->record['dcterms:hasPart'])) {
-            $item->description = $searchItem->record['dcterms:hasPart']['oss:track'];
-          }
-          else {
-            $item->description = '';
-          }
-
-          $item->year = isset($searchItem->record['dc:date'][''][0]) ?
-                          $searchItem->record['dc:date'][''][0] : NULL;
-          // Default values
-          $item->type = 1;
-          $item->is_new = mt_rand(0, 1);
-          $item->rating = 0;
-          $item->rating_count = 0;
-          $item->comment_count = 0;
-
-          $items[$searchItem->localId] = $item;
         }
 
         // Make an array of local id's, fetchable by voxb
@@ -270,9 +290,27 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
     }
   }
 
-  // @todo
-  // Dunno if this return is still usable in new workflow
   return $items_buffer;
+}
+
+/**
+ * Check for item cover existence.
+ *
+ * @param string $local_id
+ *   Ting object local id.
+ * @return bool
+ *   TRUE if item has cover, FALSE otherwise.
+ */
+function easybase_browsebar_check_cover($local_id) {
+  $service = new AdditionalInformationService(variable_get('addi_wsdl_url'), variable_get('addi_username'), variable_get('addi_group'), variable_get('addi_password'));
+
+  $cover = $service->getByFaustNumber($local_id);
+
+  if (count($cover) > 0) {
+    return TRUE;
+  }
+
+  return FALSE;
 }
 
 /**
@@ -332,7 +370,7 @@ function easybase_browsebar_get_images_from_addi(&$items, $missing_images_local_
  * @return
  *   Search result data
  */
-function easybase_browsebar_search_ting($query, $records) {
+function easybase_browsebar_search_ting($query, $page = 1, $records) {
   if (!empty($query)) {
     $query = '(' . $query . ')';
 
@@ -341,7 +379,7 @@ function easybase_browsebar_search_ting($query, $records) {
       'enrich' => TRUE,
     );
 
-    $search_result = ting_do_search($query, 1, $records, $options);
+    $search_result = ting_do_search($query, $page, $records, $options);
 
     return $search_result;
   }
