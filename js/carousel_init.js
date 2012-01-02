@@ -217,9 +217,11 @@
     // Select default filter param
     $('#carousel-bar-filter .popup li a.selected').click();
 
-    // Show carousel only on front
+    // Collapse carousel if page is not front.
     if (!$('body').hasClass('front')) {
-      $('#carousel-wrapper').hide();
+      $('#carousel .caroufredsel_wrapper').hide();
+      $('#carousel .close').click();
+      setTimeout(function(){ $('#carousel .caroufredsel_wrapper').show(); }, 500);
     }
 
     Carousel.bind('responsivelayout', function(event, layouts) {
