@@ -1,18 +1,8 @@
-.clear {
-  clear: both;
-  float: none;
-}
-
-.search-carousel-query {
-  float: left;
-}
-
 .sort-hidden, .search-query-hidden {
   display: none;
 }
 
 #carousel {
-  height: 315px;
   position: relative;
 }
 
@@ -21,15 +11,6 @@
   padding: 15px;
   position: relative;
   cursor: pointer;
-}
-
-#carousel .active img {
-  height: 240px;
-  width: 170px;
-}
-
-#carousel .inactive {
-  margin-top: 42px;
 }
 
 #carousel .result-item .title,
@@ -60,32 +41,13 @@
   line-height: 18px;
 }
 
-#carousel .result-item .item-overlay {
-  background-color: #000000;
-  bottom: 17px;
+#carousel .active > p {
   display: none;
-  height: 56px;
-  left: 17px;
-  opacity: 0.5;
-  position: absolute;
-  width: 170px;
-}
-
-#carousel .active>p {
-  display: none;
-}
-
-#carousel .result-item .item-overlay-details {
-  bottom: 22px;
-  display: none;
-  height: 46px;
-  left: 22px;
-  position: absolute;
-  width: 160px;
 }
 
 #carousel .result-item .result-item-details {
   cursor: default;
+  display: none;
   height: 170px;
   position: absolute;
   top: 15px;
@@ -149,184 +111,31 @@
   float: left;
 }
 
-#carousel .result-item-details {
-  display: none;
-}
-
 #carousel .caroufredsel_wrapper {
-  margin: 30px auto 0 auto !important;
-  top: -20px;
+  clear: both;
+  margin: 0 auto !important;
 }
 
-#carousel #prev, #carousel #next {
-  background-repeat: repeat;
-  display: block;
-  height: 45px;
-  position: absolute;
-  top: 105px;
-  width: 45px;
+#carousel #carousel-pager {
+  text-align: center;
 }
 
-#carousel #prev {
-  height: 20px;
-  background-image: url('../images/default.png');
-  left: 0px;
-  width: 20px;
-}
-
-#carousel #next {
-  height: 20px;
-  background-image: url('../images/default.png');
-  right: 0px;
-  width: 20px;
-}
-
-#carousel .carousel-display {
-  bottom: -3px;
-  position: absolute;
-  right: 10px;
-  height: 24px;
-  width: 57px;
-  z-index: 30;
-}
-
-#carousel-bar {
-  background-repeat: repeat-x;
-  height: 29px;
-  width: 100%;
+#carousel #carousel-pager a {
+  background: #000000;
+  cursor: default;
+  display: inline-block;
+  height: 14px;
+  margin: 0 5px;
+  width: 14px;
 }
 
 #carousel #carousel-pager a span {
   display: none;
 }
 
-#carousel #carousel-pager a {
-  cursor: default;
-  display: inline-block;
-  height: 14px;
-  width: 14px;
-}
-
-#carousel-bar-filter {
-  width: 130px;
-  float: right;
-}
-
-#carousel-bar-filter .popup {
-  top: 0;
-  display: none;
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-}
-
-#carousel-bar-filter .popup ul {
-  list-style-position: inside;
-  margin: 5px 5px 5px 10px;
-  padding: 0;
-}
-
-#carousel-bar-filter .close .icon {
-  background-position: center 1px;
-  height: 18px
-}
-
-#carousel-bar-filter .text {
-  overflow: hidden;
-}
-
-#carousel-bar-filter .icon {
+#carousel-search-tabs .search-tabs li {
   float: left;
-  width: 16px;
-  height: 16px;
-}
-
-#carousel-bar-filter .popup .close,
-#carousel-bar-filter .current {
-  display: block;
-  height: 18px;
-}
-
-#carousel-bar-filter .current .icon {
-  background-position: center -19px;
-}
-
-#carousel-menu {
-  z-index: 10;
-}
-
-#carousel-menu h2 {
-  font-size: 20px;
-  margin: 0;
-}
-
-#carousel-menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-#carousel-menu ul li {
-  float: left;
-  margin-right: 18px;
-}
-
-#carousel-bar .search-controller {
-  list-style: none outside none;
-  margin: 0;
-  margin-left: -400px;
-  position: absolute;
-  padding-top: 4px;
-  left: 50%;
-}
-
-#carousel-bar .search-controller li {
-  float: left;
-  margin-left: 16px;
-}
-
-#carousel-bar .search-controller li a {
-  color: #ffffff;
-}
-
-#carousel .search-controller li {
-  float: left;
-  margin: -1px 2px 0 0;
-  padding: 0 17px;
-}
-
-#carousel .search-controller li a {
-  outline: none;
-}
-
-.carousel-header,
-.carousel-main {
-  width: 70%;
-  margin: 0 auto !important;
-}
-
-.carousel-main {
-  top: -20px;
-  position: relative;
-}
-
-.carousel-header-left,
-.carousel-header-middle,
-.carousel-header-right {
-  float: left;
-}
-
-.carousel-header-left {
-  width: 40%;
-}
-
-.carousel-header-middle {
-  width: 20%;
-  text-align: center;
-}
-
-.carousel-header-right {
-  width: 40%;
+  margin-right: 15px;
 }
 
 .item-operations .operation {

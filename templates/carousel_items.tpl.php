@@ -24,7 +24,7 @@
       'style_name' => 'ding_large',
       'path' => $item->image,
       'getsize' => TRUE,
-      'attributes' => array('class' => 'thumb', 'width' => '120', 'height' => '160'),
+      'attributes' => array('class' => 'thumb'),
     );
     if ($item->image == easybase_browsebar_default_image()) {
       echo theme('image', $image_vars);
@@ -43,12 +43,9 @@
       $title_sm = drupal_substr($title, 0, TITLE_SMALL);
     }
     ?>
-    <p class="title"><?php print $title_sm ?></p>
-    <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
-    <div class="item-overlay"></div>
-    <div class="item-overlay-details">
-      <p class="title"><?php print $title_lr ?></p>
-      <p class="creator"><?php isset($item->creator) ? print t('By') . ' ' .  $item->creator : '' ?></p>
+    <div class="item-details">
+      <p class="title"><?php print $title_sm ?></p>
+      <p class="creator"><?php print isset($item->creator) ? t('By') . $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
