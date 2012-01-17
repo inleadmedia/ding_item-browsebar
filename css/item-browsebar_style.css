@@ -2,6 +2,10 @@
   display: none;
 }
 
+#carousel-wrapper {
+  padding: 10px 20px;
+}
+
 #carousel {
   position: relative;
 }
@@ -46,13 +50,13 @@
 }
 
 #carousel .result-item .result-item-details {
+  background-color: #ffffff;
   cursor: default;
   display: none;
-  height: 170px;
   position: absolute;
   top: 15px;
   right: -305px;
-  width: 305px;
+  width: 200%;
   z-index: 20;
 }
 
@@ -133,9 +137,15 @@
   display: none;
 }
 
+#carousel-search-tabs {
+  overflow: hidden;
+}
 #carousel-search-tabs .search-tabs li {
   float: left;
   margin-right: 15px;
+}
+#carousel-search-tabs .search-tabs li.active a {
+  text-decoration: underline;
 }
 
 .item-operations .operation {

@@ -85,7 +85,6 @@
       infinite: false,
       auto : false,
       items: Carousel.defaultConfig.items,
-      height: 315,
       prev : {
         button : '#prev',
         onBefore : function() { Carousel.scrollOnBefore('prev') },
