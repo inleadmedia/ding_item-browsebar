@@ -20,16 +20,12 @@
     }
 
     // Select default config for first init.
-    var carouselWidth = Carousel.width();
-    if (carouselWidth < 480) {
-      Carousel.defaultConfig = Carousel.responsiveConfig.mobile;
+    var layoutIndex = $('#omega-media-query-dummy').css('z-index');
+    var layoutName  = Drupal.settings.omega.layouts.order[layoutIndex];
+    if (Carousel.responsiveConfig[layoutName] == undefined) {
+      layoutName = 'normal';
     }
-    else if (carouselWidth < 960) {
-      Carousel.defaultConfig = Carousel.responsiveConfig.narrow;
-    }
-    else {
-      Carousel.defaultConfig = Carousel.responsiveConfig.normal;
-    }
+    Carousel.defaultConfig = Carousel.responsiveConfig[layoutName];
 
     // Add custom function for getting carousel config options.
     Carousel.getOption = function(opt){
