@@ -151,7 +151,7 @@
     });
 
     // Handler for hiding the carousel
-    $('#carousel .carousel-display').toggle(function() {
+    $('#carousel-wrapper .carousel-display').toggle(function() {
       $('.caroufredsel_wrapper').animate({
         'height':'0px'
       }, 500);
