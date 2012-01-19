@@ -53,9 +53,9 @@
   background-color: #ffffff;
   cursor: default;
   display: none;
+  left: 100%;
   position: absolute;
-  top: 15px;
-  right: -305px;
+  top: 0;
   width: 200%;
   z-index: 20;
 }
@@ -76,7 +76,6 @@
   line-height: 20px;
   margin-top: 5px;
   overflow: hidden;
-  width: 300px;
 }
 
 #carousel .result-item .result-item-details .subject {

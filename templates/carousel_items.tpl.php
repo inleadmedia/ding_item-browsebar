@@ -45,15 +45,15 @@
     ?>
     <div class="item-details">
       <p class="title"><?php print $title_sm ?></p>
-      <p class="creator"><?php print isset($item->creator) ? t('By') . $item->creator : '' ?></p>
+      <p class="creator"><?php print isset($item->creator) ? t('By') . ' ' . $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
-      <p>
+      <div class="author">
         <?php if (isset($item->creator)): ?>
           <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>
-      </p>
+      </div>
       <?php
 
       $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
@@ -63,9 +63,9 @@
       }
 
       ?>
-      <p class="description"><?php print $description; ?></p>
-      <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
-      <p class="stats">
+      <div class="description"><?php print $description; ?></div>
+      <div class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></div>
+      <div class="stats">
         <span class="rating-label"><?php print t('Rating:'); ?> </span>
         <?php print $stars ?>
         <?php if ((int)$item->rating_count > 0) { ?>
@@ -82,19 +82,7 @@
           print l($link, 'ting/object/' . $item->id, array('attributes' => array('target' => '_blank'), 'fragment' => 'top'));
           ?>
         </span>
-      </p>
-      <div class="clear"></div>
-      <div class="item-operations">
-        <div class="operation open-item">
-          <form action="/ting/object/<?php print $item->id; ?>" target="_blank">
-            <input type="submit" value="<?php print t('More information'); ?>" />
-          </form>
-        </div>
-        <div class="operation reserve-item">
-            <?php print render(ding_provider_get_form('ding_reservation_reserve_form', new DingReservationReservableEntity($item), TRUE)); ?>
-        </div>
       </div>
-      <div class="clear"></div>
     </div>
   </div>
   <?php endforeach; ?>
