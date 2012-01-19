@@ -37,9 +37,13 @@
     </div>
     <a class="scroll" id="prev" href="#"></a>
     <a class="scroll" id="next" href="#"></a>
-    <a href="#" class="carousel-display close"></a>
   </div>
-  <div id="carousel-bar"><?php echo theme('carousel_views', array('views' => $views)); ?></div>
+  <div id="carousel-bar">
+    <div class="carousel-bar">
+      <?php echo theme('carousel_views', array('views' => $views)); ?>
+      <a href="#" class="carousel-display close"></a>
+    </div>
+  </div>
 </div>
 <?php else: ?>
 <h3 style="text-align: center; color: #fff;"><?php print t('No keyword specified.') ?></h3>

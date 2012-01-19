@@ -82,14 +82,14 @@
             $link = t('User reviews') . '(' . $item->comment_count . ')';
           }
 
-          print l($link, 'ting/object/' . $item->id, array('attributes' => array('target' => '_blank'), 'fragment' => 'top'));
+          print l($link, 'ting/object/' . $item->id, array('fragment' => 'top'));
           ?>
         </span>
       </p>
       <div class="clear"></div>
       <div class="item-operations">
         <div class="operation open-item">
-          <form action="/ting/object/<?php print $item->id; ?>" target="_blank">
+          <form action="/ting/object/<?php print $item->id; ?>">
             <input type="submit" value="<?php print t('More information'); ?>" />
           </form>
         </div>
