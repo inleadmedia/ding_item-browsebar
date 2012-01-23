@@ -270,7 +270,7 @@
     // Safely add new item list.
     responseItems.each(function(i, e) {
       if (i == centralIndex) {
-        Carousel.setItemActive(e);
+        Carousel.setItemActive($(e));
       }
       $("#carousel-content").trigger('insertItem', e);
     });
