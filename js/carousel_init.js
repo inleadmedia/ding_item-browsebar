@@ -47,35 +47,72 @@
       var items = Carousel.find('.result-item');
       var activeItem = items.filter('.active');
       var activeItemIndex = items.index(activeItem);
-      var magnifyItemIndex;
-      if (direction == 'prev') {
-        magnifyItemIndex = Carousel.getOption('centralIndex');
+      var activateItemIndex;
+      // Hide item details.
+      Carousel.toggleItemDetails(activeItem, 0, 300);
+      if (direction == 'next') {
+        activateItemIndex = window.selectedIndex != null ? window.selectedIndex : Carousel.getOption('centralIndex') + 1;
       }
       else {
-        magnifyItemIndex = window.selectedIndex != null ? window.selectedIndex : Carousel.getOption('centralIndex') + 1;
+        activateItemIndex = Carousel.getOption('centralIndex');
       }
-      // Restore previously magnified item and show it's details.
-      if (Carousel.getOption('items.visible') == 1 || activeItemIndex != magnifyItemIndex) {
-        restore(activeItem);
+      // Inactivate previous item.
+      if (Carousel.getOption('items.visible') == 1 || activeItemIndex != activateItemIndex) {
+        Carousel.setItemInactive(activeItem);
 
-        // Magnify item in the middle and style it's details.
+        // Activate item in the middle and style it's details.
         if (Carousel.getOption('items.visible') != 1) {
-          var ele = $('#carousel .result-item').eq(magnifyItemIndex);
-          magnify(ele);
+          var ele = $('#carousel .result-item').eq(activateItemIndex);
+          Carousel.setItemActive(ele);
         }
       }
+    }
+
+    Carousel.scrollOnAfter = function() {
+      var centralItemIndex = Carousel.getOption('centralIndex');
+      var centralItem = $('#carousel .result-item').eq(centralItemIndex);
+      Carousel.setItemActive(centralItem);
+    }
+
+    Carousel.toggleItemDetails = function(itemElem, show, delay) {
+      var item = $(itemElem);
+      var nextItemsOpacity;
+      if (show) {
+        item.children('.result-item-details').fadeIn(delay);
+        nextItemsOpacity = 0;
+      }
+      else {
+        item.children('.result-item-details').fadeOut(delay);
+        nextItemsOpacity = 1;
+      }
+      item.next().animate({
+        'opacity' : nextItemsOpacity
+      }, delay)
+      .next().animate({
+        'opacity' : nextItemsOpacity
+      }, delay);
+    }
+
+    Carousel.setItemActive = function(ele) {
+      ele.removeClass('inactive').addClass('active');
+      window.selectedIndex = null;
+    }
+
+    Carousel.setItemInactive = function(ele) {
+      ele.removeClass('active').addClass('inactive');
     }
 
     // Set active central item.
     if (Carousel.defaultConfig.items != 1) {
       var centralIndex = Math.floor(Carousel.defaultConfig.items / 2);
-      Carousel.find('.inactive').eq(centralIndex).removeClass('inactive').addClass('active');
+      var centralItem = Carousel.find('.inactive').eq(centralIndex);
+      Carousel.setItemActive(centralItem);
     }
 
     // Show item details or not.
     Carousel.find('.result-item').attr('showItemInfo', Carousel.defaultConfig.showItemInfo);
 
-    // Shows the items hidden by details layer.
+    // Carousel initialization.
     Carousel.carouFredSel({
       curcular: false,
       infinite: false,
@@ -83,22 +120,22 @@
       items: Carousel.defaultConfig.items,
       prev : {
         button : '#prev',
-        onBefore : function() { Carousel.scrollOnBefore('prev') },
-        onAfter : afterScroll
+        onBefore : function() { Carousel.scrollOnBefore('prev') }
       },
       next : {
         button : '#next',
-        onBefore : function() { Carousel.scrollOnBefore('next') },
-        onAfter : afterScroll
+        onBefore : function() { Carousel.scrollOnBefore('next') }
       },
       scroll : {
-        items: 1
+        items: 1,
+        onBefore: Carousel.scrollOnBefore,
+        onAfter:  Carousel.scrollOnAfter
       },
       pagination : {
         container : '#carousel-pager'
       }
     })
-    // Scroll to the selected item
+    // Scroll to the selected item.
     .find('div.result-item').live('click', function() {
       if ($(this).hasClass('active') || Carousel.getOption('items.visible') == 1) {
         return;
@@ -113,29 +150,16 @@
       }
     });
 
-    // Handler for clicking on carousel active item
+    // Handler for clicking on carousel active item.
     $('#carousel .active').live('click', function() {
-      var centralIndex = Carousel.getOption('centralIndex');
       if ($(this).children('.result-item-details:visible').length > 0) {
-        $(this).children('.result-item-details').fadeOut(500);
-        $('#carousel .result-item').eq(centralIndex + 1).animate({
-          'opacity' : 1
-        }, 500).addClass('show-me');
-        $('#carousel .result-item').eq(centralIndex + 2).animate({
-          'opacity' : 1
-        }, 500).addClass('show-me');
+        Carousel.toggleItemDetails(this, 0, 500);
       } else {
-        $(this).children('.result-item-details').fadeIn(500);
-        $('#carousel .result-item').eq(centralIndex + 1).animate({
-          'opacity' : 0
-        }, 500).addClass('show-me');
-        $('#carousel .result-item').eq(centralIndex + 2).animate({
-          'opacity' : 0
-        }, 500).addClass('show-me');
+        Carousel.toggleItemDetails(this, 1, 500);
       }
     });
 
-    // Make click on link prevent from hiding popup
+    // Make click on link prevent from hiding popup.
     $('#carousel .active a').live('click', function(e) {
       e.stopPropagation();
     });
@@ -156,11 +180,11 @@
       }
       // Centralize active item direction.
       if ((layouts.from == 'mobile') || (layouts.from == 'narrow' && layouts.to != 'mobile')) {
-        // Layout width increases
+        // Layout width increases.
         slideEvent = 'prev';
       }
       else if ((layouts.from != 'mobile') && (layouts.to == 'narrow' || layouts.to == 'mobile')) {
-        // Layout width decreases
+        // Layout width decreases.
         slideEvent = 'next';
       }
       // Avoid meaningless carousel reinit.
@@ -171,11 +195,11 @@
         // From Mobile to any.
         if (prevItems == 1) {
           var el = Carousel.find('.result-item').eq(Math.floor(config.items / 2))
-          magnify(el, 0);
+          Carousel.setItemActive(el);
         }
         // From any to Mobile.
         if (config.items == 1) {
-          restore(activeItem, 0);
+          Carousel.setItemInactive(activeItem);
         }
         // Show item details or not.
         Carousel.find('.result-item').attr('showItemInfo', config.showItemInfo);
@@ -204,9 +228,6 @@
           window.location = href;
         }
       }
-      else {
-        item.find('.result-item-details *').show();
-      }
     });
 
     // Touchwipe.
@@ -221,34 +242,7 @@
   });
 
 
-  // Magnification handler
-  var magnify = function(ele, duration) {
-    if (duration == undefined) {
-      duration = 500;
-    }
-    ele.removeClass('inactive').addClass('active');
-    window.selectedIndex = null;
-    ele.children('p').fadeOut();
-  }
-
-  // Restoration handler
-  var restore = function(ele, duration) {
-    if (duration == undefined) {
-      duration = 500;
-    }
-    ele.removeClass('active').addClass('inactive');
-    ele.children('p').fadeIn(duration);
-    ele.find('.result-item-details').fadeOut(duration / 5);
-  }
-  
-  var afterScroll = function () {
-    $('#carousel .result-item.show-me').each(function() {
-      $(this).animate({
-        'opacity' : 1
-      }, 100).removeClass('show-me');
-    });
-  }
-  
+  // Ajax.
   Drupal.ajax.prototype.commands['carousel_refresh'] = function (ajax, response, status) {
     // Check if something was found.
     if (!response.content) {
@@ -258,7 +252,7 @@
 
     $('#carousel-wrapper:hidden').show('fast');
 
-    // Safely remove items
+    // Safely remove items.
     var l = $('#carousel-content .result-item').length;
     for (i = 0; i < l; i++) {
       $("#carousel-content").trigger('removeItem', [i]);
@@ -266,17 +260,17 @@
 
     var responseItems = $(response.content).filter('.result-item');
 
-    // Set active central item.
+    // Calculate item index, that should be activated.
     if (Carousel.defaultConfig.items != 1) {
       var itemsVisible = Carousel.getOption('items.visible');
       var itemsCount = (responseItems.length < itemsVisible) ? responseItems.length : itemsVisible;
       var centralIndex = Math.floor(itemsCount / 2);
     }
 
-    // Safely add new item list
+    // Safely add new item list.
     responseItems.each(function(i, e) {
       if (i == centralIndex) {
-        $(e).removeClass('inactive').addClass('active');
+        Carousel.setItemActive(e);
       }
       $("#carousel-content").trigger('insertItem', e);
     });
