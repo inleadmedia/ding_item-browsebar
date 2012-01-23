@@ -6,9 +6,9 @@
  * Defines own content type.
  */
 
-define('TITLE_LARGE', 36);
+define('TITLE_LARGE', 30);
 define('TITLE_SMALL', 18);
-define('DESCRIPTION_SMALL', 145);
+define('DESCRIPTION_SMALL', 120);
 
 /**
  * Implements hook_init().

@@ -36,11 +36,11 @@
     $title = $title_sm = $title_lr = $item->title;
 
     if (drupal_strlen($title) > TITLE_LARGE) {
-      $title_lr = drupal_substr($title, 0, TITLE_LARGE);
+      $title_lr = drupal_substr($title, 0, TITLE_LARGE) . '...';
     }
 
     if (drupal_strlen($title) > TITLE_SMALL) {
-      $title_sm = drupal_substr($title, 0, TITLE_SMALL);
+      $title_sm = drupal_substr($title, 0, TITLE_SMALL) . '...';
     }
     ?>
     <div class="item-details">
@@ -48,7 +48,7 @@
       <p class="creator"><?php print isset($item->creator) ? t('By') . ' ' . $item->creator : '' ?></p>
     </div>
     <div class="result-item-details">
-      <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
+      <h1><?php print l($title_lr,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
       <div class="author">
         <?php if (isset($item->creator)): ?>
           <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
