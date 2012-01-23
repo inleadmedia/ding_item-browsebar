@@ -51,7 +51,7 @@
       <h1><?php print l($title_lr,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
       <div class="author">
         <?php if (isset($item->creator)): ?>
-          <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
+          <?php print t('By') ?> <?php print l($item->creator, 'search/ting/dc.creator=' . $item->creator); ?> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>
       </div>
       <?php
