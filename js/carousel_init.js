@@ -216,7 +216,7 @@
     // Collapse carousel if page is not front.
     if (!$('body').hasClass('front')) {
       $('#carousel .caroufredsel_wrapper').hide();
-      $('#carousel .close').click();
+      $('#carousel-wrapper .close').click();
       setTimeout(function(){ $('#carousel .caroufredsel_wrapper').show(); }, 500);
     }
 
