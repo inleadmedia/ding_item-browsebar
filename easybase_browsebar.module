@@ -107,12 +107,17 @@ function easybase_browsebar_block_view($delta) {
       drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/carousel_init.js', 'file');
 
       $response = easybase_browsebar_load_items('bog');
-      $first_tab = array_shift($response);
+      if (!empty($response)) {
+        $first_tab = array_shift($response);
 
-      $block['content'] = ($first_tab != NULL) ? theme('carousel', array(
-            'carousel_items' => theme('carousel_items', array('carousel_items' => $first_tab['items'])),
-            'views' => variable_get('easybase_browsebar_search_queries', array()),
-            'facets' => $first_tab['facets'])) : '';
+        $block['content'] = ($first_tab != NULL) ? theme('carousel', array(
+              'carousel_items' => theme('carousel_items', array('carousel_items' => $first_tab['items'])),
+              'views' => variable_get('easybase_browsebar_search_queries', array()),
+              'facets' => $first_tab['facets'])) : '';
+      }
+      else {
+        $block['content'] = '';
+      }
       break;
   }
 
@@ -171,8 +176,13 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
 
             foreach ($collection->reply->objects as $searchItem) {
               // No cover for this item? Skip it!
-              if (!easybase_browsebar_check_cover($searchItem->localId)) {
-                break;
+              try {
+                if (!easybase_browsebar_check_cover($searchItem->localId)) {
+                  break;
+                }
+              }
+              catch (Exception $e) {
+                return FALSE;
               }
 
               $item = new stdClass();
@@ -275,7 +285,12 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
           }
         }
 
-        easybase_browsebar_create_missed_covers($items);
+        try {
+          easybase_browsebar_create_missed_covers($items);
+        }
+        catch (Exception $e) {
+          return FALSE;
+        }
 
         $items = array('items' => $items, 'facets' => $result->facets);
 
@@ -399,18 +414,23 @@ function easybase_browsebar_filter($type) {
   $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
 
   $response = easybase_browsebar_load_items($type, $subject);
-
-  $content = theme('carousel_items',
-          array('carousel_items' => $response[$cid]['items']));
+  if (!empty($response)) {
+    $carousel_content = theme('carousel_items', array('carousel_items' => $response[$cid]['items']));
+    $carousel_facets = theme('browserbar_filter', array('facets' => $response[$cid]['facets'], 'active_facet' => $subject, 'tab' => $tab));
+  }
+  else {
+    $carousel_content = '';
+    $carousel_facets = '';
+  }
 
   $commands[] = array(
     'command' => 'carousel_refresh',
-    'content' => $content
+    'content' => $carousel_content,
   );
 
   $commands[] = array(
     'command' => 'carousel_update_facets',
-    'content' => theme('browserbar_filter', array('facets' => $response[$cid]['facets'], 'active_facet' => $subject, 'tab' => $tab))
+    'content' => $carousel_facets,
   );
 
   $result = array('#type' => 'ajax', '#commands' => $commands);
@@ -433,18 +453,25 @@ function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   $cid = easybase_browsebar_generate_cache_id($keywords[$index]['query'], $type, $subject);
 
   $response = easybase_browsebar_load_items($type, $subject);
-  $items_data = $response[$cid];
-  $content = theme('carousel_items', array('carousel_items' => $items_data['items']));
+  if (!empty($response)) {
+    $items_data = $response[$cid];
+    $carousel_content = theme('carousel_items', array('carousel_items' => $items_data['items']));
+    $carousel_facets = theme('browserbar_filter', array('facets' => $items_data['facets'], 'active_facet' => $subject, 'tab' => $index));
+  }
+  else {
+    $carousel_content = '';
+    $carousel_facets  = '';
+  }
 
   $commands[] = array(
     'command' => 'carousel_refresh',
-    'content' => $content,
+    'content' => $carousel_content,
     'tab' => $index,
   );
 
   $commands[] = array(
     'command' => 'carousel_update_facets',
-    'content' => theme('browserbar_filter', array('facets' => $items_data['facets'], 'active_facet' => $subject, 'tab' => $index))
+    'content' => $carousel_facets,
   );
 
   $commands[] = ajax_command_invoke('.search-controller li', 'removeClass', array('active'));
