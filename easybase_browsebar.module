@@ -177,12 +177,14 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
             foreach ($collection->reply->objects as $searchItem) {
               // No cover for this item? Skip it!
               try {
-                if (!easybase_browsebar_check_cover($searchItem->localId)) {
-                  break;
-                }
+                $cover_exists = easybase_browsebar_check_cover($searchItem->localId);
               }
               catch (Exception $e) {
                 return FALSE;
+              }
+
+              if (!$cover_exists) {
+                break;
               }
 
               $item = new stdClass();
