@@ -225,6 +225,8 @@
     }
 
     Carousel.bind('responsivelayout', function(event, layouts) {
+      var carouselIsClosed = $('#carousel-wrapper .carousel-display').hasClass('open');
+      if (carouselIsClosed) return;
       if ($.browser.msie && $.browser.version < 9) return;
 
       var config;
