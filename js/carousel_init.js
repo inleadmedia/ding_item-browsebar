@@ -21,11 +21,11 @@
 
     // Select default config for first init.
     var layoutIndex = $('#omega-media-query-dummy').css('z-index');
-    var layoutName  = Drupal.settings.omega.layouts.order[layoutIndex];
-    if (Carousel.responsiveConfig[layoutName] == undefined) {
-      layoutName = 'normal';
+    Carousel.initLayout  = (layoutIndex == '-1') ? 'mobile' : Drupal.settings.omega.layouts.order[layoutIndex];
+    if (Carousel.responsiveConfig[Carousel.initLayout] == undefined) {
+      Carousel.initLayout = 'normal';
     }
-    Carousel.defaultConfig = Carousel.responsiveConfig[layoutName];
+    Carousel.defaultConfig = Carousel.responsiveConfig[Carousel.initLayout];
 
     // Add custom function for getting carousel config options.
     Carousel.getOption = function(opt){
@@ -214,7 +214,7 @@
     $('#carousel-bar-filter .popup li a.selected').click();
 
     // Collapse carousel if page is not front.
-    if (!$('body').hasClass('front')) {
+    if (!$('body').hasClass('front') || Carousel.initLayout == 'mobile') {
       $('#carousel .caroufredsel_wrapper').hide();
       $('#carousel-wrapper .close').click();
       setTimeout(function(){ $('#carousel .caroufredsel_wrapper').show(); }, 500);
