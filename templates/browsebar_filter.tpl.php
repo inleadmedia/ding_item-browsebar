@@ -10,6 +10,7 @@
     <ul>
     <?php 
     $max_facet_length = 0;
+    //var_dump($active_facet);
     if (!$active_facet) $active_facet = '';
     
     foreach ($facets['facet.subject']->terms as $facet=>$amount) {
@@ -25,6 +26,6 @@
     $letter_width = 5;
     $paddings = 40;
     drupal_add_js('(function($){$(function(){
-      $("#carousel-bar-filter").css("width", "' . ($letter_width * $max_facet_length + $paddings) . '");
+      $("#browsebar-bar-filter").css("width", "' . ($letter_width * $max_facet_length + $paddings) . '");
     })})(jQuery)', 'inline')
   ?>
