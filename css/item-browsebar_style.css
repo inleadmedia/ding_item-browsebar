@@ -3,7 +3,7 @@
   float: none;
 }
 
-.search-carousel-query {
+.search-browsebar-query {
   float: left;
 }
 
@@ -11,56 +11,56 @@
   display: none;
 }
 
-#carousel {
+#browsebar {
   height: 315px;
   position: relative;
 }
 
-#carousel .result-item {
+#browsebar .result-item {
   float: left;
   padding: 15px;
   position: relative;
   cursor: pointer;
 }
 
-#carousel .active img {
+#browsebar .active img {
   height: 240px;
   width: 170px;
 }
 
-#carousel .inactive {
+#browsebar .inactive {
   margin-top: 42px;
 }
 
-#carousel .result-item .title,
-#carousel .result-item .creator {
+#browsebar .result-item .title,
+#browsebar .result-item .creator {
   margin: 0;
   text-align: left;
   padding: 0;
 }
 
-#carousel .result-item .title {
+#browsebar .result-item .title {
   line-height: 18px;
   font-size: 14px;
 }
 
-#carousel .result-item.active .creator,
-#carousel .result-item.inactive .creator {
+#browsebar .result-item.active .creator,
+#browsebar .result-item.inactive .creator {
   line-height: 16px !important;
   font-size: 11px;
 }
-#carousel .result-item.inactive .title,
-#carousel .result-item.inactive .creator {
+#browsebar .result-item.inactive .title,
+#browsebar .result-item.inactive .creator {
    width: 120px;
 }
 
-#carousel .result-item.active .title,
-#carousel .result-item.inactive .title {
+#browsebar .result-item.active .title,
+#browsebar .result-item.inactive .title {
   font-size: 14px;
   line-height: 18px;
 }
 
-#carousel .result-item .item-overlay {
+#browsebar .result-item .item-overlay {
   background-color: #000000;
   bottom: 17px;
   display: none;
@@ -71,11 +71,11 @@
   width: 170px;
 }
 
-#carousel .active>p {
+#browsebar .active>p {
   display: none;
 }
 
-#carousel .result-item .item-overlay-details {
+#browsebar .result-item .item-overlay-details {
   bottom: 22px;
   display: none;
   height: 46px;
@@ -84,7 +84,7 @@
   width: 160px;
 }
 
-#carousel .result-item .result-item-details {
+#browsebar .result-item .result-item-details {
   cursor: default;
   height: 170px;
   position: absolute;
@@ -94,71 +94,71 @@
   z-index: 20;
 }
 
-#carousel .result-item .result-item-details h1 {
+#browsebar .result-item .result-item-details h1 {
   font-size: 25px;
   line-height: 25px;
   margin: 0 0 10px 0;
   padding: 0;
 }
 
-#carousel .result-item .result-item-details p {
+#browsebar .result-item .result-item-details p {
   font-size: 13px;
   margin: 0;
 }
 
-#carousel .result-item .result-item-details .description {
+#browsebar .result-item .result-item-details .description {
   line-height: 20px;
   margin-top: 5px;
   overflow: hidden;
   width: 300px;
 }
 
-#carousel .result-item .result-item-details .subject {
+#browsebar .result-item .result-item-details .subject {
   margin-top: 10px;
 }
 
-#carousel .result-item .result-item-details .stats {
+#browsebar .result-item .result-item-details .stats {
   margin-top: 10px;
 }
 
-#carousel .result-item .result-item-details .stats img {
+#browsebar .result-item .result-item-details .stats img {
   margin-top: 2px;
 }
 
-#carousel .result-item .result-item-details .stats .rating-label {
+#browsebar .result-item .result-item-details .stats .rating-label {
   display: inline-block;
   line-height: 1.7em !important;
   margin-right: 10px;
 }
 
-#carousel .result-item .result-item-details .stats .comment-count,
-#carousel .result-item .result-item-details .stats .rating-count {
+#browsebar .result-item .result-item-details .stats .comment-count,
+#browsebar .result-item .result-item-details .stats .rating-count {
   display: inline-block;
 }
 
-#carousel .result-item .result-item-details .stats .comment-count {
+#browsebar .result-item .result-item-details .stats .comment-count {
   margin-left: 15px;
 }
 
-#carousel .result-item .result-item-details img {
+#browsebar .result-item .result-item-details img {
   height: 15px;
   width: 15px;
 }
 
-#carousel .result-item-details .stats * {
+#browsebar .result-item-details .stats * {
   float: left;
 }
 
-#carousel .result-item-details {
+#browsebar .result-item-details {
   display: none;
 }
 
-#carousel .caroufredsel_wrapper {
+#browsebar .caroufredsel_wrapper {
   margin: 30px auto 0 auto !important;
   top: -20px;
 }
 
-#carousel #prev, #carousel #next {
+#browsebar #prev, #browsebar #next {
   background-repeat: repeat;
   display: block;
   height: 45px;
@@ -167,21 +167,21 @@
   width: 45px;
 }
 
-#carousel #prev {
+#browsebar #prev {
   height: 20px;
   background-image: url('../images/default.png');
   left: 0px;
   width: 20px;
 }
 
-#carousel #next {
+#browsebar #next {
   height: 20px;
   background-image: url('../images/default.png');
   right: 0px;
   width: 20px;
 }
 
-#carousel-wrapper .carousel-display {
+#browsebar-wrapper .browsebar-display {
   display: block;
   float: right;
   height: 24px;
@@ -189,35 +189,35 @@
   width: 57px;
 }
 
-#carousel-bar {
+#browsebar-bar {
   background-repeat: repeat-x;
   height: 29px;
   width: 100%;
 }
 
-#carousel-bar .carousel-bar {
+#browsebar-bar .browsebar-bar {
   margin: 0 auto;
   max-width: 1000px;
 }
 
 
-#carousel #carousel-pager a span {
+#browsebar #browsebar-pager a span {
   display: none;
 }
 
-#carousel #carousel-pager a {
+#browsebar #browsebar-pager a {
   cursor: default;
   display: inline-block;
   height: 14px;
   width: 14px;
 }
 
-#carousel-bar-filter {
+#browsebar-bar-filter {
   width: 130px;
   float: right;
 }
 
-#carousel-bar-filter .popup {
+#browsebar-bar-filter .popup {
   top: 0;
   display: none;
   position: absolute;
@@ -225,109 +225,109 @@
   z-index: 10;
 }
 
-#carousel-bar-filter .popup ul {
+#browsebar-bar-filter .popup ul {
   list-style-position: inside;
   margin: 5px 5px 5px 10px;
   padding: 0;
 }
 
-#carousel-bar-filter .close .icon {
+#browsebar-bar-filter .close .icon {
   background-position: center 1px;
   height: 18px
 }
 
-#carousel-bar-filter .text {
+#browsebar-bar-filter .text {
   overflow: hidden;
 }
 
-#carousel-bar-filter .icon {
+#browsebar-bar-filter .icon {
   float: left;
   width: 16px;
   height: 16px;
 }
 
-#carousel-bar-filter .popup .close,
-#carousel-bar-filter .current {
+#browsebar-bar-filter .popup .close,
+#browsebar-bar-filter .current {
   display: block;
   height: 18px;
 }
 
-#carousel-bar-filter .current .icon {
+#browsebar-bar-filter .current .icon {
   background-position: center -19px;
 }
 
-#carousel-menu {
+#browsebar-menu {
   z-index: 10;
 }
 
-#carousel-menu h2 {
+#browsebar-menu h2 {
   font-size: 20px;
   margin: 0;
 }
 
-#carousel-menu ul {
+#browsebar-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-#carousel-menu ul li {
+#browsebar-menu ul li {
   float: left;
   margin-right: 18px;
 }
 
-#carousel-bar .search-controller {
+#browsebar-bar .search-controller {
   float: left;
   list-style: none outside none;
   padding-top: 4px;
 }
 
-#carousel-bar .search-controller li {
+#browsebar-bar .search-controller li {
   float: left;
   margin-left: 16px;
 }
 
-#carousel-bar .search-controller li a {
+#browsebar-bar .search-controller li a {
   color: #ffffff;
 }
 
-#carousel .search-controller li {
+#browsebar .search-controller li {
   float: left;
   margin: -1px 2px 0 0;
   padding: 0 17px;
 }
 
-#carousel .search-controller li a {
+#browsebar .search-controller li a {
   outline: none;
 }
 
-.carousel-header,
-.carousel-main {
+.browsebar-header,
+.browsebar-main {
   width: 70%;
   margin: 0 auto !important;
 }
 
-.carousel-main {
+.browsebar-main {
   top: -20px;
   position: relative;
 }
 
-.carousel-header-left,
-.carousel-header-middle,
-.carousel-header-right {
+.browsebar-header-left,
+.browsebar-header-middle,
+.browsebar-header-right {
   float: left;
 }
 
-.carousel-header-left {
+.browsebar-header-left {
   width: 40%;
 }
 
-.carousel-header-middle {
+.browsebar-header-middle {
   width: 20%;
   text-align: center;
 }
 
-.carousel-header-right {
+.browsebar-header-right {
   width: 40%;
 }
 

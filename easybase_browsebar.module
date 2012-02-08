@@ -52,7 +52,7 @@ function easybase_browsebar_menu() {
  */
 function easybase_browsebar_block_info() {
   $blocks['main'] = array(
-    'info' => t('Carousel widget'),
+    'info' => t('Browsebar widget'),
     'region' => 'content',
     'weight' => 0,
   );
@@ -64,27 +64,27 @@ function easybase_browsebar_block_info() {
  * Implements hook_theme().
  */
 function easybase_browsebar_theme($existing, $type, $theme, $path) {
-  $hooks['carousel'] = array(
+  $hooks['browsebar'] = array(
     'variables' => array('carousel_items' => NULL, 'facets' => NULL),
-    'template' => 'carousel',
+    'template' => 'browsebar',
     'path'  => $path . '/templates',
   );
 
-  $hooks['carousel_items'] = array(
+  $hooks['browsebar_items'] = array(
     'variables' => array('carousel_items' => NULL),
-    'template' => 'carousel_items',
+    'template' => 'browsebar_items',
     'path'  => $path . '/templates',
   );
 
-  $hooks['carousel_views'] = array(
+  $hooks['browsebar_views'] = array(
     'variables' => array('carousel_views' => NULL),
-    'template' => 'carousel_views',
+    'template' => 'browsebar_views',
     'path' => $path . '/templates',
   );
 
-  $hooks['browserbar_filter'] = array(
+  $hooks['browsebar_facet_filter'] = array(
     'variables' => array('facets' => NULL, 'active_facet' => NULL),
-    'template' => 'browserbar_filter',
+    'template' => 'browsebar_filter',
     'path' => $path . '/templates',
   );
 
@@ -104,14 +104,14 @@ function easybase_browsebar_block_view($delta) {
       drupal_add_library('system', 'drupal.ajax');
       drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/jquery.carouFredSel-4.4.2.js', 'file');
       drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/jquery.touchwipe.1.1.1.js', 'file');
-      drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/carousel_init.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/browsebar_init.js', 'file');
 
       $response = easybase_browsebar_load_items('bog');
       if (!empty($response)) {
         $first_tab = array_shift($response);
 
-        $block['content'] = ($first_tab != NULL) ? theme('carousel', array(
-              'carousel_items' => theme('carousel_items', array('carousel_items' => $first_tab['items'])),
+        $block['content'] = ($first_tab != NULL) ? theme('browsebar', array(
+              'carousel_items' => theme('browsebar_items', array('carousel_items' => $first_tab['items'])),
               'views' => variable_get('easybase_browsebar_search_queries', array()),
               'facets' => $first_tab['facets'])) : '';
       }
@@ -417,8 +417,8 @@ function easybase_browsebar_filter($type) {
 
   $response = easybase_browsebar_load_items($type, $subject);
   if (!empty($response)) {
-    $carousel_content = theme('carousel_items', array('carousel_items' => $response[$cid]['items']));
-    $carousel_facets = theme('browserbar_filter', array('facets' => $response[$cid]['facets'], 'active_facet' => $subject, 'tab' => $tab));
+    $carousel_content = theme('browsebar_items', array('carousel_items' => $response[$cid]['items']));
+    $carousel_facets = theme('browsebar_facet_filter', array('facets' => $response[$cid]['facets'], 'active_facet' => $subject, 'tab' => $tab));
   }
   else {
     $carousel_content = '';
@@ -426,12 +426,12 @@ function easybase_browsebar_filter($type) {
   }
 
   $commands[] = array(
-    'command' => 'carousel_refresh',
+    'command' => 'browsebar_refresh',
     'content' => $carousel_content,
   );
 
   $commands[] = array(
-    'command' => 'carousel_update_facets',
+    'command' => 'browsebar_update_facets',
     'content' => $carousel_facets,
   );
 
@@ -457,8 +457,8 @@ function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   $response = easybase_browsebar_load_items($type, $subject);
   if (!empty($response)) {
     $items_data = $response[$cid];
-    $carousel_content = theme('carousel_items', array('carousel_items' => $items_data['items']));
-    $carousel_facets = theme('browserbar_filter', array('facets' => $items_data['facets'], 'active_facet' => $subject, 'tab' => $index));
+    $carousel_content = theme('browsebar_items', array('carousel_items' => $items_data['items']));
+    $carousel_facets = theme('browsebar_facet_filter', array('facets' => $items_data['facets'], 'active_facet' => $subject, 'tab' => $index));
   }
   else {
     $carousel_content = '';
@@ -466,22 +466,22 @@ function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   }
 
   $commands[] = array(
-    'command' => 'carousel_refresh',
+    'command' => 'browsebar_refresh',
     'content' => $carousel_content,
     'tab' => $index,
   );
 
   $commands[] = array(
-    'command' => 'carousel_update_facets',
+    'command' => 'browsebar_update_facets',
     'content' => $carousel_facets,
   );
 
   $commands[] = ajax_command_invoke('.search-controller li', 'removeClass', array('active'));
   $commands[] = ajax_command_invoke('.search-controller li:eq(' . $index . ')', 'addClass', array('active'));
-  $commands[] = ajax_command_invoke('#carousel-menu h2', 'html', array(htmlspecialchars($keywords[$index]['title'])));
+  $commands[] = ajax_command_invoke('#browsebar-menu h2', 'html', array(htmlspecialchars($keywords[$index]['title'])));
 
-  $commands[] = ajax_command_invoke('#carousel .active .item-overlay', 'show');
-  $commands[] = ajax_command_invoke('#carousel .active .item-overlay-details', 'show');
+  $commands[] = ajax_command_invoke('#browsebar .active .item-overlay', 'show');
+  $commands[] = ajax_command_invoke('#browsebar .active .item-overlay-details', 'show');
   $result = array('#type' => 'ajax', '#commands' => $commands);
 
   ajax_deliver($result);

@@ -11,7 +11,7 @@
  *   Admin form.
  */
 function easybase_browsebar_admin_page() {
-  drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/carousel.admin.js');
+  drupal_add_js(drupal_get_path('module', 'easybase_browsebar') . '/js/browsebar.admin.js');
   variable_set('easybase_browsebar_search_queries_hidden', array());
 
   return drupal_get_form('easybase_browsebar_admin_form');
@@ -50,7 +50,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
     }
   }
 
-  $form['carousel'] = array(
+  $form['browsebar'] = array(
     '#type' => 'fieldset',
     '#title' => 'Searches',
   );
@@ -65,7 +65,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
   if (isset($searches[0]['title'])) {
     $c = count($searches);
     for (; $i < $c; $i++) {
-      $form['carousel']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($searches[$i], $i);
+      $form['browsebar']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($searches[$i], $i);
     }
   }
 
@@ -85,46 +85,46 @@ function easybase_browsebar_admin_form($form, &$form_state) {
       );
     }
 
-    $form['carousel']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($unsubmitted, $i);
+    $form['browsebar']['ting_searches']['search_' . $i] = easybase_browsebar_query_form($unsubmitted, $i);
   }
 
   // Hide removed fields.
   for ($i = 0; $i < $searches_num + $c; $i++) {
     if (in_array($i, $hidden)) {
       // Hide title, used to sort needed queries when saving
-      $form['carousel']['ting_searches']['search_' . $i]['title[]']['#value'] = '';
-      $form['carousel']['ting_searches']['search_' . $i]['#prefix'] = '<div class="search-query-hidden">';
-      $form['carousel']['ting_searches']['search_' . $i]['#suffix'] = '</div>';
+      $form['browsebar']['ting_searches']['search_' . $i]['title[]']['#value'] = '';
+      $form['browsebar']['ting_searches']['search_' . $i]['#prefix'] = '<div class="search-query-hidden">';
+      $form['browsebar']['ting_searches']['search_' . $i]['#suffix'] = '</div>';
     }
   }
 
   // Keep track of query fields count.
-  $form['carousel']['num_searches'] = array(
+  $form['browsebar']['num_searches'] = array(
     '#type' => 'hidden',
     '#value' => $searches_num,
   );
 
   // Ajaxified button for new fields.
-  $form['carousel']['new_search_carousel_button'] = array(
+  $form['browsebar']['new_search_browsebar_button'] = array(
     '#type' => 'button',
     '#value' => 'Add another',
     '#name' => 'add_query',
     '#ajax' => array(
       'callback' => 'easybase_browsebar_admin_form_ajaxify',
-      'wrapper' => 'ting-search-carousel-queries',
+      'wrapper' => 'ting-search-browsebar-queries',
       'method' => 'replace',
       'effect' => 'fade'
     ),
   );
 
-  $form['carousel']['easybase_browsebar_item_limit'] = array(
+  $form['browsebar']['easybase_browsebar_item_limit'] = array(
     '#type' => 'textfield',
     '#title' => t('Item limit'),
     '#description' => t('The number of items to be returned in search result.'),
     '#default_value' => variable_get('easybase_browsebar_item_limit', 24)
   );
 
-  $form['carousel']['easybase_browsebar_cache_ttl'] = array(
+  $form['browsebar']['easybase_browsebar_cache_ttl'] = array(
     '#type' => 'textfield',
     '#title' => t('Cache TTL'),
     '#description' => t('How many hours the cache lives.'),
@@ -132,7 +132,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
   );
 
   // Wrap the form, due to draggable items renewal.
-  $form['#prefix'] = '<div id="ting-search-carousel-queries">';
+  $form['#prefix'] = '<div id="ting-search-browsebar-queries">';
   $form['#suffix'] = '</div>';
   // Custom themer, mainly used for dragable table creation.
   $form['#theme'] = array('easybase_browsebar_admin_form');
@@ -166,27 +166,27 @@ function easybase_browsebar_admin_form_ajaxify($form, &$form_state) {
  */
 function theme_easybase_browsebar_admin_form($variables) {
   $form = $variables['form'];
-  drupal_add_tabledrag('ting-search-carousel-admin-sort', 'order', 'sibling', 'sort');
+  drupal_add_tabledrag('ting-search-browsebar-admin-sort', 'order', 'sibling', 'sort');
 
   $header = array('Searches', '');
   $rows = array();
-  foreach (element_children($form['carousel']['ting_searches']) as $key) {
+  foreach (element_children($form['browsebar']['ting_searches']) as $key) {
     // Add class to group weight fields for drag and drop.
-    $form['carousel']['ting_searches'][$key]['sort[]']['#attributes']['class'][] = 'sort';
+    $form['browsebar']['ting_searches'][$key]['sort[]']['#attributes']['class'][] = 'sort';
 
     // Get sort element.
-    $sort = $form['carousel']['ting_searches'][$key]['sort[]'];
-    unset($form['carousel']['ting_searches'][$key]['sort[]']);
+    $sort = $form['browsebar']['ting_searches'][$key]['sort[]'];
+    unset($form['browsebar']['ting_searches'][$key]['sort[]']);
 
     // Build rows.
     $classes = array('draggable');
-    if (isset($form['carousel']['ting_searches'][$key]['#prefix'])) {
+    if (isset($form['browsebar']['ting_searches'][$key]['#prefix'])) {
       $classes[] = 'search-query-hidden';
     }
 
     $rows[] = array(
       'data' => array(
-        drupal_render($form['carousel']['ting_searches'][$key]),
+        drupal_render($form['browsebar']['ting_searches'][$key]),
         drupal_render($sort)
       ),
       'class' => $classes
@@ -196,7 +196,7 @@ function theme_easybase_browsebar_admin_form($variables) {
   $table_vars = array(
     'header' => $header,
     'rows' => $rows,
-    'attributes' => array('id' => 'ting-search-carousel-admin-sort'),
+    'attributes' => array('id' => 'ting-search-browsebar-admin-sort'),
     'caption' => '',
     'colgroups' => array(),
     'sticky' => FALSE,
@@ -237,9 +237,9 @@ function easybase_browsebar_query_form($item = array(), $index = 0) {
   $form['title[]'] = array(
     '#type' => 'textfield',
     '#title' => t('Title'),
-    '#description' => t('The title of the search is used for the tab in the carousel. Keep it short.'),
+    '#description' => t('The title of the search is used for the tab in the browsebar. Keep it short.'),
     '#default_value' => isset($item['title']) ? $item['title'] : '',
-    '#prefix' => '<div class="search-carousel-query">',
+    '#prefix' => '<div class="search-browsebar-query">',
   );
 
   $form['subtitle[]'] = array(
@@ -269,7 +269,7 @@ function easybase_browsebar_query_form($item = array(), $index = 0) {
     '#suffix' => '</div><div class="clear"></div>',
     '#ajax' => array(
       'callback' => 'easybase_browsebar_admin_form_ajaxify',
-      'wrapper' => 'ting-search-carousel-queries',
+      'wrapper' => 'ting-search-browsebar-queries',
       'method' => 'replace',
       'effect' => 'fade'
     ),
@@ -310,7 +310,7 @@ function easybase_browsebar_search_submit($form, &$form_state) {
   variable_set('easybase_browsebar_search_queries', $searches);
 
   // Make ting search requests.
-  // carousel_do_request();
+  // browsebar_do_request();
 }
 
 /**
