@@ -397,6 +397,14 @@
       $("#browsebar-content").trigger('insertItem', e);
     });
 
+    // Hide filter if we have less than 5 items.
+    if (responseItems.length < 5) {
+      $('#browsebar-bar-filter').hide();
+    }
+    else {
+      $('#browsebar-bar-filter').show();
+    }
+
     $('#browsebar .active .item-overlay').show();
     $('#browsebar .active .item-overlay-details').show();
   }
