@@ -197,22 +197,6 @@
       }
     });
 
-    // Select filter param from popup
-    $('#browsebar-bar-filter .popup li a').live('click', function(e) {
-      e.preventDefault();
-      var $this = $(this);
-
-      $this.parents('ul:first').find('a').removeClass('selected');
-      $this.addClass('selected');
-
-      var selectedText = $(this).text();
-      var openButtonTextWrapper = $('#browsebar-bar-filter .open .text');
-      openButtonTextWrapper.text(selectedText);
-    });
-
-    // Select default filter param
-    $('#browsebar-bar-filter .popup li a.selected').click();
-
     // Collapse carousel if page is not front.
     if (!$('body').hasClass('front') || Browsebar.initLayout == 'mobile') {
       $('#browsebar .caroufredsel_wrapper').hide();
@@ -396,14 +380,6 @@
       }
       $("#browsebar-content").trigger('insertItem', e);
     });
-
-    // Hide filter if we have less than 5 items.
-    if (responseItems.length < 5) {
-      $('#browsebar-bar-filter').hide();
-    }
-    else {
-      $('#browsebar-bar-filter').show();
-    }
 
     $('#browsebar .active .item-overlay').show();
     $('#browsebar .active .item-overlay-details').show();

@@ -30,13 +30,6 @@ function easybase_browsebar_menu() {
     'file' => 'easybase_browsebar.admin.inc',
   );
 
-  $items['ding/easybase_browsebar/filter/%'] = array(
-    'page arguments' => array(3),
-    'type' => MENU_CALLBACK,
-    'access arguments' => array('search content'),
-    'page callback' => 'easybase_browsebar_filter',
-  );
-
   $items['ding/easybase_browsebar/view/%'] = array(
     'page arguments' => array(3, 'bog', ''),
     'type' => MENU_CALLBACK,
@@ -113,7 +106,8 @@ function easybase_browsebar_block_view($delta) {
         $block['content'] = ($first_tab != NULL) ? theme('browsebar', array(
               'carousel_items' => theme('browsebar_items', array('carousel_items' => $first_tab['items'])),
               'views' => variable_get('easybase_browsebar_search_queries', array()),
-              'facets' => $first_tab['facets'])) : '';
+              'facets' => $first_tab['facets'],
+              'keyword' => $first_tab['keyword'])) : '';
       }
       else {
         $block['content'] = '';
@@ -294,7 +288,7 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
           return FALSE;
         }
 
-        $items = array('items' => $items, 'facets' => $result->facets);
+        $items = array('items' => $items, 'facets' => $result->facets, 'keyword' => $keyword);
 
         cache_set($cid, $items, 'cache',
           REQUEST_TIME + variable_get('easybase_browsebar_cache_ttl', 2) * 60 * 60);
@@ -403,43 +397,6 @@ function easybase_browsebar_search_ting($query, $page = 1, $records) {
 }
 
 /**
- * Refine carousel items baes on selected filter.
- *
- * @param type $type
- * @param type $subject
- */
-function easybase_browsebar_filter($type) {
-  $subject = $_REQUEST['facet'] ? $_REQUEST['facet'] : '';
-  $tab = $_REQUEST['tab'] ? (int)$_REQUEST['tab'] : 0;
-  $keywords = variable_get('easybase_browsebar_search_queries', array());
-  $keyword = $keywords[$tab]['query'];
-  $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
-
-  $response = easybase_browsebar_load_items($type, $subject);
-  if (!empty($response)) {
-    $carousel_content = theme('browsebar_items', array('carousel_items' => $response[$cid]['items']));
-    $carousel_facets = theme('browsebar_facet_filter', array('facets' => $response[$cid]['facets'], 'active_facet' => $subject, 'tab' => $tab));
-  }
-  else {
-    $carousel_content = '';
-    $carousel_facets = '';
-  }
-
-  $commands[] = array(
-    'command' => 'browsebar_refresh',
-    'content' => $carousel_content,
-  );
-
-  $commands[] = array(
-    'command' => 'browsebar_update_facets',
-    'content' => $carousel_facets,
-  );
-
-  $result = array('#type' => 'ajax', '#commands' => $commands);
-  ajax_deliver($result);
-}
-
-/**
  * Update the carousel with new item collection.
  *
  * @param $index
@@ -458,7 +415,7 @@ function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   if (!empty($response)) {
     $items_data = $response[$cid];
     $carousel_content = theme('browsebar_items', array('carousel_items' => $items_data['items']));
-    $carousel_facets = theme('browsebar_facet_filter', array('facets' => $items_data['facets'], 'active_facet' => $subject, 'tab' => $index));
+    $carousel_facets = theme('browsebar_facet_filter', array('facets' => $items_data['facets'], 'keyword' => $items_data['keyword']));
   }
   else {
     $carousel_content = '';
