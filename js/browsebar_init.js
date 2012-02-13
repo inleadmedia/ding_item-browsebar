@@ -155,6 +155,8 @@
       $('.search-controller').hide('fast');
       $('.scroll').hide();
       $(this).removeClass('close').addClass('open');
+      // Store browsebar state
+      $.cookie('browsebar-status', 'off');
     }, function() {
       $('#browsebar-wrapper').find('.caroufredsel_wrapper').animate({
         'height':'315px'
@@ -162,6 +164,8 @@
       $('.browsebar-header').show('fast');
       $('.search-controller').show('fast');
       $(this).removeClass('open').addClass('close');
+      // Store browsebar state
+      $.cookie('browsebar-status', 'on');
     });
 
 
@@ -214,7 +218,7 @@
     $('#browsebar-bar-filter .popup li a.selected').click();
 
     // Collapse carousel if page is not front.
-    if (!$('body').hasClass('front') || Browsebar.initLayout == 'mobile') {
+    if ($.cookie('browsebar-status') == 'off' || ($.cookie('browsebar-status') == null && !$('body').hasClass('front') || Browsebar.initLayout == 'mobile')) {
       $('#browsebar .caroufredsel_wrapper').hide();
       $('#browsebar-wrapper .close').click();
       setTimeout(function(){ $('#browsebar .caroufredsel_wrapper').show(); }, 500);
