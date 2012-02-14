@@ -96,7 +96,14 @@
         items: 1
       },
       pagination : {
-        container : '#browsebar-pager'
+        container : '#browsebar-pager',
+        onBefore : function() {
+          restore(Browsebar.find('.result-item.active'));
+        },
+        onAfter : function() {
+          magnify(Browsebar.find('.result-item').eq(2));
+          setTimeout(function(){ afterScroll() }, 500);
+        }
       }
     })
     // Scroll to the selected item
