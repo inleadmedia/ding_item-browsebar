@@ -121,6 +121,8 @@
       }
     });
 
+    setTimeout(function(){ $('#browsebar').css({'visibility':'visible'}); }, 1000);
+
     $('#browsebar .active .item-overlay').show();
     $('#browsebar .active .item-overlay-details').show();
 
@@ -153,9 +155,9 @@
 
     // Handler for hiding the carousel
     $('#browsebar-wrapper .browsebar-display').toggle(function() {
-      $('#browsebar-wrapper').find('.caroufredsel_wrapper').animate({
+      $('#browsebar-wrapper').find('#browsebar').animate({
         'height':'0px'
-      }, 500);
+      }, 500).find('.caroufredsel_wrapper').hide();
       $('.browsebar-header').hide('fast');
       $('.search-controller').hide('fast');
       $('.scroll').hide();
@@ -163,9 +165,9 @@
       // Store browsebar state
       $.cookie('browsebar-status', 'off');
     }, function() {
-      $('#browsebar-wrapper').find('.caroufredsel_wrapper').animate({
-        'height':'315px'
-      }, 500, function() { $('.scroll').show('fast'); });
+      $('#browsebar-wrapper').find('#browsebar').animate({
+        'height':'330px'
+      }, 500, function() { $('.scroll').show('fast'); }).find('.caroufredsel_wrapper').show();
       $('.browsebar-header').show('fast');
       $('.search-controller').show('fast');
       $(this).removeClass('open').addClass('close');
