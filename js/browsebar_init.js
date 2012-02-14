@@ -114,8 +114,6 @@
       }
     });
 
-    // Disable the pager, as it is laggy
-    $('#browsebar-pager a').unbind('click').bind('click', function() {return false;});
     $('#browsebar .active .item-overlay').show();
     $('#browsebar .active .item-overlay-details').show();
 
