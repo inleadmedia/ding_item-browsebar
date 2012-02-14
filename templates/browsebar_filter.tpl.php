@@ -10,12 +10,10 @@
     <ul>
     <?php 
     $max_facet_length = 0;
-    //var_dump($active_facet);
-    if (!$active_facet) $active_facet = '';
     
     foreach ($facets['facet.subject']->terms as $facet=>$amount) {
       $max_facet_length = (strlen($facet) > $max_facet_length) ?  strlen($facet) : $max_facet_length;
-      echo '<li><a class="use-ajax' . ($active_facet == $facet ? ' active' : '') . '" href="/ding/easybase_browsebar/filter/bog?facet=' . htmlspecialchars($facet) . '&tab=' . (int)$tab . '">' . htmlspecialchars($facet) . '</a></li>';
+      echo '<li><a href="/search/ting/' . $keyword . '?text=' . $keyword . '&facets[]=facet.subject:' . $facet . '">' . htmlspecialchars($facet) . '</a></li>';
     } ?> 
     </ul>
     

@@ -114,8 +114,6 @@
       }
     });
 
-    // Disable the pager, as it is laggy
-    $('#browsebar-pager a').unbind('click').bind('click', function() {return false;});
     $('#browsebar .active .item-overlay').show();
     $('#browsebar .active .item-overlay-details').show();
 
@@ -155,6 +153,8 @@
       $('.search-controller').hide('fast');
       $('.scroll').hide();
       $(this).removeClass('close').addClass('open');
+      // Store browsebar state
+      $.cookie('browsebar-status', 'off');
     }, function() {
       $('#browsebar-wrapper').find('.caroufredsel_wrapper').animate({
         'height':'315px'
@@ -162,6 +162,8 @@
       $('.browsebar-header').show('fast');
       $('.search-controller').show('fast');
       $(this).removeClass('open').addClass('close');
+      // Store browsebar state
+      $.cookie('browsebar-status', 'on');
     });
 
 
@@ -197,24 +199,8 @@
       }
     });
 
-    // Select filter param from popup
-    $('#browsebar-bar-filter .popup li a').live('click', function(e) {
-      e.preventDefault();
-      var $this = $(this);
-
-      $this.parents('ul:first').find('a').removeClass('selected');
-      $this.addClass('selected');
-
-      var selectedText = $(this).text();
-      var openButtonTextWrapper = $('#browsebar-bar-filter .open .text');
-      openButtonTextWrapper.text(selectedText);
-    });
-
-    // Select default filter param
-    $('#browsebar-bar-filter .popup li a.selected').click();
-
     // Collapse carousel if page is not front.
-    if (!$('body').hasClass('front') || Browsebar.initLayout == 'mobile') {
+    if ($.cookie('browsebar-status') == 'off' || ($.cookie('browsebar-status') == null && !$('body').hasClass('front') || Browsebar.initLayout == 'mobile')) {
       $('#browsebar .caroufredsel_wrapper').hide();
       $('#browsebar-wrapper .close').click();
       setTimeout(function(){ $('#browsebar .caroufredsel_wrapper').show(); }, 500);
