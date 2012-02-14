@@ -98,9 +98,7 @@
       pagination : {
         container : '#browsebar-pager',
         onBefore : function() {
-          var items = Browsebar.find('.result-item');
-          var activeItem = items.filter('.active');
-          restore(activeItem);
+          restore(Browsebar.find('.result-item.active'));
         },
         onAfter : function() {
           magnify(Browsebar.find('.result-item').eq(2));
