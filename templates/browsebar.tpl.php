@@ -26,7 +26,7 @@
       </div>
       <div class="browsebar-header-right">
         <div id="browsebar-bar-filter">
-          <?php echo theme('browsebar_facet_filter', array('facets' => $facets, 'tab' => 0)); ?>
+          <?php echo theme('browsebar_facet_filter', array('keyword' => $keyword, 'facets' => $facets)); ?>
         </div>
       </div>
     </div>
