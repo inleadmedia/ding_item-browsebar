@@ -414,6 +414,7 @@ function easybase_browsebar_view($index, $type = 'bog', $subject = '') {
   $response = easybase_browsebar_load_items($type, $subject);
   if (!empty($response)) {
     $items_data = $response[$cid];
+    // Trim contents to evade space chars (may exist in tpl files) on result output.
     $carousel_content = trim(theme('browsebar_items', array('carousel_items' => $items_data['items'])));
     $carousel_facets = trim(theme('browsebar_facet_filter', array('facets' => $items_data['facets'], 'keyword' => $items_data['keyword'])));
   }
