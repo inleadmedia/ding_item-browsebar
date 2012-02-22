@@ -27,6 +27,10 @@
     }
     Browsebar.defaultConfig = Browsebar.responsiveConfig[Browsebar.initLayout];
 
+    if ($.browser.msie && $.browser.version < 9) {
+      Browsebar.defaultConfig = Browsebar.responsiveConfig['normal'];
+    }
+
     // Add custom function for getting carousel config options.
     Browsebar.getOption = function(opt){
       var val;
@@ -131,20 +135,8 @@
       var centralIndex = Browsebar.getOption('centralIndex');
       if ($(this).children('.result-item-details:visible').length > 0) {
         $(this).children('.result-item-details').fadeOut(500);
-        $('#browsebar .result-item').eq(centralIndex + 1).animate({
-          'opacity' : 1
-        }, 500).addClass('show-me');
-        $('#browsebar .result-item').eq(centralIndex + 2).animate({
-          'opacity' : 1
-        }, 500).addClass('show-me');
       } else {
         $(this).children('.result-item-details').fadeIn(500);
-        $('#browsebar .result-item').eq(centralIndex + 1).animate({
-          'opacity' : 0
-        }, 500).addClass('show-me');
-        $('#browsebar .result-item').eq(centralIndex + 2).animate({
-          'opacity' : 0
-        }, 500).addClass('show-me');
       }
     });
 
@@ -209,7 +201,7 @@
     });
 
     // Collapse carousel if page is not front.
-    if ($.cookie('browsebar-status') == 'off' || ($.cookie('browsebar-status') == null && !$('body').hasClass('front') || Browsebar.initLayout == 'mobile')) {
+    if ($.cookie('browsebar-status') == 'off' || ($.cookie('browsebar-status') == null && !$('body').hasClass('front') || (Browsebar.initLayout == 'mobile' && ($.browser.msie && $.browser.version > 8)))) {
       $('#browsebar .caroufredsel_wrapper').hide();
       $('#browsebar-wrapper .close').click();
       setTimeout(function(){ $('#browsebar .caroufredsel_wrapper').show(); }, 500);
