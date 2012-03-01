@@ -52,7 +52,7 @@
     </div>
     <div class="result-item-details">
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
-      <p>
+      <p class="author">
         <?php if (isset($item->creator)): ?>
           <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>
