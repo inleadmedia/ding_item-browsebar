@@ -196,20 +196,28 @@
 }
 
 #browsebar-bar .browsebar-bar {
+  height: 100%;
   margin: 0 auto;
   max-width: 1000px;
 }
 
-
-#browsebar #browsebar-pager a span {
-  display: none;
+#browsebar-pager {
+  height: 100%;
+  padding-right: 30%;
+  text-align: center;
 }
-
-#browsebar #browsebar-pager a {
+#browsebar-pager a {
   cursor: default;
   display: inline-block;
   height: 14px;
+  margin-top: 7px;
   width: 14px;
+}
+#browsebar-pager a:first-child {
+  margin-left: 15px;
+}
+#browsebar-pager a span {
+  display: none;
 }
 
 #browsebar-bar-filter {
