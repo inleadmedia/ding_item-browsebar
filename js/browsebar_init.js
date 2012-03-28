@@ -86,7 +86,6 @@
       infinite: false,
       auto : false,
       items: Browsebar.defaultConfig.items,
-      height: 315,
       prev : {
         button : '#prev',
         onBefore : function() { Browsebar.scrollOnBefore('prev') },
@@ -147,9 +146,11 @@
     });
 
     // Handler for hiding the carousel
+    var collapseElement = $('#browsebar-wrapper').find('#browsebar');
+    var collapseElementHeight = collapseElement.height();
     $('#browsebar-wrapper .browsebar-display').toggle(function() {
-      $('#browsebar-wrapper').find('#browsebar').animate({
-        'height':'0px'
+      collapseElement.animate({
+        'height': '0px'
       }, 500).find('.caroufredsel_wrapper').hide();
       $('.browsebar-header').hide('fast');
       $('.search-controller').hide('fast');
@@ -158,8 +159,8 @@
       // Store browsebar state
       $.cookie('browsebar-status', 'off');
     }, function() {
-      $('#browsebar-wrapper').find('#browsebar').animate({
-        'height':'330px'
+      collapseElement.animate({
+        'height': collapseElementHeight + 'px'
       }, 500, function() { $('.scroll').show('fast'); }).find('.caroufredsel_wrapper').show();
       $('.browsebar-header').show('fast');
       $('.search-controller').show('fast');

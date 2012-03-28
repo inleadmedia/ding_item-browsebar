@@ -15,7 +15,7 @@
     $stars = '';
     $image_base_path = '/' . drupal_get_path('module', 'easybase_browsebar') . '/images/';
     for ($j = 0; $j < 5; $j++) {
-      $stars .= '<img src="' . $image_base_path . 'star-' . (($j < $item->rating) ? 'on' : 'off') . '.png" width="15" height="15" alt="" />';
+      $stars .= '<span class="star ' . 'star-' . (($j < $item->rating) ? 'on' : 'off') . '"></span>';
     }
   ?>
   <div class="result-item inactive">
@@ -65,7 +65,7 @@
         </span>
       </p>
       <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
-      <p>
+      <p class="author">
         <?php if (isset($item->creator)): ?>
           <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
         <?php endif; ?>

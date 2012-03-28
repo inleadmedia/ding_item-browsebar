@@ -12,8 +12,8 @@
 }
 
 #browsebar {
-  height: 235px;
-  padding: 5px 0 29px;
+  height: 265px;
+  padding-bottom: 29px;
   position: relative;
 }
 
@@ -110,6 +110,16 @@
   margin-top: 10px;
 }
 
+#browsebar .result-item .result-item-details .stats .star {
+  background: url('../images/star-off.png') no-repeat center 0;
+  display: inline-block;
+  height: 16px;
+  width: 19px;
+}
+#browsebar .result-item .result-item-details .stats .star-on {
+  background-image: url('../images/star-on.png')
+}
+
 #browsebar .result-item .result-item-details .stats img {
   margin-top: 2px;
 }
@@ -190,8 +200,6 @@
 }
 
 #browsebar-pager {
-  height: 100%;
-  padding-right: 30%;
   text-align: center;
 }
 #browsebar-pager a {
