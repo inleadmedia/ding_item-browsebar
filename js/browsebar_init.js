@@ -50,6 +50,7 @@
     Browsebar.scrollOnBefore = function(direction) {
       var items = Browsebar.find('.result-item');
       var activeItem = items.filter('.active');
+      activeItem.find('.result-item-details').fadeOut(500);
       var activeItemIndex = items.index(activeItem);
       var magnifyItemIndex;
       if (direction == 'prev') {
