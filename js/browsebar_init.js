@@ -149,6 +149,7 @@
     var collapseElement = $('#browsebar-wrapper').find('#browsebar');
     var collapseElementHeight = collapseElement.height();
     $('#browsebar-wrapper .browsebar-display').toggle(function() {
+      collapseElementHeight = collapseElement.height();
       collapseElement.animate({
         'height': '0px'
       }, 500).find('.caroufredsel_wrapper').hide();
@@ -202,8 +203,16 @@
       }
     });
 
-    // Collapse carousel if page is not front.
-    if ($.cookie('browsebar-status') == 'off' || ($.cookie('browsebar-status') == null && !$('body').hasClass('front') || (Browsebar.initLayout == 'mobile' && ($.browser.msie && $.browser.version > 8)))) {
+    // Collapse carousel.
+    var browsebarStatusCollapsed = $.cookie('browsebar-status') == 'off';
+    var noBrowsebarStatus = $.cookie('browsebar-status') == null;
+    var isFrontPage = $('body').hasClass('front');
+    var browserIsIEgt8 = $.browser.msie && $.browser.version > 8;
+    if (
+        browsebarStatusCollapsed && isFrontPage || // Status collapsed from cookies and is front page.
+        !isFrontPage || // Not front page.
+        Browsebar.initLayout == 'mobile' && browserIsIEgt8 // Layout mobile and browser is IE9+
+      ) {
       $('#browsebar .caroufredsel_wrapper').hide();
       $('#browsebar-wrapper .close').click();
       setTimeout(function(){ $('#browsebar .caroufredsel_wrapper').show(); }, 500);

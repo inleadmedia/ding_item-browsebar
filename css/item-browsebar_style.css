@@ -191,6 +191,7 @@
   background-repeat: repeat-x;
   height: 29px;
   width: 100%;
+  z-index: 5;
 }
 
 #browsebar-bar .browsebar-bar {
