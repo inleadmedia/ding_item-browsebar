@@ -12,7 +12,8 @@
 }
 
 #browsebar {
-  height: 315px;
+  height: 235px;
+  padding: 5px 0 29px;
   position: relative;
 }
 
@@ -21,15 +22,7 @@
   padding: 15px;
   position: relative;
   cursor: pointer;
-}
-
-#browsebar .active img {
-  height: 240px;
-  width: 170px;
-}
-
-#browsebar .inactive {
-  margin-top: 42px;
+  width: 124px;
 }
 
 #browsebar .result-item .title,
@@ -71,10 +64,6 @@
   width: 170px;
 }
 
-#browsebar .active>p {
-  display: none;
-}
-
 #browsebar .result-item .item-overlay-details {
   bottom: 22px;
   display: none;
@@ -86,9 +75,9 @@
 
 #browsebar .result-item .result-item-details {
   cursor: default;
-  height: 170px;
+  height: 100%;
   position: absolute;
-  top: 15px;
+  top: 0;
   right: -305px;
   width: 305px;
   z-index: 20;
@@ -161,10 +150,9 @@
 #browsebar #prev, #browsebar #next {
   background-repeat: repeat;
   display: block;
-  height: 45px;
+  margin-top: -10px;
   position: absolute;
-  top: 105px;
-  width: 45px;
+  top: 50%;
 }
 
 #browsebar #prev {

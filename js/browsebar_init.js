@@ -292,50 +292,16 @@
 
   // Magnification handler
   var magnify = function(ele, duration) {
-    if (duration == undefined) {
-      duration = 500;
-    }
-    ele.animate({
-      'margin-top' : '0'
-    }, duration).children('img').animate({
-      'height' : '240',
-      'width' : '170'
-    }, duration, function() {
-      ele.removeClass('inactive').addClass('active');
-      window.selectedIndex = null;      
-    });
-    
-    ele.children('p').fadeOut();
-    
-    ele.animate({
-      'margin-top' : '0'
-    }, duration);
+    ele.removeClass('inactive').addClass('active');
+    window.selectedIndex = null;
   }
 
   // Restoration handler
   var restore = function(ele, duration) {
-    if (duration == undefined) {
-      duration = 500;
-    }
-    ele.animate({
-      'margin-top' : '42'
-    }, duration).children('img').animate({
-      'height' : '160',
-      'width' : '120'
-    }, duration, function() {
-      ele.removeClass('active').addClass('inactive');
-      ele.children('p').fadeIn(duration);
-    });
-    
-    ele.find('.item-overlay').hide();
-    ele.find('.item-overlay-details').hide();
+    ele.removeClass('active').addClass('inactive');
     ele.find('.result-item-details').fadeOut(duration / 5);
-    
-    ele.animate({
-      'margin-top' : '42'
-    }, duration);
   }
-  
+
   var afterScroll = function () {
     var items = Browsebar.getOption('items.visible');
     if (items > 1) {
@@ -351,7 +317,7 @@
       }, 100).removeClass('show-me');
     });
   }
-  
+
   Drupal.ajax.prototype.commands['browsebar_refresh'] = function (ajax, response, status) {
     // Check if something was found.
     if (!response.content) {

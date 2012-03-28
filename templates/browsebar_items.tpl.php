@@ -45,29 +45,7 @@
     ?>
     <p class="title"><?php print $title_sm ?></p>
     <p class="creator"><?php print isset($item->creator) ? $item->creator : '' ?></p>
-    <div class="item-overlay"></div>
-    <div class="item-overlay-details">
-      <p class="title"><?php print $title_lr ?></p>
-      <p class="creator"><?php isset($item->creator) ? print t('By') . ' ' .  $item->creator : '' ?></p>
-    </div>
     <div class="result-item-details">
-      <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
-      <p>
-        <?php if (isset($item->creator)): ?>
-          <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
-        <?php endif; ?>
-      </p>
-      <?php
-
-      $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
-
-      if (drupal_strlen($description) > DESCRIPTION_SMALL) {
-        $description = drupal_substr($description, 0, DESCRIPTION_SMALL) . '...';
-      }
-
-      ?>
-      <p class="description"><?php print $description; ?></p>
-      <p class="subject"><span class="hightlight"><?php print t('Subjects') ?>: </span><?php print $item->subject ?></p>
       <p class="stats">
         <span class="rating-label"><?php print t('Rating:'); ?> </span>
         <?php print $stars ?>
@@ -86,17 +64,22 @@
           ?>
         </span>
       </p>
-      <div class="clear"></div>
-      <div class="item-operations">
-        <div class="operation open-item">
-          <form action="/ting/object/<?php print $item->id; ?>">
-            <input type="submit" value="<?php print t('More information'); ?>" />
-          </form>
-        </div>
-        <div class="operation reserve-item">
-            <?php print render(ding_provider_get_form('ding_reservation_reserve_form', new DingReservationReservableEntity($item), TRUE)); ?>
-        </div>
-      </div>
+      <h1><?php print l($title,'ting/object/' . $item->id, array('attributes' => array('title' => $item->title, 'alt' => $item->title))) ?></h1>
+      <p>
+        <?php if (isset($item->creator)): ?>
+          <?php print t('By') ?> <span class="creator"><?php print $item->creator ?></span> <?php print $item->year ? "({$item->year})" : '' ?>
+        <?php endif; ?>
+      </p>
+      <?php
+
+      $description = is_array($item->description) ? join(', ', $item->description) : $item->description;
+
+      if (drupal_strlen($description) > DESCRIPTION_SMALL) {
+        $description = drupal_substr($description, 0, DESCRIPTION_SMALL) . '...';
+      }
+
+      ?>
+      <p class="description"><?php print $description; ?></p>
       <div class="clear"></div>
     </div>
   </div>
