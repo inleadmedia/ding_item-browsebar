@@ -12,7 +12,7 @@
     $max_facet_length = 0;
     
     if (!empty($facets['facet.subject'])) {
-      foreach ($facets['facet.subject']->terms as $facet=>$amount) {
+      foreach ($facets['facet.subject']->terms as $facet => $amount) {
         $max_facet_length = (strlen($facet) > $max_facet_length) ?  strlen($facet) : $max_facet_length;
         echo '<li><a href="/search/ting/' . $keyword . '?text=' . $keyword . '&facets[]=facet.subject:' . $facet . '">' . htmlspecialchars($facet) . '</a></li>';
       }
