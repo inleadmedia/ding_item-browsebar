@@ -102,15 +102,16 @@ function easybase_browsebar_block_view($delta) {
       $response = easybase_browsebar_load_items('bog');
       if (!empty($response)) {
         $first_tab = array_shift($response);
-
-        $block['content'] = ($first_tab != NULL) ? theme('browsebar', array(
-              'carousel_items' => theme('browsebar_items', array('carousel_items' => $first_tab['items'])),
-              'views' => variable_get('easybase_browsebar_search_queries', array()),
-              'facets' => $first_tab['facets'],
-              'keyword' => $first_tab['keyword'])) : '';
-      }
-      else {
-        $block['content'] = '';
+        if (!empty($first_tab['items'])) {
+          $block['content'] = ($first_tab != NULL) ? theme('browsebar', array(
+                'carousel_items' => theme('browsebar_items', array('carousel_items' => $first_tab['items'])),
+                'views' => variable_get('easybase_browsebar_search_queries', array()),
+                'facets' => $first_tab['facets'],
+                'keyword' => $first_tab['keyword'])) : '';
+        }
+        else {
+          $block['content'] = '';
+        }
       }
       break;
   }
