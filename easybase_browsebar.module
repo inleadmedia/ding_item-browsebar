@@ -316,7 +316,11 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
 function easybase_browsebar_check_cover($local_id) {
   $service = new AdditionalInformationService(variable_get('addi_wsdl_url'), variable_get('addi_username'), variable_get('addi_group'), variable_get('addi_password'));
 
-  $cover = $service->getByFaustNumber($local_id);
+  try {
+    $cover = $service->getByFaustNumber($local_id);
+  } catch(Exception $e) {
+    return FALSE;
+  }
 
   if (count($cover) > 0) {
     return TRUE;
