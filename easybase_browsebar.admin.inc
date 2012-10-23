@@ -107,7 +107,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
   // Ajaxified button for new fields.
   $form['browsebar']['new_search_browsebar_button'] = array(
     '#type' => 'button',
-    '#value' => 'Add another',
+    '#value' => t('Add another'),
     '#name' => 'add_query',
     '#ajax' => array(
       'callback' => 'easybase_browsebar_admin_form_ajaxify',
@@ -134,7 +134,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
   // Ajaxified button for new fields.
   $form['browsebar']['easybase_browsebar_clear_cache'] = array(
     '#type' => 'submit',
-    '#value' => 'Clear search cache',
+    '#value' => t('Clear search cache'),
     '#submit' => array('easybase_browsebar_clear_cache')
   );
 
@@ -335,7 +335,10 @@ function easybase_browsebar_admin_form_validate($form, &$form_state) {
   }
 }
 
+/**
+ * Clears browsebar cache by truncating is cache_ table.
+ */
 function easybase_browsebar_clear_cache($form, &$form_state) {
   db_truncate('cache_browsebar')->execute();
-  drupal_set_message(t('Search cache has been cleared.'));
+  drupal_set_message(t('Browsebar search cache has been cleared.'));
 }
