@@ -150,7 +150,7 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
       $keyword = $item['query'];
       $cid = easybase_browsebar_generate_cache_id($keyword, $type, $subject);
 
-      if (!$items = cache_get($cid)) {
+      if (!$items = cache_get($cid, 'cache_browsebar')) {
         $request = easybase_browsebar_facets_request_builder($keyword, $type, $subject);
         $page = 1;
         $items = array();
@@ -291,7 +291,7 @@ function easybase_browsebar_load_items($type = 'bog', $subject = '') {
 
         $items = array('items' => $items, 'facets' => $result->facets, 'keyword' => $keyword);
 
-        cache_set($cid, $items, 'cache',
+        cache_set($cid, $items, 'cache_browsebar',
           REQUEST_TIME + variable_get('easybase_browsebar_cache_ttl', 2) * 60 * 60);
 
         $items_buffer[$cid] = $items;

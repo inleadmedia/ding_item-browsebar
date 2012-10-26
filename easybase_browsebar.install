@@ -4,6 +4,16 @@
  *
  */
 
+/**
+ * Implements hook_schema().
+ */
+function easybase_browsebar_schema() {
+  $schema['cache_browsebar'] = drupal_get_schema_unprocessed('system', 'cache');
+  $schema['cache_browsebar']['module'] = 'easybase_browsebar';
+  $schema['cache_browsebar']['description'] = 'Cache table for Easybase Browsebar module.';
+
+  return $schema;
+}
 
 /**
  * Implements hook_install().

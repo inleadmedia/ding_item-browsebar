@@ -107,7 +107,7 @@ function easybase_browsebar_admin_form($form, &$form_state) {
   // Ajaxified button for new fields.
   $form['browsebar']['new_search_browsebar_button'] = array(
     '#type' => 'button',
-    '#value' => 'Add another',
+    '#value' => t('Add another'),
     '#name' => 'add_query',
     '#ajax' => array(
       'callback' => 'easybase_browsebar_admin_form_ajaxify',
@@ -129,6 +129,13 @@ function easybase_browsebar_admin_form($form, &$form_state) {
     '#title' => t('Cache TTL'),
     '#description' => t('How many hours the cache lives.'),
     '#default_value' => variable_get('easybase_browsebar_cache_ttl', 1)
+  );
+
+  // Ajaxified button for new fields.
+  $form['browsebar']['easybase_browsebar_clear_cache'] = array(
+    '#type' => 'submit',
+    '#value' => t('Clear search cache'),
+    '#submit' => array('easybase_browsebar_clear_cache')
   );
 
   // Wrap the form, due to draggable items renewal.
@@ -296,7 +303,7 @@ function easybase_browsebar_search_submit($form, &$form_state) {
     $title = trim($form_state['input']['title'][$i]);
     $subtitle = trim($form_state['input']['subtitle'][$i]);
     $query = trim($form_state['input']['query'][$i]);
-    
+
     if (!empty($title) && !empty($query)) {
       $searches[] = array(
         'title' => $title,
@@ -326,4 +333,12 @@ function easybase_browsebar_admin_form_validate($form, &$form_state) {
   if (!is_numeric($cache_ttl)) {
     form_set_error('easybase_browsebar_cache_ttl', t('Please enter a valid number.'));
   }
+}
+
+/**
+ * Clears browsebar cache by truncating is cache_ table.
+ */
+function easybase_browsebar_clear_cache($form, &$form_state) {
+  db_truncate('cache_browsebar')->execute();
+  drupal_set_message(t('Browsebar search cache has been cleared.'));
 }
